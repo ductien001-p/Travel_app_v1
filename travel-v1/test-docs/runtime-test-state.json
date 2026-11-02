@@ -1,0 +1,42 @@
+{
+  "workflow": "TRAVEL_V1_FULL_RUNTIME_READINESS",
+  "status": "IN_PROGRESS",
+  "target": "BACKEND_FULL_RUNTIME_READY",
+  "total_rest_operations": 112,
+  "completed_operations": 5,
+  "current_gate": "G00",
+  "current_endpoint": null,
+  "last_completed_endpoint": "GET /trips/:id",
+  "next_endpoint": null,
+  "unlocked_gate": "G00",
+  "locked_gates": [
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09",
+    "G10",
+    "G11",
+    "G12",
+    "G13",
+    "G14",
+    "G15",
+    "G16"
+  ],
+  "preverified_operations": [
+    "POST /auth/login",
+    "POST /auth/refresh",
+    "GET /users/me",
+    "GET /trips",
+    "GET /trips/:id"
+  ],
+  "changed_files": [],
+  "commands_run": [],
+  "blockers": [],
+  "last_checkpoint_at": null,
+  "notes": "Update this file after every endpoint and gate. Never unlock the next gate before the current gate exit criteria passes."
+}

@@ -1,0 +1,16 @@
+/*
+  Warnings:
+
+  - The values [DECLINED] on the enum `FRIEND_REQUEST_STATUS` will be removed. If these variants are still used in the database, this will fail.
+
+*/
+-- AlterEnum
+BEGIN;
+CREATE TYPE "FRIEND_REQUEST_STATUS_new" AS ENUM ('PENDING', 'ACCEPTED', 'REJECTED');
+ALTER TABLE "public"."FriendRequest" ALTER COLUMN "status" DROP DEFAULT;
+ALTER TABLE "FriendRequest" ALTER COLUMN "status" TYPE "FRIEND_REQUEST_STATUS_new" USING ("status"::text::"FRIEND_REQUEST_STATUS_new");
+ALTER TYPE "FRIEND_REQUEST_STATUS" RENAME TO "FRIEND_REQUEST_STATUS_old";
+ALTER TYPE "FRIEND_REQUEST_STATUS_new" RENAME TO "FRIEND_REQUEST_STATUS";
+DROP TYPE "public"."FRIEND_REQUEST_STATUS_old";
+ALTER TABLE "FriendRequest" ALTER COLUMN "status" SET DEFAULT 'PENDING';
+COMMIT;
