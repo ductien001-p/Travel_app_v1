@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dòng Thời Gian Chuyến Đi - Teal Horizon</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-on-surface": "#e3f3fc",
+            "on-secondary-container": "#00716d",
+            "surface-container-highest": "#d5e5ed",
+            "on-tertiary": "#ffffff",
+            "on-primary-container": "#00312f",
+            "on-error": "#ffffff",
+            "surface-glass": "rgba(255, 255, 255, 0.8)",
+            "tertiary-fixed": "#d8e2ff",
+            "on-tertiary-container": "#00295f",
+            "surface-bright": "#f3faff",
+            "surface-dim": "#ccdde5",
+            "on-tertiary-fixed-variant": "#004395",
+            "on-tertiary-fixed": "#001a42",
+            "background": "#f3faff",
+            "on-primary-fixed": "#00201f",
+            "on-secondary": "#ffffff",
+            "primary-container": "#20a29d",
+            "primary-fixed-dim": "#66d8d2",
+            "tertiary-fixed-dim": "#adc6ff",
+            "secondary-fixed-dim": "#7dd5d0",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed": "#00201f",
+            "canvas-base": "#F4FAF9",
+            "surface-container-high": "#dbebf3",
+            "outline-variant": "#bcc9c7",
+            "outline": "#6d7a78",
+            "inverse-primary": "#66d8d2",
+            "surface-variant": "#d5e5ed",
+            "danger": "#EF4444",
+            "surface-tint": "#006a66",
+            "primary-light": "#E6F7F6",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#e6f6ff",
+            "tertiary": "#005ac2",
+            "text-secondary": "#4B6169",
+            "primary-fixed": "#84f5ef",
+            "secondary-fixed": "#99f2ec",
+            "on-surface-variant": "#3d4948",
+            "on-primary-fixed-variant": "#00504d",
+            "on-surface": "#0e1e24",
+            "surface": "#f3faff",
+            "on-background": "#0e1e24",
+            "inverse-surface": "#243339",
+            "secondary": "#006a66",
+            "secondary-container": "#99f2ec",
+            "surface-subdued": "#F1F6F5",
+            "error": "#ba1a1a",
+            "surface-container": "#e0f0f9",
+            "success": "#10B981",
+            "border-neutral": "rgba(226, 232, 240, 0.8)",
+            "on-primary": "#ffffff",
+            "tertiary-container": "#508fff",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#00504d",
+            "text-subdued": "#8FA3AA",
+            "border-teal": "rgba(32, 162, 157, 0.12)",
+            "warning": "#F59E0B",
+            "primary": "#006a66"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-xl": "1.5rem",
+            "gutter": "1rem",
+            "space-lg": "1rem",
+            "margin": "1.25rem"
+          },
+          "fontFamily": {
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "badge-label": ["Plus Jakarta Sans"],
+            "body-default": ["Plus Jakarta Sans"],
+            "title-card": ["Plus Jakarta Sans"],
+            "title-screen": ["Plus Jakarta Sans"],
+            "caption": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"],
+            "headline-section": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "badge-label": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "body-default": ["14px", { "lineHeight": "21px", "fontWeight": "400" }],
+            "title-card": ["16px", { "lineHeight": "21px", "fontWeight": "600" }],
+            "title-screen": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "caption": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "body-medium": ["14px", { "lineHeight": "21px", "fontWeight": "500" }],
+            "headline-section": ["18px", { "lineHeight": "24px", "fontWeight": "700" }],
+            "display-hero": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800" }]
+          },
+          "boxShadow": {
+            "level-1": "0 4px 20px -2px rgba(32, 162, 157, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.03)",
+            "glass": "0 10px 30px -5px rgba(15, 30, 36, 0.08)",
+            "action-glow": "0 10px 25px -4px rgba(32, 162, 157, 0.38)"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#F8FCFC] text-on-surface antialiased min-h-screen font-body-default text-body-default selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Main Canvas Container (Calibrated for Mobile-First & Desktop Preview) -->
+<div class="relative w-full max-w-md mx-auto min-h-screen bg-canvas-base shadow-2xl flex flex-col overflow-x-hidden border-x border-slate-100">
+<!-- Ambient Atmospheric Glows -->
+<div class="pointer-events-none absolute -top-16 -right-16 w-80 h-80 bg-primary-container/10 rounded-full blur-3xl"></div>
+<div class="pointer-events-none absolute top-96 -left-20 w-72 h-72 bg-secondary-fixed/30 rounded-full blur-3xl"></div>
+<!-- Top App Bar Kính Mờ (Liquid Glass Header) -->
+<!-- Task-Focused Screen: Sub-page from Trip Details with Back action, thus suppressing BottomNavBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-5 h-20 bg-surface-glass backdrop-blur-xl shadow-glass transition-all duration-200">
+<div class="flex items-center gap-3">
+<button aria-label="Quay lại chi tiết chuyến đi" class="flex items-center justify-center w-10 h-10 rounded-full bg-white/90 text-primary shadow-level-1 hover:bg-primary-light transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-title-card text-title-card text-on-surface tracking-tight">Dòng Thời Gian Chuyến Đi</h1>
+<p class="font-caption text-caption text-text-secondary flex items-center gap-1.5">
+<span>Mùa hè rực rỡ 2025</span>
+<span class="inline-block w-1 h-1 rounded-full bg-text-subdued"></span>
+<span class="text-primary font-semibold">12 hoạt động ghi nhận</span>
+</p>
+</div>
+</div>
+<button aria-label="Bộ lọc sự kiện" class="flex items-center justify-center w-10 h-10 rounded-full bg-white/90 text-on-surface shadow-level-1 hover:bg-primary-light hover:text-primary transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="tune">tune</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-5 pt-4 pb-12 flex flex-col gap-6">
+<!-- Thẻ Tóm Tắt Hoạt Động Hành Trình (Timeline Quick Overview) -->
+<section class="relative overflow-hidden rounded-2xl bg-white/85 backdrop-blur-xl border border-white/60 p-4 shadow-glass">
+<!-- Live Sync Badge -->
+<div class="flex items-center justify-between pb-3 border-b border-border-teal/40">
+<div class="flex items-center gap-2">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-success"></span>
+</span>
+<span class="font-caption text-caption font-semibold text-text-secondary">Đang cập nhật thời gian thực (Live Sync)</span>
+</div>
+<span class="font-badge-label text-badge-label bg-primary-light text-primary px-2.5 py-0.5 rounded-full font-bold">TRIP-VN2025</span>
+</div>
+<!-- 4 Metrics Bento Grid -->
+<div class="grid grid-cols-4 gap-2 pt-3.5 text-center">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-primary-light flex items-center justify-center text-primary mb-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="timeline">timeline</span>
+</div>
+<span class="font-title-card text-[15px] font-bold text-on-surface">12</span>
+<span class="font-caption text-[11px] text-text-subdued leading-none">Sự kiện</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-secondary mb-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="groups">groups</span>
+</div>
+<span class="font-title-card text-[15px] font-bold text-on-surface">4</span>
+<span class="font-caption text-[11px] text-text-subdued leading-none">Thành viên</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-secondary-container/40 flex items-center justify-center text-on-secondary-container mb-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+</div>
+<span class="font-title-card text-[15px] font-bold text-on-surface">4</span>
+<span class="font-caption text-[11px] text-text-subdued leading-none">Check-in</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant mb-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="receipt_long">receipt_long</span>
+</div>
+<span class="font-title-card text-[15px] font-bold text-on-surface">6</span>
+<span class="font-caption text-[11px] text-text-subdued leading-none">Chi tiêu</span>
+</div>
+</div>
+</section>
+<!-- Bộ Lọc Phân Loại Sự Kiện (Filter Chips Horizontally Scrollable) -->
+<section class="overflow-x-auto no-scrollbar -mx-5 px-5 flex items-center gap-2 py-1">
+<!-- Active Chip -->
+<button class="whitespace-nowrap flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-primary-container text-white font-caption text-caption font-bold shadow-action-glow transition-transform active:scale-95" type="button">
+<span class="material-symbols-outlined text-[15px]" data-icon="auto_awesome">auto_awesome</span>
+<span>Tất cả (12)</span>
+</button>
+<!-- Inactive Chips -->
+<button class="whitespace-nowrap flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/90 text-text-secondary border border-border-teal/50 font-caption text-caption hover:border-primary-container hover:text-primary transition-all active:scale-95 shadow-sm" type="button">
+<span>📍</span>
+<span>Check-in (4)</span>
+</button>
+<button class="whitespace-nowrap flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/90 text-text-secondary border border-border-teal/50 font-caption text-caption hover:border-primary-container hover:text-primary transition-all active:scale-95 shadow-sm" type="button">
+<span>🧾</span>
+<span>Chi tiêu (3)</span>
+</button>
+<button class="whitespace-nowrap flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/90 text-text-secondary border border-border-teal/50 font-caption text-caption hover:border-primary-container hover:text-primary transition-all active:scale-95 shadow-sm" type="button">
+<span>📷</span>
+<span>Kỷ niệm &amp; Ảnh (3)</span>
+</button>
+<button class="whitespace-nowrap flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/90 text-text-secondary border border-border-teal/50 font-caption text-caption hover:border-primary-container hover:text-primary transition-all active:scale-95 shadow-sm" type="button">
+<span>👥</span>
+<span>Thành viên (2)</span>
+</button>
+</section>
+<!-- Trục Dòng Thời Gian Chi Tiết (Grouped Chronological Vertical Timeline) -->
+<section class="flex flex-col gap-8 relative">
+<!-- ================= GROUP 1: Hôm nay (21 Tháng 7) ================= -->
+<div class="flex flex-col gap-4">
+<!-- Date Sticky Group Header -->
+<div class="flex items-center gap-2">
+<span class="font-headline-section text-headline-section font-bold text-on-surface">Hôm nay</span>
+<span class="font-caption text-caption text-text-subdued font-medium">(21 Tháng 7)</span>
+<div class="flex-1 h-[1px] bg-slate-200 ml-2"></div>
+</div>
+<!-- Timeline Container for Group 1 -->
+<div class="relative pl-7 flex flex-col gap-5">
+<!-- Persistent Teal Vertical Line -->
+<div class="absolute left-[11px] top-2 bottom-2 w-[2px] bg-gradient-to-b from-primary-container via-primary-container/60 to-primary-container/20"></div>
+<!-- Event 1: MEMORY_ADDED -->
+<div class="relative group">
+<!-- Timeline Dot -->
+<div class="absolute -left-7 top-1.5 flex items-center justify-center w-6 h-6 rounded-full bg-white border-2 border-primary-container shadow-sm z-10">
+<span class="material-symbols-outlined text-[13px] text-primary" data-icon="photo_library">photo_library</span>
+</div>
+<!-- Event Card -->
+<div class="rounded-2xl bg-white/90 backdrop-blur-md p-3.5 border border-white/80 shadow-level-1 hover:shadow-glass transition-all">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="font-caption text-[11px] font-bold text-primary bg-primary-light px-2 py-0.5 rounded-md uppercase tracking-wider">MEMORY_ADDED</span>
+<span class="font-caption text-caption text-text-subdued">15:30 PM</span>
+</div>
+<button class="text-text-subdued hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+<p class="font-body-default text-[13.5px] text-on-surface leading-snug">
+<strong class="font-semibold text-on-surface">Quốc Bảo</strong> đã tải lên 5 ảnh kỷ niệm tại <span class="text-primary font-medium">Đèo Hải Vân</span>.
+                </p>
+<!-- 3 Photo Thumbnails + Album CTA -->
+<div class="grid grid-cols-3 gap-2 mt-3">
+<div class="relative h-20 rounded-xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A cinematic sun-drenched landscape of Hai Van Pass in Da Nang Vietnam with turquoise ocean waves crashing far below lush emerald mountain ridges, captured during a vibrant bright summer midday under clear blue skies with modern ethereal clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNDCNzhEOeBIxRubcdVCJaR7CumJBlzouZFxPApALzH5BSkyu-NG2xobJ70wg8Nn6p4_RKTWAW5C2cWEMI02uOnPN4bgVUngaz52RuYAkTKcWyJVNRzBHmOaKhwE4aJZJhNDiZXi09yvZC-pOcFxIUyLrsgOM2LA0ekgiqDn79Zo-QKyjh1biB7DOFo3G6GAM6Gg0lP0_ByRq6LrU2sRGqJO30UiJiUpKta_YG3YlFdooqDIkA17KK"/>
+</div>
+<div class="relative h-20 rounded-xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A joyful travel group of four young friends posing enthusiastically at a coastal winding road viewpoint atop Hai Van Pass with expansive teal sea background and sunlit mist, high visual quality with soft contrast and bright morning radiance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB87Ljhc0hV3eFUw59_XOIvy02fhRYBXzELGKZubfhgxkpG7E0aBbl2hFjYxoua1SF0s9adxf0gSjdqHNoQCuxdXkzXEnsSacZMR5nRcOf4JCyvkjmSNQmICO8Dwf511_W22jbi_3snaPeqrDOLNFvH7IKk6H4bON8AAfatt7irYdoduWd-rqSEjbAfcx-_zWqZRin6ciLsd0RUzPL9o5A5S_uUIiw-_G6dm7sgJB2sXZ0Oh-KguID2"/>
+</div>
+<div class="relative h-20 rounded-xl overflow-hidden shadow-sm group/view">
+<img class="w-full h-full object-cover" data-alt="A vintage motorcycle parked beside a stone viewpoint barrier overlooking the misty azure coastline and winding mountain pass road in Vietnam, warm sunlight reflecting off sea spray in serene ethereal atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDXbneNxp8Z4EEuBpUFW1gC3ooU6JEsZ8Rfm9j-JERJM4ATsbmxfcCDOEIZ7Sm57Udrv1XgO-dhYNls6fSlOIiFqr4E5_caoIleRG9Nf8Dhk2595uM7u2_0uCZflme7GasPdcREH3DyXFOQsqfh4de9f19zToOnnUpE57-YXruAdGnJ6SAXIBmqf5YdLGfyeQonVBDGQVAl7AE_ShFxhyDvAXjWknxW5g8ycRe9O1PMvygOziqIDUA"/>
+<div class="absolute inset-0 bg-primary/75 backdrop-blur-[2px] flex flex-col items-center justify-center text-white text-center p-1">
+<span class="font-title-card text-xs font-bold leading-none">+2 ảnh</span>
+<span class="text-[9px] font-medium tracking-tight mt-0.5">Xem album</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Event 2: EXPENSE_CREATED -->
+<div class="relative group">
+<!-- Timeline Dot -->
+<div class="absolute -left-7 top-1.5 flex items-center justify-center w-6 h-6 rounded-full bg-white border-2 border-primary-container shadow-sm z-10">
+<span class="material-symbols-outlined text-[13px] text-primary" data-icon="receipt_long">receipt_long</span>
+</div>
+<!-- Event Card -->
+<div class="rounded-2xl bg-white/90 backdrop-blur-md p-3.5 border border-white/80 shadow-level-1 hover:shadow-glass transition-all">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="font-caption text-[11px] font-bold text-on-secondary-container bg-secondary-container/40 px-2 py-0.5 rounded-md uppercase tracking-wider">EXPENSE_CREATED</span>
+<span class="font-caption text-caption text-text-subdued">12:40 PM</span>
+</div>
+<span class="font-title-card text-[15px] font-bold text-primary">1.200.000đ</span>
+</div>
+<p class="font-body-default text-[13.5px] text-on-surface leading-snug">
+<strong class="font-semibold text-on-surface">Minh Trang</strong> đã tạo khoản chi <span class="font-medium text-on-surface">"Ăn trưa Hải sản Bé Mặn"</span>.
+                </p>
+<!-- Bill breakdown pill container -->
+<div class="mt-2.5 flex items-center justify-between bg-surface-subdued/80 rounded-xl px-3 py-2 border border-slate-100">
+<div class="flex items-center gap-1.5 text-text-secondary text-[12px]">
+<span class="material-symbols-outlined text-[15px] text-primary" data-icon="group">group</span>
+<span>Chia đều 4 người</span>
+</div>
+<span class="font-body-medium text-[12px] font-semibold text-text-secondary">300.000đ / người</span>
+</div>
+</div>
+</div>
+<!-- Event 3: ACTIVITY_CHECKIN -->
+<div class="relative group">
+<!-- Timeline Dot -->
+<div class="absolute -left-7 top-1.5 flex items-center justify-center w-6 h-6 rounded-full bg-white border-2 border-primary-container shadow-sm z-10">
+<span class="material-symbols-outlined text-[13px] text-primary" data-icon="pin_drop">pin_drop</span>
+</div>
+<!-- Event Card -->
+<div class="rounded-2xl bg-white/90 backdrop-blur-md p-3.5 border border-white/80 shadow-level-1 hover:shadow-glass transition-all">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="font-caption text-[11px] font-bold text-primary bg-primary-light px-2 py-0.5 rounded-md uppercase tracking-wider">ACTIVITY_CHECKIN</span>
+<span class="font-caption text-caption text-text-subdued">10:15 AM</span>
+</div>
+<span class="inline-flex items-center gap-0.5 text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[13px]" data-icon="verified">verified</span> Verified
+                  </span>
+</div>
+<p class="font-body-default text-[13.5px] text-on-surface leading-snug">
+<strong class="font-semibold text-on-surface">Alex Nguyễn</strong> đã check-in tại <span class="text-primary font-medium">Gia đình Voọc Chà Vá - Bán đảo Sơn Trà</span>.
+                </p>
+<!-- Checkin Visual & GPS Coordinates Tag -->
+<div class="mt-3 flex items-center gap-3">
+<div class="w-16 h-16 rounded-xl overflow-hidden shrink-0 shadow-sm border border-white">
+<img class="w-full h-full object-cover" data-alt="A rare endangered Red-shanked Douc Langur with brilliant orange-brown fur and expressive eyes sitting delicately on a vibrant tropical green canopy branch on Son Tra Peninsula, Da Nang Vietnam bathed in soft morning sunlight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfaZ9isqnTG1KTEjkgJXdDOA0HoCkcRMHwTU3aGbG_ryZZKCZa83QGtV3bHq7oGTP1S0nGZV4RVig1CX4k8IpE4rGj8E4AF9U_PLtxAdCEDXIpEUeyaplFa_AeCapcQqPFDICuJic7XcC-COHe2U1CLqpAnUn7EHDo4kh-gyvE7Q-JRSU-942oqfM0Dl-bpcSlhTbhneaxmtaT8yslOBeGaGkDosuAiGwDhJliOvxUXXsojaLfQEQA"/>
+</div>
+<div class="flex flex-col gap-1 justify-center">
+<div class="flex items-center gap-1 text-[11px] text-text-subdued font-mono bg-slate-100/90 px-2 py-1 rounded-md w-fit">
+<span class="material-symbols-outlined text-[13px] text-primary" data-icon="explore">explore</span>
+<span>16.1182° N, 108.2789° E</span>
+</div>
+<span class="text-[12px] text-text-secondary flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[14px] text-amber-500" data-icon="forest">forest</span> Khu bảo tồn thiên nhiên Sơn Trà
+                    </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Event 4: ACTIVITY_UPDATED -->
+<div class="relative group">
+<!-- Timeline Dot -->
+<div class="absolute -left-7 top-1.5 flex items-center justify-center w-6 h-6 rounded-full bg-white border-2 border-primary-container/60 shadow-sm z-10">
+<span class="material-symbols-outlined text-[13px] text-text-secondary" data-icon="update">update</span>
+</div>
+<!-- Event Card -->
+<div class="rounded-2xl bg-white/80 backdrop-blur-md p-3.5 border border-white/70 shadow-level-1">
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center gap-2">
+<span class="font-caption text-[11px] font-bold text-text-secondary bg-slate-100 px-2 py-0.5 rounded-md uppercase tracking-wider">ACTIVITY_UPDATED</span>
+<span class="font-caption text-caption text-text-subdued">08:30 AM</span>
+</div>
+</div>
+<p class="font-body-default text-[13.5px] text-on-surface leading-snug">
+<strong class="font-semibold text-on-surface">Alex Nguyễn</strong> đã dời giờ hẹn <span class="font-medium">"Cà phê ngắm vịnh"</span>:
+                </p>
+<div class="mt-2 inline-flex items-center gap-2 bg-amber-50/80 border border-amber-200/60 rounded-lg px-2.5 py-1 text-[12px] text-amber-800">
+<span class="line-through text-amber-600/70">11:30 AM</span>
+<span class="material-symbols-outlined text-[13px]" data-icon="arrow_forward">arrow_forward</span>
+<span class="font-bold text-amber-900">12:30 PM (Trưa nay)</span>
+</div>
+</div>
+</div>
+<!-- Event 5: ACTIVITY_CHECKIN (Ban Co Peak) -->
+<div class="relative group">
+<!-- Timeline Dot -->
+<div class="absolute -left-7 top-1.5 flex items-center justify-center w-6 h-6 rounded-full bg-white border-2 border-primary-container shadow-sm z-10">
+<span class="material-symbols-outlined text-[13px] text-primary" data-icon="military_tech">military_tech</span>
+</div>
+<!-- Event Card -->
+<div class="rounded-2xl bg-white/90 backdrop-blur-md p-3.5 border border-white/80 shadow-level-1 hover:shadow-glass transition-all">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="font-caption text-[11px] font-bold text-primary bg-primary-light px-2 py-0.5 rounded-md uppercase tracking-wider">ACTIVITY_CHECKIN</span>
+<span class="font-caption text-caption text-text-subdued">05:45 AM</span>
+</div>
+<span class="inline-flex items-center gap-1 text-primary bg-primary-light px-2 py-0.5 rounded-full text-[11px] font-bold">
+<span>+50 XP</span>
+<span class="material-symbols-outlined text-[12px]" data-icon="bolt">bolt</span>
+</span>
+</div>
+<p class="font-body-default text-[13.5px] text-on-surface leading-snug">
+<strong class="font-semibold text-on-surface">Alex Nguyễn</strong> đã check-in đón bình minh tại <span class="text-primary font-medium">Đỉnh Bàn Cờ (693m)</span>. Nhận huy hiệu thám hiểm rạng đông.
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= GROUP 2: Hôm qua (20 Tháng 7) ================= -->
+<div class="flex flex-col gap-4">
+<!-- Date Sticky Group Header -->
+<div class="flex items-center gap-2">
+<span class="font-headline-section text-headline-section font-bold text-on-surface">Hôm qua</span>
+<span class="font-caption text-caption text-text-subdued font-medium">(20 Tháng 7)</span>
+<div class="flex-1 h-[1px] bg-slate-200 ml-2"></div>
+</div>
+<!-- Timeline Container for Group 2 -->
+<div class="relative pl-7 flex flex-col gap-5">
+<!-- Persistent Teal Vertical Line -->
+<div class="absolute left-[11px] top-2 bottom-2 w-[2px] bg-gradient-to-b from-primary-container/80 via-primary-container/50 to-primary-container/20"></div>
+<!-- Event 6: EXPENSE_SETTLED -->
+<div class="relative group">
+<!-- Timeline Dot -->
+<div class="absolute -left-7 top-1.5 flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500 border-2 border-white shadow-sm z-10">
+<span class="material-symbols-outlined text-[13px] text-white" data-icon="check">check</span>
+</div>
+<!-- Event Card -->
+<div class="rounded-2xl bg-white/90 backdrop-blur-md p-3.5 border border-white/80 shadow-level-1 hover:shadow-glass transition-all">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="font-caption text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md uppercase tracking-wider">EXPENSE_SETTLED</span>
+<span class="font-caption text-caption text-text-subdued">19:00 PM</span>
+</div>
+<span class="font-title-card text-[15px] font-bold text-emerald-600">850.000đ</span>
+</div>
+<p class="font-body-default text-[13.5px] text-on-surface leading-snug">
+<strong class="font-semibold text-on-surface">Lan Phương</strong> đã hoàn tất thanh toán tiền vé máy bay và homestay cho <strong class="font-semibold text-on-surface">Minh Trang</strong>.
+                </p>
+<div class="mt-2 flex items-center gap-1.5 text-[11px] text-emerald-700 font-medium">
+<span class="material-symbols-outlined text-[14px]" data-icon="task_alt">task_alt</span>
+<span>Đã đối soát thành công qua ví liên kết</span>
+</div>
+</div>
+</div>
+<!-- Event 7: MEMBER_JOINED -->
+<div class="relative group">
+<!-- Timeline Dot -->
+<div class="absolute -left-7 top-1.5 flex items-center justify-center w-6 h-6 rounded-full bg-white border-2 border-primary-container shadow-sm z-10">
+<span class="material-symbols-outlined text-[13px] text-primary" data-icon="person_add">person_add</span>
+</div>
+<!-- Event Card -->
+<div class="rounded-2xl bg-white/90 backdrop-blur-md p-3.5 border border-white/80 shadow-level-1 hover:shadow-glass transition-all">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="font-caption text-[11px] font-bold text-tertiary bg-tertiary-fixed/60 px-2 py-0.5 rounded-md uppercase tracking-wider">MEMBER_JOINED</span>
+<span class="font-caption text-caption text-text-subdued">16:20 PM</span>
+</div>
+</div>
+<div class="flex items-center gap-3 mt-1">
+<div class="relative w-11 h-11 rounded-full overflow-hidden border-2 border-primary-container shadow-sm shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait of a cheerful young Vietnamese female traveler smiling brightly wearing a casual mint green linen shirt and sun hat, soft sunny bokeh backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHzk1UHBTrmYzTD9UnbW8t2VsvKXl44orCYK3Ac7c3JGkm7ljqHk0nEOnmwUhFkCtsJmR2N11KEW8wEx9k6QWRHZ1nnIj7nZ-6SRtCorWXiW78dOEhDmzQxQa4SsSc88jlXmU3q4F2uxytB62tgPPdK32ZsYCxlQ1MMXVgBuXLHtWWgZE79_FT2e4FAmGbeaP1VRaHaQjGBHawq6g1KNtBqyqYPngcpPIIQ4uMZBF2n1cSXMbK3QjP"/>
+</div>
+<div class="flex flex-col">
+<p class="font-body-default text-[13.5px] text-on-surface leading-tight">
+<strong class="font-bold text-on-surface">Lan Phương</strong> đã tham gia chuyến đi.
+                    </p>
+<span class="text-[11px] text-text-subdued mt-0.5">Tham gia qua mã mời bí mật <span class="font-mono text-primary font-semibold">TRIP-VN2025</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Event 8: ACTIVITY_ADDED -->
+<div class="relative group">
+<!-- Timeline Dot -->
+<div class="absolute -left-7 top-1.5 flex items-center justify-center w-6 h-6 rounded-full bg-white border-2 border-primary-container/70 shadow-sm z-10">
+<span class="material-symbols-outlined text-[13px] text-primary" data-icon="add_location_alt">add_location_alt</span>
+</div>
+<!-- Event Card -->
+<div class="rounded-2xl bg-white/90 backdrop-blur-md p-3.5 border border-white/80 shadow-level-1 hover:shadow-glass transition-all">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="font-caption text-[11px] font-bold text-primary bg-primary-light px-2 py-0.5 rounded-md uppercase tracking-wider">ACTIVITY_ADDED</span>
+<span class="font-caption text-caption text-text-subdued">14:00 PM</span>
+</div>
+</div>
+<p class="font-body-default text-[13.5px] text-on-surface leading-snug">
+<strong class="font-semibold text-on-surface">Alex Nguyễn</strong> đã thêm hoạt động <span class="font-medium text-on-surface">"Thả hoa đăng trên sông Hoài"</span> vào lịch trình Ngày 2.
+                </p>
+<div class="mt-2 flex items-center gap-2 text-[12px] text-text-secondary bg-surface-subdued px-2.5 py-1.5 rounded-xl">
+<span class="material-symbols-outlined text-[15px] text-primary" data-icon="event">event</span>
+<span>Ngày 2 • 20:00 PM • Phố cổ Hội An</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= GROUP 3: Khởi tạo chuyến đi (15 Tháng 7) ================= -->
+<div class="flex flex-col gap-4">
+<!-- Date Sticky Group Header -->
+<div class="flex items-center gap-2">
+<span class="font-headline-section text-headline-section font-bold text-on-surface">Khởi tạo chuyến đi</span>
+<span class="font-caption text-caption text-text-subdued font-medium">(15 Tháng 7)</span>
+<div class="flex-1 h-[1px] bg-slate-200 ml-2"></div>
+</div>
+<!-- Timeline Container for Group 3 -->
+<div class="relative pl-7 flex flex-col gap-5">
+<!-- Persistent Teal Vertical Line terminating at base -->
+<div class="absolute left-[11px] top-2 h-14 w-[2px] bg-gradient-to-b from-primary-container/40 to-transparent"></div>
+<!-- Event 9: TRIP_CREATED -->
+<div class="relative group">
+<!-- Timeline Dot -->
+<div class="absolute -left-7 top-1.5 flex items-center justify-center w-6 h-6 rounded-full bg-primary-container text-white shadow-action-glow z-10">
+<span class="material-symbols-outlined text-[13px]" data-icon="flag">flag</span>
+</div>
+<!-- Event Card -->
+<div class="rounded-2xl bg-gradient-to-br from-white to-primary-light/40 backdrop-blur-md p-4 border border-primary-container/20 shadow-level-1">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="font-caption text-[11px] font-bold text-primary bg-white px-2 py-0.5 rounded-md uppercase tracking-wider shadow-xs">TRIP_CREATED</span>
+<span class="font-caption text-caption text-text-subdued">09:00 AM</span>
+</div>
+</div>
+<h3 class="font-title-card text-[15px] font-bold text-on-surface">
+                  Khởi hành hành trình "Mùa hè rực rỡ xuyên miền Trung 2025"
+                </h3>
+<p class="font-caption text-caption text-text-secondary mt-1">
+                  Tạo bởi <strong class="font-semibold text-primary">Alex Nguyễn</strong>. Chuyến đi bắt đầu chặng Đà Nẵng - Hội An - Huế với 4 thành viên đồng hành.
+                </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Trạng Thái Tải Thêm (Cursor Pagination / Infinite Scroll Loading Complete) -->
+<section class="mt-4 flex flex-col items-center justify-center py-6 border-t border-slate-200/80">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-primary-light text-primary shadow-level-1 mb-2">
+<span class="material-symbols-outlined text-[22px]" data-icon="check_circle">check_circle</span>
+</div>
+<p class="font-caption text-caption font-semibold text-on-surface">Đã hiển thị tất cả sự kiện của chuyến đi</p>
+<span class="font-caption text-[11px] text-text-subdued mt-0.5">Không còn dữ liệu lịch sử bổ sung (Cursor EOF)</span>
+</section>
+</main>
+</div>
+</body></html>

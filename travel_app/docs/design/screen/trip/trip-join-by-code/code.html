@@ -1,0 +1,344 @@
+<!DOCTYPE html><html class="h-full" lang="vi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Tham Gia Chuyến Đi - Teal Horizon</title>
+<!-- Google Fonts: Plus Jakarta Sans & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN with configuration -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "text-subdued": "#8FA3AA",
+            "surface-tint": "#006a66",
+            "surface": "#f3faff",
+            "on-primary-fixed": "#00201f",
+            "on-primary-fixed-variant": "#00504d",
+            "canvas-base": "#F4FAF9",
+            "surface-glass": "rgba(255, 255, 255, 0.8)",
+            "on-secondary-fixed": "#00201f",
+            "surface-variant": "#d5e5ed",
+            "warning": "#F59E0B",
+            "tertiary-fixed-dim": "#adc6ff",
+            "surface-container-highest": "#d5e5ed",
+            "primary-fixed-dim": "#66d8d2",
+            "inverse-on-surface": "#e3f3fc",
+            "secondary-fixed": "#99f2ec",
+            "on-tertiary-container": "#00295f",
+            "primary-fixed": "#84f5ef",
+            "primary-light": "#E6F7F6",
+            "border-teal": "rgba(32, 162, 157, 0.12)",
+            "inverse-primary": "#66d8d2",
+            "secondary-fixed-dim": "#7dd5d0",
+            "primary-container": "#20a29d",
+            "on-tertiary-fixed": "#001a42",
+            "on-background": "#0e1e24",
+            "on-primary-container": "#00312f",
+            "error-container": "#ffdad6",
+            "outline-variant": "#bcc9c7",
+            "secondary-container": "#99f2ec",
+            "surface-container-low": "#e6f6ff",
+            "on-error-container": "#93000a",
+            "background": "#f3faff",
+            "surface-container-high": "#dbebf3",
+            "surface-container": "#e0f0f9",
+            "on-primary": "#ffffff",
+            "text-secondary": "#4B6169",
+            "secondary": "#006a66",
+            "outline": "#6d7a78",
+            "tertiary-fixed": "#d8e2ff",
+            "surface-dim": "#ccdde5",
+            "tertiary-container": "#508fff",
+            "surface-subdued": "#F1F6F5",
+            "on-tertiary": "#ffffff",
+            "error": "#ba1a1a",
+            "success": "#10B981",
+            "on-surface": "#0e1e24",
+            "on-secondary-fixed-variant": "#00504d",
+            "danger": "#EF4444",
+            "tertiary": "#005ac2",
+            "on-error": "#ffffff",
+            "surface-bright": "#f3faff",
+            "primary": "#006a66",
+            "on-secondary-container": "#00716d",
+            "on-tertiary-fixed-variant": "#004395",
+            "on-surface-variant": "#3d4948",
+            "border-neutral": "rgba(226, 232, 240, 0.8)",
+            "inverse-surface": "#243339",
+            "on-secondary": "#ffffff",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "margin": "1.25rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-medium": ["Plus Jakarta Sans"],
+            "body-default": ["Plus Jakarta Sans"],
+            "title-screen": ["Plus Jakarta Sans"],
+            "headline-section": ["Plus Jakarta Sans"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"],
+            "badge-label": ["Plus Jakarta Sans"],
+            "caption": ["Plus Jakarta Sans"],
+            "title-card": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-medium": ["14px", { "lineHeight": "21px", "fontWeight": "500" }],
+            "body-default": ["14px", { "lineHeight": "21px", "fontWeight": "400" }],
+            "title-screen": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-section": ["18px", { "lineHeight": "24px", "fontWeight": "700" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "display-hero": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "badge-label": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "caption": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "title-card": ["16px", { "lineHeight": "21px", "fontWeight": "600" }]
+          },
+          "boxShadow": {
+            "glass-card": "0 4px 20px -2px rgba(32, 162, 157, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.03)",
+            "frosted-nav": "0 10px 30px -5px rgba(15, 30, 36, 0.08)",
+            "teal-glow": "0 10px 25px -4px rgba(32, 162, 157, 0.38)",
+            "teal-glow-hover": "0 14px 30px -4px rgba(32, 162, 157, 0.48)"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .code-slot:focus {
+      outline: none;
+      border-color: #20a29d;
+      box-shadow: 0 0 0 3px rgba(32, 162, 157, 0.2);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-canvas-base text-on-surface antialiased min-h-full flex flex-col font-body-default selection:bg-primary-container selection:text-on-primary">
+<!-- Ambient Oceanic Glow Background Gradients -->
+<div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+<div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-primary-fixed-dim/20 blur-3xl"></div>
+<div class="absolute top-1/3 -right-24 w-80 h-80 rounded-full bg-secondary-fixed/25 blur-3xl"></div>
+<div class="absolute bottom-10 left-1/4 w-72 h-72 rounded-full bg-primary-light/40 blur-2xl"></div>
+</div>
+<!-- Focused Navigation Shell (Linear Task Flow: Close/Back to canvas) -->
+<header class="sticky top-0 z-40 w-full max-w-md mx-auto px-5 h-16 flex items-center justify-between bg-surface-glass backdrop-blur-xl shadow-frosted-nav">
+<button aria-label="Quay lại" class="w-10 h-10 rounded-full bg-surface-container-lowest/80 border border-white/60 shadow-glass-card flex items-center justify-center text-on-surface hover:bg-primary-light transition-colors duration-200 active:scale-95" type="button">
+<span class="material-symbols-outlined text-title-card" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-title-screen text-title-card text-on-surface font-bold tracking-tight">
+      Tham Gia Chuyến Đi
+    </h1>
+<button aria-label="Quét mã QR" class="w-10 h-10 rounded-full bg-surface-container-lowest/80 border border-white/60 shadow-glass-card flex items-center justify-center text-primary hover:bg-primary-light transition-colors duration-200 active:scale-95" type="button">
+<span class="material-symbols-outlined text-title-card" data-icon="qr_code_scanner">qr_code_scanner</span>
+</button>
+</header>
+<!-- Main Interaction Canvas -->
+<main class="relative z-10 flex-1 w-full max-w-md mx-auto px-5 pt-4 pb-28 flex flex-col space-y-5">
+<!-- 1. Header Illustration & Guidance Section -->
+<section class="flex flex-col items-center text-center pt-2">
+<!-- High-aesthetic Liquid Glass Badge / Passport-Ticket Motif -->
+<div class="relative mb-3 flex items-center justify-center">
+<div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-primary-container/20 to-primary-light border border-white/80 shadow-glass-card flex items-center justify-center backdrop-blur-md">
+<div class="w-12 h-12 rounded-xl bg-primary text-on-primary flex items-center justify-center shadow-teal-glow">
+<span class="material-symbols-outlined text-display-hero-mobile" data-icon="airplane_ticket" data-weight="fill" style="font-variation-settings: 'FILL' 1;">airplane_ticket</span>
+</div>
+</div>
+<div class="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-secondary-container border-2 border-surface-container-lowest flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-caption text-on-secondary-container" data-icon="explore" data-weight="fill" style="font-variation-settings: 'FILL' 1;">explore</span>
+</div>
+</div>
+<h2 class="font-headline-section text-title-screen text-on-surface mb-1.5">
+        Nhập Mã Mời Chuyến Đi
+      </h2>
+<p class="font-body-default text-text-secondary text-caption max-w-xs leading-relaxed">
+        Nhận mã 6 ký tự từ Trưởng nhóm hoặc thành viên chuyến đi để gửi yêu cầu tham gia hành trình chung.
+      </p>
+</section>
+<!-- 2. Code Input Fields (6 Individual Slots + Monospace UI) -->
+<section class="bg-surface-glass border border-white/70 backdrop-blur-xl rounded-DEFAULT p-4 shadow-glass-card">
+<label class="block font-caption text-caption text-text-secondary mb-3 text-center uppercase tracking-wider">
+        Mã số mời tham gia (Invite Code)
+      </label>
+<!-- 6 Code Input Slots -->
+<div class="grid grid-cols-6 gap-2 mb-3" id="invite-code-container">
+<input autocomplete="off" class="code-slot w-full aspect-square text-center font-title-screen text-title-screen font-extrabold uppercase rounded-DEFAULT bg-surface-subdued border border-border-teal text-primary-container shadow-sm transition-all duration-150" maxlength="1" type="text" value="H">
+<input autocomplete="off" class="code-slot w-full aspect-square text-center font-title-screen text-title-screen font-extrabold uppercase rounded-DEFAULT bg-surface-subdued border border-border-teal text-primary-container shadow-sm transition-all duration-150" maxlength="1" type="text" value="E">
+<input autocomplete="off" class="code-slot w-full aspect-square text-center font-title-screen text-title-screen font-extrabold uppercase rounded-DEFAULT bg-surface-subdued border border-border-teal text-primary-container shadow-sm transition-all duration-150" maxlength="1" type="text" value="2">
+<input autocomplete="off" class="code-slot w-full aspect-square text-center font-title-screen text-title-screen font-extrabold uppercase rounded-DEFAULT bg-surface-subdued border border-border-teal text-primary-container shadow-sm transition-all duration-150" maxlength="1" type="text" value="0">
+<input autocomplete="off" class="code-slot w-full aspect-square text-center font-title-screen text-title-screen font-extrabold uppercase rounded-DEFAULT bg-surface-subdued border border-border-teal text-primary-container shadow-sm transition-all duration-150" maxlength="1" type="text" value="2">
+<input autocomplete="off" class="code-slot w-full aspect-square text-center font-title-screen text-title-screen font-extrabold uppercase rounded-DEFAULT bg-surface-subdued border border-primary-container ring-2 ring-primary-container/20 text-primary-container shadow-sm transition-all duration-150" maxlength="1" type="text" value="5">
+</div>
+<!-- Quick Paste from Clipboard Action -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center space-x-1.5 text-success font-caption text-caption">
+<span class="material-symbols-outlined text-caption" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Mã chuyến đi hợp lệ</span>
+</div>
+<button class="inline-flex items-center space-x-1 px-3 py-1.5 rounded-full bg-primary-light hover:bg-primary-fixed-dim/40 text-primary font-caption text-caption transition-colors duration-150 active:scale-95" type="button">
+<span class="material-symbols-outlined text-caption" data-icon="content_paste">content_paste</span>
+<span>Dán từ bộ nhớ tạm</span>
+</button>
+</div>
+</section>
+<!-- 3. Live Trip Preview Card (Recognized Trip: HE2025-VN) -->
+<section class="relative overflow-hidden rounded-DEFAULT bg-surface-container-lowest border border-white/90 shadow-glass-card p-4 transition-all duration-300">
+<div class="flex items-center justify-between pb-3 border-b border-border-teal/50">
+<div class="flex items-center space-x-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-badge-label text-badge-label uppercase text-text-subdued">Xem Trước Hành Trình</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-primary-light text-primary font-badge-label text-badge-label font-bold">
+          HE2025-VN
+        </span>
+</div>
+<!-- Trip Content Cluster -->
+<div class="pt-3.5 space-y-3">
+<div class="flex space-x-3 items-start">
+<img class="w-20 h-20 rounded-DEFAULT object-cover flex-shrink-0 shadow-sm border border-border-teal" data-alt="A sunlit coastal panorama of Son Tra Peninsula and historic Hoi An lantern street at dusk, capturing tranquil turquoise ocean waters and warm historic architecture under a clear teal-tinted sky in modern minimalist travel photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZIqT-ekqVCz8w1F84p4smKzCnxGn0-aoQ7hfsUKNcakhlbNgJyBG40eaEcvF1-nEeFt5y19QrFjvF9XQewvFEft_6u-hzMWPATADt7g_ShTcxwpbz4z8E5RbeD7ADKp5iuuAXTJAJKeNS6FUktAn-6e1E94yHzSyTktK5FeBcYFJayprfmGSoPexa_uUWTCITZkA1f0GpIsZnUDMVdLkS90_ZSGtXFp8IBbwO4Vwdpcx9oDvPx-3j">
+<div class="flex-1 min-w-0">
+<h3 class="font-headline-section text-title-card text-on-surface font-bold leading-tight truncate mb-1">
+              Mùa Hè Rực Rỡ: Bán Đảo Sơn Trà &amp; Phố Cổ Hội An
+            </h3>
+<div class="flex items-center text-text-secondary font-caption text-caption space-x-1 mb-1">
+<span class="material-symbols-outlined text-caption text-primary" data-icon="calendar_month">calendar_month</span>
+<span>19/07 – 22/07/2025 (4N3Đ)</span>
+</div>
+<div class="flex items-center text-text-secondary font-caption text-caption space-x-1">
+<span class="material-symbols-outlined text-caption text-primary" data-icon="person_pin">person_pin</span>
+<span class="truncate">Trưởng nhóm: <strong class="text-on-surface font-semibold">Alex Nguyễn</strong> (Owner)</span>
+</div>
+</div>
+</div>
+<!-- Meta Indicators Grid: Slots + DNA Match -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<!-- Availability Pill -->
+<div class="bg-surface-subdued rounded-DEFAULT p-2.5 flex items-center space-x-2 border border-border-teal">
+<div class="w-7 h-7 rounded-full bg-warning/15 text-warning flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-caption" data-icon="group">group</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="font-caption text-caption text-text-secondary">Suất tham gia</div>
+<div class="font-headline-section text-caption font-bold text-on-surface truncate">
+                4/5 <span class="text-danger font-medium">(Còn 1 suất)</span>
+</div>
+</div>
+</div>
+<!-- DNA Match Badge -->
+<div class="bg-gradient-to-br from-primary-light to-secondary-fixed/20 rounded-DEFAULT p-2.5 flex items-center space-x-2 border border-border-teal">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-caption" data-icon="favorite" data-weight="fill" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="font-caption text-caption text-text-secondary">Độ hợp gu DNA</div>
+<div class="font-headline-section text-caption font-bold text-primary truncate">
+                94% Tương thích
+              </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Optional Request Note to Host -->
+<section class="bg-surface-glass border border-white/80 rounded-DEFAULT p-4 backdrop-blur-xl shadow-glass-card space-y-2">
+<div class="flex items-center justify-between">
+<label class="font-headline-section text-title-card text-on-surface font-semibold flex items-center space-x-1.5" for="request-note">
+<span class="material-symbols-outlined text-title-card text-primary" data-icon="chat_bubble_outline">chat_bubble_outline</span>
+<span>Lời nhắn gửi đến chủ trip</span>
+</label>
+<span class="font-caption text-caption text-text-subdued">(Không bắt buộc)</span>
+</div>
+<div class="relative">
+<textarea class="w-full rounded-DEFAULT bg-surface-subdued border border-border-teal p-3 text-body-default font-body-default text-on-surface focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all resize-none placeholder:text-text-subdued" id="request-note" placeholder="Giới thiệu nhanh về bản thân hoặc phong cách du lịch của bạn..." rows="3">Chào Alex! Mình rất thích khám phá ẩm thực Hội An và chụp ảnh, mong được đồng hành cùng nhóm nhé!</textarea>
+</div>
+<div class="flex items-center space-x-1.5 text-text-subdued font-caption text-caption">
+<span class="material-symbols-outlined text-caption text-text-secondary" data-icon="lock">lock</span>
+<span>Tin nhắn chỉ hiển thị cho Trưởng nhóm khi xét duyệt yêu cầu.</span>
+</div>
+</section>
+<!-- 5. Primary Action CTA & Secondary Trigger -->
+<section class="pt-2 space-y-3">
+<!-- Main Action Button -->
+<button class="w-full py-4 px-6 rounded-full bg-primary-container text-on-primary font-headline-section text-title-card font-bold flex items-center justify-center space-x-2 shadow-teal-glow hover:bg-surface-tint hover:shadow-teal-glow-hover active:scale-[0.98] transition-all duration-200" id="btn-submit-join" type="button">
+<span>Gửi Yêu Cầu Tham Gia Chuyến Đi</span>
+<span class="material-symbols-outlined text-title-card font-bold" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Note under button -->
+<p class="text-center font-caption text-caption text-text-secondary">
+        Yêu cầu của bạn sẽ được gửi trực tiếp đến Trưởng nhóm phê duyệt qua hệ thống Teal Horizon.
+      </p>
+<!-- Secondary Outline Action -->
+<button class="w-full py-3 px-5 rounded-full border border-border-teal bg-surface-container-lowest/60 text-primary font-headline-section text-caption font-bold flex items-center justify-center space-x-2 hover:bg-primary-light transition-colors duration-150 active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-caption" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span>Hoặc Quét Mã QR Nhóm Du Lịch</span>
+</button>
+</section>
+</main>
+<!-- Interactive JavaScript for Auto-Focusing Code Slots & Smooth Interaction -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slots = document.querySelectorAll('.code-slot');
+      
+      slots.forEach((slot, index) => {
+        slot.addEventListener('input', (e) => {
+          if (e.target.value.length === 1 && index < slots.length - 1) {
+            slots[index + 1].focus();
+          }
+        });
+
+        slot.addEventListener('keydown', (e) => {
+          if (e.key === 'Backspace' && !e.target.value && index > 0) {
+            slots[index - 1].focus();
+          }
+        });
+
+        slot.addEventListener('focus', (e) => {
+          e.target.select();
+        });
+      });
+
+      const submitBtn = document.getElementById('btn-submit-join');
+      submitBtn.addEventListener('click', () => {
+        submitBtn.innerHTML = `
+          <span class="material-symbols-outlined text-title-card animate-spin" data-icon="progress_activity">progress_activity</span>
+          <span>Đang gửi yêu cầu...</span>
+        `;
+        setTimeout(() => {
+          submitBtn.innerHTML = `
+            <span class="material-symbols-outlined text-title-card" data-icon="check_circle">check_circle</span>
+            <span>Đã Gửi Thành Công!</span>
+          `;
+          submitBtn.classList.remove('bg-primary-container');
+          submitBtn.classList.add('bg-success');
+        }, 800);
+      });
+    });
+  </script>
+</body></html>

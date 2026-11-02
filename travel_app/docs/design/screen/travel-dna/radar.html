@@ -1,0 +1,618 @@
+<!DOCTYPE html><html lang="vi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Khám Phá Bản Đồ Radar Travel DNA - Teal Horizon</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#66d8d2",
+            "warning": "#F59E0B",
+            "secondary-container": "#99f2ec",
+            "surface-variant": "#d5e5ed",
+            "surface-container-highest": "#d5e5ed",
+            "error": "#ba1a1a",
+            "on-tertiary": "#ffffff",
+            "tertiary": "#005ac2",
+            "on-tertiary-fixed": "#001a42",
+            "on-background": "#0e1e24",
+            "danger": "#EF4444",
+            "secondary-fixed": "#99f2ec",
+            "text-subdued": "#8FA3AA",
+            "secondary-fixed-dim": "#7dd5d0",
+            "surface-container-low": "#e6f6ff",
+            "primary-container": "#20a29d",
+            "inverse-surface": "#243339",
+            "on-tertiary-fixed-variant": "#004395",
+            "outline-variant": "#bcc9c7",
+            "surface-dim": "#ccdde5",
+            "outline": "#6d7a78",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#00312f",
+            "surface-container-lowest": "#ffffff",
+            "primary": "#006a66",
+            "tertiary-fixed": "#d8e2ff",
+            "surface-container": "#e0f0f9",
+            "text-secondary": "#4B6169",
+            "primary-fixed": "#84f5ef",
+            "error-container": "#ffdad6",
+            "border-teal": "rgba(32, 162, 157, 0.12)",
+            "primary-light": "#E6F7F6",
+            "inverse-on-surface": "#e3f3fc",
+            "surface-glass": "rgba(255, 255, 255, 0.8)",
+            "surface-subdued": "#F1F6F5",
+            "on-surface": "#0e1e24",
+            "surface-tint": "#006a66",
+            "tertiary-container": "#508fff",
+            "on-secondary-fixed": "#00201f",
+            "on-primary-fixed": "#00201f",
+            "on-error-container": "#93000a",
+            "on-error": "#ffffff",
+            "border-neutral": "rgba(226, 232, 240, 0.8)",
+            "canvas-base": "#F4FAF9",
+            "secondary": "#006a66",
+            "on-secondary": "#ffffff",
+            "background": "#f3faff",
+            "inverse-primary": "#66d8d2",
+            "tertiary-fixed-dim": "#adc6ff",
+            "on-primary-fixed-variant": "#00504d",
+            "on-secondary-fixed-variant": "#00504d",
+            "success": "#10B981",
+            "on-secondary-container": "#00716d",
+            "surface": "#f3faff",
+            "surface-container-high": "#dbebf3",
+            "on-surface-variant": "#3d4948",
+            "surface-bright": "#f3faff",
+            "on-tertiary-container": "#00295f"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1rem",
+            "space-md": "0.75rem",
+            "space-xl": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin": "1.25rem"
+          },
+          "fontFamily": {
+            "headline-section": ["Plus Jakarta Sans"],
+            "caption": ["Plus Jakarta Sans"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"],
+            "badge-label": ["Plus Jakarta Sans"],
+            "title-screen": ["Plus Jakarta Sans"],
+            "title-card": ["Plus Jakarta Sans"],
+            "body-default": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-section": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+            "caption": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+            "display-hero-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "800"}],
+            "body-medium": ["14px", {"lineHeight": "21px", "fontWeight": "500"}],
+            "display-hero": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800"}],
+            "badge-label": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700"}],
+            "title-screen": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "title-card": ["16px", {"lineHeight": "21px", "fontWeight": "600"}],
+            "body-default": ["14px", {"lineHeight": "21px", "fontWeight": "400"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .teal-glow {
+      box-shadow: 0 10px 25px -4px rgba(32, 162, 157, 0.35);
+    }
+    .level-1-card {
+      box-shadow: 0 4px 20px -2px rgba(32, 162, 157, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+    }
+    .radar-pulse {
+      animation: pulseTeal 3s ease-in-out infinite;
+    }
+    @keyframes pulseTeal {
+      0%, 100% { filter: drop-shadow(0 0 4px rgba(32, 162, 157, 0.4)); }
+      50% { filter: drop-shadow(0 0 12px rgba(32, 162, 157, 0.75)); }
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-canvas-base text-on-surface antialiased font-body-default min-h-screen relative overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Ambient Atmospheric Backdrops -->
+<div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-md h-[420px] bg-gradient-to-b from-primary-light via-surface-container-low to-transparent pointer-events-none -z-10 opacity-70"></div>
+<div class="fixed top-48 -right-20 w-72 h-72 rounded-full bg-secondary-fixed opacity-25 blur-3xl pointer-events-none -z-10"></div>
+<div class="fixed top-96 -left-20 w-80 h-80 rounded-full bg-surface-container opacity-40 blur-3xl pointer-events-none -z-10"></div>
+<!-- Mobile Screen Container -->
+<div class="w-full max-w-md mx-auto min-h-screen flex flex-col relative pb-32">
+<!-- Top App Bar (Shared Components Specs & Custom Actions) -->
+<header class="sticky top-0 z-40 w-full bg-surface-glass backdrop-blur-xl shadow-sm px-5 h-16 flex items-center justify-between border-b border-white/60">
+<button aria-label="Quay lại" class="w-10 h-10 rounded-full bg-white/80 hover:bg-primary-light text-primary flex items-center justify-center transition-transform active:scale-95 shadow-sm border border-border-neutral" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col items-center text-center">
+<h1 class="font-title-screen text-title-screen text-on-surface font-bold leading-tight tracking-tight">Bản Đồ Travel DNA</h1>
+<span class="font-caption text-caption text-text-secondary">Phân tích bản sắc &amp; độ tương thích</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button aria-label="Chia sẻ hồ sơ DNA" class="w-9 h-9 rounded-full bg-white/80 hover:bg-primary-light text-primary flex items-center justify-center transition-transform active:scale-95 border border-border-neutral" type="button">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+<button aria-label="Trợ giúp về DNA" class="w-9 h-9 rounded-full bg-white/80 hover:bg-primary-light text-primary flex items-center justify-center transition-transform active:scale-95 border border-border-neutral" type="button">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-5 pt-4 space-y-6">
+<!-- User DNA Profile Summary Card -->
+<section class="bg-white/85 backdrop-blur-xl rounded-2xl p-5 level-1-card border border-white/90 relative overflow-hidden">
+<div class="absolute -right-10 -bottom-10 w-36 h-36 bg-primary-light rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center gap-4 relative z-10">
+<div class="relative">
+<div class="w-16 h-16 rounded-full p-0.5 bg-gradient-to-tr from-primary via-primary-fixed-dim to-warning">
+<img alt="Alex Nguyễn" class="w-full h-full object-cover rounded-full bg-surface-container" data-alt="Chân dung du khách trẻ tuổi rạng rỡ với nụ cười thân thiện mang áo khoác dã ngoại ngoài trời giữa phong cảnh vịnh biển trong lành màu ngọc bích phong cách tự nhiên, ánh sáng dịu mát hiện đại." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvsPC-jVWftBmkOluvAzKHVgzlU3PT_js6OqlWL_94Ft7cyul0PQyW3b2edGvVHb4DFivhqYUwZRFv9PDV1bi385sjYIpom9JzKjKYBWKH4LPHubJNN9PDBuR8v7Rj9isaEj6HCf2tieoPigynODwSZXpGhZhfkIs6HvZXfb4BLxrNNFiG4G2mLNxzAaY3oGAeisYEW3RKjqH93ldLMnPHBuMAVh3DaOAggGQmoMfw13h0vSip8Zn5">
+</div>
+<div class="absolute -bottom-1 -right-1 bg-primary text-white rounded-full p-0.5 flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-section text-headline-section text-on-surface truncate">Alex Nguyễn</h2>
+<span class="inline-flex items-center gap-1 font-badge-label text-badge-label bg-warning/15 text-on-surface px-2.5 py-0.5 rounded-full border border-warning/30 font-bold">
+<span class="material-symbols-outlined text-[13px] text-warning" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+                Hạng Vàng • 1.450 pts
+              </span>
+</div>
+<div class="mt-1 flex items-center gap-2">
+<span class="font-title-card text-title-card text-primary font-bold">Food Explorer 🍜</span>
+<span class="font-badge-label text-badge-label bg-primary-light text-primary px-2 py-0.5 rounded-full font-bold">Top 4% Vị Giác</span>
+</div>
+<p class="font-caption text-caption text-text-secondary mt-0.5 line-clamp-1">Mê đắm ẩm thực bản địa, chợ đêm &amp; lăng tẩm cổ kính</p>
+</div>
+</div>
+<!-- 3 Quick Stats Pill Indicators -->
+<div class="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-border-teal/60">
+<div class="bg-surface-subdued/80 rounded-xl p-2.5 text-center">
+<span class="block font-headline-section text-headline-section text-primary font-bold">12</span>
+<span class="font-caption text-caption text-text-secondary">Chuyến đi phân tích</span>
+</div>
+<div class="bg-surface-subdued/80 rounded-xl p-2.5 text-center">
+<span class="block font-headline-section text-headline-section text-primary font-bold">48</span>
+<span class="font-caption text-caption text-text-secondary">Điểm check-in</span>
+</div>
+<div class="bg-surface-subdued/80 rounded-xl p-2.5 text-center">
+<span class="block font-headline-section text-headline-section text-primary font-bold">96%</span>
+<span class="font-caption text-caption text-text-secondary">Độ khớp chân dung</span>
+</div>
+</div>
+</section>
+<!-- Multi-Axis Travel DNA Radar Chart Section -->
+<section class="bg-white/90 backdrop-blur-xl rounded-3xl p-5 level-1-card border border-white/95 relative">
+<div class="flex items-center justify-between mb-2">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="radar">radar</span>
+<h3 class="font-headline-section text-headline-section text-on-surface">Radar 6 Chiều Bản Sắc</h3>
+</div>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Biểu đồ giải mã gu xê dịch cá nhân hóa</p>
+</div>
+<!-- Community Comparison Toggle Button -->
+<button class="flex items-center gap-1.5 bg-surface-subdued hover:bg-primary-light px-3 py-1.5 rounded-full border border-border-teal transition-colors active:scale-95" id="toggleComparison" onclick="toggleRadarCompare()" type="button">
+<span class="w-3.5 h-3.5 rounded-full bg-primary flex items-center justify-center transition-transform" id="toggleCircle">
+<span class="w-1.5 h-1.5 bg-white rounded-full"></span>
+</span>
+<span class="font-badge-label text-badge-label text-text-secondary" id="toggleLabel">So sánh cộng đồng</span>
+</button>
+</div>
+<!-- SVG Interactive Radar Container -->
+<div class="relative w-full flex items-center justify-center py-2">
+<svg class="w-full max-w-[340px] overflow-visible" viewBox="0 0 360 340">
+<defs>
+<!-- Teal Glow Gradient for User DNA -->
+<linearGradient id="tealRadarGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#20A29D" stop-opacity="0.55"></stop>
+<stop offset="100%" stop-color="#84F5EF" stop-opacity="0.2"></stop>
+</linearGradient>
+<!-- Radial Grid Accent -->
+<radialGradient cx="50%" cy="50%" id="centerGlow" r="50%">
+<stop offset="0%" stop-color="#20A29D" stop-opacity="0.12"></stop>
+<stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"></stop>
+</radialGradient>
+</defs>
+<!-- Center Subtle Atmosphere -->
+<circle cx="180" cy="170" fill="url(#centerGlow)" r="120"></circle>
+<!-- Background Concentric Hexagonal Rings (20%, 40%, 60%, 80%, 100%) -->
+<!-- Center: (180, 170), Radius step: 24, 48, 72, 96, 120 -->
+<!-- Hexagon Level 5 (100%) -->
+<polygon fill="none" points="180,50 284,110 284,230 180,290 76,230 76,110" stroke="#D5E5ED" stroke-dasharray="3,3" stroke-width="1.2"></polygon>
+<!-- Hexagon Level 4 (80%) -->
+<polygon fill="none" points="180,74 263.2,122 263.2,218 180,266 96.8,218 96.8,122" stroke="#D5E5ED" stroke-width="1"></polygon>
+<!-- Hexagon Level 3 (60%) -->
+<polygon fill="none" points="180,98 242.4,134 242.4,206 180,242 117.6,206 117.6,134" stroke="#D5E5ED" stroke-dasharray="2,2" stroke-width="1"></polygon>
+<!-- Hexagon Level 2 (40%) -->
+<polygon fill="none" points="180,122 221.6,146 221.6,194 180,218 138.4,194 138.4,146" stroke="#E2E8F0" stroke-width="1"></polygon>
+<!-- Hexagon Level 1 (20%) -->
+<polygon fill="none" points="180,146 200.8,158 200.8,182 180,194 159.2,182 159.2,158" stroke="#E2E8F0" stroke-width="1"></polygon>
+<!-- Axis Rays -->
+<line stroke="#CBD5E1" stroke-width="1.2" x1="180" x2="180" y1="170" y2="50"></line>
+<line stroke="#CBD5E1" stroke-width="1.2" x1="180" x2="284" y1="170" y2="110"></line>
+<line stroke="#CBD5E1" stroke-width="1.2" x1="180" x2="284" y1="170" y2="230"></line>
+<line stroke="#CBD5E1" stroke-width="1.2" x1="180" x2="180" y1="170" y2="290"></line>
+<line stroke="#CBD5E1" stroke-width="1.2" x1="180" x2="76" y1="170" y2="230"></line>
+<line stroke="#CBD5E1" stroke-width="1.2" x1="180" x2="76" y1="170" y2="110"></line>
+<!-- Comparison Layer: Community Average (62, 58, 65, 70, 48, 55) -->
+<!-- Coordinates:
+                 N (0 deg): 180, 170 - (120*0.62) = 180, 95.6
+                 NE (60 deg): 180 + (120*0.58)*cos(30) = 180 + 60.27 = 240.3, 170 - (120*0.58)*sin(30) = 170 - 34.8 = 135.2
+                 SE (120 deg): 180 + (120*0.65)*cos(30) = 180 + 67.55 = 247.5, 170 + (120*0.65)*sin(30) = 170 + 39 = 209
+                 S (180 deg): 180, 170 + (120*0.70) = 180, 254
+                 SW (240 deg): 180 - (120*0.48)*cos(30) = 180 - 49.88 = 130.1, 170 + (120*0.48)*sin(30) = 170 + 28.8 = 198.8
+                 NW (300 deg): 180 - (120*0.55)*cos(30) = 180 - 57.16 = 122.8, 170 - (120*0.55)*sin(30) = 170 - 33 = 137
+            -->
+<polygon class="transition-opacity duration-300 opacity-80" fill="#005AC2" fill-opacity="0.1" id="communityPolygon" points="180,95.6 240.3,135.2 247.5,209 180,254 130.1,198.8 122.8,137" stroke="#005AC2" stroke-dasharray="4,3" stroke-width="1.8"></polygon>
+<!-- User Travel DNA Polygon:
+                 1. Foodie (88): N -> 180, 170 - (120 * 0.88) = 180, 64.4
+                 2. Culture (76): NE (60 deg) -> 180 + (120 * 0.76 * cos 30) = 180 + 79.0 = 259.0, 170 - (120 * 0.76 * sin 30) = 170 - 45.6 = 124.4
+                 3. Photography (72): SE (120 deg) -> 180 + (120 * 0.72 * cos 30) = 180 + 74.8 = 254.8, 170 + (120 * 0.72 * sin 30) = 170 + 43.2 = 213.2
+                 4. Beach & Chill (64): S (180 deg) -> 180, 170 + (120 * 0.64) = 180, 246.8
+                 5. Adventure & Trekking (52): SW (240 deg) -> 180 - (120 * 0.52 * cos 30) = 180 - 54.0 = 126.0, 170 + (120 * 0.52 * sin 30) = 170 + 31.2 = 201.2
+                 6. Backpacking & Solo (58): NW (300 deg) -> 180 - (120 * 0.58 * cos 30) = 180 - 60.3 = 119.7, 170 - (120 * 0.58 * sin 30) = 170 - 34.8 = 135.2
+            -->
+<polygon class="radar-pulse" fill="url(#tealRadarGradient)" points="180,64.4 259.0,124.4 254.8,213.2 180,246.8 126.0,201.2 119.7,135.2" stroke="#20A29D" stroke-width="2.5"></polygon>
+<!-- User Data Points (White Nodes with Teal Glow) -->
+<!-- 1. Ẩm thực (88) -->
+<circle cx="180" cy="64.4" fill="#FFFFFF" r="5" stroke="#006A66" stroke-width="2.5"></circle>
+<!-- 2. Văn hóa (76) -->
+<circle cx="259.0" cy="124.4" fill="#FFFFFF" r="5" stroke="#006A66" stroke-width="2.5"></circle>
+<!-- 3. Săn ảnh (72) -->
+<circle cx="254.8" cy="213.2" fill="#FFFFFF" r="5" stroke="#006A66" stroke-width="2.5"></circle>
+<!-- 4. Biển đảo (64) -->
+<circle cx="180" cy="246.8" fill="#FFFFFF" r="5" stroke="#006A66" stroke-width="2.5"></circle>
+<!-- 5. Thám hiểm (52) -->
+<circle cx="126.0" cy="201.2" fill="#FFFFFF" r="5" stroke="#006A66" stroke-width="2.5"></circle>
+<!-- 6. Tiết kiệm / Bụi (58) -->
+<circle cx="119.7" cy="135.2" fill="#FFFFFF" r="5" stroke="#006A66" stroke-width="2.5"></circle>
+<!-- Axis Labels with Icons & Values -->
+<!-- Top: Ẩm thực -->
+<text class="fill-primary font-bold text-[11px] font-sans" text-anchor="middle" x="180" y="32">🍜 Ẩm Thực (88)</text>
+<!-- Top-Right: Văn Hóa -->
+<text class="fill-on-surface font-bold text-[10px] font-sans" text-anchor="start" x="296" y="106">🏛️ Văn Hóa (76)</text>
+<!-- Bottom-Right: Nhiếp ảnh -->
+<text class="fill-on-surface font-bold text-[10px] font-sans" text-anchor="start" x="296" y="238">📸 Săn Ảnh (72)</text>
+<!-- Bottom: Biển đảo -->
+<text class="fill-on-surface font-bold text-[10px] font-sans" text-anchor="middle" x="180" y="312">🌊 Biển Đảo (64)</text>
+<!-- Bottom-Left: Phiêu lưu -->
+<text class="fill-on-surface font-bold text-[10px] font-sans" text-anchor="end" x="64" y="238">🏔️ Dã Ngoại (52)</text>
+<!-- Top-Left: Phượt bụi -->
+<text class="fill-on-surface font-bold text-[10px] font-sans" text-anchor="end" x="64" y="106">🎒 Phượt Bụi (58)</text>
+</svg>
+</div>
+<!-- Radar Legend -->
+<div class="flex items-center justify-center gap-6 pt-1 pb-1">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary-container teal-glow"></span>
+<span class="font-caption text-caption text-on-surface font-bold">Alex Nguyễn</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-1 border-t-2 border-dashed border-tertiary"></span>
+<span class="font-caption text-caption text-text-secondary">Trung bình cộng đồng</span>
+</div>
+</div>
+</section>
+<!-- Deep-Dive Dimension Breakdown (Schema TravelDnaBadgeResponseDto Inspired) -->
+<section class="space-y-3">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-section text-headline-section text-on-surface">6 Trục Bản Sắc Chi Tiết</h3>
+<span class="font-caption text-caption text-primary font-bold">Cập nhật 2 ngày trước</span>
+</div>
+<!-- Dimension 1: Foodie (Dominant) -->
+<div class="bg-white/95 rounded-2xl p-4 level-1-card border-l-4 border-l-primary-container border-y border-r border-border-neutral">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-primary-light flex items-center justify-center text-primary text-xl font-bold shadow-inner">
+                🍜
+              </div>
+<div>
+<div class="flex items-center gap-1.5">
+<h4 class="font-title-card text-title-card text-on-surface font-bold">Ẩm thực bản địa (Foodie Traveler)</h4>
+<span class="material-symbols-outlined text-[16px] text-warning" data-icon="military_tech" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<span class="font-caption text-caption text-primary font-bold">Huy hiệu: Bậc thầy vị giác</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-title-screen text-title-screen text-primary font-extrabold leading-none">88</span>
+<span class="font-caption text-caption text-text-subdued block">/100</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-subdued rounded-full h-2 mt-3 overflow-hidden">
+<div class="bg-gradient-to-r from-primary to-primary-fixed-dim h-2 rounded-full" style="width: 88%"></div>
+</div>
+<div class="mt-3 flex items-center justify-between font-caption text-caption text-text-secondary pt-2 border-t border-border-teal/40">
+<span>📍 16 điểm ẩm thực check-in</span>
+<span class="text-primary font-medium">Hợp: Tour Hội An, Chợ Côn Đảo</span>
+</div>
+</div>
+<!-- Dimension 2: Culture & Heritage -->
+<div class="bg-white/90 rounded-2xl p-4 level-1-card border border-border-neutral">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-tertiary-fixed-variant text-xl">
+                🏛️
+              </div>
+<div>
+<h4 class="font-title-card text-title-card text-on-surface font-bold">Văn hóa &amp; Lịch sử (Culture Traveler)</h4>
+<span class="font-caption text-caption text-text-secondary">Huy hiệu: Người kể chuyện di sản</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-section text-headline-section text-on-surface font-bold leading-none">76</span>
+<span class="font-caption text-caption text-text-subdued block">/100</span>
+</div>
+</div>
+<div class="w-full bg-surface-subdued rounded-full h-2 mt-3 overflow-hidden">
+<div class="bg-primary/80 h-2 rounded-full" style="width: 76%"></div>
+</div>
+<div class="mt-3 flex items-center justify-between font-caption text-caption text-text-secondary pt-2 border-t border-border-teal/40">
+<span>🏛️ 8 bảo tàng &amp; lăng tẩm đã khám phá</span>
+<span class="text-primary font-medium">Hợp: Di tích cố đô Huế</span>
+</div>
+</div>
+<!-- Dimension 3: Photography -->
+<div class="bg-white/90 rounded-2xl p-4 level-1-card border border-border-neutral">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary text-xl">
+                📸
+              </div>
+<div>
+<h4 class="font-title-card text-title-card text-on-surface font-bold">Nhiếp ảnh &amp; Check-in (Photography Lover)</h4>
+<span class="font-caption text-caption text-text-secondary">Huy hiệu: Ống kính nghệ thuật</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-section text-headline-section text-on-surface font-bold leading-none">72</span>
+<span class="font-caption text-caption text-text-subdued block">/100</span>
+</div>
+</div>
+<div class="w-full bg-surface-subdued rounded-full h-2 mt-3 overflow-hidden">
+<div class="bg-primary/75 h-2 rounded-full" style="width: 72%"></div>
+</div>
+<div class="mt-3 flex items-center justify-between font-caption text-caption text-text-secondary pt-2 border-t border-border-teal/40">
+<span>📷 120+ bức ảnh được cộng đồng yêu thích</span>
+<span class="text-primary font-medium">Hợp: Mù Cang Chải mùa lúa</span>
+</div>
+</div>
+<!-- Dimension 4: Beach & Chill -->
+<div class="bg-white/90 rounded-2xl p-4 level-1-card border border-border-neutral">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-primary-light/70 flex items-center justify-center text-primary text-xl">
+                🌊
+              </div>
+<div>
+<h4 class="font-title-card text-title-card text-on-surface font-bold">Biển đảo nhiệt đới (Beach Lover)</h4>
+<span class="font-caption text-caption text-text-secondary">Huy hiệu: Tín đồ hoàng hôn biển</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-section text-headline-section text-on-surface font-bold leading-none">64</span>
+<span class="font-caption text-caption text-text-subdued block">/100</span>
+</div>
+</div>
+<div class="w-full bg-surface-subdued rounded-full h-2 mt-3 overflow-hidden">
+<div class="bg-primary/60 h-2 rounded-full" style="width: 64%"></div>
+</div>
+<div class="mt-3 flex items-center justify-between font-caption text-caption text-text-secondary pt-2 border-t border-border-teal/40">
+<span>🏖️ 5 bãi biển ngọc bích chinh phục</span>
+<span class="text-primary font-medium">Hợp: Phú Quý, Quy Nhơn</span>
+</div>
+</div>
+<!-- Dimension 5: Adventure & Trekking -->
+<div class="bg-white/90 rounded-2xl p-4 level-1-card border border-border-neutral">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-text-secondary text-xl">
+                🏔️
+              </div>
+<div>
+<h4 class="font-title-card text-title-card text-on-surface font-bold">Phiêu lưu &amp; Leo núi (Adventure Traveler)</h4>
+<span class="font-caption text-caption text-text-secondary">Trục tiềm năng mở rộng</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-section text-headline-section text-on-surface font-bold leading-none">52</span>
+<span class="font-caption text-caption text-text-subdued block">/100</span>
+</div>
+</div>
+<div class="w-full bg-surface-subdued rounded-full h-2 mt-3 overflow-hidden">
+<div class="bg-primary/50 h-2 rounded-full" style="width: 52%"></div>
+</div>
+<div class="mt-3 flex items-center justify-between font-caption text-caption text-text-secondary pt-2 border-t border-border-teal/40">
+<span>⛺ 2 chặng dã ngoại cuối tuần</span>
+<span class="text-primary font-medium">Gợi ý: Trekking Tà Năng nhẹ</span>
+</div>
+</div>
+</section>
+<!-- AI Personalized Trip Recommendation Card -->
+<section class="relative rounded-3xl overflow-hidden level-1-card border border-white">
+<div class="h-44 w-full relative">
+<img alt="Huế 3N2Đ" class="w-full h-full object-cover" data-alt="Toàn cảnh vẻ đẹp cổ kính tĩnh lặng của Hoàng thành Huế với hào nước hoa sen nở rộ, mái ngói cong vút phản chiếu ánh hoàng hôn vàng rực rỡ và ánh nước xanh ngọc trong vắt, mang phong cách nghệ thuật du lịch cao cấp." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa9HEdIPnoxgKW-A3WDHU122L32ENeP_6jRlwrbLFUj5QD4MD9etPEQJteeOSnfLxkYRrMY7YVqgsJuuP583rSZjFlF444NOCqXO-apizV11smHj3lquv7ZeNQdRkXmP_nUuM4ZmoTB2VH8GGKhh2s1NE1ybhmDTVKlex_j-PoBeUh_IMBKosIMqOhrkEFdLwoH1CEjaIBKMoeDj55oLGc_xvf-dP03wW6Wvp0GF4ZaoeE9zWFkNOP">
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface via-on-surface/40 to-transparent"></div>
+<div class="absolute top-3 left-3 bg-white/85 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-primary text-[15px]" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-badge-label text-badge-label text-primary font-extrabold">Độ Hợp Gu 98%</span>
+</div>
+<div class="absolute bottom-3 left-4 right-4 text-white">
+<span class="font-caption text-caption text-primary-fixed block mb-0.5">Dành riêng cho phong cách 'Foodie + Culture'</span>
+<h4 class="font-headline-section text-headline-section font-bold leading-snug">Khám phá Ẩm Thực Cung Đình &amp; Lăng Tẩm Huế 3N2Đ</h4>
+</div>
+</div>
+<div class="p-4 bg-white flex items-center justify-between">
+<div class="flex items-center gap-3 text-caption font-caption text-text-secondary">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary" data-icon="schedule">schedule</span> 3 Ngày 2 Đêm</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary" data-icon="restaurant">restaurant</span> 12 Món di sản</span>
+</div>
+<button class="bg-primary hover:bg-secondary text-white font-badge-label text-badge-label px-4 py-2 rounded-full teal-glow transition-all active:scale-95" type="button">
+            Xem Hành Trình
+          </button>
+</div>
+</section>
+<!-- Companion Compatibility Test Feature Section -->
+<section class="bg-white/90 backdrop-blur-xl rounded-3xl p-5 level-1-card border border-white space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="join_inner">join_inner</span>
+<h3 class="font-headline-section text-headline-section text-on-surface">Độ Hợp Gu Với Bạn Bè</h3>
+</div>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Chỉ số hòa hợp khi lập nhóm vi vu</p>
+</div>
+<button class="w-8 h-8 rounded-full bg-primary-light text-primary flex items-center justify-center active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="group_add">group_add</span>
+</button>
+</div>
+<!-- Companion Match Cards -->
+<div class="space-y-3">
+<!-- Companion 1: Lan Phương -->
+<div class="flex items-center justify-between p-3 rounded-2xl bg-surface-subdued/70 border border-border-neutral">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-container p-0.5">
+<img alt="Lan Phương" class="w-full h-full object-cover rounded-full" data-alt="Chân dung cô gái trẻ châu Á thanh lịch đang cầm ly nước ép nhiệt đới trên ban công ngắm nhìn biển xanh nắng ấm, phong cách nhiếp ảnh chân dung sắc nét và ấm áp." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLTFKKPy7m3Jr7hI4E7yEuPTRQY8vNnhSJqbxAWUXl_Kxcu0LwTp7KQocKAIgouh4eRFn9eajCCujkSKYRszXU5jbcTd3USlyG3vb90attfK6mflcQwSElVliu6seGbCYc3xLzhipP3wZlor6iAZ0Qe6rJJGeYYFoU_Ab1f07vZ6GoMFcab2M05YWJLzJ_yYInPeL5E3KJgPv4mQT2Bitfbcv1NXIdAmJZgILcKwUbRyK3z2UH7lnL">
+</div>
+<div>
+<div class="flex items-center gap-1">
+<h4 class="font-title-card text-title-card text-on-surface font-bold">Lan Phương</h4>
+<span class="font-caption text-caption text-text-subdued">@lanphuong.travel</span>
+</div>
+<span class="font-caption text-caption text-text-secondary block">Mê ăn vặt &amp; hoàng hôn biển</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-section text-headline-section text-success font-extrabold">94%</span>
+<span class="font-caption text-caption text-success font-semibold block">Cực kỳ hợp</span>
+</div>
+</div>
+<!-- Companion 2: Quốc Bảo -->
+<div class="flex items-center justify-between p-3 rounded-2xl bg-surface-subdued/70 border border-border-neutral">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-container/60 p-0.5">
+<img alt="Quốc Bảo" class="w-full h-full object-cover rounded-full" data-alt="Chàng trai nhiếp ảnh gia trẻ đeo máy ảnh cơ du lịch giữa phố cổ Hội An với đèn lồng nhiều màu sắc, ánh sáng tự nhiên mềm mại phong cách điện ảnh." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU1BxlJegp_7CUz8TdILqD1_DEmERJoPg6PUqDjZRF83xK74f38dQ3cTM_LbZb1ZIF5QIDyw2d-BCqI_beZ2T_Dp4GoWwlVAMZ8-bswjSK5qcZ_LMtLPdAOBUfrx7OeippdBYtzTf-jNbIKzUf8LekfnoucKX8-GeKqf5JaGHVG3AbRk79zdz4TPinNdXa8xN9_eDEP7JrMvCtK5AjmjHaDSFhOsmVhjm61Z_meHVNJc1K7WcRnE7W">
+</div>
+<div>
+<div class="flex items-center gap-1">
+<h4 class="font-title-card text-title-card text-on-surface font-bold">Quốc Bảo</h4>
+<span class="font-caption text-caption text-text-subdued">@bao_lens</span>
+</div>
+<span class="font-caption text-caption text-text-secondary block">Cùng gu săn ảnh góc lạ</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-section text-headline-section text-primary font-extrabold">89%</span>
+<span class="font-caption text-caption text-primary font-semibold block">Rất ăn ý</span>
+</div>
+</div>
+<!-- Companion 3: Hoàng Nam -->
+<div class="flex items-center justify-between p-3 rounded-2xl bg-surface-subdued/70 border border-border-neutral">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-slate-300 p-0.5">
+<img alt="Hoàng Nam" class="w-full h-full object-cover rounded-full" data-alt="Một phượt thủ nam tính mang balo dã ngoại ngắm nhìn biển mây Tây Bắc hùng vĩ lúc bình minh với tông màu ngọc lam và sương mù lãng đãng." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE57jb5_-KAhZvEAcA3pxOk33cgZVG46BVzrJKQSdtMS3UmYLGfkKJvn4t7WgjrbULz0AYW12W493db7U0cuHASoHilMsfvJK_ZUXqpK0UKknk4K_y20C0Sr35e8QQEvBG2jE2Okx5ZUpOWhcV6HoSRshpJ7n5FrBnDcsrR2ZpqLB1-ZqFfCFxZ4S1aEasjME9iWTiKvqMwUoBuUxVLUF1lhJB_K8QC-xGkT5EptuEfGkze5VnohAI">
+</div>
+<div>
+<div class="flex items-center gap-1">
+<h4 class="font-title-card text-title-card text-on-surface font-bold">Hoàng Nam</h4>
+<span class="font-caption text-caption text-text-subdued">@nam_wanderer</span>
+</div>
+<span class="font-caption text-caption text-text-secondary block">Cần dung hòa lịch trình trekking</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-section text-headline-section text-warning font-extrabold">75%</span>
+<span class="font-caption text-caption text-warning font-semibold block">Khá ổn</span>
+</div>
+</div>
+</div>
+<!-- Group Action Buttons -->
+<div class="pt-2 flex flex-col gap-2.5">
+<button class="w-full py-3.5 px-5 rounded-full bg-primary-container hover:bg-primary text-white font-title-card text-title-card font-bold teal-glow flex items-center justify-center gap-2 transition-all active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="group">group</span>
+            Tìm Bạn Đồng Hành Hợp Gu DNA
+          </button>
+<button class="w-full py-3 px-5 rounded-full bg-primary-light hover:bg-surface-container text-primary font-body-medium text-body-medium font-bold transition-all active:scale-[0.98]" type="button">
+            Mời Bạn Bè Cùng Làm Bài Test DNA
+          </button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mandatory Shell Specs) -->
+<nav aria-label="Điều hướng chính" class="fixed bottom-0 left-0 right-0 z-50 flex justify-around items-center px-4 py-2 max-w-md mx-auto bg-surface-glass dark:bg-inverse-surface/90 backdrop-blur-xl shadow-lg dark:shadow-none rounded-full mx-4 mb-4">
+<!-- Tab 1: Explore (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-text-subdued px-3 py-1.5 hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 active:scale-95" href="#explore">
+<span class="material-symbols-outlined text-[22px]" data-icon="explore">explore</span>
+<span class="font-badge-label text-badge-label mt-0.5">Explore</span>
+</a>
+<!-- Tab 2: Trips (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-text-subdued px-3 py-1.5 hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 active:scale-95" href="#trips">
+<span class="material-symbols-outlined text-[22px]" data-icon="luggage">luggage</span>
+<span class="font-badge-label text-badge-label mt-0.5">Trips</span>
+</a>
+<!-- Tab 3: Social (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-text-subdued px-3 py-1.5 hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 active:scale-95" href="#social">
+<span class="material-symbols-outlined text-[22px]" data-icon="groups">groups</span>
+<span class="font-badge-label text-badge-label mt-0.5">Social</span>
+</a>
+<!-- Tab 4: Profile (ACTIVE: Current Context is User DNA Analysis) -->
+<a aria-current="page" class="flex flex-col items-center justify-center bg-primary-container dark:bg-secondary-container text-on-primary-container dark:text-on-secondary-container rounded-full px-3 py-1.5 active:scale-95 shadow-sm" href="#profile">
+<span class="material-symbols-outlined text-[22px]" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-badge-label text-badge-label mt-0.5">Profile</span>
+</a>
+</nav>
+</div>
+<script>
+    let showComparison = true;
+    function toggleRadarCompare() {
+      showComparison = !showComparison;
+      const poly = document.getElementById('communityPolygon');
+      const circle = document.getElementById('toggleCircle');
+      const label = document.getElementById('toggleLabel');
+
+      if (showComparison) {
+        poly.style.opacity = '0.8';
+        circle.classList.remove('bg-text-subdued');
+        circle.classList.add('bg-primary');
+        label.innerText = 'So sánh cộng đồng';
+      } else {
+        poly.style.opacity = '0';
+        circle.classList.remove('bg-primary');
+        circle.classList.add('bg-text-subdued');
+        label.innerText = 'Ẩn so sánh';
+      }
+    }
+  </script>
+</body></html>

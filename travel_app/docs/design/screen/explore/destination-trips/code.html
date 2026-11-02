@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chuyến Đi Đà Lạt - Teal Horizon</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-container": "#00716d",
+            "surface-subdued": "#F1F6F5",
+            "tertiary-fixed": "#d8e2ff",
+            "primary-light": "#E6F7F6",
+            "primary": "#006a66",
+            "warning": "#F59E0B",
+            "surface-container-lowest": "#ffffff",
+            "surface-variant": "#d5e5ed",
+            "secondary-fixed-dim": "#7dd5d0",
+            "surface-container-high": "#dbebf3",
+            "on-surface": "#0e1e24",
+            "on-background": "#0e1e24",
+            "inverse-primary": "#66d8d2",
+            "on-primary-fixed-variant": "#00504d",
+            "tertiary": "#005ac2",
+            "on-primary-fixed": "#00201f",
+            "error-container": "#ffdad6",
+            "primary-fixed-dim": "#66d8d2",
+            "on-tertiary-fixed-variant": "#004395",
+            "on-secondary-fixed-variant": "#00504d",
+            "on-primary": "#ffffff",
+            "on-error": "#ffffff",
+            "success": "#10B981",
+            "on-secondary": "#ffffff",
+            "surface-container-low": "#e6f6ff",
+            "text-subdued": "#8FA3AA",
+            "tertiary-container": "#508fff",
+            "primary-container": "#20a29d",
+            "surface-glass": "rgba(255, 255, 255, 0.85)",
+            "on-tertiary-container": "#00295f",
+            "inverse-surface": "#243339",
+            "border-teal": "rgba(32, 162, 157, 0.12)",
+            "error": "#ba1a1a",
+            "surface-bright": "#f3faff",
+            "surface-dim": "#ccdde5",
+            "on-primary-container": "#00312f",
+            "primary-fixed": "#84f5ef",
+            "surface-container": "#e0f0f9",
+            "outline": "#6d7a78",
+            "tertiary-fixed-dim": "#adc6ff",
+            "on-error-container": "#93000a",
+            "canvas-base": "#F4FAF9",
+            "on-tertiary": "#ffffff",
+            "inverse-on-surface": "#e3f3fc",
+            "surface": "#f3faff",
+            "surface-tint": "#006a66",
+            "secondary": "#006a66",
+            "secondary-fixed": "#99f2ec",
+            "on-secondary-fixed": "#00201f",
+            "background": "#f3faff",
+            "danger": "#EF4444",
+            "on-tertiary-fixed": "#001a42",
+            "outline-variant": "#bcc9c7",
+            "surface-container-highest": "#d5e5ed",
+            "on-surface-variant": "#3d4948",
+            "secondary-container": "#99f2ec",
+            "border-neutral": "rgba(226, 232, 240, 0.8)",
+            "text-secondary": "#4B6169"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "margin": "1.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "display-hero": ["Plus Jakarta Sans"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "body-default": ["Plus Jakarta Sans"],
+            "title-screen": ["Plus Jakarta Sans"],
+            "title-card": ["Plus Jakarta Sans"],
+            "headline-section": ["Plus Jakarta Sans"],
+            "badge-label": ["Plus Jakarta Sans"],
+            "caption": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "display-hero": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "body-default": ["14px", { "lineHeight": "21px", "fontWeight": "400" }],
+            "title-screen": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title-card": ["16px", { "lineHeight": "21px", "fontWeight": "600" }],
+            "headline-section": ["18px", { "lineHeight": "24px", "fontWeight": "700" }],
+            "badge-label": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "caption": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "body-medium": ["14px", { "lineHeight": "21px", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .shadow-level-1 {
+      box-shadow: 0 4px 20px -2px rgba(32, 162, 157, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+    }
+    .shadow-level-2 {
+      box-shadow: 0 10px 30px -5px rgba(15, 30, 36, 0.08);
+    }
+    .shadow-teal-glow {
+      box-shadow: 0 10px 25px -4px rgba(32, 162, 157, 0.38);
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-canvas-base text-on-surface font-body-default min-h-screen antialiased selection:bg-primary-light selection:text-primary">
+<!-- Mobile Container Shell -->
+<div class="relative w-full max-w-md mx-auto min-h-screen bg-canvas-base flex flex-col pb-32">
+<!-- 1. Top App Bar dạng kính mờ (Liquid Glass) -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 h-16 w-full max-w-md mx-auto bg-surface-glass backdrop-blur-xl shadow-level-2">
+<div class="flex items-center gap-3">
+<!-- Nút Back tròn -->
+<button aria-label="Quay lại" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-lowest/90 text-on-surface hover:bg-primary-light transition-colors active:scale-95 shadow-sm border border-white/60">
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<div class="flex items-center gap-1.5">
+<h1 class="font-title-screen text-title-screen text-on-surface font-bold tracking-tight">Đà Lạt</h1>
+<span class="text-text-subdued font-caption text-caption">- Lâm Đồng</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="inline-flex items-center gap-1 bg-primary-light text-primary font-badge-label text-badge-label px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+              12 chuyến đi mở
+            </span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-1.5">
+<button aria-label="Tìm kiếm" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-lowest/80 text-on-surface hover:bg-primary-light transition-colors active:scale-95 border border-white/60">
+<span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+</button>
+<button aria-label="Bộ lọc nâng cao" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-lowest/80 text-on-surface hover:bg-primary-light transition-colors active:scale-95 border border-white/60">
+<span class="material-symbols-outlined text-[20px]" data-icon="tune">tune</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-4 pt-20 space-y-5">
+<!-- 2. Hero Destination Banner nhỏ gọn, sắc nét -->
+<section class="relative rounded-lg overflow-hidden p-4 shadow-level-1 border border-white/70 bg-surface-container-lowest">
+<!-- Background Image Container -->
+<div class="relative h-44 w-full rounded-DEFAULT overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A breathtaking cinematic landscape of Da Lat Vietnam at dawn. Rolling emerald hills are enveloped in soft, ethereal mist and pastel clouds. Gentle golden sunrise illuminates tea plantations and distant pine forests with a serene, modern wanderlust mood. Clean crystalline lighting with soothing mint and deep cyan tones matching the Teal Horizon theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDmXL4nNJLjb24-lYVy89I9ev1bLblEI_JfHJmRL3RBAGV3EtNGSdRiOA8pCgqke01PaK-byu3RMdtebQCAt-xiUXrjTVxBtMN1vV_L3ksq0bAVJ0s9avT7YncdXUP1wKxB8byE8_KnFdU3zs6M8icdsjbmidjTw8RkDTwOOmMWyaML3hKjzvBBOdNL-5QlxHbBcHObny-OS-BzfJDjRs4fyupEH4bP282mLS6rJXpHpzA-ta38t8e"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-on-surface/30 to-transparent"></div>
+<!-- Top Badge: Thời tiết -->
+<div class="absolute top-3 left-3 flex items-center gap-1.5 bg-surface-glass backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm border border-white/40">
+<span class="material-symbols-outlined text-warning text-[18px]" data-icon="wb_sunny" style="font-variation-settings: 'FILL' 1;">wb_sunny</span>
+<span class="font-caption text-caption font-semibold text-on-surface">18°C Mát mẻ • Mùa săn mây</span>
+</div>
+<!-- Wishlist / Save Button -->
+<div class="absolute top-3 right-3">
+<button class="w-8 h-8 rounded-full bg-surface-glass backdrop-blur-md flex items-center justify-center text-on-surface hover:text-danger active:scale-90 transition-transform shadow-sm border border-white/40">
+<span class="material-symbols-outlined text-[18px]" data-icon="favorite">favorite</span>
+</button>
+</div>
+<!-- Bottom Text on Banner -->
+<div class="absolute bottom-3 left-3 right-3 text-white">
+<div class="flex items-center gap-1.5 text-primary-fixed mb-0.5">
+<span class="material-symbols-outlined text-[16px]" data-icon="sparkles">arrow_back_ios_new</span>
+<span class="font-badge-label text-badge-label uppercase tracking-wider">Thành phố ngàn hoa</span>
+</div>
+<p class="font-caption text-caption text-surface-container-low line-clamp-1 font-medium">
+              Mùa hoa dã quỳ, săn mây đồi chè Cầu Đất, cafe thung lũng chill
+            </p>
+</div>
+</div>
+<!-- Quick Tags Info below Hero -->
+<div class="grid grid-cols-3 gap-2 mt-3 pt-1 border-t border-surface-subdued text-center">
+<div class="flex flex-col items-center">
+<span class="font-caption text-caption text-text-subdued">Độ cao</span>
+<span class="font-body-medium text-body-medium text-on-surface font-semibold">1.500m</span>
+</div>
+<div class="flex flex-col items-center border-x border-surface-subdued px-1">
+<span class="font-caption text-caption text-text-subdued">Mùa lý tưởng</span>
+<span class="font-body-medium text-body-medium text-on-surface font-semibold">T10 - T02</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-caption text-caption text-text-subdued">Chi phí TB</span>
+<span class="font-body-medium text-body-medium text-primary font-bold">~1.5M/người</span>
+</div>
+</div>
+</section>
+<!-- 3. Bộ lọc nhanh dạng Filter Chips cuộn ngang -->
+<section class="space-y-2">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-section text-headline-section text-on-surface font-bold">Tìm chuyến phù hợp</h2>
+<span class="font-caption text-caption text-primary font-semibold flex items-center gap-0.5 cursor-pointer">
+            Đặt lại
+            <span class="material-symbols-outlined text-[14px]" data-icon="refresh">refresh</span>
+</span>
+</div>
+<div class="flex items-center gap-2 overflow-x-auto hide-scrollbar py-1 -mx-4 px-4">
+<!-- Active Chip: Tất cả (12) -->
+<button class="flex-shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary-container text-on-primary-container font-badge-label text-badge-label shadow-sm border border-primary/20 transition-all">
+<span>Tất cả (12)</span>
+</button>
+<!-- Urgent Chip -->
+<button class="flex-shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface-container-lowest text-text-secondary hover:text-on-surface font-badge-label text-badge-label border border-border-teal shadow-level-1 transition-all">
+<span>Đang tuyển gấp</span>
+<span class="text-warning text-sm">⚡</span>
+<span class="bg-surface-subdued text-text-subdued px-1.5 py-0.5 rounded-full text-[10px]">5</span>
+</button>
+<!-- Weekend Chip -->
+<button class="flex-shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface-container-lowest text-text-secondary hover:text-on-surface font-badge-label text-badge-label border border-border-teal shadow-level-1 transition-all">
+<span>Cuối tuần này (4)</span>
+</button>
+<!-- Budget Chip -->
+<button class="flex-shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface-container-lowest text-text-secondary hover:text-on-surface font-badge-label text-badge-label border border-border-teal shadow-level-1 transition-all">
+<span>Chi phí &lt; 2 triệu</span>
+</button>
+<!-- Camping Chip -->
+<button class="flex-shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface-container-lowest text-text-secondary hover:text-on-surface font-badge-label text-badge-label border border-border-teal shadow-level-1 transition-all">
+<span class="material-symbols-outlined text-[14px]" data-icon="camping">camping</span>
+<span>Camping &amp; Trekking</span>
+</button>
+<!-- Friends / Female only -->
+<button class="flex-shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-surface-container-lowest text-text-secondary hover:text-on-surface font-badge-label text-badge-label border border-border-teal shadow-level-1 transition-all">
+<span>Chỉ nữ / Bạn bè</span>
+</button>
+</div>
+</section>
+<!-- 4. Danh sách các Chuyến Đi Cộng Đồng tới Đà Lạt -->
+<section class="space-y-4">
+<!-- CARD 1: Đang tuyển gấp & Hot -->
+<article class="bg-surface-container-lowest rounded-DEFAULT p-4 shadow-level-1 border border-border-teal relative transition-transform hover:-translate-y-0.5 duration-200">
+<!-- Hot & Urgent Badges -->
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-1.5">
+<span class="inline-flex items-center gap-1 bg-error/10 text-error font-badge-label text-badge-label px-2.5 py-1 rounded-full font-bold">
+<span class="material-symbols-outlined text-[14px]" data-icon="bolt">bolt</span>
+                Đang tuyển gấp (Còn 2 chỗ)
+              </span>
+<span class="bg-primary-light text-primary font-badge-label text-badge-label px-2 py-1 rounded-full">
+                3N2Đ
+              </span>
+</div>
+<button aria-label="Lưu bài viết" class="text-text-subdued hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+<!-- Trip Title -->
+<h3 class="font-title-card text-title-card text-on-surface font-bold leading-snug hover:text-primary transition-colors cursor-pointer mb-2">
+            Săn Mây Đồi Đa Phú &amp; Acoustic Đêm Đà Lạt 3N2Đ
+          </h3>
+<!-- Host Info -->
+<div class="flex items-center gap-2.5 mb-3 bg-surface-subdued/80 p-2.5 rounded-DEFAULT">
+<img class="w-10 h-10 rounded-full object-cover border border-primary-container" data-alt="Portrait photo of a young Vietnamese male travel leader smiling confidently outdoors wearing a warm fleece jacket. Clean, bright natural morning daylight with soft focused mountain background. Friendly authentic adventurous demeanor matching modern community travel aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU91iHgk8wtWaXgNWwjKec5Mb-X3Zo4BjB44OkxlkVnykg0PPsw1yXTF2-inPlPQ8QhXH2QwC7jbD1SH1beSZvM2XyqcZpbYidlPcAPVds7O8fHpPOFbxBK34zOXIWVvmuAOM4iyH0-4u6Rk2lgXaPrJz3wV_qTR8EB8wcWDuzZE8EbSVulUshmZk-IO4aoz4s6ZRf4Cc2gP68ho1C8_zDQtVKUR5KrVqEJw3TwHj9HlbxMyF7abKz"/>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-body-medium text-body-medium text-on-surface font-bold truncate">Hoàng Nam</span>
+<span class="font-caption text-caption text-text-subdued">@nam.wander</span>
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="flex items-center gap-2 text-caption font-caption text-text-secondary">
+<span class="flex items-center gap-0.5 text-warning font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                  4.9 (18 chuyến)
+                </span>
+<span>• Trưởng nhóm</span>
+</div>
+</div>
+</div>
+<!-- Key Trip Meta Details -->
+<div class="grid grid-cols-2 gap-2 text-caption font-caption mb-3.5 bg-surface-bright p-3 rounded-DEFAULT border border-surface-container">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="calendar_month">calendar_month</span>
+<div>
+<span class="text-text-subdued block text-[11px]">Thời gian</span>
+<span class="font-semibold text-body-default">25/10 - 27/10</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="payments">payments</span>
+<div>
+<span class="text-text-subdued block text-[11px]">Dự tính/người</span>
+<span class="font-bold text-primary text-body-default">~1.650.000đ</span>
+</div>
+</div>
+</div>
+<!-- Participants & Call to Action -->
+<div class="flex items-center justify-between pt-2 border-t border-surface-subdued">
+<!-- Member Avatars -->
+<div class="flex items-center gap-2">
+<div class="flex -space-x-2 overflow-hidden">
+<img class="inline-block h-7 w-7 rounded-full ring-2 ring-white object-cover" data-alt="Close up face of an Asian female traveler wearing an orange beanie and cozy knit sweater in a misty pine forest in Da Lat. Bright outdoor travel photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKfAIs3rtMSDGl6C7kMSC-LVMA8o8m05YuqAlroRqRAJiAZYUa3LvNAxggcVQ59498G09TI46G-OUfw1nlSHK3rwVYqovANgJUpECdcdY2-oByGcttQzAHx6eQbbeg7gQf_TP2DLR2nZASR9YFMZveNrUxemhNccq8EjiEeBIxUbRJw_F9_qoz1jykenfU9hTjll3C07iztwzxTyrPRdpPZoJVW7clEhdZ0hQ9Pftdu-V6T7uZlGHk"/>
+<img class="inline-block h-7 w-7 rounded-full ring-2 ring-white object-cover" data-alt="Portrait of an adventurous young man with sunglasses smiling under soft sunlight during an outdoor camp in Dalat highlands." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCprV_nao-xYH_dRwzOqLMQcec9toH4q-lbo5lokn2NUbjnN7nxRYS1FH_mvdook2XkOS4LMHMtUGXhIhSuQfUQUZuuCESeo5MTeSBexkMocwRcdlr8ALTcR_dFrpdZQbsGoIKaNacbL5CbQye_X9diwOAiigcyuencIjqUvJpA7sgXa9esKNS8GFdJzRogVywPie2jjHKWJcTK5EhOzaZfY8roC_0YPyrWZ7A8BL5a5qumh_4KHJbx"/>
+<img class="inline-block h-7 w-7 rounded-full ring-2 ring-white object-cover" data-alt="Portrait of a young woman traveler with camera strap in peaceful countryside Da Lat with coffee trees." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDci04o1St5jkhM1T8rKSXxkCV0Koblws_yIp876TTk7YVQ-LXLnZHX9XfTNMEGDIkFyadv-txbi_hvMqYuyBPk8I8Z0kFE6VPg18fvOFxRxQK4_y0jUs0LXxRRytMeobxDZBiJ-LpPFGe88JuFSDy4Et8qvRw2zQly4tH3uei91LKc6Nh8CD-O2lpxRfbTYiQ6wRBq9aVLImoVCVSJvikgf2ZMCgqTRJaBAJswArMjCpk_CSptm32"/>
+<div class="flex items-center justify-center h-7 w-7 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[11px] font-bold ring-2 ring-white">
+                  +1
+                </div>
+</div>
+<span class="font-caption text-caption text-text-secondary font-medium">
+<strong class="text-on-surface">4/6</strong> đã tham gia
+              </span>
+</div>
+<!-- Buttons Group -->
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-full font-badge-label text-badge-label text-primary bg-primary-light hover:bg-secondary-container transition-colors active:scale-95">
+                Lịch trình
+              </button>
+<button class="px-3.5 py-1.5 rounded-full font-badge-label text-badge-label text-on-primary bg-primary-container hover:bg-primary shadow-teal-glow transition-all active:scale-95">
+                Đăng ký
+              </button>
+</div>
+</div>
+</article>
+<!-- CARD 2: Chill & Cafe -->
+<article class="bg-surface-container-lowest rounded-DEFAULT p-4 shadow-level-1 border border-border-teal relative transition-transform hover:-translate-y-0.5 duration-200">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-1.5">
+<span class="inline-flex items-center gap-1 bg-surface-container text-text-secondary font-badge-label text-badge-label px-2.5 py-1 rounded-full font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="coffee">coffee</span>
+                Chill &amp; Cafe ngắm cảnh
+              </span>
+<span class="bg-secondary-fixed/40 text-on-secondary-container font-badge-label text-badge-label px-2 py-1 rounded-full">
+                2N1Đ
+              </span>
+</div>
+<button aria-label="Lưu bài viết" class="text-text-subdued hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+<h3 class="font-title-card text-title-card text-on-surface font-bold leading-snug hover:text-primary transition-colors cursor-pointer mb-2">
+            Đà Lạt Mùa Sương: Check-in Quán Mơ &amp; Vườn Hồng Treo Gió
+          </h3>
+<!-- Host Info -->
+<div class="flex items-center gap-2.5 mb-3 bg-surface-subdued/80 p-2.5 rounded-DEFAULT">
+<img class="w-10 h-10 rounded-full object-cover border border-secondary-fixed" data-alt="Charming outdoor portrait of a young female blogger smiling warmly at a rustic wooden cafe patio in Da Lat with persimmon fruits in soft focus background. Natural warm morning glow, peaceful and authentic travel aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiaU_6NuHEPuTbFNyW83ztHlWNlHZHuK--EDOqFL1vXZYuCL-hvt8CGEItLvWjNohrDa3Br2O_n7E-N5vLKM5vh4uc5GUepXdSuws9F5tAin4C0hueb1RGa-iaHuEXUmBqq9zJolUmIDKXXqrprjzbIae7HRxLoaDupCJet2Y0_-7r8B-LCyqkpVJTjuKmS9RTeeIMuyPSYwu7Ni3MD-Ovyq753KH2JQIkp-JYhiLyOmldXpUPUOks"/>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-body-medium text-body-medium text-on-surface font-bold truncate">Thuỳ Linh</span>
+<span class="font-caption text-caption text-text-subdued">@linhtravel</span>
+</div>
+<div class="flex items-center gap-2 text-caption font-caption text-text-secondary">
+<span class="flex items-center gap-0.5 text-warning font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                  4.8
+                </span>
+<span>• Khởi xướng</span>
+</div>
+</div>
+</div>
+<!-- Key Trip Meta Details -->
+<div class="grid grid-cols-2 gap-2 text-caption font-caption mb-3.5 bg-surface-bright p-3 rounded-DEFAULT border border-surface-container">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="event">event</span>
+<div>
+<span class="text-text-subdued block text-[11px]">Thời gian</span>
+<span class="font-semibold text-body-default">Cuối tuần tới</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="payments">payments</span>
+<div>
+<span class="text-text-subdued block text-[11px]">Ngân sách</span>
+<span class="font-bold text-primary text-body-default">~1.200.000đ</span>
+</div>
+</div>
+</div>
+<!-- Participants & Call to Action -->
+<div class="flex items-center justify-between pt-2 border-t border-surface-subdued">
+<div class="flex items-center gap-2">
+<div class="flex -space-x-2 overflow-hidden">
+<img class="inline-block h-7 w-7 rounded-full ring-2 ring-white object-cover" data-alt="Portrait of an Asian girl with warm scarf smiling softly in Da Lat mountain pine trees atmosphere. Natural light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8U9bulQaYMyyEx2Jg9SRE8UTS104lDoPoa8U3F8eik-CjgeONQLhzqnIwycyU-eoSuvMJ79UBSzS41cw1fIzO6j4y7zU433a0zRSbelKfQWbcItuiKgJgQA2wJuOgJVX8Yvl1jINzqA40oEzzWSUMmNzVHVfpV8RfuvBV60CuWGxfpNFgPE-OJbZxtCxlfyfi9CHVN8C7NKow4cRLt3GMm12084pwbSqqVUzRlT_YdhYkMQpwnv0h"/>
+<img class="inline-block h-7 w-7 rounded-full ring-2 ring-white object-cover" data-alt="Portrait of a female photographer holding film camera in vintage Dalat old train station background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDltSvDfKwhNgUhvCw8qJdBqh0ORmEv10r32tP_z0qt5Oqy3_MgbGvI_wZcjERWe3h80twppmagmsTf94_shyFMRJcrICSrExBAYO-v5ONQjPCDvihP__8RpBB2jE6vCw5OCTKY9W_weFyfZ2kv7OCj1SJCNSijDXaiIGtOoETV05GheV4C0No7jKFc3CRCGvegpYETCDTdF6Nx3JIY_GQP1C8L1JUmmvh6EjsIsV701x44GrdR2oJB"/>
+<img class="inline-block h-7 w-7 rounded-full ring-2 ring-white object-cover" data-alt="Portrait of a stylish young traveller girl holding a hot ceramic coffee mug in a floral highland greenhouse cafe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC632hMJJ-ICP9qCw3Ux13494-4cH7VQlUuVqbbRJexbeWai5HDJd7RC6z2U3R2URjGLaz6fV5jCg1YpaM838we52Lhvbi1X_fBFeqXAI9QX0essjrG7KD71j4CraOWf3nsPQdfeyZ91EGI4YqFUxoyUWlskF2ukC03PDBC_lFeAka8hnvJ7hRitIIqtfB6cIaBalumZZGgxQxYvXM9g05lHB61dRsxHWIfHA83_SCChQBNB6G402qw"/>
+</div>
+<span class="font-caption text-caption text-text-secondary font-medium">
+<strong class="text-on-surface">3/4</strong> bạn bè tham gia
+              </span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-full font-badge-label text-badge-label text-primary bg-primary-light hover:bg-secondary-container transition-colors active:scale-95">
+                Chi tiết
+              </button>
+<button class="px-3.5 py-1.5 rounded-full font-badge-label text-badge-label text-on-primary bg-primary-container hover:bg-primary shadow-teal-glow transition-all active:scale-95">
+                Tham gia
+              </button>
+</div>
+</div>
+</article>
+<!-- CARD 3: Trekking & Cắm trại mạo hiểm -->
+<article class="bg-surface-container-lowest rounded-DEFAULT p-4 shadow-level-1 border border-border-teal relative transition-transform hover:-translate-y-0.5 duration-200">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-1.5">
+<span class="inline-flex items-center gap-1 bg-surface-container-high text-on-surface font-badge-label text-badge-label px-2.5 py-1 rounded-full font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="hiking">hiking</span>
+                Trekking &amp; Khám phá
+              </span>
+<span class="bg-primary-light text-primary font-badge-label text-badge-label px-2 py-1 rounded-full">
+                2N2Đ
+              </span>
+</div>
+<button aria-label="Lưu bài viết" class="text-text-subdued hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+<h3 class="font-title-card text-title-card text-on-surface font-bold leading-snug hover:text-primary transition-colors cursor-pointer mb-2">
+            Chinh Phục Đỉnh Langbiang &amp; Cắm Trại Rừng Thông Suối Vàng
+          </h3>
+<!-- Host Info -->
+<div class="flex items-center gap-2.5 mb-3 bg-surface-subdued/80 p-2.5 rounded-DEFAULT">
+<img class="w-10 h-10 rounded-full object-cover border border-primary-container" data-alt="Portrait of an experienced outdoor trekker with hiking backpack standing beside a scenic pine mountain trail in Dalat. Atmospheric misty morning light, genuine mountain voyager aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnq6r_5rqMxxnKo4mGtk7FjmX2MBapcLrgBLR5X0kEVQqUAUh1GHj8IaIV99uayjmtPlTW3vQGjXPIevsyn9t2wLcTozJxXjMi9ckYLS8E9dYEkTVvV_aE3vli7xihfJjLSrLf9FmQPvzwkZzLePv7XFgprfxv2QB0V5eEbxRZ-nB00cEnHYiYjBAcTkZoHrfCeRw1YrFiartHmCCMCjp_OkTWBTeZa3oeATsuJ4OSpM8GNhmef5Km"/>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-body-medium text-body-medium text-on-surface font-bold truncate">Bảo Trọng</span>
+<span class="font-caption text-caption text-text-subdued">@trong_trek</span>
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="flex items-center gap-2 text-caption font-caption text-text-secondary">
+<span class="flex items-center gap-0.5 text-warning font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                  5.0 (24 chuyến)
+                </span>
+<span>• Hướng dẫn viên</span>
+</div>
+</div>
+</div>
+<!-- Key Trip Meta Details -->
+<div class="grid grid-cols-2 gap-2 text-caption font-caption mb-3.5 bg-surface-bright p-3 rounded-DEFAULT border border-surface-container">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="schedule">schedule</span>
+<div>
+<span class="text-text-subdued block text-[11px]">Khởi hành</span>
+<span class="font-semibold text-body-default">01/11 - 03/11</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="payments">payments</span>
+<div>
+<span class="text-text-subdued block text-[11px]">Chi phí trọn gói</span>
+<span class="font-bold text-primary text-body-default">~1.950.000đ</span>
+</div>
+</div>
+</div>
+<!-- Participants & Call to Action -->
+<div class="flex items-center justify-between pt-2 border-t border-surface-subdued">
+<div class="flex items-center gap-2">
+<div class="flex -space-x-2 overflow-hidden">
+<img class="inline-block h-7 w-7 rounded-full ring-2 ring-white object-cover" data-alt="Portrait of a young hiker in athletic gear smiling outdoors at sunrise on a mountain ridge in Dalat." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLx8VTnY-qT-3n5qwIdSOf7rzmllNEEpWh2uPlfzQ8JTDN13wYgmGMYH95m0hTNc7PwZFgHrJuuYvvcPsSCFOMQLiYZTh5dC5QxK4f7XtQYbEED95d-TpCG0M8OTO6_MZHuZk5RDFtJUoFh5QUjfyKVNzkMYWsUzYyHSrimgoMC1R-QMMfYHVenKLFmjtxXE2UKGjgVBRkpUaxov2twlhg0w7R-5z_9A3z1bJymOyeNHAGyUBzFrvj"/>
+<img class="inline-block h-7 w-7 rounded-full ring-2 ring-white object-cover" data-alt="Portrait of an adventurous backpacker with bandana resting at camp site with pine background in Dalat." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACbzxzi7ALDgPl7voOGp0yia1HHTRgEPfqeXfpAE8y1a4UUtwXMX2Hiosnrtfqf8LZIM_oLboBuyv5V69DJHw-U5DFw26OOeAIlSIKOxz7IpGsJFvNVL11Feg1elYV5_lRdsP5PGYlM9fyd5ISU43ucE2_tsk4Zh07GxCDlE4nvK1vmB8SnQBh5bRiDB4KjFCu5rtkeqj7xbo41lrP6n42fAXXSL2WeluwaSkOFSl4SRp2GbhWVEd0"/>
+<img class="inline-block h-7 w-7 rounded-full ring-2 ring-white object-cover" data-alt="Portrait of a young Vietnamese woman traveler smiling in green rain jacket near lake shore." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXe1f-WRfPnZtbAa4wM2eUnbRckgbatjX9FNee-7knENACjVof6dIQuhD7R00riiXFY8DHLG43blxEuzea4bGRpiMYOXzNVzzk8wnuJEBZIZw4z_GK_BD6Duo0Xj_xjwNUnIOkT8tYzvIWAI-FwAlb03hWAnPSB4M0DiDpD8VBFpbaVOJnib2A9_dfywvaXJSNSqybwBRV7T3s2qdafHFSse6WmeSXds7ieATb6g9WhdXHW3K1nOae"/>
+<div class="flex items-center justify-center h-7 w-7 rounded-full bg-surface-container-high text-on-surface text-[11px] font-bold ring-2 ring-white">
+                  +2
+                </div>
+</div>
+<span class="font-caption text-caption text-text-secondary font-medium">
+<strong class="text-on-surface">5/8</strong> thành viên
+              </span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-full font-badge-label text-badge-label text-primary bg-primary-light hover:bg-secondary-container transition-colors active:scale-95">
+                Lộ trình
+              </button>
+<button class="px-3.5 py-1.5 rounded-full font-badge-label text-badge-label text-on-primary bg-primary-container hover:bg-primary shadow-teal-glow transition-all active:scale-95">
+                Tham gia
+              </button>
+</div>
+</div>
+</article>
+</section>
+<!-- 5. Mục gợi ý địa điểm hot tại Đà Lạt -->
+<section class="space-y-3 pt-2">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-section text-headline-section text-on-surface font-bold">Không thể bỏ qua tại Đà Lạt</h2>
+<p class="font-caption text-caption text-text-subdued">Các toạ độ check-in được lưu nhiều nhất</p>
+</div>
+<button class="font-caption text-caption text-primary font-bold hover:underline">
+            Xem tất cả
+          </button>
+</div>
+<div class="grid grid-cols-1 gap-3">
+<!-- Spot 1: Hồ Tuyền Lâm -->
+<div class="flex items-center justify-between p-3 rounded-DEFAULT bg-surface-container-lowest border border-border-neutral shadow-level-1">
+<div class="flex items-center gap-3">
+<img class="w-16 h-16 rounded-DEFAULT object-cover" data-alt="Scenic landscape photo of Tuyen Lam Lake in Da Lat with tranquil turquoise water, surrounded by lush pine tree forests with early morning fog and clear serene blue skies." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4OQwsSoUKHvSWVIWC6PaxSA1Zy6K8K-De_rDnv0lQ_RKVE5ha5sWk2vMkXjD7XD5wVlbsNL6PE_yMiF7lx18ivZLI6Mg1nS1wQvt-vVlcI8JbQaHtsYVFol527yOsdp3snxDQGRO-90YP5Uikq05C3W-ZbTmVn3BllFQlHM9ArMN0Jg-Rz7xqxOGnV9SbfWTbd5pDRfeLRosALictH6ozja0gr-XjKNx-hqdL6jwYM-sGlOF22bZ1"/>
+<div>
+<h4 class="font-title-card text-title-card text-on-surface font-bold">Hồ Tuyền Lâm</h4>
+<div class="flex items-center gap-2 text-caption font-caption text-text-secondary mt-0.5">
+<span class="flex items-center text-warning font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                    4.9
+                  </span>
+<span>• Chèo SUP &amp; Cắm trại</span>
+</div>
+<span class="text-[11px] text-text-subdued">Cách trung tâm 6km</span>
+</div>
+</div>
+<button aria-label="Thêm vào lịch trình" class="w-9 h-9 rounded-full bg-primary-light text-primary hover:bg-primary-container hover:text-white transition-all flex items-center justify-center active:scale-90 shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+</button>
+</div>
+<!-- Spot 2: Đồi Chè Cầu Đất -->
+<div class="flex items-center justify-between p-3 rounded-DEFAULT bg-surface-container-lowest border border-border-neutral shadow-level-1">
+<div class="flex items-center gap-3">
+<img class="w-16 h-16 rounded-DEFAULT object-cover" data-alt="A panoramic view of Cau Dat Tea Hill Da Lat in Vietnam with vibrant green tiered tea bushes under rolling cloud cover and wind turbines in the distance at dawn." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJQdE7DkBFrV2hmUbiUCQi0Cfl14QE9ptxdpkb8kZ8fZpuaxfbfjVxMBIhzSdSM5nyWb_b9D2uQzAFGAW_zwUBxSK8_2zbi45Evj9dkqXRpsV7Z9yam0JxNke1Z5KGm6t2vuoTN2ZYa64tEXC5Hjswqx8bkqfbcmPYgbXkS8_aYFYa2jUqF_DkIYGlA2gikrQ-MSLFIl-MeH1m1cPFpr2M9byx2eLSLBIoS5IQiXF4HuQhaxe61wqX"/>
+<div>
+<h4 class="font-title-card text-title-card text-on-surface font-bold">Đồi Chè Cầu Đất</h4>
+<div class="flex items-center gap-2 text-caption font-caption text-text-secondary mt-0.5">
+<span class="flex items-center text-warning font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                    4.8
+                  </span>
+<span>• Thiên đường săn mây</span>
+</div>
+<span class="text-[11px] text-text-subdued">Đón bình minh 5:00 - 6:30</span>
+</div>
+</div>
+<button aria-label="Thêm vào lịch trình" class="w-9 h-9 rounded-full bg-primary-light text-primary hover:bg-primary-container hover:text-white transition-all flex items-center justify-center active:scale-90 shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+</button>
+</div>
+<!-- Spot 3: Ga Đà Lạt -->
+<div class="flex items-center justify-between p-3 rounded-DEFAULT bg-surface-container-lowest border border-border-neutral shadow-level-1">
+<div class="flex items-center gap-3">
+<img class="w-16 h-16 rounded-DEFAULT object-cover" data-alt="Historic French Art Deco colonial architecture of Da Lat Railway Station in Vietnam with iconic triangular roofs under sunny alpine sky and vintage steam locomotive train on tracks." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2eEoUzukZA5NWkShhZwpq4xPR-IpVW42T96NBwhs8QnkDzHLH7eoKLLN1XS4XP73uypyISlbJl5TYTeMI7MD3wbshYWbwOBp-mZS9m6_DIenoYwAiZYTQWD_A1QM82Wk-u_GPGcg4ewZV2daxKeqMh-gkyd1ep3oXxJB3PB9-ddVvtrTYw-OuuPv-M7m701u3uAddv4xu287yfWeGAU-6KgloE6HD4SLbaywjuHQM1A31PzWYHSXL"/>
+<div>
+<h4 class="font-title-card text-title-card text-on-surface font-bold">Ga Đà Lạt</h4>
+<div class="flex items-center gap-2 text-caption font-caption text-text-secondary mt-0.5">
+<span class="flex items-center text-warning font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                    4.7
+                  </span>
+<span>• Di sản &amp; Nhiếp ảnh</span>
+</div>
+<span class="text-[11px] text-text-subdued">Ga cổ nhất Đông Dương</span>
+</div>
+</div>
+<button aria-label="Thêm vào lịch trình" class="w-9 h-9 rounded-full bg-primary-light text-primary hover:bg-primary-container hover:text-white transition-all flex items-center justify-center active:scale-90 shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- 6. Floating Action Button (FAB) / Sticky Bottom Tạo Chuyến Đi -->
+<div class="fixed bottom-20 left-0 right-0 z-40 px-5 flex justify-center pointer-events-none max-w-md mx-auto">
+<button class="pointer-events-auto flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-primary-container text-on-primary font-headline-section text-body-medium font-bold shadow-teal-glow hover:bg-primary transition-all active:scale-95 border border-white/30 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[22px]" data-icon="add">add</span>
+<span>Tạo chuyến đi tới Đà Lạt</span>
+</button>
+</div>
+<!-- Bottom Navigation Bar (Shared Component Anchor) -->
+<!-- Destination Context: "Trips" is active since user is exploring destination trips -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 flex justify-around items-center px-4 py-2 max-w-md mx-auto bg-surface-glass backdrop-blur-xl shadow-lg rounded-full mx-4 mb-4">
+<!-- Tab 1: Explore -->
+<button class="flex flex-col items-center justify-center text-text-secondary px-3 py-1.5 hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined text-[22px]" data-icon="explore">explore</span>
+<span class="font-badge-label text-[11px] mt-0.5">Explore</span>
+</button>
+<!-- Tab 2: Trips (Active) -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1.5 shadow-sm transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[22px]" data-icon="luggage" style="font-variation-settings: 'FILL' 1;">luggage</span>
+<span class="font-badge-label text-[11px] font-bold mt-0.5">Trips</span>
+</button>
+<!-- Tab 3: Social -->
+<button class="flex flex-col items-center justify-center text-text-secondary px-3 py-1.5 hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined text-[22px]" data-icon="groups">groups</span>
+<span class="font-badge-label text-[11px] mt-0.5">Social</span>
+</button>
+<!-- Tab 4: Profile -->
+<button class="flex flex-col items-center justify-center text-text-secondary px-3 py-1.5 hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined text-[22px]" data-icon="person">person</span>
+<span class="font-badge-label text-[11px] mt-0.5">Profile</span>
+</button>
+</nav>
+</div>
+</body></html>

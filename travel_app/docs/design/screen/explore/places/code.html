@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Teal Horizon - Khám Phá Địa Điểm</title>
+<!-- Plus Jakarta Sans Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration matching Design System -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "success": "#10B981",
+            "primary": "#006a66",
+            "inverse-primary": "#66d8d2",
+            "tertiary-container": "#508fff",
+            "primary-light": "#E6F7F6",
+            "surface-subdued": "#F1F6F5",
+            "on-secondary": "#ffffff",
+            "background": "#f3faff",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed-variant": "#00504d",
+            "on-secondary-fixed-variant": "#00504d",
+            "surface-container-high": "#dbebf3",
+            "border-teal": "rgba(32, 162, 157, 0.12)",
+            "on-tertiary-fixed-variant": "#004395",
+            "on-primary-fixed": "#00201f",
+            "error-container": "#ffdad6",
+            "canvas-base": "#F4FAF9",
+            "surface-container-low": "#e6f6ff",
+            "secondary": "#006a66",
+            "on-tertiary-container": "#00295f",
+            "on-background": "#0e1e24",
+            "surface-dim": "#ccdde5",
+            "on-surface-variant": "#3d4948",
+            "border-neutral": "rgba(226, 232, 240, 0.8)",
+            "text-secondary": "#4B6169",
+            "danger": "#EF4444",
+            "inverse-on-surface": "#e3f3fc",
+            "on-error": "#ffffff",
+            "primary-fixed": "#84f5ef",
+            "tertiary-fixed": "#d8e2ff",
+            "surface": "#f3faff",
+            "on-primary-container": "#00312f",
+            "surface-container": "#e0f0f9",
+            "secondary-container": "#99f2ec",
+            "on-error-container": "#93000a",
+            "tertiary-fixed-dim": "#adc6ff",
+            "surface-container-highest": "#d5e5ed",
+            "surface-tint": "#006a66",
+            "outline": "#6d7a78",
+            "error": "#ba1a1a",
+            "on-secondary-container": "#00716d",
+            "secondary-fixed-dim": "#7dd5d0",
+            "surface-glass": "rgba(255, 255, 255, 0.85)",
+            "on-surface": "#0e1e24",
+            "on-secondary-fixed": "#00201f",
+            "surface-bright": "#f3faff",
+            "primary-fixed-dim": "#66d8d2",
+            "inverse-surface": "#243339",
+            "tertiary": "#005ac2",
+            "outline-variant": "#bcc9c7",
+            "primary-container": "#20a29d",
+            "on-primary": "#ffffff",
+            "surface-variant": "#d5e5ed",
+            "on-tertiary-fixed": "#001a42",
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed": "#99f2ec",
+            "warning": "#F59E0B",
+            "text-subdued": "#8FA3AA"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "1.25rem",
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem"
+          },
+          "fontFamily": {
+            "title-card": ["Plus Jakarta Sans"],
+            "headline-section": ["Plus Jakarta Sans"],
+            "body-default": ["Plus Jakarta Sans"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"],
+            "caption": ["Plus Jakarta Sans"],
+            "title-screen": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"],
+            "badge-label": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "title-card": ["16px", { "lineHeight": "21px", "fontWeight": "600" }],
+            "headline-section": ["18px", { "lineHeight": "24px", "fontWeight": "700" }],
+            "body-default": ["14px", { "lineHeight": "21px", "fontWeight": "400" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "body-medium": ["14px", { "lineHeight": "21px", "fontWeight": "500" }],
+            "caption": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "title-screen": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display-hero": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "badge-label": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }]
+          },
+          "boxShadow": {
+            "level-1": "0 4px 20px -2px rgba(32, 162, 157, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.03)",
+            "level-2": "0 10px 30px -5px rgba(15, 30, 36, 0.08)",
+            "action-glow": "0 10px 25px -4px rgba(32, 162, 157, 0.38)"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(32, 162, 157, 0.12);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-canvas-base text-on-surface antialiased min-h-screen relative selection:bg-primary-light selection:text-primary">
+<!-- Atmospheric Background Liquid Glows -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute -top-24 -right-20 w-80 h-80 rounded-full bg-primary-fixed-dim/20 blur-3xl"></div>
+<div class="absolute top-1/3 -left-20 w-72 h-72 rounded-full bg-secondary-fixed/25 blur-3xl"></div>
+<div class="absolute bottom-1/4 -right-16 w-88 h-88 rounded-full bg-primary-light/40 blur-3xl"></div>
+</div>
+<!-- App Container (Mobile viewport locked max-w-md) -->
+<div class="relative z-10 max-w-md mx-auto min-h-screen flex flex-col pb-28">
+<!-- Top Header Component (Teal Horizon Shared Anchor Standard) -->
+<header class="sticky top-0 z-40 bg-surface-glass backdrop-blur-xl px-5 pt-3 pb-3 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-3">
+<!-- User Avatar with Green Sprout Indicator -->
+<div class="relative">
+<div class="w-11 h-11 rounded-full p-[2px] bg-gradient-to-tr from-primary-container to-secondary-fixed shadow-sm">
+<img class="w-full h-full object-cover rounded-full" data-alt="A candid profile portrait of Alex, a warm and friendly travel photographer wearing a light linen shirt with a soft-focus tropical foliage background. The lighting is natural and luminous in daytime, with fresh teal ocean accents, captured in clean contemporary digital aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTz8JNxjxuswJxCGOpUP4YsEfnKExiw-rW2orHvxkwPDq_c15cA07tjcxNsolbNRmkKUXAVi283c1S2p-uRsqEYmFkFr8Pwa9WZfvC9n8u4-LMOiOq0g-6P3pVj0h1OjNKLi-43m8gKfuMSFNprl2jQmS1HaP3SLXKy8p-IHqohsa8mRZbPE6cXL0hXfN5oyhQUS0hBXpmjW4FoLW31hZt5jZZCIFkPMhoBIyEXI8Rqq67B3Yh6BuQ"/>
+</div>
+<span class="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-success ring-2 ring-surface-container-lowest flex items-center justify-center text-[10px]">🌿</span>
+</div>
+<!-- Greeting & Current Location -->
+<div class="flex flex-col">
+<span class="font-headline-section text-body-medium font-bold text-on-surface leading-tight flex items-center gap-1">
+            Xin chào, Alex
+          </span>
+<div class="flex items-center gap-1 text-text-secondary mt-0.5">
+<span class="material-symbols-outlined text-primary text-[15px]" data-icon="location_on" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="font-caption text-caption text-text-secondary font-semibold tracking-tight">Đà Nẵng, Việt Nam</span>
+<span class="material-symbols-outlined text-text-subdued text-[14px]" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</div>
+</div>
+</div>
+<!-- Action Trailing Cluster -->
+<div class="flex items-center gap-2">
+<!-- Notification with unread dot -->
+<button class="relative w-10 h-10 rounded-full bg-surface-container-lowest/80 border border-border-teal flex items-center justify-center text-on-surface hover:bg-primary-light transition-colors duration-200">
+<span class="material-symbols-outlined text-text-secondary text-[20px]" data-icon="notifications">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-danger ring-2 ring-surface-container-lowest"></span>
+</button>
+<!-- Search icon quick trigger -->
+<button class="w-10 h-10 rounded-full bg-surface-container-lowest/80 border border-border-teal flex items-center justify-center text-primary hover:bg-primary-light transition-colors duration-200">
+<span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+</button>
+</div>
+</header>
+<!-- Search Bar Section -->
+<section class="px-5 pt-3 pb-2">
+<div class="flex items-center gap-2.5">
+<div class="flex-1 relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-primary text-[20px]" data-icon="search">search</span>
+<input class="w-full h-11 pl-10 pr-4 bg-surface-subdued border border-border-teal rounded-full font-body-default text-body-default text-on-surface placeholder:text-text-subdued focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all shadow-level-1" placeholder="Tìm kiếm điểm đến, bãi biển, quán cà phê..." type="text"/>
+</div>
+<button class="w-11 h-11 rounded-full bg-primary-light border border-border-teal flex items-center justify-center text-primary shadow-level-1 active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[20px]" data-icon="tune">tune</span>
+</button>
+</div>
+</section>
+<!-- Segmented Control Switcher (Places Dedicated vs Community Trips) -->
+<section class="px-5 py-2">
+<div class="p-1 bg-surface-container-high/60 backdrop-blur-md rounded-full flex items-center border border-border-teal">
+<!-- Active Tab: Địa Điểm (Places) -->
+<button class="flex-1 py-2 px-3 rounded-full bg-primary-container text-on-primary font-headline-section text-body-medium shadow-action-glow flex items-center justify-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[17px]" data-icon="explore" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span>Địa Điểm (Places)</span>
+</button>
+<!-- Inactive Tab: Chuyến Đi Cộng Đồng -->
+<button class="flex-1 py-2 px-3 rounded-full text-text-secondary hover:text-primary font-headline-section text-body-medium flex items-center justify-center gap-1.5 transition-colors relative">
+<span class="material-symbols-outlined text-[17px]" data-icon="groups">groups</span>
+<span>Chuyến Đi</span>
+<span class="w-1.5 h-1.5 rounded-full bg-danger"></span>
+</button>
+</div>
+</section>
+<!-- Category Filter Chips (Horizontal Scrolling Rail) -->
+<section class="py-2.5">
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar px-5">
+<!-- Chip: Tất cả (Active) -->
+<button class="shrink-0 px-4 py-1.5 rounded-full bg-primary-container text-on-primary font-headline-section text-caption shadow-sm flex items-center gap-1">
+<span>Tất cả</span>
+</button>
+<!-- Chip: Bãi biển -->
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-border-teal text-text-secondary hover:border-primary font-body-medium text-caption flex items-center gap-1.5 shadow-level-1 transition-colors">
+<span>Bãi biển 🏖️</span>
+</button>
+<!-- Chip: Leo núi & Camping -->
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-border-teal text-text-secondary hover:border-primary font-body-medium text-caption flex items-center gap-1.5 shadow-level-1 transition-colors">
+<span>Leo núi &amp; Camping 🏕️</span>
+</button>
+<!-- Chip: Quán Cà Phê -->
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-border-teal text-text-secondary hover:border-primary font-body-medium text-caption flex items-center gap-1.5 shadow-level-1 transition-colors">
+<span>Quán Cà Phê ☕</span>
+</button>
+<!-- Chip: Di tích & Văn Hóa -->
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-border-teal text-text-secondary hover:border-primary font-body-medium text-caption flex items-center gap-1.5 shadow-level-1 transition-colors">
+<span>Di tích &amp; Văn Hóa 🏛️</span>
+</button>
+<!-- Chip: Ẩm thực -->
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-border-teal text-text-secondary hover:border-primary font-body-medium text-caption flex items-center gap-1.5 shadow-level-1 transition-colors">
+<span>Ẩm thực 🍜</span>
+</button>
+</div>
+</section>
+<!-- Section 1: "Điểm Đến Nổi Bật" (Featured Places) -->
+<section class="pt-4 pb-2">
+<!-- Section Header -->
+<div class="px-5 flex items-end justify-between mb-3">
+<div>
+<h2 class="font-headline-section text-headline-section text-on-surface">Điểm Đến Nổi Bật</h2>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Được bình chọn nhiều nhất mùa hè này</p>
+</div>
+<button class="font-headline-section text-caption text-primary flex items-center gap-0.5 hover:underline active:scale-95 transition-transform">
+<span>Xem thêm</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<!-- Horizontal Carousel Cards -->
+<div class="flex gap-3.5 overflow-x-auto no-scrollbar px-5 pb-2">
+<!-- Card 1: Ghềnh Bàng - Bán Đảo Sơn Trà -->
+<div class="shrink-0 w-72 rounded-2xl glass-card overflow-hidden shadow-level-1 flex flex-col group">
+<div class="relative h-44 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A sunlit scenic landscape of Ghenh Bang on the Son Tra Peninsula in Da Nang, showcasing wild turquoise ocean waters crashing against dramatic dark volcanic rock formations. Lush tropical emerald greenery cascades down the hillside, under a crystal-clear summer sky, high-contrast travel photography with rich teal tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSelbIB5wlolBGc3SF3cCzN-dszhh4mz73sKSNL5Y7L09ZGN5Tfhv5HkWuVOUOqGFb17vU3ER6gBxtrRgNHk4a8MjLHiMzAdR9MCmh0tze3zYg0K6H_oGclo4Z2ajb4PVqEWRUVHFXpXI3c-XRUiKKlOKjA5-l-iIgdNbwDRzza66qjn-Qt1E9WDbh2sZrInFbleQcjfd_RRm0Yc7LQXv2mwgdhhgvjArcfPU5gNgl-1n2-j5l-Qgy"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
+<!-- Top Floating Badges -->
+<div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-glass text-primary font-badge-label text-badge-label shadow-sm backdrop-blur-md">
+                BÃI BIỂN
+              </span>
+</div>
+<!-- Bookmark Button -->
+<button class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface-glass/90 text-primary flex items-center justify-center backdrop-blur-md hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="bookmark" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+<!-- Bottom Image Info (Rating & Saves) -->
+<div class="absolute bottom-2 left-3 right-3 flex items-center justify-between text-white">
+<div class="flex items-center gap-1 bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-full font-caption text-caption">
+<span class="material-symbols-outlined text-warning text-[15px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.9</span>
+<span class="text-white/80 font-normal">(340+ lưu)</span>
+</div>
+</div>
+</div>
+<div class="p-3.5 flex flex-col justify-between flex-1">
+<div>
+<h3 class="font-title-card text-title-card text-on-surface line-clamp-1">Ghềnh Bàng - Bán Đảo Sơn Trà</h3>
+<p class="font-caption text-caption text-text-secondary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[14px]" data-icon="location_on">location_on</span>
+                Bán Đảo Sơn Trà, Đà Nẵng
+              </p>
+</div>
+<div class="mt-3 pt-2.5 border-t border-border-neutral flex items-center justify-between">
+<span class="font-caption text-caption text-text-subdued">Hoang sơ &amp; lặn ngắm san hô</span>
+<button class="font-headline-section text-caption text-primary flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform">
+                Khám phá →
+              </button>
+</div>
+</div>
+</div>
+<!-- Card 2: Bà Nà Hills - Cầu Vàng -->
+<div class="shrink-0 w-72 rounded-2xl glass-card overflow-hidden shadow-level-1 flex flex-col group">
+<div class="relative h-44 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An ethereal wide shot of the iconic Golden Bridge held by colossal weathered stone hands at Ba Na Hills, Da Nang. Wispy alpine mist drifts across verdant mountain ridges in early morning light, creating an adventurous dreamlike atmosphere with fresh mint and pale teal color grading." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDndm3f4Wot5zJEM9MyQtoR7hUqtTuLo_LXMxyDepOR0vz5jyBWhd8fVg-FcU7RRSH9ytbkTiY1tEMbJ4PPrzFYLXxBzCbk4ZspBw0qPBVSrguzpfo1cPM8gdtGxNqhkGFEBhHT2RKt-WwVJflBFOmjS5nA_7fXOHARjeW9wQdUf7hALZX3DB8Pyza2K3thED1lHPLXBZt3PIZz-sRKJNvDizrav8KAoFHOuoZNeYgWm_JGLSP0RS7V"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
+<div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-glass text-primary font-badge-label text-badge-label shadow-sm backdrop-blur-md">
+                NGHỈ DƯỠNG
+              </span>
+</div>
+<button class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface-glass/90 text-on-surface-variant flex items-center justify-center backdrop-blur-md hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="bookmark">bookmark</span>
+</button>
+<div class="absolute bottom-2 left-3 right-3 flex items-center justify-between text-white">
+<div class="flex items-center gap-1 bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-full font-caption text-caption">
+<span class="material-symbols-outlined text-warning text-[15px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.8</span>
+<span class="text-white/80 font-normal">(580+ lưu)</span>
+</div>
+</div>
+</div>
+<div class="p-3.5 flex flex-col justify-between flex-1">
+<div>
+<h3 class="font-title-card text-title-card text-on-surface line-clamp-1">Bà Nà Hills - Cầu Vàng</h3>
+<p class="font-caption text-caption text-text-secondary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[14px]" data-icon="location_on">location_on</span>
+                Hòa Vang, Đà Nẵng
+              </p>
+</div>
+<div class="mt-3 pt-2.5 border-t border-border-neutral flex items-center justify-between">
+<span class="font-caption text-caption text-text-subdued">Khí hậu 4 mùa trong 1 ngày</span>
+<button class="font-headline-section text-caption text-primary flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform">
+                Khám phá →
+              </button>
+</div>
+</div>
+</div>
+<!-- Card 3: Phố Cổ Hội An -->
+<div class="shrink-0 w-72 rounded-2xl glass-card overflow-hidden shadow-level-1 flex flex-col group">
+<div class="relative h-44 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A picturesque evening scene in Hoi An ancient town, featuring yellow colonial storefronts adorned with glowing silk lanterns reflected in the tranquil Thu Bon River. Wooden sampan boats gently drift by, with ambient warm amber light blending with twilight cyan and teal sky reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXcAeOwJ1rm0ER-YSC_1-OStbQ8kRxHAiFjCYqf0qAq-YjNCmKNlG38XdjqgBwJfs9hCRIEIailzaV6hRkooaHSoIvYqXzhraNxGJ6zC1AcNrQrg3NpNjgbv1kFF0h1sCBrLXyK0gYEm6mL8_1RhwsTzazam4w0uEooKy2VqgHGL_FBGPoTsbb3F89lUxQ1AUAaU1wJ66BsytBsTgoJZCYN73I5S3JiwHU-zQzOPUuy5xMmT3Q02F_"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
+<div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-glass text-primary font-badge-label text-badge-label shadow-sm backdrop-blur-md">
+                VĂN HÓA
+              </span>
+</div>
+<button class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-surface-glass/90 text-primary flex items-center justify-center backdrop-blur-md hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="bookmark" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+<div class="absolute bottom-2 left-3 right-3 flex items-center justify-between text-white">
+<div class="flex items-center gap-1 bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-full font-caption text-caption">
+<span class="material-symbols-outlined text-warning text-[15px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.9</span>
+<span class="text-white/80 font-normal">(820+ lưu)</span>
+</div>
+</div>
+</div>
+<div class="p-3.5 flex flex-col justify-between flex-1">
+<div>
+<h3 class="font-title-card text-title-card text-on-surface line-clamp-1">Phố Cổ Hội An</h3>
+<p class="font-caption text-caption text-text-secondary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[14px]" data-icon="location_on">location_on</span>
+                Quảng Nam (Cách 28km)
+              </p>
+</div>
+<div class="mt-3 pt-2.5 border-t border-border-neutral flex items-center justify-between">
+<span class="font-caption text-caption text-text-subdued">Di sản văn hóa thế giới UNESCO</span>
+<button class="font-headline-section text-caption text-primary flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform">
+                Khám phá →
+              </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: "Gần Bạn Nhất" (Nearby Places - Bán kính 10km) -->
+<section class="px-5 pt-5 pb-3">
+<!-- Section Header with GPS Radius Pill -->
+<div class="flex items-center justify-between mb-3.5">
+<div>
+<h2 class="font-headline-section text-headline-section text-on-surface">Gần Bạn Nhất</h2>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Dựa trên định vị thời gian thực</p>
+</div>
+<div class="px-2.5 py-1 rounded-full bg-primary-light border border-border-teal flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[15px]" data-icon="near_me" style="font-variation-settings: 'FILL' 1;">near_me</span>
+<span class="font-caption text-caption font-bold">10 km</span>
+</div>
+</div>
+<!-- List of Compact Destination Cards -->
+<div class="space-y-3">
+<!-- Item 1: Chùa Linh Ứng -->
+<div class="p-3 rounded-2xl glass-card flex items-center gap-3.5 shadow-level-1 hover:border-primary/40 transition-colors">
+<div class="relative w-16 h-16 rounded-full overflow-hidden shrink-0 ring-2 ring-primary-container/20">
+<img class="w-full h-full object-cover" data-alt="A grand white Lady Buddha statue rising peacefully above the lush trees at Linh Ung Pagoda on Son Tra Peninsula, overlooking the deep blue sea under clear daylight, modern travel aesthetic in serene teal tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn1QcRhv_ED_Smwku-o5Fo6z9g2PevssvDZ6dKuNK1tOCV4tZHkwutK3RG4qMUn2xWbPQKCovW9kvs61QjJsCChn88WHbnKaKj4AqLj6sQJk8FXXp5S1EGxpn6cdCMyJrX90GLAWzaPvpLP1u5U6s8748J5oAPOcmEgUMA9moGDGRJAyEfjyaimPRga4vr82F3zBuNQgHTJZfdVlX9pYOBzHnMgrMmJK3wUr9T-58xda_G1JAk_OeY"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-badge-label text-[10px]">DI TÍCH</span>
+<div class="flex items-center gap-0.5 font-caption text-caption text-text-secondary">
+<span class="material-symbols-outlined text-warning text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface">4.9</span>
+<span class="text-text-subdued">(1.2k)</span>
+</div>
+</div>
+<h4 class="font-title-card text-body-medium font-bold text-on-surface truncate">Chùa Linh Ứng - Bán Đảo Sơn Trà</h4>
+<p class="font-caption text-caption text-text-subdued truncate mt-0.5">Hoàng Sa, Thọ Quang, Sơn Trà</p>
+<div class="flex items-center gap-1 text-primary font-caption text-caption mt-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="directions_walk">directions_walk</span>
+<span class="font-semibold">2.4 km</span>
+<span class="text-text-subdued font-normal">• 30 phút đi bộ</span>
+</div>
+</div>
+<button class="w-9 h-9 rounded-full bg-surface-subdued text-danger flex items-center justify-center shrink-0 hover:bg-error-container transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<!-- Item 2: Horizon Bay Roastery & Lounge -->
+<div class="p-3 rounded-2xl glass-card flex items-center gap-3.5 shadow-level-1 hover:border-primary/40 transition-colors">
+<div class="relative w-16 h-16 rounded-full overflow-hidden shrink-0 ring-2 ring-primary-container/20">
+<img class="w-full h-full object-cover" data-alt="Modern architectural interior of an airy seaside cafe in Da Nang featuring blonde oak wood, floor-to-ceiling glass looking toward the ocean, potted tropical monstera plants, and specialty pourover coffee equipment bathed in soft natural light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6cQ4uf0FgSw0FNpQ77Cgvny02i7ZEuOhCVBye2T14shGoR1QRFzU4Xw0ODkcC_GbkI5iccWrG0qT8oEk8-pioWHwJUtW3LQcYTjCHvI7ul-tsiD6_rSB_KPKk2H8o21vr9l2IimDcFt999EAPGRLqjMHHt7xqWDr7HYgw3nNdrPdGXLGIUqAKKfkwAPzavi7lhVjH3fg26BbzXrnmJ58pgcy4wa76GA-CwdM42yAdUTUcYnMHlNln"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-badge-label text-[10px]">CÀ PHÊ</span>
+<div class="flex items-center gap-0.5 font-caption text-caption text-text-secondary">
+<span class="material-symbols-outlined text-warning text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface">4.7</span>
+<span class="text-text-subdued">(480)</span>
+</div>
+</div>
+<h4 class="font-title-card text-body-medium font-bold text-on-surface truncate">Horizon Bay Roastery &amp; Lounge</h4>
+<p class="font-caption text-caption text-text-subdued truncate mt-0.5">Võ Nguyên Giáp, Phước Mỹ</p>
+<div class="flex items-center gap-1 text-primary font-caption text-caption mt-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="directions_car">directions_car</span>
+<span class="font-semibold">1.1 km</span>
+<span class="text-text-subdued font-normal">• 4 phút lái xe</span>
+</div>
+</div>
+<button class="w-9 h-9 rounded-full bg-surface-subdued text-text-subdued flex items-center justify-center shrink-0 hover:text-danger hover:bg-error-container transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="favorite_border">favorite_border</span>
+</button>
+</div>
+<!-- Item 3: Bãi Biển Mỹ Khê (Bãi Tắm 1) -->
+<div class="p-3 rounded-2xl glass-card flex items-center gap-3.5 shadow-level-1 hover:border-primary/40 transition-colors">
+<div class="relative w-16 h-16 rounded-full overflow-hidden shrink-0 ring-2 ring-primary-container/20">
+<img class="w-full h-full object-cover" data-alt="Golden white sand beach in Da Nang with turquoise gentle waves rolling onto the shore, coconut palm trees swaying slightly, clear blue sky with gentle sunlight, minimalist clean travel framing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt6EsnYaHXHtTPYvf6rBG6Qr9l_RkR0X0mPOOsTutAuRfVzmWqfR0IACrPKmcUsnGVPLwTFfysn16XXYaYcMGcffldioT9qJNQafvT1s4BjIZ-iQmdZqyLV4yvWY66FLoTgZOBSa0WxUx9yioB1bP1hj6A9T_YGMlmRx1L2CnJyY1EkB43ggb4Bz6KvTyTa3yv6f1hc56MXZQIlowRrFJtJ9SviWbk_SFukJccszVatogOVgwUCD53"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-badge-label text-[10px]">BÃI BIỂN</span>
+<div class="flex items-center gap-0.5 font-caption text-caption text-text-secondary">
+<span class="material-symbols-outlined text-warning text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface">4.9</span>
+<span class="text-text-subdued">(3.5k)</span>
+</div>
+</div>
+<h4 class="font-title-card text-body-medium font-bold text-on-surface truncate">Bãi Biển Mỹ Khê (Bãi Tắm 1)</h4>
+<p class="font-caption text-caption text-text-subdued truncate mt-0.5">Đường Võ Nguyên Giáp</p>
+<div class="flex items-center gap-1 text-primary font-caption text-caption mt-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="directions_walk">directions_walk</span>
+<span class="font-semibold">850 m</span>
+<span class="text-text-subdued font-normal">• 10 phút đi bộ</span>
+</div>
+</div>
+<button class="w-9 h-9 rounded-full bg-surface-subdued text-danger flex items-center justify-center shrink-0 hover:bg-error-container transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section 3: "Bộ Sưu Tập Điểm Đến Theo Mùa" (Curated Seasonal Collections) -->
+<section class="pt-4 pb-2">
+<div class="px-5 mb-3 flex items-center justify-between">
+<div>
+<h2 class="font-headline-section text-headline-section text-on-surface">Bộ Sưu Tập Điểm Đến</h2>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Được giám tuyển riêng theo mùa nắng đẹp</p>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="collections_bookmark">collections_bookmark</span>
+</div>
+<!-- Horizontal Mini Banners -->
+<div class="flex gap-3 overflow-x-auto no-scrollbar px-5 pb-2">
+<!-- Banner 1: Top 10 Bãi Biển Hoang Sơ -->
+<div class="shrink-0 w-64 h-32 rounded-2xl relative overflow-hidden shadow-level-1 group cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Vibrant tropical shoreline with secluded hidden cove, crystal clear lagoon teal water, clean golden sand and rocky headland in coastal Vietnam, captured in warm daylight with clean modern travel aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhn2BeKh9DBdhU9jhF2cHLz3s4KmH1WpCfPpBfSP3Yh5F4Vo-KBA6VXw7g5Yt0D_MUz3w3FHIEarDE--kq6xLUIWRKHaD-FUytl8bZ0bvMVQihfHp1EvVyKleLb7jwK_3bhbGRZzrcSi2LZkeuuJHs1sypC_7BacRdXaybezp0wC-xNhkdiO52-38mOZcNeYLmbIPOAeULmzkoAMAU742YTewg8ysqe0DalStfs8guYRNn07KvTBSW"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"></div>
+<div class="absolute inset-0 p-3.5 flex flex-col justify-end text-white">
+<span class="font-badge-label text-badge-label text-primary-fixed uppercase tracking-wider">Bộ Sưu Tập Hè</span>
+<h4 class="font-title-card text-title-card text-white font-bold leading-tight mt-0.5">Top 10 Bãi Biển Hoang Sơ Đà Nẵng</h4>
+<div class="flex items-center justify-between mt-2 pt-1 border-t border-white/20">
+<span class="font-caption text-caption text-white/90">10 địa điểm chọn lọc</span>
+<span class="material-symbols-outlined text-[16px] text-white" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Banner 2: Check-in Hoàng Hôn Chill Nhất 2025 -->
+<div class="shrink-0 w-64 h-32 rounded-2xl relative overflow-hidden shadow-level-1 group cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Spectacular sunset over coastal cliffs in Da Nang with warm golden hour sunlight illuminating sea spray and modern lounge chairs on a wooden deck overlooking the horizon, serene luxury vibe with deep amber and cyan gradients." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp1pcexBUlvCFdV2Jkrst6GmIbgqEkgxEWFfnOWL9105FOXQS4oQ-rbfojQp09XdBtue1xArgtrpiEltKjpdw-l8VfKSEdMpcQkH159AXYfHFv_RfR0QIQD1gmEabkAa6ljihaK1eY5GJHpSlbpRZCmz6WSCbUgjejpwhxyT7_zir92mr9gjFf1TGZzZqYIJOfS2HV127duBF6lIIAaaqEyWmV1T4JFzUI4tnT_EM6WrEWVBoCLfzw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/40 to-transparent"></div>
+<div class="absolute inset-0 p-3.5 flex flex-col justify-end text-white">
+<span class="font-badge-label text-badge-label text-warning uppercase tracking-wider">Xu Hướng 2025</span>
+<h4 class="font-title-card text-title-card text-white font-bold leading-tight mt-0.5">Check-in Hoàng Hôn Chill Nhất 2025</h4>
+<div class="flex items-center justify-between mt-2 pt-1 border-t border-white/20">
+<span class="font-caption text-caption text-white/90">8 địa điểm view triệu đô</span>
+<span class="material-symbols-outlined text-[16px] text-white" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: "Top Đánh Giá Tuần Này" (Top Community Reviews) -->
+<section class="px-5 pt-4 pb-4">
+<div class="mb-3">
+<h2 class="font-headline-section text-headline-section text-on-surface">Top Đánh Giá Tuần Này</h2>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Trải nghiệm chân thực từ cộng đồng du lịch</p>
+</div>
+<div class="space-y-3">
+<!-- Review 1 -->
+<div class="p-3.5 rounded-2xl glass-card shadow-level-1">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-full overflow-hidden ring-1 ring-border-teal">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of Minh Trang, a stylish Vietnamese travel reviewer with smiling eyes and soft natural makeup, holding a retro film camera in sunny outdoor coastal setting with teal sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3WXyiQAZF0M-TED60-T6ZN22bFkYUF4tAy0IcZaB5JLqoCqpocq-M9I5sjknG8SdpesvSDockvS31lZnVDMi-uJHXn21FGMeZ-zmfhuUh1MgaJiMArNmIupgPvPv1vQpIRkQY7uOc2tCvZ8cDi4Qn72IZHPX7pa_9OuuiC8sN8u8VvO6nqmFoSG7Jtq9ECbf5iHn0ZIlEGQcTU6jVrgD-pLnquiS9ZAAbuU8mIODJpQeUxnlOKs18"/>
+</div>
+<div>
+<h4 class="font-title-card text-body-medium font-bold text-on-surface">Minh Trang</h4>
+<p class="font-caption text-caption text-text-subdued">@minhtrang.lens • Ghé thăm hôm qua</p>
+</div>
+</div>
+<div class="flex items-center text-warning">
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<!-- Review Quote & Mention -->
+<p class="font-body-default text-body-default text-on-surface mt-2.5 leading-relaxed">
+            "Đường xuống <span class="font-bold text-primary">Ghềnh Bàng</span> hơi dốc nhưng cảnh biển thì ngoạn mục ngoài sức tưởng tượng! Nước trong vắt nhìn thấy cả đàn cá bơi quanh rạn san hô. Nên đi tầm 3h chiều để tránh nắng gắt nha mọi người."
+          </p>
+<div class="mt-3 pt-2 flex items-center justify-between border-t border-border-neutral text-caption font-caption text-text-secondary">
+<span class="flex items-center gap-1 text-primary font-medium">
+<span class="material-symbols-outlined text-[15px]" data-icon="place">place</span>
+              Ghềnh Bàng - Bán Đảo Sơn Trà
+            </span>
+<div class="flex items-center gap-1 text-text-subdued">
+<span class="material-symbols-outlined text-[15px]" data-icon="thumb_up">thumb_up</span>
+<span>42 hữu ích</span>
+</div>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="p-3.5 rounded-2xl glass-card shadow-level-1">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-full overflow-hidden ring-1 ring-border-teal">
+<img class="w-full h-full object-cover" data-alt="Portrait of Quoc Bao, an energetic male travel creator smiling with sunglasses rested on head, wearing a crisp seafoam linen shirt in modern cafe patio backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3G2U2FTZmDv7PKcJtYJSrW6lbVVkViklLcWEbxWU4WcKDX-85FE_QILi0G2Lsd3Xolt07j4PzrxxFLhw9iZH4cCjFSbHGI3ZOncStZU5CabWXSECiH0TEertjQiubQJ48MAeX65J4LEbfjy8Ael3Auf-vnFMC1mmCBQlnuOtE4xYYKDD277vRhw6Sz72j--luFpA4B6D9MhgRnDtgBP5o6AgjsQz_A87HwrPuwRu_dfVvkWxQaKU6"/>
+</div>
+<div>
+<h4 class="font-title-card text-body-medium font-bold text-on-surface">Quốc Bảo</h4>
+<p class="font-caption text-caption text-text-subdued">@quocbao.lens • 2 ngày trước</p>
+</div>
+</div>
+<div class="flex items-center text-warning">
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="font-body-default text-body-default text-on-surface mt-2.5 leading-relaxed">
+            "Không gian tại <span class="font-bold text-primary">Horizon Bay Roastery</span> làm việc cực chill, view thẳng ra bãi biển Mỹ Khê. Cà phê hạt arabica Cầu Đất rang mộc rất thơm. 10/10 điểm cho playlist nhạc lo-fi!"
+          </p>
+<div class="mt-3 pt-2 flex items-center justify-between border-t border-border-neutral text-caption font-caption text-text-secondary">
+<span class="flex items-center gap-1 text-primary font-medium">
+<span class="material-symbols-outlined text-[15px]" data-icon="place">place</span>
+              Horizon Bay Roastery &amp; Lounge
+            </span>
+<div class="flex items-center gap-1 text-text-subdued">
+<span class="material-symbols-outlined text-[15px]" data-icon="thumb_up">thumb_up</span>
+<span>29 hữu ích</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Navigation Bar (BottomNavBar Component from Shared Components JSON) -->
+<!-- Destination count: 4 | Labels: ["Explore", "Trips", "Social", "Profile"] -->
+<!-- Current active destination: "Explore" (matching Khám Phá intent) -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 flex justify-around items-center px-4 py-2 max-w-md mx-auto">
+<div class="w-full glass-panel shadow-lg rounded-full flex items-center justify-between px-3 py-2 border border-border-neutral">
+<!-- Tab 1: Explore (Active Navigation State) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-3 py-1.5 transition-all" href="#explore">
+<span class="material-symbols-outlined text-[20px]" data-icon="explore" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="text-badge-label font-badge-label font-bold">Explore</span>
+</a>
+<!-- Tab 2: Trips (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary px-3 py-1.5 hover:text-primary transition-colors duration-200" href="#trips">
+<span class="material-symbols-outlined text-[20px]" data-icon="luggage">luggage</span>
+<span class="text-badge-label font-badge-label font-medium">Trips</span>
+</a>
+<!-- Integrated Center Floating Action Button (New Discovery Pin) -->
+<button class="relative -top-2 w-11 h-11 rounded-full bg-primary-container text-on-primary shadow-action-glow flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[24px]" data-icon="add_location_alt" style="font-variation-settings: 'FILL' 1;">add_location_alt</span>
+</button>
+<!-- Tab 3: Social (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary px-3 py-1.5 hover:text-primary transition-colors duration-200" href="#social">
+<span class="material-symbols-outlined text-[20px]" data-icon="groups">groups</span>
+<span class="text-badge-label font-badge-label font-medium">Social</span>
+</a>
+<!-- Tab 4: Profile (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary px-3 py-1.5 hover:text-primary transition-colors duration-200" href="#profile">
+<span class="material-symbols-outlined text-[20px]" data-icon="person">person</span>
+<span class="text-badge-label font-badge-label font-medium">Profile</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

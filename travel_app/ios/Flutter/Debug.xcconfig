@@ -1,0 +1,4 @@
+#include "Generated.xcconfig"
+#include? "GoogleMaps.xcconfig"
+SHARE_HOST=share.invalid
+#include? "ShareLinks.xcconfig"

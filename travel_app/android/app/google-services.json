@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "271029663990",
+    "project_id": "apptravel-5caea",
+    "storage_bucket": "apptravel-5caea.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271029663990:android:ae41e71aaee6dfde6094d7",
+        "android_client_info": {
+          "package_name": "com.company.travel_frontend_v1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "271029663990-abtg0etergk20glighi3310thmc0gvka.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.company.travel_frontend_v1",
+            "certificate_hash": "c9720a9ff3f805e0651f1812273820c2727bf488"
+          }
+        },
+        {
+          "client_id": "271029663990-c2s0lis0slmov9burrj6ulek9nm60i5a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARqpyxJHN3mW7iHL1olyMVf3rpHkiWYwc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "271029663990-c2s0lis0slmov9burrj6ulek9nm60i5a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "271029663990-iomr9ftbk4qb6pedjc05r8g0ombk9oje.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.travelFrontendV1"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

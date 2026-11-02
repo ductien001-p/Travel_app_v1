@@ -1,0 +1,3 @@
+// Copy to ShareLinks.xcconfig and set the host of https://<host>/s/<token>
+// share links. The host must serve /.well-known/apple-app-site-association.
+SHARE_HOST=share.example.com

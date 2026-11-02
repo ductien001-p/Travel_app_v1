@@ -1,0 +1,6 @@
+{
+    "GOOGLE_WEB_CLIENT_ID": "271029663990-f3d5mqaf9js08m9mkuv2mscoidfo97t1.apps.googleusercontent.com",
+    "GOOGLE_IOS_CLIENT_ID": "271029663990-bmrus9rpnchb4g83ods7vo0vur61pr3s.apps.googleusercontent.com",
+    "API_BASE_URL": "http://10.0.2.2:3001",
+    "SOCKET_URL": "http://10.0.2.2:3002"
+}

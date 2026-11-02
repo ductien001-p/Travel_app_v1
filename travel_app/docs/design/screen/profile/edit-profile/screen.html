@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chỉnh sửa hồ sơ - Teal Horizon</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Plus Jakarta Sans Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed-variant": "#00504d",
+            "on-error-container": "#93000a",
+            "surface-tint": "#006a66",
+            "on-surface-variant": "#3d4948",
+            "outline-variant": "#bcc9c7",
+            "text-secondary": "#4B6169",
+            "inverse-on-surface": "#e3f3fc",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "surface-glass": "rgba(255, 255, 255, 0.8)",
+            "border-neutral": "rgba(226, 232, 240, 0.8)",
+            "tertiary": "#005ac2",
+            "tertiary-fixed-dim": "#adc6ff",
+            "on-secondary": "#ffffff",
+            "background": "#f3faff",
+            "surface-container-lowest": "#ffffff",
+            "success": "#10B981",
+            "surface-container-low": "#e6f6ff",
+            "inverse-primary": "#66d8d2",
+            "error": "#ba1a1a",
+            "on-secondary-container": "#00716d",
+            "canvas-base": "#F4FAF9",
+            "on-secondary-fixed": "#00201f",
+            "surface-subdued": "#F1F6F5",
+            "surface": "#f3faff",
+            "primary-fixed": "#84f5ef",
+            "primary-light": "#E6F7F6",
+            "secondary-container": "#99f2ec",
+            "on-primary-fixed": "#00201f",
+            "primary": "#006a66",
+            "surface-variant": "#d5e5ed",
+            "surface-dim": "#ccdde5",
+            "on-tertiary-container": "#00295f",
+            "primary-fixed-dim": "#66d8d2",
+            "surface-bright": "#f3faff",
+            "inverse-surface": "#243339",
+            "outline": "#6d7a78",
+            "primary-container": "#20a29d",
+            "on-surface": "#0e1e24",
+            "on-primary": "#ffffff",
+            "secondary": "#006a66",
+            "on-tertiary-fixed-variant": "#004395",
+            "on-background": "#0e1e24",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed": "#99f2ec",
+            "surface-container": "#e0f0f9",
+            "secondary-fixed-dim": "#7dd5d0",
+            "surface-container-high": "#dbebf3",
+            "tertiary-container": "#508fff",
+            "text-subdued": "#8FA3AA",
+            "tertiary-fixed": "#d8e2ff",
+            "surface-container-highest": "#d5e5ed",
+            "on-primary-container": "#00312f",
+            "border-teal": "rgba(32, 162, 157, 0.12)",
+            "danger": "#EF4444",
+            "on-secondary-fixed-variant": "#00504d",
+            "warning": "#F59E0B",
+            "on-tertiary-fixed": "#001a42"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "space-md": "0.75rem",
+            "space-xl": "1.5rem",
+            "gutter": "1rem",
+            "margin": "1.25rem"
+          },
+          "fontFamily": {
+            "body-default": ["Plus Jakarta Sans"],
+            "title-card": ["Plus Jakarta Sans"],
+            "badge-label": ["Plus Jakarta Sans"],
+            "caption": ["Plus Jakarta Sans"],
+            "headline-section": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"],
+            "title-screen": ["Plus Jakarta Sans"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-default": ["14px", { "lineHeight": "21px", "fontWeight": "400" }],
+            "title-card": ["16px", { "lineHeight": "21px", "fontWeight": "600" }],
+            "badge-label": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "caption": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-section": ["18px", { "lineHeight": "24px", "fontWeight": "700" }],
+            "body-medium": ["14px", { "lineHeight": "21px", "fontWeight": "500" }],
+            "title-screen": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "display-hero": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .shadow-level-1 {
+      box-shadow: 0 4px 20px -2px rgba(32, 162, 157, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+    }
+
+    .shadow-level-2 {
+      box-shadow: 0 10px 30px -5px rgba(15, 30, 36, 0.08);
+    }
+
+    .shadow-action-glow {
+      box-shadow: 0 10px 25px -4px rgba(32, 162, 157, 0.38);
+    }
+
+    /* Ambient atmospheric background mesh */
+    .bg-voyager-mesh {
+      background: radial-gradient(circle at 10% 15%, rgba(132, 245, 239, 0.28) 0%, transparent 45%),
+                  radial-gradient(circle at 90% 40%, rgba(32, 162, 157, 0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 50% 85%, rgba(230, 247, 246, 0.8) 0%, transparent 60%),
+                  #F4FAF9;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-canvas-base text-on-surface font-body-default min-h-screen flex justify-center selection:bg-primary-container selection:text-on-primary">
+<!-- Mobile Viewport Container (Max 390px, Mobile First) -->
+<div class="w-full max-w-[390px] min-h-screen bg-voyager-mesh relative flex flex-col pb-36 overflow-x-hidden border-x border-border-neutral/40">
+<!-- 1. TOP APP BAR (Frosted Air Glass) -->
+<!-- Task-focused screen: Cancel / Save actions, no global shell border line -->
+<header class="sticky top-0 z-50 w-full h-16 px-4 bg-surface-glass backdrop-blur-xl flex items-center justify-between shadow-level-2 transition-all">
+<button aria-label="Hủy thao tác" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-lowest/80 text-text-secondary hover:text-primary hover:bg-primary-light transition-all active:scale-95 shadow-sm" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-title-screen text-title-screen font-bold tracking-tight text-on-surface">Chỉnh sửa hồ sơ</h1>
+<button class="px-3.5 py-1.5 rounded-full font-body-medium text-body-medium font-bold text-primary-container hover:bg-primary-light active:scale-95 transition-all" id="topSaveBtn" type="button">
+        Lưu
+      </button>
+</header>
+<!-- MAIN SCROLLABLE CONTENT -->
+<main class="flex-1 px-5 pt-4 space-y-6">
+<!-- 2. KHU VỰC CHỈNH SỬA ẢNH ĐẠI DIỆN & ẢNH BÌA -->
+<section class="relative">
+<!-- Ảnh bìa (Cover Image Backdrop) -->
+<div class="w-full h-36 rounded-2xl overflow-hidden relative group border border-white/60 shadow-level-1">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A breathtaking aerial vista of turquoise alpine glacial lakes surrounded by snow-capped peaks in morning mist, bathed in warm golden ambient sunlight with crystal teal water reflecting the pristine sky in modern editorial travel photography." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCa1TcJrL9YHWJky3jaweRNmG2k1fW5IUf2oXppRJbtMR39l8aQOSUutn1bbbqC8rS7KDghpbaxd6k8EP6dMypdE4We_moSMJ0jL3lQ71T613dEvn2wiPZcvk5MLs7JAUH5mabv0m_FSrDclblzdvGX607QjZgv3wGdSIw5lw5e3GzHcHhET-HwQ4g441xGAqEUtJtC_ky-W0xxSJjbQ_OFJfuPquSm-RdREUDiskECU-1irYLSHw0B')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10"></div>
+<!-- Nút đổi ảnh bìa -->
+<button class="absolute top-2.5 right-2.5 px-3 py-1.5 rounded-full bg-surface-glass backdrop-blur-md border border-white/40 text-on-surface font-caption text-caption flex items-center gap-1.5 shadow-sm hover:bg-white active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="photo_camera">photo_camera</span>
+<span>Đổi bìa</span>
+</button>
+</div>
+<!-- Avatar & Upload Actions -->
+<div class="flex flex-col items-center -mt-14 relative z-10">
+<div class="relative group">
+<div class="w-24 h-24 rounded-full p-1 bg-white shadow-level-2 ring-4 ring-white/80 overflow-hidden">
+<img class="w-full h-full rounded-full object-cover" data-alt="Close up portrait photograph of Alex Nguyen, a 28-year-old modern Southeast Asian male traveler with radiant energetic expression, standing in front of scenic tropical mountains under crystal clear sky with natural lighting and editorial warmth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTHbk_xxlhsLlWrmmiQgytxGbfcGnnUdYAF7PAcHn-JUo2tIWgzFZRGntvd-7rAsOOfqe9vKRXMwqvdmCLiF3BWC-7ggizCrwIKvQstd0YKTKYJGgpqKw-uycZjDYCjozJcXAvUHIEVgkuzaB2s2TSwxqS7w22bolE5oHJPTE2UvUD3b12PmohfN_KNNnqO-nj66fQ7EA4X9DYpSpp7UkgDFGJqM1TM0_plSeB1d8OffqT8M1xwaTk"/>
+</div>
+<!-- Camera Badge Floating Icon -->
+<button aria-label="Tải ảnh mới" class="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-action-glow ring-2 ring-white hover:scale-110 active:scale-95 transition-all cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="photo_camera">photo_camera</span>
+</button>
+</div>
+<div class="mt-2.5 text-center">
+<button class="font-body-medium text-body-medium font-semibold text-primary hover:underline" type="button">
+              Đổi ảnh đại diện
+            </button>
+<p class="font-caption text-caption text-text-subdued flex items-center justify-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="info">info</span>
+              Hỗ trợ JPG, PNG • Tối đa 5MB (/uploads/presigns)
+            </p>
+</div>
+</div>
+</section>
+<!-- 3. NHÓM THÔNG TIN CƠ BẢN -->
+<section class="bg-surface-glass backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-level-1 space-y-4">
+<div class="flex items-center gap-2 pb-1 border-b border-border-teal">
+<span class="material-symbols-outlined text-primary-container" data-icon="badge">badge</span>
+<h2 class="font-headline-section text-headline-section font-bold text-on-surface">Thông tin cơ bản</h2>
+</div>
+<!-- Họ và tên (Full Name) -->
+<div class="space-y-1.5">
+<label class="block font-caption text-caption text-text-secondary font-semibold" for="fullName">Họ và tên</label>
+<div class="relative">
+<input class="w-full px-3.5 py-2.5 rounded-xl bg-surface-subdued border border-border-teal/60 text-on-surface font-body-default focus:outline-none focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container transition-all" id="fullName" type="text" value="Alex Nguyễn"/>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-text-subdued pointer-events-none" data-icon="edit">edit</span>
+</div>
+</div>
+<!-- Tên người dùng (Username) -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-center">
+<label class="block font-caption text-caption text-text-secondary font-semibold" for="username">Tên người dùng (Username)</label>
+<span class="font-badge-label text-badge-label text-success bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">Duy nhất</span>
+</div>
+<div class="relative">
+<span class="absolute left-3.5 top-2.5 text-text-subdued font-body-medium">@</span>
+<input class="w-full pl-8 pr-3.5 py-2.5 rounded-xl bg-surface-subdued border border-border-teal/60 text-on-surface font-body-default focus:outline-none focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container transition-all font-medium" id="username" type="text" value="alex_wander"/>
+</div>
+<p class="font-caption text-caption text-text-subdued">Đường dẫn trang cá nhân: tealhorizon.app/@alex_wander</p>
+</div>
+<!-- Giới thiệu bản thân (Bio) -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-center">
+<label class="block font-caption text-caption text-text-secondary font-semibold" for="bio">Giới thiệu bản thân (Bio)</label>
+<span class="font-caption text-caption text-text-subdued" id="bioCounter">76/150</span>
+</div>
+<textarea class="w-full px-3.5 py-2.5 rounded-xl bg-surface-subdued border border-border-teal/60 text-on-surface font-body-default focus:outline-none focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container transition-all resize-none" id="bio" maxlength="150" rows="3">Đam mê khám phá văn hóa bản địa, ẩm thực đường phố và săn ảnh bình minh 📸✨</textarea>
+</div>
+<!-- Vị trí / Thành phố (Location) -->
+<div class="space-y-1.5">
+<label class="block font-caption text-caption text-text-secondary font-semibold" for="location">Vị trí hiện tại</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-primary-container pointer-events-none" data-icon="location_on">location_on</span>
+<input class="w-full pl-9 pr-3.5 py-2.5 rounded-xl bg-surface-subdued border border-border-teal/60 text-on-surface font-body-default focus:outline-none focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container transition-all" id="location" type="text" value="Đà Nẵng, Việt Nam"/>
+</div>
+</div>
+</section>
+<!-- 4. NHÓM THÔNG TIN CÁ NHÂN & LIÊN HỆ -->
+<section class="bg-surface-glass backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-level-1 space-y-4">
+<div class="flex items-center gap-2 pb-1 border-b border-border-teal">
+<span class="material-symbols-outlined text-primary-container" data-icon="contact_mail">contact_mail</span>
+<h2 class="font-headline-section text-headline-section font-bold text-on-surface">Thông tin liên hệ &amp; Cá nhân</h2>
+</div>
+<!-- Email -->
+<div class="space-y-1.5">
+<label class="block font-caption text-caption text-text-secondary font-semibold">Địa chỉ Email</label>
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-subdued border border-border-teal/60">
+<div class="flex items-center gap-2 overflow-hidden">
+<span class="material-symbols-outlined text-text-subdued text-[18px]" data-icon="mail">mail</span>
+<span class="font-body-default text-body-default text-on-surface truncate">alex.traveler@horizon.io</span>
+</div>
+<div class="flex items-center gap-1 px-2 py-0.5 bg-emerald-50 text-success rounded-full border border-emerald-200 shrink-0">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+<span class="font-badge-label text-badge-label">Đã xác thực</span>
+</div>
+</div>
+</div>
+<!-- Số điện thoại -->
+<div class="space-y-1.5">
+<label class="block font-caption text-caption text-text-secondary font-semibold">Số điện thoại</label>
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-subdued border border-border-teal/60">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-subdued text-[18px]" data-icon="call">call</span>
+<span class="font-body-default text-body-default text-on-surface">(+84) 987 ••• 678</span>
+</div>
+<button class="font-caption text-caption font-semibold text-primary hover:underline" type="button">
+              Thay đổi
+            </button>
+</div>
+</div>
+<!-- Ngày sinh & Giới tính (Grid 2 cột) -->
+<div class="grid grid-cols-2 gap-3 pt-1">
+<div class="space-y-1.5">
+<label class="block font-caption text-caption text-text-secondary font-semibold" for="birthDate">Ngày sinh</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2.5 top-2.5 text-text-subdued text-[16px] pointer-events-none" data-icon="calendar_today">calendar_today</span>
+<input class="w-full pl-8 pr-2.5 py-2 rounded-xl bg-surface-subdued border border-border-teal/60 text-on-surface font-body-default text-[13px] focus:outline-none focus:ring-2 focus:ring-primary-container/20" id="birthDate" type="text" value="15/08/1996"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="block font-caption text-caption text-text-secondary font-semibold" for="gender">Giới tính</label>
+<div class="relative">
+<select class="w-full pl-3 pr-7 py-2 rounded-xl bg-surface-subdued border border-border-teal/60 text-on-surface font-body-default text-[13px] focus:outline-none focus:ring-2 focus:ring-primary-container/20 appearance-none" id="gender">
+<option selected="" value="male">Nam</option>
+<option value="female">Nữ</option>
+<option value="other">Khác</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2.5 text-text-subdued text-[18px] pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. NHÓM GU DU LỊCH & ĐỊNH HÌNH PHONG CÁCH (Travel Preferences) -->
+<section class="bg-surface-glass backdrop-blur-xl rounded-2xl p-4 border border-white/80 shadow-level-1 space-y-4">
+<div class="flex items-center gap-2 pb-1 border-b border-border-teal">
+<span class="material-symbols-outlined text-primary-container" data-icon="tune">tune</span>
+<h2 class="font-headline-section text-headline-section font-bold text-on-surface">Gu du lịch &amp; Phong cách</h2>
+</div>
+<!-- Mức ngân sách ưa thích (budgetLevel: LOW / MEDIUM / HIGH) -->
+<div class="space-y-2">
+<label class="block font-caption text-caption text-text-secondary font-semibold">Mức ngân sách ưa thích (Budget Level)</label>
+<div class="grid grid-cols-3 gap-2 p-1 bg-surface-subdued rounded-2xl border border-border-teal/40">
+<!-- LOW -->
+<button class="py-2 px-2 rounded-xl text-center font-caption text-caption font-semibold text-text-secondary hover:text-on-surface transition-all" type="button">
+              Tiết kiệm<br/><span class="text-[10px] text-text-subdued font-normal">Low</span>
+</button>
+<!-- MEDIUM (Active) -->
+<button class="py-2 px-2 rounded-xl text-center font-caption text-caption font-bold bg-primary-container text-on-primary shadow-action-glow transition-all" type="button">
+              Vừa phải<br/><span class="text-[10px] text-on-primary/90 font-medium">Medium</span>
+</button>
+<!-- HIGH -->
+<button class="py-2 px-2 rounded-xl text-center font-caption text-caption font-semibold text-text-secondary hover:text-on-surface transition-all" type="button">
+              Cao cấp<br/><span class="text-[10px] text-text-subdued font-normal">High</span>
+</button>
+</div>
+</div>
+<!-- Ngôn ngữ du lịch -->
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="block font-caption text-caption text-text-secondary font-semibold">Ngôn ngữ du lịch</label>
+<button class="font-caption text-caption font-semibold text-primary hover:underline flex items-center gap-0.5" type="button">
+<span class="material-symbols-outlined text-[14px]" data-icon="add">add</span> Thêm
+            </button>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-light text-primary font-caption text-caption font-medium border border-primary-container/20">
+              Tiếng Việt
+              <span class="material-symbols-outlined text-[14px] cursor-pointer hover:text-danger" data-icon="close">close</span>
+</span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-light text-primary font-caption text-caption font-medium border border-primary-container/20">
+              English
+              <span class="material-symbols-outlined text-[14px] cursor-pointer hover:text-danger" data-icon="close">close</span>
+</span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-light text-primary font-caption text-caption font-medium border border-primary-container/20">
+              Tiếng Pháp
+              <span class="material-symbols-outlined text-[14px] cursor-pointer hover:text-danger" data-icon="close">close</span>
+</span>
+</div>
+</div>
+<!-- Sở thích / Interests (Tag Pills) -->
+<div class="space-y-2">
+<label class="block font-caption text-caption text-text-secondary font-semibold">Sở thích trải nghiệm (Interests)</label>
+<div class="flex flex-wrap gap-2">
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary-container text-on-primary font-caption text-caption font-semibold shadow-sm" type="button">
+<span class="material-symbols-outlined text-[14px]" data-icon="photo_camera">photo_camera</span>
+              Nhiếp ảnh
+            </button>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary-container text-on-primary font-caption text-caption font-semibold shadow-sm" type="button">
+<span class="material-symbols-outlined text-[14px]" data-icon="restaurant">restaurant</span>
+              Ẩm thực
+            </button>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary-container text-on-primary font-caption text-caption font-semibold shadow-sm" type="button">
+<span class="material-symbols-outlined text-[14px]" data-icon="camping">camping</span>
+              Cắm trại
+            </button>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary-container text-on-primary font-caption text-caption font-semibold shadow-sm" type="button">
+<span class="material-symbols-outlined text-[14px]" data-icon="waves">waves</span>
+              Biển đảo
+            </button>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-subdued text-text-secondary hover:bg-primary-light hover:text-primary font-caption text-caption font-medium border border-border-neutral transition-colors" type="button">
+<span class="material-symbols-outlined text-[14px]" data-icon="hiking">hiking</span>
+              Leo núi
+            </button>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-subdued text-text-secondary hover:bg-primary-light hover:text-primary font-caption text-caption font-medium border border-border-neutral transition-colors" type="button">
+<span class="material-symbols-outlined text-[14px]" data-icon="museum">museum</span>
+              Văn hóa
+            </button>
+</div>
+</div>
+</section>
+<!-- Đồng bộ DTO & API Patch Notice Card -->
+<div class="p-3 rounded-xl bg-primary-light/60 border border-primary-container/20 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary-container shrink-0 mt-0.5 text-[18px]" data-icon="cloud_sync">cloud_sync</span>
+<p class="font-caption text-caption text-text-secondary leading-snug">
+          Mọi thay đổi sẽ được cập nhật đồng bộ qua API <code class="font-mono text-[11px] text-primary font-bold">PATCH /users/update</code> theo định dạng <code class="font-mono text-[11px] text-primary">UpdateUserDto</code>.
+        </p>
+</div>
+</main>
+<!-- 6. NÚT CTA CỐ ĐỊNH DƯỚI CÙNG (Fixed Floating Footer) -->
+<!-- Screen intent is task-focused; global bottom nav bar is intentionally suppressed per semantic shell filter -->
+<div class="fixed bottom-0 left-0 right-0 z-40 max-w-[390px] mx-auto p-4 bg-surface-glass backdrop-blur-xl border-t border-white/60">
+<button class="w-full h-14 rounded-full bg-primary-container text-on-primary font-headline-section text-headline-section font-bold shadow-action-glow flex items-center justify-center gap-2 hover:bg-secondary active:scale-[0.98] transition-all" id="bottomSubmitBtn" type="button">
+<span>Lưu thay đổi hồ sơ</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Notification Toast Modal (Hidden by default, triggered on Save) -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-full bg-inverse-surface text-inverse-on-surface shadow-level-3 flex items-center gap-2 transition-all opacity-0 pointer-events-none transform -translate-y-2" id="toastNotification">
+<span class="material-symbols-outlined text-success text-[18px]" data-icon="check_circle">check_circle</span>
+<span class="font-caption text-caption font-medium">Hồ sơ đã được lưu thành công!</span>
+</div>
+</div>
+<!-- Interactive Micro-interactions Script -->
+<script>
+    // Live Bio Character Counter
+    const bioInput = document.getElementById('bio');
+    const bioCounter = document.getElementById('bioCounter');
+    if (bioInput && bioCounter) {
+      bioInput.addEventListener('input', () => {
+        bioCounter.textContent = `${bioInput.value.length}/150`;
+      });
+    }
+
+    // Save Feedback Simulation
+    function triggerSaveToast() {
+      const toast = document.getElementById('toastNotification');
+      if (toast) {
+        toast.classList.remove('opacity-0', '-translate-y-2', 'pointer-events-none');
+        toast.classList.add('opacity-100', 'translate-y-0');
+        setTimeout(() => {
+          toast.classList.remove('opacity-100', 'translate-y-0');
+          toast.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
+        }, 2600);
+      }
+    }
+
+    document.getElementById('topSaveBtn')?.addEventListener('click', triggerSaveToast);
+    document.getElementById('bottomSubmitBtn')?.addEventListener('click', triggerSaveToast);
+  </script>
+</body></html>

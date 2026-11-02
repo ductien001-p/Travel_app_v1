@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Điểm Đến Đã Lưu - Teal Horizon</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed-variant": "#00504d",
+            "on-error-container": "#93000a",
+            "surface-tint": "#006a66",
+            "on-surface-variant": "#3d4948",
+            "outline-variant": "#bcc9c7",
+            "text-secondary": "#4B6169",
+            "inverse-on-surface": "#e3f3fc",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "surface-glass": "rgba(255, 255, 255, 0.8)",
+            "border-neutral": "rgba(226, 232, 240, 0.8)",
+            "tertiary": "#005ac2",
+            "tertiary-fixed-dim": "#adc6ff",
+            "on-secondary": "#ffffff",
+            "background": "#f3faff",
+            "surface-container-lowest": "#ffffff",
+            "success": "#10B981",
+            "surface-container-low": "#e6f6ff",
+            "inverse-primary": "#66d8d2",
+            "error": "#ba1a1a",
+            "on-secondary-container": "#00716d",
+            "canvas-base": "#F4FAF9",
+            "on-secondary-fixed": "#00201f",
+            "surface-subdued": "#F1F6F5",
+            "surface": "#f3faff",
+            "primary-fixed": "#84f5ef",
+            "primary-light": "#E6F7F6",
+            "secondary-container": "#99f2ec",
+            "on-primary-fixed": "#00201f",
+            "primary": "#006a66",
+            "surface-variant": "#d5e5ed",
+            "surface-dim": "#ccdde5",
+            "on-tertiary-container": "#00295f",
+            "primary-fixed-dim": "#66d8d2",
+            "surface-bright": "#f3faff",
+            "inverse-surface": "#243339",
+            "outline": "#6d7a78",
+            "primary-container": "#20a29d",
+            "on-surface": "#0e1e24",
+            "on-primary": "#ffffff",
+            "secondary": "#006a66",
+            "on-tertiary-fixed-variant": "#004395",
+            "on-background": "#0e1e24",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed": "#99f2ec",
+            "surface-container": "#e0f0f9",
+            "secondary-fixed-dim": "#7dd5d0",
+            "surface-container-high": "#dbebf3",
+            "tertiary-container": "#508fff",
+            "text-subdued": "#8FA3AA",
+            "tertiary-fixed": "#d8e2ff",
+            "surface-container-highest": "#d5e5ed",
+            "on-primary-container": "#00312f",
+            "border-teal": "rgba(32, 162, 157, 0.12)",
+            "danger": "#EF4444",
+            "on-secondary-fixed-variant": "#00504d",
+            "warning": "#F59E0B",
+            "on-tertiary-fixed": "#001a42"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "space-md": "0.75rem",
+            "space-xl": "1.5rem",
+            "gutter": "1rem",
+            "margin": "1.25rem"
+          },
+          "fontFamily": {
+            "body-default": ["Plus Jakarta Sans"],
+            "title-card": ["Plus Jakarta Sans"],
+            "badge-label": ["Plus Jakarta Sans"],
+            "caption": ["Plus Jakarta Sans"],
+            "headline-section": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"],
+            "title-screen": ["Plus Jakarta Sans"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-default": ["14px", { "lineHeight": "21px", "fontWeight": "400" }],
+            "title-card": ["16px", { "lineHeight": "21px", "fontWeight": "600" }],
+            "badge-label": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "caption": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-section": ["18px", { "lineHeight": "24px", "fontWeight": "700" }],
+            "body-medium": ["14px", { "lineHeight": "21px", "fontWeight": "500" }],
+            "title-screen": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "display-hero": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Ambient Glow Tokens */
+    .glow-teal-action {
+      box-shadow: 0 10px 25px -4px rgba(32, 162, 157, 0.38);
+    }
+    .level-1-card {
+      box-shadow: 0 4px 20px -2px rgba(32, 162, 157, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+    }
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    /* Hide scrollbar for horizontal chip bars */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-canvas-base text-on-surface antialiased min-h-screen font-body-default text-body-default relative selection:bg-primary-light selection:text-primary">
+<!-- Ambient Ethereal Glow Background Blobs -->
+<div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+<div class="absolute -top-24 -left-20 w-80 h-80 bg-primary-light/60 rounded-full blur-3xl"></div>
+<div class="absolute top-1/3 -right-24 w-72 h-72 bg-surface-container-low rounded-full blur-3xl"></div>
+<div class="absolute bottom-28 left-10 w-96 h-96 bg-primary-fixed/20 rounded-full blur-3xl"></div>
+</div>
+<!-- Main Mobile Canvas Container (Max 390px - 448px standard shell) -->
+<main class="relative z-10 max-w-md mx-auto min-h-screen bg-canvas-base/70 shadow-2xl flex flex-col pb-32">
+<!-- Top App Bar (Frosted Glass Container with Pill Back Button) -->
+<header class="sticky top-0 z-40 px-5 h-16 w-full flex items-center justify-between glass-panel border-b border-white/40">
+<div class="flex items-center gap-3">
+<button aria-label="Quay lại hồ sơ" class="w-10 h-10 rounded-full bg-white/90 shadow-sm flex items-center justify-center text-on-surface hover:bg-primary-light transition-colors duration-200 active:scale-95 border border-white/60" type="button">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<h1 class="font-title-screen text-title-screen text-on-surface font-bold tracking-tight">Điểm Đến Đã Lưu</h1>
+<p class="font-caption text-caption text-text-subdued -mt-1">Hồ sơ cá nhân • Saved Bucket List</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Lọc nhanh" class="w-9 h-9 rounded-full bg-white/80 hover:bg-primary-light flex items-center justify-center text-on-surface-variant transition-colors duration-200 active:scale-95 border border-white" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="tune">tune</span>
+</button>
+<button aria-label="Xem trên bản đồ" class="w-9 h-9 rounded-full bg-white/80 hover:bg-primary-light flex items-center justify-center text-primary transition-colors duration-200 active:scale-95 border border-white" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="map">map</span>
+</button>
+</div>
+</header>
+<!-- Main Content Stream -->
+<div class="px-5 space-y-6 mt-4">
+<!-- Section: Stat Badge & Search Bar -->
+<section class="space-y-3">
+<!-- Badge Summary (GET /places/saved/count) -->
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-light border border-border-teal text-primary">
+<span class="material-symbols-outlined text-sm material-symbols-fill text-primary-container" data-icon="bookmark">bookmark</span>
+<span class="font-badge-label text-badge-label font-bold tracking-wide">
+              18 địa điểm đã lưu trong bộ sưu tập
+            </span>
+</div>
+<span class="font-caption text-caption text-text-subdued flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-success material-symbols-fill" data-icon="sync">sync</span> Đồng bộ đám mây
+          </span>
+</div>
+<!-- Search Bar -->
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="search">search</span>
+</div>
+<input class="w-full pl-11 pr-10 py-3 rounded-full bg-surface-subdued text-on-surface placeholder:text-text-subdued font-body-default text-body-default border border-border-neutral focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all outline-none" placeholder="Tìm trong danh sách đã lưu..." type="text"/>
+<button aria-label="Giọng nói" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-text-subdued hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="mic">mic</span>
+</button>
+</div>
+</section>
+<!-- Section: Horizontal Filter Pills Rail -->
+<section>
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 -mx-5 px-5">
+<!-- Active Filter Pill -->
+<button class="shrink-0 px-4 py-2 rounded-full bg-primary-container text-white font-badge-label text-badge-label shadow-sm glow-teal-action transition-all flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-xs material-symbols-fill" data-icon="auto_awesome">auto_awesome</span>
+<span>Tất cả (18)</span>
+</button>
+<!-- Inactive Filter Pills -->
+<button class="shrink-0 px-4 py-2 rounded-full bg-white/80 hover:bg-primary-light border border-border-teal text-text-secondary font-badge-label text-badge-label transition-colors" type="button">
+            Ẩm thực &amp; Cà phê (7)
+          </button>
+<button class="shrink-0 px-4 py-2 rounded-full bg-white/80 hover:bg-primary-light border border-border-teal text-text-secondary font-badge-label text-badge-label transition-colors" type="button">
+            Biển đảo &amp; Nghỉ dưỡng (5)
+          </button>
+<button class="shrink-0 px-4 py-2 rounded-full bg-white/80 hover:bg-primary-light border border-border-teal text-text-secondary font-badge-label text-badge-label transition-colors" type="button">
+            Văn hóa &amp; Di tích (4)
+          </button>
+<button class="shrink-0 px-4 py-2 rounded-full bg-white/80 hover:bg-primary-light border border-border-teal text-text-secondary font-badge-label text-badge-label transition-colors" type="button">
+            Cắm trại &amp; Núi (2)
+          </button>
+</div>
+</section>
+<!-- Section: Smart Collections Hub (Mini Horizontal Cards) -->
+<section class="space-y-3 pt-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="folder_special">folder_special</span>
+<h2 class="font-headline-section text-headline-section text-on-surface">Bộ Sưu Tập Thông Minh</h2>
+</div>
+<button class="font-caption text-caption text-primary font-bold hover:underline flex items-center" type="button">
+            Tất cả (3) <span class="material-symbols-outlined text-xs ml-0.5" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<!-- Collection 1 -->
+<div class="p-3.5 rounded-DEFAULT bg-white/90 border border-white level-1-card relative overflow-hidden group hover:border-primary-container/40 transition-all cursor-pointer">
+<div class="flex items-start justify-between">
+<div class="w-9 h-9 rounded-full bg-primary-light flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg" data-icon="beach_access">beach_access</span>
+</div>
+<span class="font-badge-label text-badge-label text-text-subdued">11 mục</span>
+</div>
+<h3 class="font-title-card text-title-card text-on-surface mt-2.5 line-clamp-1 group-hover:text-primary transition-colors">Kế hoạch Hè 2025</h3>
+<p class="font-caption text-caption text-text-subdued mt-0.5">Đà Nẵng • Huế • Cù Lao</p>
+</div>
+<!-- Collection 2 -->
+<div class="p-3.5 rounded-DEFAULT bg-white/90 border border-white level-1-card relative overflow-hidden group hover:border-primary-container/40 transition-all cursor-pointer">
+<div class="flex items-start justify-between">
+<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-lg" data-icon="ramen_dining">ramen_dining</span>
+</div>
+<span class="font-badge-label text-badge-label text-text-subdued">7 mục</span>
+</div>
+<h3 class="font-title-card text-title-card text-on-surface mt-2.5 line-clamp-1 group-hover:text-primary transition-colors">Food Tour Miền Trung</h3>
+<p class="font-caption text-caption text-text-subdued mt-0.5">Cao lầu, bánh mì, trà mót</p>
+</div>
+</div>
+<!-- Add New Collection Button -->
+<button class="w-full py-2.5 px-4 rounded-DEFAULT border border-dashed border-primary/40 bg-primary-light/40 hover:bg-primary-light/70 text-primary font-caption text-caption font-bold flex items-center justify-center gap-1.5 transition-all" type="button">
+<span class="material-symbols-outlined text-base" data-icon="create_new_folder">create_new_folder</span>
+          Tạo bộ sưu tập mới (+ New Folder / List)
+        </button>
+</section>
+<!-- Section: Saved Places List (API: GET /places/saved/me) -->
+<section class="space-y-4 pt-2">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-section text-headline-section text-on-surface flex items-center gap-1.5">
+<span>Danh Sách Đã Lưu</span>
+<span class="text-xs px-2 py-0.5 rounded-full bg-surface-subdued text-text-secondary font-semibold">18</span>
+</h2>
+<div class="flex items-center gap-2">
+<button class="text-xs font-medium text-text-secondary flex items-center gap-0.5 px-2.5 py-1 rounded-full bg-white/70 border border-border-neutral" type="button">
+<span>Mới lưu nhất</span>
+<span class="material-symbols-outlined text-xs" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Card 1: Phố Cổ Hội An (Quảng Nam) -->
+<article class="p-3.5 rounded-DEFAULT bg-white/95 border border-white level-1-card transition-all duration-200 hover:shadow-md relative overflow-hidden group">
+<div class="flex gap-3.5">
+<!-- Thumbnail Image -->
+<div class="relative w-28 h-28 shrink-0 rounded-DEFAULT overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A vivid evening shot of Hoi An Ancient Town in Vietnam glowing under thousands of colorful silk lanterns suspended across historic merchant houses. Soft warm reflections shimmer across the tranquil Thu Bon River in high clarity. The aesthetic embodies serene luxury travel with rich teal night sky tones contrasting against deep amber lanterns." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGMLqjd-43bnVNB12gKy-dqnO4PBnDMu7BYLOtfVMWWZzEhiXmZT2ippC8jqixNu6dn0FN6M2-SX94T6D79bQ3SA-gNu3kREz0RCKP7L3_Yp_2XqpCMXHifrgNHuZUCtwBDCwADJV54w1x6B6cprCXB4W5dDNHYekzKAMBRC5mS722aB7YxK7vwfZk7wh82SW2QeAagBw1_V75LU0hvFZ_ENDH2nw_ldmTn_Rsc7EU0ZwKvUmAY21Z"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-glass backdrop-blur-md text-on-primary-container font-badge-label text-badge-label border border-white/50">
+                OLD_TOWN
+              </span>
+</div>
+<!-- Content Details -->
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h3 class="font-title-card text-title-card text-on-surface line-clamp-1 group-hover:text-primary transition-colors">
+                    Phố Cổ Hội An
+                  </h3>
+<!-- Unsave Action (DELETE /places/{placeId}/save) -->
+<button class="w-8 h-8 -mr-1 -mt-1 rounded-full flex items-center justify-center text-primary-container hover:bg-primary-light active:scale-90 transition-all" title="Bỏ lưu khỏi danh sách" type="button">
+<span class="material-symbols-outlined text-xl material-symbols-fill" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+<div class="flex items-center gap-1.5 mt-0.5 text-text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="location_on">location_on</span>
+<span>TP. Hội An, Quảng Nam</span>
+</div>
+<div class="flex items-center gap-2 mt-1.5">
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-warning/10 text-warning font-caption text-caption font-bold">
+<span class="material-symbols-outlined text-xs material-symbols-fill" data-icon="star">star</span>
+<span>4.9</span>
+</div>
+<span class="font-caption text-caption text-text-subdued">(1.2k đánh giá)</span>
+</div>
+</div>
+<!-- Bottom Card Actions -->
+<div class="flex items-center justify-between pt-2 border-t border-slate-100 mt-2">
+<button class="px-3 py-1.5 rounded-full bg-primary-container text-white font-badge-label text-badge-label glow-teal-action hover:bg-primary active:scale-95 transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-xs" data-icon="add">add</span>
+                  Thêm vào chuyến đi
+                </button>
+<div class="flex items-center gap-1">
+<button class="w-7 h-7 rounded-full text-text-subdued hover:text-primary hover:bg-primary-light flex items-center justify-center transition-colors" title="Chia sẻ với bạn bè" type="button">
+<span class="material-symbols-outlined text-base" data-icon="share">share</span>
+</button>
+<button class="w-7 h-7 rounded-full text-text-subdued hover:text-on-surface hover:bg-surface-subdued flex items-center justify-center transition-colors" title="Thao tác khác" type="button">
+<span class="material-symbols-outlined text-base" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2: Bán Đảo Sơn Trà & Đỉnh Bàn Cờ (Đà Nẵng) -->
+<article class="p-3.5 rounded-DEFAULT bg-white/95 border border-white level-1-card transition-all duration-200 hover:shadow-md relative overflow-hidden group">
+<div class="flex gap-3.5">
+<!-- Thumbnail Image -->
+<div class="relative w-28 h-28 shrink-0 rounded-DEFAULT overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Breathtaking panoramic aerial drone view of the winding mountain coastal road of Son Tra Peninsula in Da Nang. Verdant rainforest slopes meet translucent turquoise ocean waters under radiant morning sunlight. The composition radiates ethereal discovery and serene exploration with teal sea currents and misty green peaks." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBvNwyqLWlSlJUG68LJrOmZ2_EyyZYoxfst0MlUdDgd0C-xIiUJBSWlBERQFCup__KlQs3GmgbFHPK2pT3vocH20MRc-QbXLDRt51YYkk6PLWhqOrqnYnCS_6udD5YzESHyGvpvMkwPDme29z6gd-moC2tq-8GeATQQjcGaUfWAD-KOToaG3vbXysr1CytCd1lqfAZFiXbUY18QSTt45hKbIYOtfjKt8dERgZUQiM-tmMaR-GItMBz"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-glass backdrop-blur-md text-on-primary-container font-badge-label text-badge-label border border-white/50">
+                MOUNTAIN
+              </span>
+</div>
+<!-- Content Details -->
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h3 class="font-title-card text-title-card text-on-surface line-clamp-1 group-hover:text-primary transition-colors">
+                    Bán Đảo Sơn Trà &amp; Đỉnh Bàn Cờ
+                  </h3>
+<!-- Unsave Action (DELETE /places/{placeId}/save) -->
+<button class="w-8 h-8 -mr-1 -mt-1 rounded-full flex items-center justify-center text-primary-container hover:bg-primary-light active:scale-90 transition-all" title="Bỏ lưu khỏi danh sách" type="button">
+<span class="material-symbols-outlined text-xl material-symbols-fill" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+<div class="flex items-center gap-1.5 mt-0.5 text-text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="location_on">location_on</span>
+<span>Sơn Trà, TP. Đà Nẵng</span>
+</div>
+<div class="flex items-center gap-2 mt-1.5">
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-warning/10 text-warning font-caption text-caption font-bold">
+<span class="material-symbols-outlined text-xs material-symbols-fill" data-icon="star">star</span>
+<span>4.8</span>
+</div>
+<span class="font-caption text-caption text-text-subdued">(890 đánh giá)</span>
+</div>
+</div>
+<!-- Bottom Card Actions -->
+<div class="flex items-center justify-between pt-2 border-t border-slate-100 mt-2">
+<button class="px-3 py-1.5 rounded-full bg-primary-container text-white font-badge-label text-badge-label glow-teal-action hover:bg-primary active:scale-95 transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-xs" data-icon="add">add</span>
+                  Thêm vào chuyến đi
+                </button>
+<div class="flex items-center gap-1">
+<button class="w-7 h-7 rounded-full text-text-subdued hover:text-primary hover:bg-primary-light flex items-center justify-center transition-colors" title="Chia sẻ với bạn bè" type="button">
+<span class="material-symbols-outlined text-base" data-icon="share">share</span>
+</button>
+<button class="w-7 h-7 rounded-full text-text-subdued hover:text-on-surface hover:bg-surface-subdued flex items-center justify-center transition-colors" title="Thao tác khác" type="button">
+<span class="material-symbols-outlined text-base" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3: Bánh Mì Phượng & Trà Mót (Hội An) -->
+<article class="p-3.5 rounded-DEFAULT bg-white/95 border border-white level-1-card transition-all duration-200 hover:shadow-md relative overflow-hidden group">
+<div class="flex gap-3.5">
+<!-- Thumbnail Image -->
+<div class="relative w-28 h-28 shrink-0 rounded-DEFAULT overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A gourmet lifestyle flat-lay of Vietnamese traditional Banh Mi overflowing with savory fillings, pork pate, crisp cucumbers, cilantro, and fragrant Mot herbal tea garnished with a delicate lotus petal. Natural afternoon sunlight softly highlights the textures on an artisanal wooden table, giving a fresh, inviting, modern culinary ambiance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoJvZUpWLD0J5sA6d95pWO75FqECyPc4SdTSCH56l2QegenEhjSU4ykcp64W2lFYFcKzhcdRQSK9g2LbII54MciX_hONDhrYFrOdtu3D5ivzzyXNr7QaMrOP5zqCWiWTgaX9bcLuPrdvf7ncJiMd-BlnGfqacZwrrrNQvjuDg_C18H4iLHDKKa7LXMmF6smyjBqSilGoOUH-H2SUu955HZpinTW7MJF9ZNWsY4QJl-swG6o7MApIVa"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-glass backdrop-blur-md text-on-primary-container font-badge-label text-badge-label border border-white/50">
+                FOOD
+              </span>
+</div>
+<!-- Content Details -->
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h3 class="font-title-card text-title-card text-on-surface line-clamp-1 group-hover:text-primary transition-colors">
+                    Bánh Mì Phượng &amp; Trà Mót
+                  </h3>
+<!-- Unsave Action (DELETE /places/{placeId}/save) -->
+<button class="w-8 h-8 -mr-1 -mt-1 rounded-full flex items-center justify-center text-primary-container hover:bg-primary-light active:scale-90 transition-all" title="Bỏ lưu khỏi danh sách" type="button">
+<span class="material-symbols-outlined text-xl material-symbols-fill" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+<div class="flex items-center gap-1.5 mt-0.5 text-text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="location_on">location_on</span>
+<span>Trần Phú, TP. Hội An</span>
+</div>
+<div class="flex items-center gap-2 mt-1.5">
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-warning/10 text-warning font-caption text-caption font-bold">
+<span class="material-symbols-outlined text-xs material-symbols-fill" data-icon="star">star</span>
+<span>4.7</span>
+</div>
+<span class="font-caption text-caption text-text-subdued">(2.4k đánh giá)</span>
+</div>
+</div>
+<!-- Bottom Card Actions -->
+<div class="flex items-center justify-between pt-2 border-t border-slate-100 mt-2">
+<button class="px-3 py-1.5 rounded-full bg-primary-container text-white font-badge-label text-badge-label glow-teal-action hover:bg-primary active:scale-95 transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-xs" data-icon="add">add</span>
+                  Thêm vào chuyến đi
+                </button>
+<div class="flex items-center gap-1">
+<button class="w-7 h-7 rounded-full text-text-subdued hover:text-primary hover:bg-primary-light flex items-center justify-center transition-colors" title="Chia sẻ với bạn bè" type="button">
+<span class="material-symbols-outlined text-base" data-icon="share">share</span>
+</button>
+<button class="w-7 h-7 rounded-full text-text-subdued hover:text-on-surface hover:bg-surface-subdued flex items-center justify-center transition-colors" title="Thao tác khác" type="button">
+<span class="material-symbols-outlined text-base" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 4: Lặn ngắm san hô Bãi Cù Lao Chàm -->
+<article class="p-3.5 rounded-DEFAULT bg-white/95 border border-white level-1-card transition-all duration-200 hover:shadow-md relative overflow-hidden group">
+<div class="flex gap-3.5">
+<!-- Thumbnail Image -->
+<div class="relative w-28 h-28 shrink-0 rounded-DEFAULT overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="An underwater crystal-clear perspective of a vibrant coral reef at Cham Islands in Vietnam. Sunbeams pierce through azure lagoon water, illuminating colorful brain corals, sea anemones, and schools of tropical fish swimming peacefully. The mood is crystal pristine and serene, embodying teal oceanic bliss." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwnZr7Fp4zLEXzTK8muppxfEEttishqlDzvfzMoJ7LOJA6kRFs46mfe0gWSkUHPi0M0eCmHrkKmyiP_T3s4zMDS1AR_4P3A4FsnpSo4x99Sq7p40qee4EEMs6FiIyp_nQO4zR_Ip_QQ2a5fAK_q5q33ippZmM41fFWRWyx5e8T2vEXQ0bAfGKZMmpoBCcL841MQHSzuvMJmDg_H4Ec-f8MnjfIUCFggofhwtuq9JSrBF8gDlEtEMq6"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-glass backdrop-blur-md text-on-primary-container font-badge-label text-badge-label border border-white/50">
+                BEACH
+              </span>
+</div>
+<!-- Content Details -->
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h3 class="font-title-card text-title-card text-on-surface line-clamp-1 group-hover:text-primary transition-colors">
+                    Lặn San Hô Cù Lao Chàm
+                  </h3>
+<!-- Unsave Action (DELETE /places/{placeId}/save) -->
+<button class="w-8 h-8 -mr-1 -mt-1 rounded-full flex items-center justify-center text-primary-container hover:bg-primary-light active:scale-90 transition-all" title="Bỏ lưu khỏi danh sách" type="button">
+<span class="material-symbols-outlined text-xl material-symbols-fill" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+<div class="flex items-center gap-1.5 mt-0.5 text-text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="location_on">location_on</span>
+<span>Tân Hiệp, Cù Lao Chàm</span>
+</div>
+<div class="flex items-center gap-2 mt-1.5">
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-warning/10 text-warning font-caption text-caption font-bold">
+<span class="material-symbols-outlined text-xs material-symbols-fill" data-icon="star">star</span>
+<span>4.9</span>
+</div>
+<span class="font-caption text-caption text-text-subdued">(640 đánh giá)</span>
+</div>
+</div>
+<!-- Bottom Card Actions -->
+<div class="flex items-center justify-between pt-2 border-t border-slate-100 mt-2">
+<button class="px-3 py-1.5 rounded-full bg-primary-container text-white font-badge-label text-badge-label glow-teal-action hover:bg-primary active:scale-95 transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-xs" data-icon="add">add</span>
+                  Thêm vào chuyến đi
+                </button>
+<div class="flex items-center gap-1">
+<button class="w-7 h-7 rounded-full text-text-subdued hover:text-primary hover:bg-primary-light flex items-center justify-center transition-colors" title="Chia sẻ với bạn bè" type="button">
+<span class="material-symbols-outlined text-base" data-icon="share">share</span>
+</button>
+<button class="w-7 h-7 rounded-full text-text-subdued hover:text-on-surface hover:bg-surface-subdued flex items-center justify-center transition-colors" title="Thao tác khác" type="button">
+<span class="material-symbols-outlined text-base" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+</section>
+<!-- Interactive Helper Card / Discovery Banner -->
+<section class="p-4 rounded-DEFAULT bg-gradient-to-br from-primary-light to-surface-container-low border border-border-teal flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-white shadow-sm flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="travel_explore">travel_explore</span>
+</div>
+<div class="flex-1">
+<h4 class="font-title-card text-title-card text-on-surface text-sm font-bold">Lên lịch trình tự động AI</h4>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Tự động kết nối 18 địa điểm đã lưu thành lộ trình tối ưu nhất.</p>
+</div>
+<button class="px-3 py-1.5 rounded-full bg-white text-primary font-badge-label text-badge-label font-bold border border-primary/20 hover:bg-primary hover:text-white transition-all" type="button">
+          Tạo Tour
+        </button>
+</section>
+</div>
+<!-- Persistent Bottom Navigation Bar (Frosted Glass Floating Capsule) -->
+<!-- Logic Lock: Screen is inside User Profile flow (Saved Places), so 'Profile' tab is ACTIVE -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 flex justify-around items-center px-4 py-2 max-w-md mx-auto">
+<div class="w-full bg-surface-glass dark:bg-inverse-surface/90 backdrop-blur-xl rounded-full mx-4 mb-4 shadow-lg dark:shadow-none flex justify-around items-center py-2 px-3 border border-white/60">
+<!-- Tab 1: Explore (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-text-subdued px-3 py-1.5 hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="explore">explore</span>
+<span class="font-badge-label text-badge-label mt-0.5">Explore</span>
+</a>
+<!-- Tab 2: Trips (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-text-subdued px-3 py-1.5 hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="luggage">luggage</span>
+<span class="font-badge-label text-badge-label mt-0.5">Trips</span>
+</a>
+<!-- Tab 3: Social (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-text-subdued px-3 py-1.5 hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="groups">groups</span>
+<span class="font-badge-label text-badge-label mt-0.5">Social</span>
+</a>
+<!-- Tab 4: Profile (ACTIVE - Exact Match for Hồ Sơ Cá Nhân flow) -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-secondary-container text-on-primary-container dark:text-on-secondary-container rounded-full px-4 py-1.5 shadow-sm active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-2xl material-symbols-fill" data-icon="person">person</span>
+<span class="font-badge-label text-badge-label font-bold mt-0.5">Profile</span>
+</a>
+</div>
+</nav>
+</main>
+<!-- Inline Interaction Handler: Toast simulation for un-saving / adding to trip -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const bookmarkButtons = document.querySelectorAll('button[title="Bỏ lưu khỏi danh sách"]');
+      
+      bookmarkButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const icon = button.querySelector('.material-symbols-outlined');
+          if (icon.classList.contains('material-symbols-fill')) {
+            icon.classList.remove('material-symbols-fill');
+            button.classList.remove('text-primary-container');
+            button.classList.add('text-text-subdued');
+            button.setAttribute('title', 'Lưu lại địa điểm');
+          } else {
+            icon.classList.add('material-symbols-fill');
+            button.classList.remove('text-text-subdued');
+            button.classList.add('text-primary-container');
+            button.setAttribute('title', 'Bỏ lưu khỏi danh sách');
+          }
+        });
+      });
+    });
+  </script>
+</body></html>

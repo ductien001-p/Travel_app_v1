@@ -1,0 +1,495 @@
+<!DOCTYPE html><html class="light" lang="vi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Tất Cả Kỷ Niệm Chuyến Đi - Teal Horizon</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS Play CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-container": "#20a29d",
+            "on-tertiary-container": "#00295f",
+            "error": "#ba1a1a",
+            "on-primary": "#ffffff",
+            "surface-glass": "rgba(255, 255, 255, 0.8)",
+            "surface": "#f3faff",
+            "secondary-fixed-dim": "#7dd5d0",
+            "inverse-primary": "#66d8d2",
+            "surface-container-low": "#e6f6ff",
+            "danger": "#EF4444",
+            "surface-container-high": "#dbebf3",
+            "inverse-surface": "#243339",
+            "surface-tint": "#006a66",
+            "on-tertiary-fixed": "#001a42",
+            "tertiary-fixed-dim": "#adc6ff",
+            "tertiary": "#005ac2",
+            "on-tertiary-fixed-variant": "#004395",
+            "tertiary-fixed": "#d8e2ff",
+            "on-background": "#0e1e24",
+            "background": "#f3faff",
+            "primary-fixed": "#84f5ef",
+            "primary": "#006a66",
+            "on-secondary-fixed-variant": "#00504d",
+            "surface-dim": "#ccdde5",
+            "primary-light": "#E6F7F6",
+            "surface-variant": "#d5e5ed",
+            "outline": "#6d7a78",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed": "#00201f",
+            "border-teal": "rgba(32, 162, 157, 0.12)",
+            "on-surface-variant": "#3d4948",
+            "on-surface": "#0e1e24",
+            "secondary-container": "#99f2ec",
+            "border-neutral": "rgba(226, 232, 240, 0.8)",
+            "secondary": "#006a66",
+            "success": "#10B981",
+            "canvas-base": "#F4FAF9",
+            "text-secondary": "#4B6169",
+            "primary-fixed-dim": "#66d8d2",
+            "on-primary-fixed-variant": "#00504d",
+            "surface-bright": "#f3faff",
+            "error-container": "#ffdad6",
+            "outline-variant": "#bcc9c7",
+            "on-secondary-container": "#00716d",
+            "text-subdued": "#8FA3AA",
+            "on-primary-fixed": "#00201f",
+            "on-secondary": "#ffffff",
+            "on-primary-container": "#00312f",
+            "on-error": "#ffffff",
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#99f2ec",
+            "surface-subdued": "#F1F6F5",
+            "warning": "#F59E0B",
+            "tertiary-container": "#508fff",
+            "surface-container": "#e0f0f9",
+            "on-tertiary": "#ffffff",
+            "surface-container-highest": "#d5e5ed",
+            "inverse-on-surface": "#e3f3fc"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.25rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "space-md": "0.75rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-default": ["Plus Jakarta Sans"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "title-card": ["Plus Jakarta Sans"],
+            "body-medium": ["Plus Jakarta Sans"],
+            "title-screen": ["Plus Jakarta Sans"],
+            "badge-label": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"],
+            "headline-section": ["Plus Jakarta Sans"],
+            "caption": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-default": ["14px", { "lineHeight": "21px", "fontWeight": "400" }],
+            "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "title-card": ["16px", { "lineHeight": "21px", "fontWeight": "600" }],
+            "body-medium": ["14px", { "lineHeight": "21px", "fontWeight": "500" }],
+            "title-screen": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "badge-label": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "display-hero": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "headline-section": ["18px", { "lineHeight": "24px", "fontWeight": "700" }],
+            "caption": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 8px 30px -4px rgba(32, 162, 157, 0.08), 0 2px 6px -1px rgba(15, 30, 36, 0.04);
+    }
+    
+    .glass-top-bar {
+      background: rgba(243, 250, 255, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 4px 20px -2px rgba(15, 30, 36, 0.05);
+    }
+    
+    .action-glow {
+      box-shadow: 0 10px 25px -4px rgba(32, 162, 157, 0.42);
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-default min-h-screen antialiased selection:bg-primary-container selection:text-on-primary">
+<!-- Outer Mobile Container Frame -->
+<div class="max-w-md mx-auto min-h-screen relative flex flex-col bg-background pb-32">
+<!-- Ambient Atmospheric Glow Layers -->
+<div class="pointer-events-none fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-md h-96 overflow-hidden z-0">
+<div class="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-secondary-fixed-dim/20 blur-3xl"></div>
+<div class="absolute top-10 -right-20 w-80 h-80 rounded-full bg-primary-fixed/25 blur-3xl"></div>
+</div>
+<!-- 1. Header (Top Navigation Bar - Frosted Glass) -->
+<header class="sticky top-0 z-40 w-full glass-top-bar px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<!-- Back Button -->
+<button aria-label="Quay lại chi tiết chuyến đi" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface hover:bg-primary-light transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<!-- Screen Title & Subtitle -->
+<div class="flex flex-col">
+<h1 class="font-title-screen text-title-screen text-on-surface leading-tight">Kỷ Niệm Chuyến Đi</h1>
+<p class="font-caption text-caption text-text-secondary flex items-center gap-1">
+<span>Mùa hè rực rỡ 2025</span>
+<span class="inline-block w-1 h-1 rounded-full bg-text-subdued"></span>
+<span class="font-medium text-primary">48 khoảnh khắc</span>
+</p>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-2">
+<button aria-label="Tìm kiếm hoặc lọc ảnh" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-text-secondary hover:text-primary hover:bg-primary-light transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+<button aria-label="Thêm ảnh kỷ niệm" class="h-10 px-3.5 rounded-full bg-primary-container text-on-primary font-body-medium text-caption flex items-center gap-1.5 shadow-sm hover:brightness-105 active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="hidden sm:inline">Thêm ảnh</span>
+</button>
+</div>
+</header>
+<!-- Main Content Flow -->
+<main class="relative z-10 px-4 pt-3 flex flex-col gap-5">
+<!-- 2. Memory Album Overview Bar -->
+<section class="glass-card rounded-2xl p-4 flex flex-col gap-3.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">photo_library</span>
+</div>
+<div>
+<div class="font-title-card text-title-card text-on-surface">Kho Kỷ Niệm Chung</div>
+<div class="font-caption text-caption text-text-secondary">42 ảnh gốc • 6 thước phim 4K</div>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-full bg-surface-subdued text-text-secondary hover:text-primary hover:bg-primary-light text-caption font-badge-label flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">select_all</span>
+<span>Chọn nhiều</span>
+</button>
+</div>
+<div class="h-px bg-border-neutral w-full"></div>
+<!-- Member Avatars & Quick Stat -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<!-- Overlapping Avatars -->
+<div class="flex -space-x-2.5 overflow-hidden">
+<div class="inline-block h-8 w-8 rounded-full ring-2 ring-white overflow-hidden bg-surface-variant">
+<img class="h-full w-full object-cover" data-alt="Chân dung Alex Nguyễn vui vẻ với kính râm chụp dưới ánh nắng rực rỡ tại bãi biển Đà Nẵng, phong cách ảnh du lịch hiện đại mang sắc thái xanh ngọc bích tươi tắn." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHYdt5DmzktQ9qcpw-0QVCoZwZUj2B-HYoTBclvb3Q0eY2T4xZ7DZosVzhrDg_-bdwF175UUV_-iHQDkC4ZdJKed0Cct6OnT4ZQP5p4c0EOGiLV5V1f7qC7zaakTIiH2QXc_ob4uUu20n3ODsH1blopNgpgS2St61nM5rKid2gs4YropVUsC-ACdhU6RJFiVWGAWc5uoszWg7lhWIbJNTcbGzf2sesuEqFhO-1VHybM9JrCEwrqtpJ">
+</div>
+<div class="inline-block h-8 w-8 rounded-full ring-2 ring-white overflow-hidden bg-surface-variant">
+<img class="h-full w-full object-cover" data-alt="Chân dung Minh Trang tươi tắn mỉm cười đội nón lá bên góc phố cổ Hội An, phông nền tường vàng cổ kính và hoa giấy rực rỡ sắc màu." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByD62MmQGMZjhAsdyUijOqWGIyX3tqeyubNTFMYjRvYVoq17OyALG7F2q-acilBpvhHMbgoTLEvOf5UIJ0W_hiu_MyeaRpaU4dc8uLCuU3AxRKJL9c6k-6U1qL5qArmZBT20c264-40oOHnhMm7vUZ7hSLbAvDDDfhzs0m6b4VWVOG_WeAOxg_vrI7u7Xj5usmLa3zWr-NNhVjxpAVrHg5LWQuZ7RXgF7oN0fZj61nEI_ghyCdVNa2">
+</div>
+<div class="inline-block h-8 w-8 rounded-full ring-2 ring-white overflow-hidden bg-surface-variant">
+<img class="h-full w-full object-cover" data-alt="Chân dung Quốc Bảo trẻ trung chụp bên máy ảnh cơ du lịch, ánh sáng tự nhiên ấm áp dịu nhẹ với tông màu xanh lục bảo phong cách lữ hành." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLIUyXPfL1G8xvsO2On7zhvLmVjZiiaB_550kFl3bkMm6SZjg1eR6DmLJEvWUky3kim1CJLvy43LjJs5Ior0y2H6loMG578lFT3GSV0O8JmTN15SQeud42_x5d8iKbz-5TegY9I_Jx6DqamF050d1Aaxr7y1Dabv5t8RYThQ4MtjBr_iWV9T7GPRZbc8mdXBkHCmuWJ4YPyhxks1JnkkSDp_fS3Qx2l08-3ptSsZVvEXTdceKcGlL2">
+</div>
+<div class="inline-block h-8 w-8 rounded-full ring-2 ring-white overflow-hidden bg-surface-variant">
+<img class="h-full w-full object-cover" data-alt="Chân dung Lan Phương phong cách tự do với nụ cười sảng khoái trên nền vịnh biển Sơn Trà trong vắt màu xanh biếc." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApTFcL8vXK7iJcbJxiRWhhIh7Q18NXMfHK6_jd3qpBM4LOJraK2E2vo8LbZcn44W1x8Tu1SFjyf5-h68SNq1cAkRTaYK_aAwyWPrByC8eyFVD-TX2c5Vj70v-XhJL-4l6uyPMXC9_Ux2x6hlYooWu1moC7akLs0T3WzaY9Bs9dMcl9t78HctTXtitL9A0OpTUuzC5dD0o5pY9IbwY8kbdGE337Qf2XH0LkgF8vdVKCs7YZCt9qr2uM">
+</div>
+</div>
+<span class="font-caption text-caption text-text-secondary">4 thành viên đóng góp</span>
+</div>
+<div class="flex items-center gap-1 text-primary font-caption text-caption font-semibold cursor-pointer hover:underline">
+<span>Chi tiết</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- 3. Filters & View Switcher -->
+<section class="flex flex-col gap-3">
+<!-- Control Bar: View Switcher & Counter -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 bg-surface-subdued p-1 rounded-full border border-border-neutral">
+<!-- Grid Mode Button (Active) -->
+<button class="px-3 py-1 rounded-full bg-primary-container text-on-primary font-badge-label text-caption flex items-center gap-1 shadow-sm transition-all duration-200">
+<span class="material-symbols-outlined text-[16px]">grid_view</span>
+<span>Lưới</span>
+</button>
+<!-- Timeline Mode Button -->
+<button class="px-3 py-1 rounded-full text-text-secondary hover:text-on-surface font-badge-label text-caption flex items-center gap-1 transition-all duration-200">
+<span class="material-symbols-outlined text-[16px]">view_timeline</span>
+<span>Dòng thời gian</span>
+</button>
+</div>
+<div class="flex items-center gap-1 text-caption text-text-secondary">
+<span class="material-symbols-outlined text-[16px] text-primary">cloud_done</span>
+<span>Đã đồng bộ</span>
+</div>
+</div>
+<!-- Filter Chips: By Day / Location -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5 -mx-4 px-4">
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded-full bg-primary-container text-on-primary font-badge-label text-caption shadow-sm">
+            Tất cả (48)
+          </button>
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded-full glass-card text-text-secondary hover:border-primary-container hover:text-primary font-badge-label text-caption transition-colors">
+            Ngày 1 - Bán đảo Sơn Trà (18)
+          </button>
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded-full glass-card text-text-secondary hover:border-primary-container hover:text-primary font-badge-label text-caption transition-colors">
+            Ngày 2 - Phố cổ Hội An (15)
+          </button>
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded-full glass-card text-text-secondary hover:border-primary-container hover:text-primary font-badge-label text-caption transition-colors">
+            Ngày 3 - Biển Mỹ Khê (15)
+          </button>
+</div>
+<!-- Filter Chips: By Member -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5 -mx-4 px-4">
+<span class="font-caption text-caption text-text-subdued whitespace-nowrap self-center">Người chụp:</span>
+<button class="whitespace-nowrap px-3 py-1 rounded-full bg-primary-light text-primary font-badge-label text-caption border border-border-teal">
+            Tất cả thành viên
+          </button>
+<button class="whitespace-nowrap px-3 py-1 rounded-full bg-white text-text-secondary hover:text-primary font-badge-label text-caption border border-border-neutral transition-colors">
+            Của tôi
+          </button>
+<button class="whitespace-nowrap px-3 py-1 rounded-full bg-white text-text-secondary hover:text-primary font-badge-label text-caption border border-border-neutral transition-colors">
+            Alex Nguyễn
+          </button>
+<button class="whitespace-nowrap px-3 py-1 rounded-full bg-white text-text-secondary hover:text-primary font-badge-label text-caption border border-border-neutral transition-colors">
+            Quốc Bảo
+          </button>
+</div>
+</section>
+<!-- 4. Grouped Media Gallery -->
+<section class="flex flex-col gap-6">
+<!-- GROUP 1: Sơn Trà -->
+<div class="flex flex-col gap-3">
+<!-- Group Header -->
+<div class="flex items-center justify-between sticky top-[68px] z-20 py-1.5 bg-background/90 backdrop-blur-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<h2 class="font-headline-section text-headline-section text-on-surface">Ngày 1: Đỉnh Bàn Cờ &amp; Sơn Trà</h2>
+</div>
+<div class="flex items-center gap-2 text-caption text-text-secondary pl-3.5">
+<span class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px] text-primary">calendar_today</span>
+                  20/07/2025
+                </span>
+<span>•</span>
+<span class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px] text-primary">location_on</span>
+                  Bán đảo Sơn Trà, Đà Nẵng
+                </span>
+</div>
+</div>
+<span class="text-caption font-badge-label text-text-subdued bg-surface-container px-2 py-0.5 rounded-full">18 khoảnh khắc</span>
+</div>
+<!-- Asymmetric Bento Gallery Grid -->
+<div class="grid grid-cols-3 gap-2.5">
+<!-- Hero Featured Item (2x2 span) -->
+<div class="col-span-2 row-span-2 relative group overflow-hidden rounded-2xl glass-card aspect-square cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Toàn cảnh bình minh rực rỡ nhìn từ Đỉnh Bàn Cờ Sơn Trà hướng ra vịnh Đà Nẵng, sương sớm bồng bềnh phủ qua rặng núi xanh ngọc bích hòa cùng ánh mặt trời cam đào ấm áp, phong cách ảnh phong cảnh sắc nét đầy cảm xúc du hành." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR51yJbSyFGStA_RunGBNbBytWj681C-9KZ5LjGTdBTBmlCfg4aerVvUrba5yj2BZw38QcEXHW8SJyXPs85NB_jivviR-TCDdLcyl2YBmWp462Eh3bBNMVKQOlk-tjj_GxaWefUrf3myIzPBeisU-jKyPIpbTLCmN7tS0Q1rsdaCxHGjkTnB6curhFq6e7yqud_VXBIfQHPsHX29VLOSGCK9gi7wWWUCHjHd4eWyNgZzTy_eaxhzK3">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-inverse-surface/10 to-transparent"></div>
+<!-- Top Badges -->
+<div class="absolute top-2.5 left-2.5 flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-primary-container/90 backdrop-blur-md text-on-primary text-[10px] font-bold uppercase tracking-wider flex items-center gap-0.5 shadow-sm">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                  Nổi bật
+                </span>
+<span class="px-2 py-0.5 rounded-full bg-inverse-surface/60 backdrop-blur-md text-inverse-on-surface text-[10px] font-medium flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                  05:45 AM
+                </span>
+</div>
+<!-- Bottom Info -->
+<div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-end justify-between text-on-primary">
+<div>
+<div class="text-[13px] font-bold leading-snug drop-shadow-sm">Bình minh Đỉnh Bàn Cờ</div>
+<div class="text-[11px] text-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">person</span>
+                    Alex Nguyễn
+                  </div>
+</div>
+<div class="flex items-center gap-1 bg-inverse-surface/40 backdrop-blur-md px-2 py-1 rounded-full text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px] text-danger" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>24</span>
+</div>
+</div>
+</div>
+<!-- Item 2: Flycam Bay Vịnh (Video) -->
+<div class="relative group overflow-hidden rounded-2xl glass-card aspect-square cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Góc chụp từ trên cao flycam nhìn xuống đường đèo uốn lượn ven biển Sơn Trà nước xanh biếc như ngọc bích của vùng duyên hải miền Trung Việt Nam dưới trời xanh ngắt." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3ZWqFkU5ASZYaMXxvzyWX1OCPB7HK4WkTkocToTPW9b3FTrG1ODGL76xe1a89TFoebeBCV50lptYLafItUu_FK2EglKFM-3KFXzouu1xRK60TJ9xITMfk378Uroizh1S0G5H6klQFUalqL_JF0CWpS1DPp7bFtfJpzsakeGIq4Qrmxax7U-XYEp8osh2xhsXMuricbYYrW_zYLXd5pn3FxV1RLBrE0qVZ62NJqKLok8QnKuh4Zens">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/60 via-transparent to-transparent"></div>
+<div class="absolute top-2 right-2 w-6 h-6 rounded-full bg-inverse-surface/70 backdrop-blur-md flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[14px]">videocam</span>
+</div>
+<div class="absolute bottom-2 left-2 flex items-center gap-1 text-[11px] text-on-primary font-medium">
+<span class="material-symbols-outlined text-[13px]">chat_bubble</span>
+<span>5</span>
+</div>
+</div>
+<!-- Item 3: Nhóm bạn check-in -->
+<div class="relative group overflow-hidden rounded-2xl glass-card aspect-square cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Bốn người bạn trẻ ba lô mỉm cười rạng rỡ chụp hình kỷ niệm cùng nhau tại mốc tọa độ bán đảo Sơn Trà ngập tràn ánh nắng và gió biển." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfXAIpsCfjD5dm_7k2_I2CL7fJA4_zq1MnHFsKsFtQBtt8Dj_xpA3Yd9K4qym-BBVni7Kz76qo5UMZXay3cEwEvGkc2E8u11CyAoSx2KI37XMuzvZNhcC4Jwlof9mLcmwkOD6-pQvm-VfwHQ-gL7bhi_J1ZYcFf-_2iBpmjH_e3YRmFobbmEJd_T3CXL02pwWm3pHchip_QBv9rsWPG_-9PhJ8EOUGwtWiMcKz8KHoK89vaX6kqIWp">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-2 left-2 flex items-center gap-1 text-[11px] text-on-primary font-medium">
+<span class="material-symbols-outlined text-[13px] text-danger" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>19</span>
+</div>
+</div>
+<!-- Item 4: Tách cà phê sáng view biển -->
+<div class="relative group overflow-hidden rounded-2xl glass-card aspect-square cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Cận cảnh ly cà phê muối thơm ngon trên chiếc bàn gỗ quán cà phê lưng chừng đồi nhìn thẳng ra toàn cảnh biển xanh ngắt của thành phố Đà Nẵng." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKsV-07XtFKv8Cp4xX3E5sD4CotzBgUBa2L3eO4TNON5NqIYc7TCRZb-xyL7dOMidjEoTAAQuNaSHTe5hwEKB-96zMNeqIM4Lu9-noviAYuO785eiZAF3lm4ckOpfdfeWzJjlxVaK5cHaEyCuR2_8-7-kQsXTeoapE1-zGOyigryNyAAA-XiVTG91pdwIOSv4mQqBi54SbnygAfAyvyz1sFWPze0-jzdFlomDfnkPLv6ve2R23lvRM">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-2 left-2 flex items-center gap-1 text-[11px] text-on-primary font-medium">
+<span class="material-symbols-outlined text-[13px]">chat_bubble</span>
+<span>2</span>
+</div>
+</div>
+<!-- Item 5: Voọc chà vá chân nâu -->
+<div class="relative group overflow-hidden rounded-2xl glass-card aspect-square cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Chú voọc chà vá chân nâu quý hiếm chuyền cành trên tán cây rừng nguyên sinh Sơn Trà, màu sắc lông rực rỡ và ánh nhìn hiền hòa trong thiên nhiên hoang dã." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDosquRgAVUGEjXEQqz9orIFxT5eG2FkvWSwYpxoKjJppBgmmOayuWWGiUfJNvKeop7YOdHPt8Z39HZpl57xuVlqaHKMSwnihpAA4PKASQHvfWBrTl-4nSU1amFJ_io8HbczgjhOO0dSnuK3WoXR__WcF3MCNI3MdpiKfp-DopRP_TFKRu1IvdEAoiC-ae5n9Mqh1PLBH3c7fULOtGyvFzAPtP-LFmmAqfXXrOr7n2tccKXCaagFoYu">
+<div class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-surface-glass backdrop-blur-md text-[9px] font-bold text-primary">
+                EXIF GPS
+              </div>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-2 left-2 flex items-center gap-1 text-[11px] text-on-primary font-medium">
+<span class="material-symbols-outlined text-[13px] text-danger" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>31</span>
+</div>
+</div>
+<!-- Item 6: Chùa Linh Ứng hoàng hôn -->
+<div class="relative group overflow-hidden rounded-2xl glass-card aspect-square cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Bức tượng Phật Bà Quan Âm cao vút tại Chùa Linh Ứng Sơn Trà trong ánh hoàng hôn tím pha cam rực rỡ thanh tịnh nhìn về phía biển Đông." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB87FKp5wXy-YK6UzW7tXafL52rmosIMeDbBibcT5RIfVAbis2D_JVXbIwwKGwxilM9hk8kcZjbF5cyJxawPXPQFgfQoAqEngXe5CCA-Y38FGtHpa-Vpv4n3uYjw2QXOO_1Jgvvf5H9MCFJymk8hLzljOePJ7HudedCP0g1CpgIjt2seJtsB9AKdtXzu-m2S5UwnyP6OO2xHDCTjBTN5k3ZwtZ4PO08Ox83Ldu6bUcx_tkiKWwm_SUu">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-2 left-2 flex items-center gap-1 text-[11px] text-on-primary font-medium">
+<span class="material-symbols-outlined text-[13px] text-danger" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>16</span>
+</div>
+</div>
+</div>
+</div>
+<!-- GROUP 2: Hội An & Ẩm Thực -->
+<div class="flex flex-col gap-3">
+<!-- Group Header -->
+<div class="flex items-center justify-between sticky top-[68px] z-20 py-1.5 bg-background/90 backdrop-blur-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<h2 class="font-headline-section text-headline-section text-on-surface">Ngày 2: Phố Cổ Hội An &amp; Ẩm Thực</h2>
+</div>
+<div class="flex items-center gap-2 text-caption text-text-secondary pl-3.5">
+<span class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px] text-primary">calendar_today</span>
+                  21/07/2025
+                </span>
+<span>•</span>
+<span class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px] text-primary">location_on</span>
+                  Hội An, Quảng Nam
+                </span>
+</div>
+</div>
+<span class="text-caption font-badge-label text-text-subdued bg-surface-container px-2 py-0.5 rounded-full">15 khoảnh khắc</span>
+</div>
+<!-- Bento Grid Layout: 3 Columns -->
+<div class="grid grid-cols-3 gap-2.5">
+<!-- Item 1: Đèn lồng phố Hội (2 cols span) -->
+<div class="col-span-2 relative group overflow-hidden rounded-2xl glass-card aspect-[16/10] cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Dãy phố cổ Hội An về đêm lung linh rực rỡ với hàng trăm chiếc đèn lồng lụa đủ màu sắc treo trước các ngôi nhà cổ mái ngói rêu phong, phản chiếu ánh sáng ấm áp lung linh." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTJ_34g9HXkUod21ScfQK3UK22OHcvS1KIpeUgNTLZeZLAEIhyHRNm7qpMUQc16jvsflcfTXtPiQmBmd9zM7fupqyPAQWnjWCLmEfbMd6_h-wpGxZVv31zztmSOBVY-MvuVP3DXuNS9WWHjVQzxXLAgL5KJJz1sOX1_kdULhPh0fnf1CVxA-RQN0SuiFZeQRmOkPybRE3bA9r8hbaa-lJi0b6jANSR99t8RbOSFW6RnQWd3hSXH9WI">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-transparent"></div>
+<div class="absolute top-2.5 left-2.5 flex items-center gap-1">
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary text-[10px] font-bold">
+                  Khoảnh khắc đêm
+                </span>
+</div>
+<div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-on-primary">
+<div>
+<div class="text-[12px] font-bold">Đèn lồng phố Hội lung linh</div>
+<div class="text-[10px] text-surface-variant">Minh Trang • 20:15</div>
+</div>
+<div class="flex items-center gap-1 bg-inverse-surface/40 backdrop-blur-md px-2 py-0.5 rounded-full text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px] text-danger" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>42</span>
+</div>
+</div>
+</div>
+<!-- Item 2: Bánh mì Phượng -->
+<div class="relative group overflow-hidden rounded-2xl glass-card aspect-[16/10] col-span-1 cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Cận cảnh ổ bánh mì Hội An giòn rụm đầy ắp nhân thịt xá xíu, pate gan béo ngậy, rau thơm và nước sốt đặc trưng thơm nức." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByPwNHBFxj8-bCHWBgiF3sfxlVWPyW1sZSj2tAHYPwkA0kUA7OFEbuYJGvCvsbgS9cdMkBjkw7a2PT0CC-qzovsEbSplmXEa8puN3fGqV8KzZ1q7AusKa3M8lk1qt6NPoFLKukyQnV6sb9m8ISVMAuTgQIgeX5LzGcAvOdc7aNA0FyOptQQrPP-tUVo1KTTwlWvObeR7qBCtpqYumw5bCwcoVHBaeboZ4kjTaI3l-Qhut4K7M0gKj_">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-2 left-2 flex items-center gap-1 text-[11px] text-on-primary font-medium">
+<span class="material-symbols-outlined text-[13px] text-danger" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>14</span>
+</div>
+</div>
+<!-- Item 3: Thuyền hoa đăng sông Hoài -->
+<div class="relative group overflow-hidden rounded-2xl glass-card aspect-square cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Chiếc thuyền gỗ nhỏ trôi lững lờ trên sông Hoài Hội An, một cô gái đang thả hoa đăng lung linh cầu an lành trong đêm thanh bình tĩnh lặng." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgy08aTVQtOiuueftXVsGTo0BJkfC4v7X3Z_Gsa_VuNN-EZB-w5B7SiAsF_RVHavN7U6A30XdJr9NZ29k8qeHKPR0RXnuedK6cL14kERP5iRbwDcHKvIiEpeChwQpsE0e7uq32Pk3aPuZB8aMGdTCCJngMhLAHjxCIA-rjvpqVp1vBjL3yrG5SZwXFMqE4XPwYWUn0cIIRCs-Y5K84Zzi8-876dN5yS80w8pkpvkxX8pL69TS2kOYr">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/60 via-transparent to-transparent"></div>
+<div class="absolute top-2 right-2 w-6 h-6 rounded-full bg-inverse-surface/70 backdrop-blur-md flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[14px]">videocam</span>
+</div>
+<div class="absolute bottom-2 left-2 flex items-center gap-1 text-[11px] text-on-primary font-medium">
+<span class="material-symbols-outlined text-[13px] text-danger" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>28</span>
+</div>
+</div>
+<!-- Item 4: Mì Quảng Ếch -->
+<div class="relative group overflow-hidden rounded-2xl glass-card aspect-square cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Tô mì Quảng ếch thơm lừng bày trên mẹt tre lót lá chuối với sợi mì vàng óng, đậu phộng rang giòn, rau sống xanh tươi mát mắt và bánh tráng mè nướng." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABH-RXJ-OMcGNHByNSUOs_Ox06fQ8fLBfWMerEUwunBSdZwdL_3FW-GxXf-TyxEA4WteYIo8aVPEEuKlRGHIyO2zETPXuVCjWDr13wvjzEZn9BFg29tRY-cttTUawC7SaGz-W5_mbS30fotfwKmItmkxh-4IdjZ0fEGYTOo-XKESe5w4bHxMcPWdjJFmx6Z8ZwUAx4on-zvY62cOvDUQKK4-16WdbksqGtaakkXpUMObR06woDesD8">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-2 left-2 flex items-center gap-1 text-[11px] text-on-primary font-medium">
+<span class="material-symbols-outlined text-[13px]">chat_bubble</span>
+<span>8</span>
+</div>
+</div>
+<!-- Item 5: Tường vàng hoa giấy Check-in -->
+<div class="relative group overflow-hidden rounded-2xl glass-card aspect-square cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Bức tường vàng đặc trưng của phố cổ Hội An phủ đầy giàn hoa giấy hồng tím rực rỡ dưới nắng chiều êm dịu tạo nên phông nền thơ mộng." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgGqKiymQAXejia_5ZCKix5LBmPSPPtrREzvDQ4hq48rUuQcS9wI83QSY0-TUWI7LXMfpWxtzaJYqk5cKPfm04202C87vwfdFkz4COIVEeLs7GVFSSMJrItjzhN_Wo1mKTtlQsj-DdxNj4aO0wn5LHAL9W7RU2_uGG9myq5rC7lBQf1APKgg0K1ZcWcun_cc4NATur6kFAi7-SXEPzPAbTKMeDX8cAOzMn59Rd5aoPDg20qvq0Gd9X">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-2 left-2 flex items-center gap-1 text-[11px] text-on-primary font-medium">
+<span class="material-symbols-outlined text-[13px] text-danger" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>35</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- 5. Floating Action Button (FAB): "Đăng Khoảnh Khắc Mới +" -->
+<div class="fixed bottom-6 left-0 right-0 z-50 flex justify-center items-center pointer-events-none px-4 max-w-md mx-auto">
+<button class="pointer-events-auto flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-primary-container text-on-primary font-title-card text-title-card action-glow hover:bg-surface-tint active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-[22px]">photo_camera</span>
+<span>Đăng Khoảnh Khắc Mới +</span>
+</button>
+</div>
+</div>
+</body></html>

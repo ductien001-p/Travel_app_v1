@@ -1,0 +1,7 @@
+node_modules/
+.runtime_artifacts/
+.vscode/
+.cursor/
+.env
+dist/
+build/
