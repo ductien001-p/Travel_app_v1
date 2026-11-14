@@ -4,11 +4,11 @@ services:
     container_name: travel-db
     restart: unless-stopped
     environment:
-      POSTGRES_USER: phantien
-      POSTGRES_PASSWORD: tien1234
-      POSTGRES_DB: travel_db
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-travel_db}
     ports:
-      - "5555:5432"
+      - "${POSTGRES_HOST_PORT:-5555}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -17,7 +17,7 @@ services:
     container_name: redis_container
     restart: always
     ports:
-      - "6379:6379"
+      - "${REDIS_HOST_PORT:-6379}:6379"
     volumes:
       - redis_data:/data
 
@@ -26,7 +26,7 @@ services:
     container_name: travel-ollama
     restart: unless-stopped
     ports:
-      - "11434:11434"
+      - "${OLLAMA_HOST_PORT:-11434}:11434"
     volumes:
       - ollama_data:/root/.ollama
 

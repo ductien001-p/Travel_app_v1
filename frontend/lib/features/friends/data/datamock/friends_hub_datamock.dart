@@ -1,0 +1,188 @@
+// Fixture cho unit test (shape khớp FriendsHubPage). Runtime gọi API thật.
+const Map<String, dynamic> friendsHubDatamock = {
+  'friendsCount': 128,
+  'friendsCountLabel': '128 bạn bè đồng hành',
+  'syncNotice': 'Đã đồng bộ hóa danh bạ du lịch và chuyến đi chung gần nhất.',
+  'received': [
+    {
+      'id': 'req-lan',
+      'createdAt': '2026-11-13T10:00:00.000Z',
+      'user': {
+        'id': 'user-lan',
+        'displayName': 'Lan Phương',
+        'username': 'lanphuong.travel',
+        'avatarUrl':
+            'https://lh3.googleusercontent.com/aida-public/AB6AXuBoWs177fw-9vZHbgfq-TiOGBaPL3jmIG7u4_2KFesq9gm7QBRGBDpd3nqhwT9o0e1IPH-afiT3gpnPSMxETxX4UhLMOI3BXi4Ti5dZUy4LJLswFFxcAWcRGfIPZx1LMhtR7cgNOKHnvIPKvP5ss38YeS13SfYNYyu33FR5ofkQpGwfo-7JDXND2YVrWyv1VMHNbS5-hSDXYiWIbP26sRkT8-V9QbdI5RhAnG0NaB0',
+        'isOnline': true,
+        'verified': false,
+        'metaIcon': 'hiking',
+        'metaLine': 'Cùng sở thích Trekking & Foodie',
+        'badgeTone': 'PRIMARY',
+      },
+    },
+    {
+      'id': 'req-quan',
+      'createdAt': '2026-11-12T08:00:00.000Z',
+      'user': {
+        'id': 'user-quan',
+        'displayName': 'Minh Quân',
+        'username': 'quan_adventurer',
+        'avatarUrl':
+            'https://lh3.googleusercontent.com/aida-public/AB6AXuAE3O2OMSbY0L6wWoDfCJQ7xvs_QZ8vM4WONILgAlt-oPDxp-BmajFX_asqVgai1lLcyVdVNNCSKGL2vMfUQOht_ONjeYxMxVEO5FqbY8CvLOOODeKsC32noOmCYru3vDr0PsWYGg_8xJlYl1-xjxiGsyH3XRtihyxTprBAoOJx-lCxPbP89Y60MHH1GAJz_wclAluRWakzGHY2-E5aL2mAEs9_z03agYZOZz5NwFs',
+        'isOnline': false,
+        'verified': false,
+        'metaIcon': 'groups',
+        'metaLine': 'Đã tham gia chuyến đi Đà Lạt cùng bạn',
+        'badgeTone': 'INFO',
+      },
+    },
+    {
+      'id': 'req-mai',
+      'createdAt': '2026-11-11T08:00:00.000Z',
+      'user': {
+        'id': 'user-mai',
+        'displayName': 'Mai Anh',
+        'username': 'maianh.trips',
+        'isOnline': false,
+        'verified': false,
+        'metaLine': 'Gợi ý từ Travel DNA',
+        'badgeTone': 'SECONDARY',
+      },
+    },
+  ],
+  'sent': [
+    {
+      'id': 'sent-1',
+      'createdAt': '2026-11-10T08:00:00.000Z',
+      'user': {
+        'id': 'user-sent-1',
+        'displayName': 'Bảo Châu',
+        'username': 'baochau',
+        'isOnline': false,
+        'verified': false,
+        'badgeTone': 'SUBDUED',
+      },
+    },
+    {
+      'id': 'sent-2',
+      'createdAt': '2026-11-09T08:00:00.000Z',
+      'user': {
+        'id': 'user-sent-2',
+        'displayName': 'Tuấn Kiệt',
+        'username': 'tuankiet',
+        'isOnline': false,
+        'verified': false,
+        'badgeTone': 'SUBDUED',
+      },
+    },
+    {
+      'id': 'sent-3',
+      'createdAt': '2026-11-08T08:00:00.000Z',
+      'user': {
+        'id': 'user-sent-3',
+        'displayName': 'Hà My',
+        'username': 'hamy',
+        'isOnline': false,
+        'verified': false,
+        'badgeTone': 'SUBDUED',
+      },
+    },
+    {
+      'id': 'sent-4',
+      'createdAt': '2026-11-07T08:00:00.000Z',
+      'user': {
+        'id': 'user-sent-4',
+        'displayName': 'Đức Anh',
+        'username': 'ducanh',
+        'isOnline': false,
+        'verified': false,
+        'badgeTone': 'SUBDUED',
+      },
+    },
+    {
+      'id': 'sent-5',
+      'createdAt': '2026-11-06T08:00:00.000Z',
+      'user': {
+        'id': 'user-sent-5',
+        'displayName': 'Ngọc Trâm',
+        'username': 'ngoctram',
+        'isOnline': false,
+        'verified': false,
+        'badgeTone': 'SUBDUED',
+      },
+    },
+  ],
+  'friends': [
+    {
+      'friendshipId': 'fs-alex',
+      'friendId': 'user-alex-nguyen',
+      'createdAt': '2026-11-01T08:00:00.000Z',
+      'conversationId': 'conv-alex-nguyen',
+      'user': {
+        'id': 'user-alex-nguyen',
+        'displayName': 'Alex Nguyễn',
+        'username': 'alex_wander',
+        'avatarUrl':
+            'https://lh3.googleusercontent.com/aida-public/AB6AXuA-Wh0XyaWiMnqCqncvD_gTP6mrsd9hZIrGVJLq6fM5IxM2zqQeEluZ59yNCCKMHyr7Vlg6Lzl6yGgulD13RbyeKJ4qix9648lyARAkEFNImNVtzUyvWgura4xDwV0kB7CXiSYs21GQc1dNVcfMB5O7MXiePbHAY0lbhkcM6E9Qo4DdBN0AA-38HOhURjv8d7RuMz36JDIA0rz5AK7-vy9QlPDsFcGQE7jX420zFcM',
+        'isOnline': true,
+        'verified': true,
+        'badgeLabel': 'Travel Buddy • 12 chuyến',
+        'badgeTone': 'PRIMARY',
+        'metaIcon': 'connecting_airports',
+      },
+    },
+    {
+      'friendshipId': 'fs-linh',
+      'friendId': 'user-le-thao-linh',
+      'createdAt': '2026-10-20T08:00:00.000Z',
+      'user': {
+        'id': 'user-le-thao-linh',
+        'displayName': 'Lê Thảo Linh',
+        'username': 'linh_le',
+        'avatarUrl':
+            'https://lh3.googleusercontent.com/aida-public/AB6AXuD9zUWRavLDV5rsNZkWLU9-WYykw8Rh07vMaFSG5NgZO1tdnhJZl4-F7p1tWl7Y47R1vYvHd27xSNyO2VZs0vSztYM5ndohV1UjzOgZsHf58tVsK5OAe3-IYfTKq5l434NN63R_ay3bqGH3WVRmyYgKlOOWy8WJ15v14OIQkGd-ulpSP3SS2vFG1ugYO6bZSzYC0rutgq6rjP3UO1grGjWTubhhbTm3mJaYL_w6_Xc',
+        'isOnline': false,
+        'verified': false,
+        'subtitle': 'Đang ở Đà Nẵng',
+        'badgeLabel': '98% DNA Match',
+        'badgeTone': 'SECONDARY',
+        'metaIcon': 'psychology',
+      },
+    },
+    {
+      'friendshipId': 'fs-nam',
+      'friendId': 'user-hoang-nam',
+      'createdAt': '2026-10-10T08:00:00.000Z',
+      'user': {
+        'id': 'user-hoang-nam',
+        'displayName': 'Hoàng Nam',
+        'username': 'nam_wanderer',
+        'avatarUrl':
+            'https://lh3.googleusercontent.com/aida-public/AB6AXuBSprQwM0EG5sUpHseXefX5590WzraBudhFXHiHtcgyCqmvA50f7V_VsCB64eojVIGR3OTcSa5lke9dHgGYLbzE-88dXtITvPdPC7dBIIYnVQs16Qx3U1tBIOcrVXqoQLHwDkZGrpOX8xJ57CLGqTfe6vYlcjT3XobcuT7x-N5du5WQ33n-S2DAu0SKBnzak60XyDh721h6GdiD5gUE60IWYGzu73reWk3KFeW1T_Y',
+        'isOnline': true,
+        'verified': false,
+        'subtitle': 'Foodie Traveler 🍜',
+        'metaIcon': 'pin_drop',
+        'metaLine': 'Chuyến đi gần nhất: Phú Quốc',
+        'badgeTone': 'SUBDUED',
+      },
+    },
+    {
+      'friendshipId': 'fs-trang',
+      'friendId': 'user-thu-trang',
+      'createdAt': '2026-09-01T08:00:00.000Z',
+      'user': {
+        'id': 'user-thu-trang',
+        'displayName': 'Thu Trang',
+        'username': 'trang_explorer',
+        'avatarUrl':
+            'https://lh3.googleusercontent.com/aida-public/AB6AXuBd5zua2CQEhLt-XNQId9eoJUhZabT1MTFuAJjaxRfiyuIIaQqSPtT8w27SuGZU6r6heWj515keCwEUIMoZcUNqLD8n6Wn3jPUrLJ7vHERZBhQTO7i09LRUkRqTOaWNgbxCcKohhRQKlOF7BVItV_SELY11ZJewNsoRMd6MCw40rAcDrV_Xf6BDbCZPq0v7Qt7joRUJKSDoDQib2HEMx2PAFfvpQMpLj1TyLFUyAY0',
+        'isOnline': false,
+        'verified': false,
+        'metaIcon': 'group',
+        'metaLine': '3 bạn chung',
+        'badgeTone': 'SUBDUED',
+      },
+    },
+  ],
+};

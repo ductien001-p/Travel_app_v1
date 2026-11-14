@@ -1,7 +1,33 @@
+
+# Dependencies
 node_modules/
-.runtime_artifacts/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# IDE and AI tools
 .vscode/
 .cursor/
-.env
+
+# Runtime artifacts
+.runtime_artifacts/
+
+# Build outputs
 dist/
 build/
+.next/
+out/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Cache
+.cache/
+.turbo/
+
+# OS
+.DS_Store
+Thumbs.db
