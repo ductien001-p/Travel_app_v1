@@ -13,6 +13,7 @@ node_modules/
 
 # Runtime artifacts
 .runtime_artifacts/
+.archify/
 
 # Build outputs
 dist/
