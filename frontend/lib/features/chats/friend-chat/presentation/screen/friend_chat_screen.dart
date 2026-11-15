@@ -128,9 +128,14 @@ class _FriendChatScreenState extends ConsumerState<FriendChatScreen> {
     final text = _composer.text;
     if (text.trim().isEmpty) return;
     _composer.clear();
-    await ref
+    final ok = await ref
         .read(friendChatControllerProvider(widget.conversationId).notifier)
         .sendText(text);
+    if (!ok && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Không gửi được tin nhắn. Thử lại.')),
+      );
+    }
   }
 
   Future<void> _onShortcut(
@@ -155,9 +160,15 @@ class _FriendChatScreenState extends ConsumerState<FriendChatScreen> {
       onCreateTrip: () => context.pushNamed(RouteNames.createTrip),
     );
     if (!mounted || selected == null) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Đã chọn gửi thẻ: ${selected.title}')),
-    );
+    final ok = await ref
+        .read(friendChatControllerProvider(widget.conversationId).notifier)
+        .sendTripInvite(selected);
+    if (!mounted) return;
+    if (!ok) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Không gửi được lời mời. Thử lại.')),
+      );
+    }
   }
 
   void _comingSoon() {

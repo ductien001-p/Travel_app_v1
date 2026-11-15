@@ -12,6 +12,11 @@ abstract class TripChatDataSource {
     required String text,
   });
 
+  Future<TripChatMessage> sendImage({
+    required String tripId,
+    required String mediaId,
+  });
+
   Future<List<TripChatReaction>> addReaction({
     required String tripId,
     required String messageId,
@@ -54,6 +59,18 @@ class TripChatRemoteDataSource implements TripChatDataSource {
     final response = await _apiClient.post<Map<String, dynamic>>(
       '/trips/${Uri.encodeComponent(tripId)}/messages',
       data: <String, dynamic>{'content': text, 'messageType': 'TEXT'},
+    );
+    return TripChatMessage.fromJson(_dataFromEnvelope(response));
+  }
+
+  @override
+  Future<TripChatMessage> sendImage({
+    required String tripId,
+    required String mediaId,
+  }) async {
+    final response = await _apiClient.post<Map<String, dynamic>>(
+      '/trips/${Uri.encodeComponent(tripId)}/messages',
+      data: <String, dynamic>{'content': mediaId, 'messageType': 'IMAGE'},
     );
     return TripChatMessage.fromJson(_dataFromEnvelope(response));
   }

@@ -112,6 +112,9 @@ export class TripChatMessageResponseDto {
   @ApiPropertyOptional({ nullable: true, type: TripChatPhotoPayloadResponseDto })
   photo!: TripChatPhotoPayloadResponseDto | null;
 
+  @ApiProperty({ type: [TripChatReactionResponseDto] })
+  reactions!: TripChatReactionResponseDto[];
+
   @ApiPropertyOptional({
     nullable: true,
     type: TripChatExpensePayloadResponseDto,

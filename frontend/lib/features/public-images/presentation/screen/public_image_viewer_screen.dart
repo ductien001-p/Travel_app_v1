@@ -198,11 +198,9 @@ class _PublicImageViewerScreenState
                       .read(publicImageViewerControllerProvider(_args).notifier)
                       .setIndex(index);
                 },
-                onLike: () => ref
-                    .read(publicImageViewerControllerProvider(_args).notifier)
-                    .toggleLike(),
-                onComment: () => _snack('Bình luận sắp có.'),
-                onDownload: () => _snack('Tải về HD sắp có.'),
+                onLike: null,
+                onComment: null,
+                onDownload: null,
                 onShare: () => _share(view.current),
               ),
             ),
@@ -250,54 +248,9 @@ class _PublicImageViewerScreenState
       image: view.current,
       index: view.index,
       total: view.total,
-      tripTitle: view.album.tripTitle,
       onViewMap: () => _openMap(view),
-      onSetCover: () async {
-        final ok = await ref
-            .read(publicImageViewerControllerProvider(_args).notifier)
-            .setAsCover();
-        if (!mounted) return;
-        _snack(
-          ok
-              ? 'Đã đặt làm ảnh bìa chuyến ${view.album.tripTitle}.'
-              : 'Không đặt được ảnh bìa.',
-        );
-      },
-      onDelete: () => _confirmDelete(view),
     );
     if (mounted) setState(() => _moreHighlighted = false);
-  }
-
-  Future<void> _confirmDelete(PublicImageViewerViewState view) async {
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: const Text('Xóa ảnh khỏi album?'),
-        content: const Text('Gỡ bỏ ảnh này khỏi bộ sưu tập.'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(ctx).pop(false),
-            child: const Text('Hủy'),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.of(ctx).pop(true),
-            style: FilledButton.styleFrom(backgroundColor: AppColors.danger),
-            child: const Text('Xóa'),
-          ),
-        ],
-      ),
-    );
-    if (confirmed != true || !mounted) return;
-    final ok = await ref
-        .read(publicImageViewerControllerProvider(_args).notifier)
-        .deleteCurrent();
-    if (!mounted) return;
-    final latest = ref.read(publicImageViewerControllerProvider(_args)).asData;
-    if (ok && (latest == null || latest.value.total == 0)) {
-      Navigator.of(context).maybePop();
-      return;
-    }
-    _snack(ok ? 'Đã xóa ảnh khỏi album.' : 'Không xóa được ảnh.');
   }
 
   void _openMap(PublicImageViewerViewState view) {

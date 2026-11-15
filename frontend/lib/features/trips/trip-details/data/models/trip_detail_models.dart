@@ -286,8 +286,17 @@ abstract class TripDetailTimelineEvent with _$TripDetailTimelineEvent {
 /// Response of `POST /trips/{tripId}/completion`.
 @freezed
 abstract class TripDetailRewardClaim with _$TripDetailRewardClaim {
-  const factory TripDetailRewardClaim({required int pointsAwarded}) =
-      _TripDetailRewardClaim;
+  const factory TripDetailRewardClaim({
+    String? tripId,
+    required int pointsAwarded,
+    @Default(0) int basePoints,
+    @Default(0) int missionPoints,
+    @Default(1.0) double multiplierUsed,
+    @Default(0) int missionsCompleted,
+    @Default(0) int totalCheckins,
+    @Default(0) int totalPlaces,
+    @Default(0) int completionPercent,
+  }) = _TripDetailRewardClaim;
 
   factory TripDetailRewardClaim.fromJson(Map<String, dynamic> json) =>
       _$TripDetailRewardClaimFromJson(json);

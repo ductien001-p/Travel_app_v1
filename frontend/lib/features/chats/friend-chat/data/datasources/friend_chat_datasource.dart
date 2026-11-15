@@ -7,10 +7,14 @@ abstract class FriendChatDataSource {
 
   Future<void> markRead(String conversationId);
 
-  // TODO(backend): API demo — chưa có POST send message trên OpenAPI
   Future<FriendChatMessage> sendText({
     required String conversationId,
     required String text,
+  });
+
+  Future<FriendChatMessage> sendTripInvite({
+    required String conversationId,
+    required FriendChatInviteCandidate candidate,
   });
 }
 
@@ -22,8 +26,6 @@ class FriendChatRemoteDataSource implements FriendChatDataSource {
 
   @override
   Future<FriendChatThread> getThread(String conversationId) async {
-    // TODO(backend): API demo — thay bằng endpoint thật khi backend xong
-    // OpenAPI hiện có GET /friends/conversations/{id}/messages (TEXT only).
     final response = await _apiClient.get<Map<String, dynamic>>(
       '/friends/conversations/${Uri.encodeComponent(conversationId)}/thread',
     );
@@ -42,10 +44,38 @@ class FriendChatRemoteDataSource implements FriendChatDataSource {
     required String conversationId,
     required String text,
   }) async {
-    // TODO(backend): API demo — thay bằng endpoint thật khi backend xong
     final response = await _apiClient.post<Map<String, dynamic>>(
       '/friends/conversations/${Uri.encodeComponent(conversationId)}/messages',
       data: <String, dynamic>{'content': text, 'messageType': 'TEXT'},
+    );
+    return FriendChatMessage.fromJson(_dataFromEnvelope(response));
+  }
+
+  @override
+  Future<FriendChatMessage> sendTripInvite({
+    required String conversationId,
+    required FriendChatInviteCandidate candidate,
+  }) async {
+    final imageUrl = candidate.imageUrl.trim().isEmpty
+        ? 'about:blank'
+        : candidate.imageUrl;
+    final response = await _apiClient.post<Map<String, dynamic>>(
+      '/friends/conversations/${Uri.encodeComponent(conversationId)}/messages',
+      data: <String, dynamic>{
+        'content': candidate.title,
+        'messageType': 'TRIP_INVITE',
+        'metadata': <String, dynamic>{
+          'tripId': candidate.tripId,
+          'title': candidate.title,
+          'imageUrl': imageUrl,
+          'dateLabel': candidate.metaLabel,
+          'priceLabel': '—',
+          'seatsLabel': candidate.badgeLabel,
+          'badgeLabel': candidate.badgeLabel,
+          'primaryActionLabel': 'Tham gia',
+          'secondaryActionLabel': 'Chi tiết',
+        },
+      },
     );
     return FriendChatMessage.fromJson(_dataFromEnvelope(response));
   }

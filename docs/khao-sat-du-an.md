@@ -238,12 +238,14 @@ Device thật: đổi `API_BASE_URL` / `SOCKET_URL` sang IP LAN máy chạy Nest
 
 ## 7. Việc ưu tiên đề xuất
 
-1. **Nối chat thật** (hub + DM + trip group) — BE đã có phần lớn endpoint; FE còn datamock.
-2. **Cấu hình SHARE_HOST / domain HTTPS** nếu cần mở app từ link chia sẻ.
-3. **Hộp thư thông báo** (API inbox + UI) — ý tưởng sản phẩm còn treo.
-4. **Trip missions UI** — tận dụng `TripMissionsModule` đã có trên BE.
-5. **Hoàn thiện Settings / Public Images / expenses nâng cao / story-challenge UI.**
-6. **Đồng bộ `backend/README.md`** với monorepo (port 5555, có FE, có Ollama trong Compose).
+Cập nhật 2026-11-14 sau khi đối chiếu lại mã nguồn:
+
+1. **Chat E2E** — hub, thread DM, thread nhóm, gửi TEXT và đánh dấu đã đọc đã gọi API thật. Đã nối thêm: lỗi gửi DM hiện trên bubble, socket `/friends` và `trip:message` cùng shape UI (`kind`), gửi ảnh nhóm, reaction (kể cả TEXT), lời mời `TRIP_INVITE`. Chưa có typing bạn bè và gửi `PLACE_CARD` (chưa có picker địa điểm).
+2. **SHARE_HOST** — code deep link đã có. Checklist domain HTTPS, SHA-256 và `TEAMID.bundleId` nằm ở [docs/runtime_environment.md](runtime_environment.md) mục 4. Không điền domain giả.
+3. **Hộp thư thông báo** — `GET /notifications`, `POST /notifications/:id/read`, `POST /notifications/read-all`. App mở inbox từ chuông social và home; tap lời mời / join request / recruitment theo `tripId`. Chưa ghi các loại enum chưa có nguồn (`POST_LIKE`, `FRIEND_REQUEST`, …).
+4. **Trip missions** — đã có trên trip detail (`GET /trips/:tripId/missions`) và claim qua `POST /trips/:tripId/completion`. Không thêm màn riêng.
+5. **Settings / ảnh / chi tiêu / story** — đổi mật khẩu gọi `POST /auth/change-password`. Viewer ảnh mở từ media đã seed, không còn album giả; ẩn đặt bìa, like, xóa, bình luận, tải HD. Chi tiêu xem hóa đơn từ `receipts[]`. Story viewer có thanh tiến trình và tự chuyển. Ngoài phạm vi: sinh trắc học, thiết bị, ngôn ngữ/tiền tệ, QR, settle hàng loạt, rule tiến độ challenge.
+6. **README backend** — đã chỉnh port Postgres **5555**, monorepo có Flutter, Compose có Ollama, Redis đọc `REDIS_HOST` / `REDIS_PORT`, và các lệnh seed bổ sung.
 
 ---
 

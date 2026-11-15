@@ -124,6 +124,11 @@ _TripChatMessage _$TripChatMessageFromJson(
       : TripChatExpensePayload.fromJson(
           json['expense'] as Map<String, dynamic>,
         ),
+  reactions:
+      (json['reactions'] as List<dynamic>?)
+          ?.map((e) => TripChatReaction.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+      const <TripChatReaction>[],
 );
 
 Map<String, dynamic> _$TripChatMessageToJson(_TripChatMessage instance) =>
@@ -139,6 +144,7 @@ Map<String, dynamic> _$TripChatMessageToJson(_TripChatMessage instance) =>
       'system': instance.system,
       'photo': instance.photo,
       'expense': instance.expense,
+      'reactions': instance.reactions,
     };
 
 const _$TripChatMessageKindEnumMap = {

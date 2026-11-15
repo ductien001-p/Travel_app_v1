@@ -72,10 +72,10 @@ void main() {
     await loadOverview();
     final notifier = container.read(actionProvider.notifier);
 
-    final points = await notifier.claimReward();
+    final claim = await notifier.claimReward();
     final after = await loadOverview();
 
-    expect(points, 500);
+    expect(claim.pointsAwarded, 500);
     expect(after.completionReward?.claimed, isTrue);
     await expectLater(notifier.claimReward(), throwsA(isA<ApiException>()));
     expect(container.read(actionProvider).isBusy, isFalse);

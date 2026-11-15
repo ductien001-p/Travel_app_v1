@@ -1,0 +1,200 @@
+{
+  "ranAt": "2026-11-14T13:49:18.368Z",
+  "api": "http://127.0.0.1:3001",
+  "socket": "http://127.0.0.1:3002",
+  "ids": {
+    "stamp": "mwggnktk",
+    "todayUtc": "2026-11-14",
+    "users": {
+      "A": {
+        "id": "cmwggnkwm0009fon7y2fweytv",
+        "email": "j1amwggnktk@example.com",
+        "registerHttp": 201
+      },
+      "B": {
+        "id": "cmwggo4hg000cfon7hpf78vqy",
+        "email": "j1bmwggnktk@example.com",
+        "registerHttp": 201
+      },
+      "C": {
+        "id": "cmwggoo1k000hfon7isfm3no1",
+        "email": "j1cmwggnktk@example.com",
+        "registerHttp": 201
+      }
+    },
+    "tripId": "cmwggp7wv000lfon7p0llcefc",
+    "placeId": "8ed4bd9f-88b8-4a2f-9fb0-4cbf92bd856f",
+    "conversationId": "cmwggp8td001rfon7wmerjve1",
+    "postId": "cmwggpb1u001yfon79syr94h9",
+    "mediaId": "cmwggpaic001vfon7gpq4w4j5"
+  },
+  "summary": {
+    "PASS": 26,
+    "FAIL": 1,
+    "BLOCKED": 0
+  },
+  "steps": [
+    {
+      "journey": "1. Auth",
+      "name": "Đăng ký A, chặn login khi chưa xác minh, rồi kích hoạt",
+      "status": "PASS",
+      "detail": "user cmwggnkwm0009fon7y2fweytv; register HTTP 201"
+    },
+    {
+      "journey": "1. Auth",
+      "name": "Đăng ký và kích hoạt B",
+      "status": "PASS",
+      "detail": "user cmwggo4hg000cfon7hpf78vqy; register HTTP 201"
+    },
+    {
+      "journey": "1. Auth",
+      "name": "Refresh token của A xoay vòng và token cũ hết hiệu lực",
+      "status": "PASS",
+      "detail": "old refresh 401"
+    },
+    {
+      "journey": "1. Auth",
+      "name": "Logout một thiết bị thu hồi refresh của A",
+      "status": "PASS",
+      "detail": "refresh after logout 401; access token after logout HTTP 200"
+    },
+    {
+      "journey": "1. Auth",
+      "name": "Đăng ký và kích hoạt C",
+      "status": "PASS",
+      "detail": "user cmwggoo1k000hfon7isfm3no1"
+    },
+    {
+      "journey": "1. Auth",
+      "name": "Đổi mật khẩu C thu hồi refresh và access token cũ",
+      "status": "FAIL",
+      "detail": "old access token still accepted (HTTP 200); passwordChangeAt is not checked on JWT access"
+    },
+    {
+      "journey": "2. Trip",
+      "name": "A tạo nháp với điểm đến trong hôm nay (UTC)",
+      "status": "PASS",
+      "detail": "cmwggp7wv000lfon7p0llcefc"
+    },
+    {
+      "journey": "2. Trip",
+      "name": "Lấy một địa điểm đã duyệt để gắn hoạt động",
+      "status": "PASS",
+      "detail": "8ed4bd9f-88b8-4a2f-9fb0-4cbf92bd856f (Bãi biển Mỹ Khê)"
+    },
+    {
+      "journey": "2. Trip",
+      "name": "A thêm một hoạt động vào ngày lịch trình",
+      "status": "PASS",
+      "detail": "cmwggp83s000pfon7mxcdm20k"
+    },
+    {
+      "journey": "2. Trip",
+      "name": "A chốt nháp thành chuyến sắp đi",
+      "status": "PASS",
+      "detail": "UPCOMING code length 8"
+    },
+    {
+      "journey": "2. Trip",
+      "name": "A mời B",
+      "status": "PASS",
+      "detail": "cmwggp8du0010fon7s14vavgn"
+    },
+    {
+      "journey": "2. Trip",
+      "name": "B chưa là thành viên thì không xem chi tiêu và không gửi tin nhóm",
+      "status": "PASS",
+      "detail": "expenses 404, message 404"
+    },
+    {
+      "journey": "2. Trip",
+      "name": "C đứng ngoài cũng bị từ chối chi tiêu",
+      "status": "PASS",
+      "detail": "HTTP 404"
+    },
+    {
+      "journey": "2. Trip",
+      "name": "B vào bằng mã mời",
+      "status": "PASS",
+      "detail": "pending cmwggp8gv0012fon7linhkdmz then approved"
+    },
+    {
+      "journey": "2. Trip",
+      "name": "A check-in tại tọa độ địa điểm",
+      "status": "PASS",
+      "detail": "cmwggp8jm0017fon7jbevkz4f"
+    },
+    {
+      "journey": "2. Trip",
+      "name": "A thêm một khoản chi tiêu chia đều",
+      "status": "PASS",
+      "detail": "expense cmwggp8l20019fon7ls3ch1yr; B HTTP 200"
+    },
+    {
+      "journey": "2. Trip",
+      "name": "Timeline của chuyến có sự kiện",
+      "status": "PASS",
+      "detail": "4 events"
+    },
+    {
+      "journey": "2. Trip",
+      "name": "A xem nhiệm vụ rồi hoàn thành chuyến",
+      "status": "PASS",
+      "detail": "missions HTTP 200; points 85"
+    },
+    {
+      "journey": "3. Chat",
+      "name": "A kết bạn với B và mở hội thoại",
+      "status": "PASS",
+      "detail": "cmwggp8td001rfon7wmerjve1"
+    },
+    {
+      "journey": "3. Chat",
+      "name": "A gửi TEXT, B nhận trên socket và đánh dấu đã đọc",
+      "status": "PASS",
+      "detail": "cmwggp93m001sfon7t1qvy9cj"
+    },
+    {
+      "journey": "3. Chat",
+      "name": "Nhóm: TEXT tới socket của B và một reaction",
+      "status": "PASS",
+      "detail": "cmwggp9gt001tfon73afdjfu0"
+    },
+    {
+      "journey": "3. Chat",
+      "name": "A gửi một ảnh trong nhóm",
+      "status": "PASS",
+      "detail": "cmwggpaje001wfon7c6eu5yg3"
+    },
+    {
+      "journey": "4. Notifications",
+      "name": "Hộp thư của B có thông báo đúng chuyến, đọc một và đọc tất cả",
+      "status": "PASS",
+      "detail": "TRIP_JOIN_REQUEST_APPROVED trip cmwggp7wv000lfon7p0llcefc; read-all updated 1"
+    },
+    {
+      "journey": "5. Social / places / ranking",
+      "name": "A lưu địa điểm",
+      "status": "PASS",
+      "detail": "8ed4bd9f-88b8-4a2f-9fb0-4cbf92bd856f"
+    },
+    {
+      "journey": "5. Social / places / ranking",
+      "name": "A đăng một bài",
+      "status": "PASS",
+      "detail": "cmwggpb1u001yfon79syr94h9"
+    },
+    {
+      "journey": "5. Social / places / ranking",
+      "name": "B thích và bình luận bài",
+      "status": "PASS",
+      "detail": "cmwggpb2y0021fon7vz3wub0q"
+    },
+    {
+      "journey": "5. Social / places / ranking",
+      "name": "Bảng xếp hạng và claim quest nếu đang nhận được",
+      "status": "PASS",
+      "detail": "claimed cmwer66la00010sn7g1fj7y2m"
+    }
+  ]
+}

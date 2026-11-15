@@ -376,9 +376,27 @@ const _$TripDetailEventTypeEnumMap = {
 _TripDetailRewardClaim _$TripDetailRewardClaimFromJson(
   Map<String, dynamic> json,
 ) => _TripDetailRewardClaim(
+  tripId: json['tripId'] as String?,
   pointsAwarded: (json['pointsAwarded'] as num).toInt(),
+  basePoints: (json['basePoints'] as num?)?.toInt() ?? 0,
+  missionPoints: (json['missionPoints'] as num?)?.toInt() ?? 0,
+  multiplierUsed: (json['multiplierUsed'] as num?)?.toDouble() ?? 1.0,
+  missionsCompleted: (json['missionsCompleted'] as num?)?.toInt() ?? 0,
+  totalCheckins: (json['totalCheckins'] as num?)?.toInt() ?? 0,
+  totalPlaces: (json['totalPlaces'] as num?)?.toInt() ?? 0,
+  completionPercent: (json['completionPercent'] as num?)?.toInt() ?? 0,
 );
 
 Map<String, dynamic> _$TripDetailRewardClaimToJson(
   _TripDetailRewardClaim instance,
-) => <String, dynamic>{'pointsAwarded': instance.pointsAwarded};
+) => <String, dynamic>{
+  'tripId': instance.tripId,
+  'pointsAwarded': instance.pointsAwarded,
+  'basePoints': instance.basePoints,
+  'missionPoints': instance.missionPoints,
+  'multiplierUsed': instance.multiplierUsed,
+  'missionsCompleted': instance.missionsCompleted,
+  'totalCheckins': instance.totalCheckins,
+  'totalPlaces': instance.totalPlaces,
+  'completionPercent': instance.completionPercent,
+};

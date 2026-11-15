@@ -139,6 +139,7 @@ const _$FriendChatReadStatusEnumMap = {
   FriendChatReadStatus.sent: 'SENT',
   FriendChatReadStatus.delivered: 'DELIVERED',
   FriendChatReadStatus.read: 'READ',
+  FriendChatReadStatus.failed: 'FAILED',
 };
 
 _FriendChatPlaceCard _$FriendChatPlaceCardFromJson(Map<String, dynamic> json) =>

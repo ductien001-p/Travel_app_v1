@@ -167,12 +167,10 @@ class PublicImageViewerController
     final seeded = ref
         .read(publicImageAlbumSeedStoreProvider)
         .get(args.albumId);
-    final album =
-        seeded ??
-        await ref.read(publicImagesRepositoryProvider).getAlbum(args.albumId);
-    if (album.images.isEmpty) {
-      return PublicImageViewerViewState(album: album, index: 0);
+    if (seeded == null || seeded.images.isEmpty) {
+      throw StateError('Không có ảnh để xem.');
     }
+    final album = seeded;
 
     var index = args.initialIndex;
     final imageId = args.initialImageId;

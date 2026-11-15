@@ -98,6 +98,7 @@ abstract class TripChatMessage with _$TripChatMessage {
     TripChatSystemPayload? system,
     TripChatPhotoPayload? photo,
     TripChatExpensePayload? expense,
+    @Default(<TripChatReaction>[]) List<TripChatReaction> reactions,
   }) = _TripChatMessage;
 
   factory TripChatMessage.fromJson(Map<String, dynamic> json) =>

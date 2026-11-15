@@ -65,6 +65,19 @@ class _OkSource implements TripChatDataSource {
   }
 
   @override
+  Future<TripChatMessage> sendImage({
+    required String tripId,
+    required String mediaId,
+  }) async {
+    return TripChatMessage(
+      id: 'photo-1',
+      kind: TripChatMessageKind.photo,
+      isMine: true,
+      timeLabel: '15:00',
+    );
+  }
+
+  @override
   Future<List<TripChatReaction>> addReaction({
     required String tripId,
     required String messageId,
@@ -92,6 +105,14 @@ class _FailingSource implements TripChatDataSource {
   Future<TripChatMessage> sendText({
     required String tripId,
     required String text,
+  }) async {
+    throw const ApiException(message: 'Not Found', statusCode: 404);
+  }
+
+  @override
+  Future<TripChatMessage> sendImage({
+    required String tripId,
+    required String mediaId,
   }) async {
     throw const ApiException(message: 'Not Found', statusCode: 404);
   }
@@ -128,6 +149,14 @@ class _UnauthorizedSource implements TripChatDataSource {
   Future<TripChatMessage> sendText({
     required String tripId,
     required String text,
+  }) async {
+    throw const ApiException(message: 'Unauthorized', statusCode: 401);
+  }
+
+  @override
+  Future<TripChatMessage> sendImage({
+    required String tripId,
+    required String mediaId,
   }) async {
     throw const ApiException(message: 'Unauthorized', statusCode: 401);
   }

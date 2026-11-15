@@ -18,11 +18,15 @@ class TripChatMessageList extends StatelessWidget {
     required this.thread,
     required this.bottomInset,
     required this.onOpenExpense,
+    this.onReact,
+    this.onRemoveReaction,
   });
 
   final TripChatThread thread;
   final double bottomInset;
   final ValueChanged<TripChatExpensePayload> onOpenExpense;
+  final ValueChanged<TripChatMessage>? onReact;
+  final void Function(TripChatMessage message, String emoji)? onRemoveReaction;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +58,12 @@ class TripChatMessageList extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.sm),
         for (final message in thread.messages) ...[
-          _MessageRow(message: message, onOpenExpense: onOpenExpense),
+          _MessageRow(
+            message: message,
+            onOpenExpense: onOpenExpense,
+            onReact: onReact,
+            onRemoveReaction: onRemoveReaction,
+          ),
           const SizedBox(height: AppSpacing.md),
         ],
         if (thread.isSomeoneTyping && (thread.typingLabel?.isNotEmpty ?? false))
@@ -68,10 +77,17 @@ class TripChatMessageList extends StatelessWidget {
 }
 
 class _MessageRow extends StatelessWidget {
-  const _MessageRow({required this.message, required this.onOpenExpense});
+  const _MessageRow({
+    required this.message,
+    required this.onOpenExpense,
+    this.onReact,
+    this.onRemoveReaction,
+  });
 
   final TripChatMessage message;
   final ValueChanged<TripChatExpensePayload> onOpenExpense;
+  final ValueChanged<TripChatMessage>? onReact;
+  final void Function(TripChatMessage message, String emoji)? onRemoveReaction;
 
   @override
   Widget build(BuildContext context) {
@@ -122,11 +138,24 @@ class _MessageRow extends StatelessWidget {
 
   Widget _bubbleBody() {
     return switch (message.kind) {
-      TripChatMessageKind.text => TripChatTextBubble(message: message),
+      TripChatMessageKind.text => TripChatTextBubble(
+        message: message,
+        onReact: onReact == null ? null : () => onReact!(message),
+        onRemoveReaction: onRemoveReaction == null
+            ? null
+            : (emoji) => onRemoveReaction!(message, emoji),
+      ),
       TripChatMessageKind.photo =>
         message.photo == null
             ? const SizedBox.shrink()
-            : TripChatPhotoBubble(message: message, photo: message.photo!),
+            : TripChatPhotoBubble(
+                message: message,
+                photo: message.photo!,
+                onReact: onReact == null ? null : () => onReact!(message),
+                onRemoveReaction: onRemoveReaction == null
+                    ? null
+                    : (emoji) => onRemoveReaction!(message, emoji),
+              ),
       TripChatMessageKind.expense =>
         message.expense == null
             ? const SizedBox.shrink()

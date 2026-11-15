@@ -43,7 +43,8 @@ class SocialScreen extends ConsumerWidget {
                 SocialFeedTopBar(
                   header: feedState.requireValue.feed.header,
                   onSearchTap: () => context.pushNamed(RouteNames.findFriends),
-                  onNotificationsTap: () => _comingSoon(context),
+                  onNotificationsTap: () =>
+                      context.pushNamed(RouteNames.notifications),
                   onFriendsTap: () => context.pushNamed(RouteNames.friendsHub),
                 )
               else

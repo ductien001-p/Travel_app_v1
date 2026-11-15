@@ -1,6 +1,6 @@
 ﻿# Travel V1 — Backend ứng dụng du lịch
 
-Backend phục vụ lập kế hoạch du lịch, tổ chức chuyến đi theo nhóm và chia sẻ trải nghiệm. Dự án sử dụng NestJS, cung cấp REST API và chat thời gian thực qua Socket.IO. Thư mục hiện tại chứa mã backend, chưa có ứng dụng frontend.
+Backend phục vụ lập kế hoạch du lịch, tổ chức chuyến đi theo nhóm và chia sẻ trải nghiệm. Dự án sử dụng NestJS, cung cấp REST API và chat thời gian thực qua Socket.IO. Monorepo `Travel_V1` gồm backend này và ứng dụng Flutter trong `frontend/`.
 
 ## Chức năng đã có trong mã nguồn
 
@@ -31,9 +31,10 @@ Các mục trên mô tả phần triển khai hiện có; không đồng nghĩa 
 
 ```text
 Travel_V1/
-├── docker-compose.yml          # PostgreSQL + pgvector và Redis
-├── package.json                # Một phần dependency dùng bởi backend
-└── backend/                  # Thư mục ứng dụng NestJS; README này nằm ở đây
+├── docker-compose.yml          # PostgreSQL + pgvector, Redis, Ollama
+├── frontend/                   # Ứng dụng Flutter
+├── package.json                # Script tiện ích trỏ vào backend
+└── backend/                    # Thư mục ứng dụng NestJS; README này nằm ở đây
     ├── package.json            # Scripts chạy, build và test
     ├── prisma.config.ts        # Cấu hình Prisma CLI và seed
     ├── prisma/
@@ -85,8 +86,9 @@ Hiện dependency được khai báo ở cả hai cấp thư mục: AWS SDK, Pas
 
 Docker Compose chỉ chạy hạ tầng, chưa đóng gói/chạy backend:
 
-- PostgreSQL: `localhost:5554`, database `travel_db`.
+- PostgreSQL: `localhost:5555` (biến `POSTGRES_HOST_PORT`, mặc định 5555), database `travel_db`.
 - Redis: `localhost:6379`.
+- Ollama: `localhost:11434`.
 - Dữ liệu lưu trong volume `postgres_data` và `redis_data`.
 
 ## Biến môi trường
@@ -95,7 +97,7 @@ Tạo file `.env` trong **backend/**. Thay các giá trị mẫu bằng cấu h�
 
 ```dotenv
 PORT=3001
-DATABASE_URL="postgresql://<POSTGRES_USER>:<POSTGRES_PASSWORD>@localhost:5554/travel_db?schema=public"
+DATABASE_URL="postgresql://<POSTGRES_USER>:<POSTGRES_PASSWORD>@localhost:5555/travel_db?schema=public"
 
 JWT_SECRET="replace-with-a-random-secret"
 JWT_SECRET_REFRESH="replace-with-a-random-secret"
@@ -125,7 +127,7 @@ R2_PRESIGN_EXPIRES=3600
 - Lấy `POSTGRES_USER` và `POSTGRES_PASSWORD` từ `../docker-compose.yml`; URL-encode ký tự đặc biệt nếu có trong thông tin kết nối.
 - Google OAuth, R2 và Firebase được khởi tạo cùng ứng dụng. Cần cấu hình hợp lệ cho các tích hợp này khi chạy bản mã nguồn hiện tại; không có công tắc tắt riêng từng tích hợp.
 - Gmail được cấu hình trực tiếp trong `src/mail/mail.service.ts`; các biến `MAIL_*` phục vụ gửi mã xác minh.
-- Redis hiện cố định `localhost:6379` trong `src/redis/redis.module.ts`; chưa đọc `REDIS_HOST` hay `REDIS_PORT` từ môi trường.
+- Redis đọc `REDIS_HOST` và `REDIS_PORT` (mặc định `localhost` / `6379`) trong `src/redis/redis.module.ts`.
 - **Lưu ý refresh token:** `issueTokens()` hiện ký cả hai token bằng secret mặc định `JWT_SECRET`, nhưng `refresh()` xác minh bằng `JWT_SECRET_REFRESH`. Hai giá trị phải giống nhau để luồng hiện tại hoạt động; nếu muốn tách khóa cần sửa phần ký refresh token. Thời hạn bản ghi refresh token trong database hiện cố định 7 ngày.
 
 ## Khởi tạo cơ sở dữ liệu và chạy ứng dụng
@@ -141,7 +143,7 @@ npm run start:dev
 
 - Prisma Client được sinh vào `src/generated/prisma`.
 - `migrate deploy` áp dụng các migration đã lưu; migration của dự án có tạo extension `vector`.
-- Seed hiện chỉ thêm 10 sở thích du lịch, không tạo tài khoản admin, địa điểm hay chuyến đi mẫu.
+- Seed `npx prisma db seed` thêm sở thích. Thêm dữ liệu mẫu bằng `npm run seed:social`, `npm run seed:ranking` và `npm run seed:trip-missions`.
 - HTTP API mặc định: `http://localhost:3001`.
 - Socket.IO: `http://localhost:3002`; cổng này được khai báo trực tiếp trong gateway và không đổi theo `PORT`.
 
@@ -165,7 +167,7 @@ Cài và chạy Ollama trên máy dùng để chạy backend, sau đó tải mod
 ollama pull embeddinggemma
 ```
 
-Mã nguồn dùng Ollama client mặc định, model `embeddinggemma` và yêu cầu vector đúng 768 chiều. Docker Compose hiện chưa có dịch vụ Ollama.
+Mã nguồn dùng Ollama client mặc định, model `embeddinggemma` và yêu cầu vector đúng 768 chiều. Docker Compose đã có dịch vụ Ollama trên cổng `11434`.
 
 API `POST /places/search-embeddings` nhận `query`, `destinationId` và `radiusKm`. Service lấy tọa độ của điểm đến, lọc theo khoảng cách, rồi sắp xếp theo độ tương đồng ngữ nghĩa; trả tối đa 30 địa điểm. Chỉ địa điểm có tọa độ và embedding mới được đưa vào kết quả.
 
@@ -177,14 +179,16 @@ Không có tiền tố `/api` trong bootstrap hiện tại. Những nhóm route 
 
 - `/auth`: đăng ký, đăng nhập, Google OAuth, refresh, logout, email và mật khẩu.
 - `/users`, `/device-token`: người dùng và thiết bị nhận thông báo.
-- `/trips`: chuyến đi, thành viên, kỷ niệm và tin nhắn.
+- `/trips`: chuyến đi, thành viên, kỷ niệm, tin nhắn và nhiệm vụ (`/trips/:tripId/missions`).
 - `/trips/:tripId/itineraries`: lịch trình và hoạt động.
 - `/trips/:tripId/expenses`: chi phí chuyến đi.
 - `/trips/interests`, `/trips/timeline`: sở thích và dòng thời gian.
 - `/trip-invitations`, `/trips/:tripId/completion`: lời mời và hoàn thành chuyến đi.
 - `/places`: địa điểm, tìm kiếm, đánh giá và địa điểm đã lưu.
 - `/friends`, `/follow`: kết bạn và theo dõi.
-- `/social/posts`: bài đăng và tương tác.
+- `/chats/hub`: danh sách hội thoại.
+- `/social/posts`, `/social/stories`, `/social/challenges`: bài đăng, story và thử thách.
+- `/notifications`: hộp thư (danh sách, đánh dấu đã đọc, đọc hết).
 - `/travel-dna`, `/ranking`: hồ sơ du lịch và bảng xếp hạng.
 - `/uploads/presigns`, `/uploads/complete`: lấy URL tải ảnh và xác nhận tải xong.
 
@@ -231,7 +235,7 @@ npm run format
 
 ## Phạm vi phát triển tiếp
 
-README cũ chứa các ý tưởng Travel Style/badge và checklist tìm địa điểm bằng nhà cung cấp bên ngoài. Mã hiện tại đã có Travel DNA và tìm kiếm ngữ nghĩa trong database, nhưng chưa thấy triển khai đầy đủ luồng External Place Provider/Place Candidate hay frontend được mô tả trong checklist đó. Đây là hướng phát triển tiếp, chưa phải khả năng đã hoàn thiện của backend.
+README cũ chứa các ý tưởng Travel Style/badge và checklist tìm địa điểm bằng nhà cung cấp bên ngoài. Mã hiện tại đã có Travel DNA, tìm kiếm ngữ nghĩa trong database và ứng dụng Flutter trong `frontend/`. Luồng External Place Provider/Place Candidate vẫn chưa triển khai đầy đủ.
 
 ## Tác giả và giấy phép
 

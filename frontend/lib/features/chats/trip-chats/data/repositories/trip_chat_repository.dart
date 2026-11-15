@@ -17,6 +17,11 @@ class TripChatRepository {
     required String text,
   }) => _dataSource.sendText(tripId: tripId, text: text);
 
+  Future<TripChatMessage> sendImage({
+    required String tripId,
+    required String mediaId,
+  }) => _dataSource.sendImage(tripId: tripId, mediaId: mediaId);
+
   Future<List<TripChatReaction>> addReaction({
     required String tripId,
     required String messageId,

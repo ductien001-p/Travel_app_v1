@@ -11,14 +11,24 @@ class TripChatPhotoBubble extends StatelessWidget {
     super.key,
     required this.message,
     required this.photo,
+    this.onReact,
+    this.onRemoveReaction,
   });
 
   final TripChatMessage message;
   final TripChatPhotoPayload photo;
+  final VoidCallback? onReact;
+  final ValueChanged<String>? onRemoveReaction;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    final reactions = message.reactions.isNotEmpty
+        ? message.reactions
+        : photo.reactions;
+
+    return GestureDetector(
+      onLongPress: onReact,
+      child: Container(
       constraints: const BoxConstraints(maxWidth: 280),
       padding: const EdgeInsets.all(6),
       decoration: BoxDecoration(
@@ -107,28 +117,40 @@ class TripChatPhotoBubble extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(8, 8, 8, 4),
             child: Row(
               children: [
-                if (photo.reactions.isNotEmpty)
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 2,
-                    ),
-                    decoration: BoxDecoration(
-                      color: AppColors.surfaceSubdued.withValues(alpha: 0.85),
-                      borderRadius: BorderRadius.circular(AppRadius.pill),
-                      border: Border.all(color: AppColors.borderNeutral),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        for (var i = 0; i < photo.reactions.length; i++) ...[
-                          if (i > 0) const SizedBox(width: 6),
-                          Text(
-                            '${photo.reactions[i].emoji} ${photo.reactions[i].count}',
-                            style: AppTypography.caption.copyWith(fontSize: 11),
-                          ),
+                if (reactions.isNotEmpty)
+                  GestureDetector(
+                    onTap: onRemoveReaction == null || reactions.isEmpty
+                        ? null
+                        : () => onRemoveReaction!(reactions.first.emoji),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 2,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.surfaceSubdued.withValues(alpha: 0.85),
+                        borderRadius: BorderRadius.circular(AppRadius.pill),
+                        border: Border.all(color: AppColors.borderNeutral),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          for (var i = 0; i < reactions.length; i++) ...[
+                            if (i > 0) const SizedBox(width: 6),
+                            GestureDetector(
+                              onTap: onRemoveReaction == null
+                                  ? null
+                                  : () => onRemoveReaction!(reactions[i].emoji),
+                              child: Text(
+                                '${reactions[i].emoji} ${reactions[i].count}',
+                                style: AppTypography.caption.copyWith(
+                                  fontSize: 11,
+                                ),
+                              ),
+                            ),
+                          ],
                         ],
-                      ],
+                      ),
                     ),
                   ),
                 const Spacer(),
@@ -143,6 +165,7 @@ class TripChatPhotoBubble extends StatelessWidget {
             ),
           ),
         ],
+      ),
       ),
     );
   }

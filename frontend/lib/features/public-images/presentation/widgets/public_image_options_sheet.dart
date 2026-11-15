@@ -14,10 +14,7 @@ Future<void> showPublicImageOptionsSheet({
   required PublicImageItem image,
   required int index,
   required int total,
-  required String tripTitle,
   required VoidCallback onViewMap,
-  required VoidCallback onSetCover,
-  required VoidCallback onDelete,
 }) {
   return showModalBottomSheet<void>(
     context: context,
@@ -27,14 +24,9 @@ Future<void> showPublicImageOptionsSheet({
       image: image,
       index: index,
       total: total,
-      tripTitle: tripTitle,
       onViewMap: () {
         Navigator.of(ctx).pop();
         onViewMap();
-      },
-      onSetCover: () {
-        Navigator.of(ctx).pop();
-        onSetCover();
       },
       onCopyLink: () async {
         final url = image.shareUrl ?? image.imageUrl;
@@ -48,10 +40,6 @@ Future<void> showPublicImageOptionsSheet({
             );
         }
       },
-      onDelete: () {
-        Navigator.of(ctx).pop();
-        onDelete();
-      },
     ),
   );
 }
@@ -62,21 +50,15 @@ class PublicImageOptionsSheet extends StatelessWidget {
     required this.image,
     required this.index,
     required this.total,
-    required this.tripTitle,
     required this.onViewMap,
-    required this.onSetCover,
     required this.onCopyLink,
-    required this.onDelete,
   });
 
   final PublicImageItem image;
   final int index;
   final int total;
-  final String tripTitle;
   final VoidCallback onViewMap;
-  final VoidCallback onSetCover;
   final VoidCallback onCopyLink;
-  final VoidCallback onDelete;
 
   static const _sheetBg = Color(0xF20A0F12);
 
@@ -185,14 +167,6 @@ class PublicImageOptionsSheet extends StatelessWidget {
               ].where((part) => part.isNotEmpty).join(' • '),
               onTap: onViewMap,
             ),
-            if (image.canSetAsCover)
-              _OptionTile(
-                icon: Icons.wallpaper_rounded,
-                iconTone: _OptionIconTone.teal,
-                title: 'Đặt làm ảnh bìa chuyến đi',
-                subtitle: 'Sử dụng làm ảnh đại diện cho chuyến $tripTitle',
-                onTap: onSetCover,
-              ),
             _OptionTile(
               icon: Icons.link_rounded,
               iconTone: _OptionIconTone.neutral,
@@ -200,25 +174,6 @@ class PublicImageOptionsSheet extends StatelessWidget {
               subtitle: 'Chia sẻ trực tiếp qua link ảnh gốc HD',
               onTap: onCopyLink,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: AppSpacing.xs,
-                horizontal: AppSpacing.xs,
-              ),
-              child: Divider(
-                height: 1,
-                color: AppColors.textInverse.withValues(alpha: 0.10),
-              ),
-            ),
-            if (image.canDelete)
-              _OptionTile(
-                icon: Icons.delete_outline_rounded,
-                iconTone: _OptionIconTone.danger,
-                title: 'Xóa ảnh khỏi album',
-                subtitle: 'Gỡ bỏ ảnh này khỏi bộ sưu tập',
-                onTap: onDelete,
-                danger: true,
-              ),
           ],
         ),
       ),
@@ -226,7 +181,7 @@ class PublicImageOptionsSheet extends StatelessWidget {
   }
 }
 
-enum _OptionIconTone { teal, neutral, danger }
+enum _OptionIconTone { teal, neutral }
 
 class _OptionTile extends StatelessWidget {
   const _OptionTile({
@@ -235,7 +190,6 @@ class _OptionTile extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.onTap,
-    this.danger = false,
   });
 
   final IconData icon;
@@ -243,7 +197,6 @@ class _OptionTile extends StatelessWidget {
   final String title;
   final String subtitle;
   final VoidCallback onTap;
-  final bool danger;
 
   @override
   Widget build(BuildContext context) {
@@ -259,10 +212,6 @@ class _OptionTile extends StatelessWidget {
         iconBg = AppColors.textInverse.withValues(alpha: 0.10);
         iconColor = AppColors.textInverse.withValues(alpha: 0.80);
         border = AppColors.textInverse.withValues(alpha: 0.15);
-      case _OptionIconTone.danger:
-        iconBg = AppColors.danger.withValues(alpha: 0.15);
-        iconColor = AppColors.danger;
-        border = AppColors.danger.withValues(alpha: 0.30);
     }
 
     return Padding(
@@ -274,14 +223,10 @@ class _OptionTile extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(AppSpacing.sm),
           decoration: BoxDecoration(
-            color: danger
-                ? Colors.transparent
-                : AppColors.textInverse.withValues(alpha: 0.05),
+            color: AppColors.textInverse.withValues(alpha: 0.05),
             borderRadius: BorderRadius.circular(AppRadius.card),
             border: Border.all(
-              color: danger
-                  ? Colors.transparent
-                  : AppColors.textInverse.withValues(alpha: 0.05),
+              color: AppColors.textInverse.withValues(alpha: 0.05),
             ),
           ),
           child: Row(
@@ -304,9 +249,7 @@ class _OptionTile extends StatelessWidget {
                     Text(
                       title,
                       style: AppTypography.bodyMedium.copyWith(
-                        color: danger
-                            ? AppColors.danger
-                            : AppColors.textInverse,
+                        color: AppColors.textInverse,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -314,9 +257,7 @@ class _OptionTile extends StatelessWidget {
                       Text(
                         subtitle,
                         style: AppTypography.caption.copyWith(
-                          color: danger
-                              ? AppColors.danger.withValues(alpha: 0.70)
-                              : AppColors.textTertiary,
+                          color: AppColors.textTertiary,
                         ),
                       ),
                   ],
@@ -324,9 +265,7 @@ class _OptionTile extends StatelessWidget {
               ),
               Icon(
                 Icons.chevron_right_rounded,
-                color: danger
-                    ? AppColors.danger.withValues(alpha: 0.60)
-                    : AppColors.textTertiary,
+                color: AppColors.textTertiary,
                 size: 18,
               ),
             ],

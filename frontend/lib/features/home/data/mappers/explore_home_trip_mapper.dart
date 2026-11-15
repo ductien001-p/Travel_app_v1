@@ -23,6 +23,7 @@ ExploreHomeFeed buildExploreHomeFeed({
   int page = 1,
   bool hasNextPage = false,
   bool catalogUnavailable = false,
+  bool hasUnreadNotifications = false,
 }) {
   final hotTrips = [
     for (final trip in trips) mapTripListItemToCommunityCard(trip),
@@ -32,7 +33,7 @@ ExploreHomeFeed buildExploreHomeFeed({
       displayName: displayName,
       avatarUrl: avatarUrl,
       locationLabel: locationLabel,
-      hasUnreadNotifications: false,
+      hasUnreadNotifications: hasUnreadNotifications,
     ),
     filters: kExploreHomeFilters,
     hotTrips: hotTrips,

@@ -36,6 +36,7 @@ import { TripTimelineController } from '../module/trips/trip-relations/trip-time
 import { UsersController } from '../module/users/users.controller';
 import { UploadsController } from '../uploads/presign-upload/presign-upload.controller';
 import { DeviceTokenController } from '../module/auth/device-token/device-token.controller';
+import { NotificationsController } from '../notification/notification.controller';
 
 export const openApiControllers: Type<unknown>[] = [
   AuthController,
@@ -73,6 +74,7 @@ export const openApiControllers: Type<unknown>[] = [
   TripTimelineController,
   UsersController,
   UploadsController,
+  NotificationsController,
 ];
 
 // Swagger only needs controller metadata. Mock every constructor dependency so

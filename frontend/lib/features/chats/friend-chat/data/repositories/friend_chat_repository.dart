@@ -17,4 +17,12 @@ class FriendChatRepository {
     required String conversationId,
     required String text,
   }) => _dataSource.sendText(conversationId: conversationId, text: text);
+
+  Future<FriendChatMessage> sendTripInvite({
+    required String conversationId,
+    required FriendChatInviteCandidate candidate,
+  }) => _dataSource.sendTripInvite(
+    conversationId: conversationId,
+    candidate: candidate,
+  );
 }

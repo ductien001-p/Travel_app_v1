@@ -11,7 +11,9 @@ import 'package:travel_frontend_v1/core/widget/app_glass_surface.dart';
 import 'package:travel_frontend_v1/core/widget/app_icon_button.dart';
 import 'package:travel_frontend_v1/core/widget/app_scaffold.dart';
 import 'package:travel_frontend_v1/features/auth/application/auth_controller.dart';
+import 'package:travel_frontend_v1/features/auth/provider/auth_provider.dart';
 
+import '../../application/change_password.dart';
 import '../../application/update_profile_controller.dart';
 import '../../provider/profile_provider.dart';
 import '../../data/models/profile_model.dart';
@@ -54,6 +56,109 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  Future<void> _changePassword() async {
+    final currentController = TextEditingController();
+    final nextController = TextEditingController();
+    final confirmController = TextEditingController();
+    final submitted = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) {
+        var saving = false;
+        String? errorText;
+        return StatefulBuilder(
+          builder: (context, setDialogState) {
+            Future<void> submit() async {
+              final message = validateChangePassword(
+                currentPassword: currentController.text,
+                newPassword: nextController.text,
+                confirmPassword: confirmController.text,
+              );
+              if (message != null) {
+                setDialogState(() => errorText = message);
+                return;
+              }
+              setDialogState(() {
+                saving = true;
+                errorText = null;
+              });
+              try {
+                await ref.read(authRepositoryProvider).changePassword(
+                  oldPassword: currentController.text,
+                  newPassword: nextController.text,
+                );
+                if (dialogContext.mounted) {
+                  Navigator.of(dialogContext).pop(true);
+                }
+              } catch (error) {
+                setDialogState(() {
+                  saving = false;
+                  errorText = changePasswordFailureMessage(error);
+                });
+              }
+            }
+
+            return AlertDialog(
+              title: const Text('Đổi mật khẩu'),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextField(
+                    controller: currentController,
+                    obscureText: true,
+                    decoration: const InputDecoration(
+                      labelText: 'Mật khẩu hiện tại',
+                    ),
+                  ),
+                  TextField(
+                    controller: nextController,
+                    obscureText: true,
+                    decoration: const InputDecoration(labelText: 'Mật khẩu mới'),
+                  ),
+                  TextField(
+                    controller: confirmController,
+                    obscureText: true,
+                    decoration: const InputDecoration(
+                      labelText: 'Xác nhận mật khẩu mới',
+                    ),
+                  ),
+                  if (errorText != null) ...[
+                    const SizedBox(height: 8),
+                    Text(
+                      errorText!,
+                      style: AppTypography.caption.copyWith(
+                        color: AppColors.danger,
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+              actions: [
+                TextButton(
+                  onPressed: saving
+                      ? null
+                      : () => Navigator.of(dialogContext).pop(false),
+                  child: const Text('Hủy'),
+                ),
+                TextButton(
+                  onPressed: saving ? null : submit,
+                  child: Text(saving ? 'Đang lưu...' : 'Lưu'),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+    currentController.dispose();
+    nextController.dispose();
+    confirmController.dispose();
+    if (submitted == true && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Đã đổi mật khẩu.')),
+      );
+    }
   }
 
   Future<void> _deleteAccount() async {
@@ -112,11 +217,12 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
             icon: Icons.security_rounded,
             title: 'Tài khoản & Bảo mật',
             children: [
-              const _SettingsTile(
+              _SettingsTile(
                 icon: Icons.lock_reset_rounded,
                 title: 'Đổi mật khẩu',
                 subtitle: 'Cập nhật mật khẩu định kỳ để an toàn',
                 showChevron: true,
+                onTap: _changePassword,
               ),
               _SettingsTile(
                 icon: Icons.fingerprint_rounded,
@@ -420,6 +526,7 @@ class _SettingsTile extends StatelessWidget {
     this.valueIsPrimary = false,
     this.showChevron = false,
     this.trailing,
+    this.onTap,
   });
   final IconData icon;
   final String title;
@@ -428,11 +535,14 @@ class _SettingsTile extends StatelessWidget {
   final bool valueIsPrimary;
   final bool showChevron;
   final Widget? trailing;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) => ConstrainedBox(
     constraints: const BoxConstraints(minHeight: 73),
-    child: Padding(
+    child: InkWell(
+      onTap: onTap,
+      child: Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: AppSpacing.md,
         vertical: AppSpacing.sm,
@@ -498,6 +608,7 @@ class _SettingsTile extends StatelessWidget {
           ],
         ],
       ),
+    ),
     ),
   );
 }

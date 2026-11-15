@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:travel_frontend_v1/features/media/data/models/media_upload_folder.dart';
+import 'package:travel_frontend_v1/features/media/providers/media_providers.dart';
 import 'package:travel_frontend_v1/app/router/router_names.dart';
 import 'package:travel_frontend_v1/core/testing/e2e_keys.dart';
 import 'package:travel_frontend_v1/core/theme/app_colors.dart';
@@ -108,7 +111,21 @@ class _TripChatScreenState extends ConsumerState<TripChatScreen> {
               },
               onUtilitySelected: (utility) => _onUtility(thread, utility),
               onSend: () => _send(thread),
-              onCamera: _comingSoon,
+              onCamera: () => _sendPhoto(thread),
+              onReact: (message) => ref
+                  .read(tripChatControllerProvider(widget.tripId).notifier)
+                  .toggleReaction(
+                    messageId: message.id,
+                    emoji: '❤️',
+                    remove: false,
+                  ),
+              onRemoveReaction: (message, emoji) => ref
+                  .read(tripChatControllerProvider(widget.tripId).notifier)
+                  .toggleReaction(
+                    messageId: message.id,
+                    emoji: emoji,
+                    remove: true,
+                  ),
               onMic: _comingSoon,
               onOpenExpense: (_) {
                 context.pushNamed(
@@ -133,6 +150,32 @@ class _TripChatScreenState extends ConsumerState<TripChatScreen> {
     if (!ok && mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Không gửi được tin nhắn. Thử lại.')),
+      );
+    }
+  }
+
+  Future<void> _sendPhoto(TripChatThread thread) async {
+    final file = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (file == null || !mounted) return;
+    try {
+      final uploaded = await ref
+          .read(mediaUploadRepositoryProvider)
+          .uploadFiles(folder: MediaUploadFolder.trips, files: [file]);
+      if (uploaded.isEmpty) {
+        throw StateError('empty upload');
+      }
+      final ok = await ref
+          .read(tripChatControllerProvider(thread.tripId).notifier)
+          .sendImage(uploaded.first.id);
+      if (!ok && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Không gửi được ảnh. Thử lại.')),
+        );
+      }
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Không gửi được ảnh. Thử lại.')),
       );
     }
   }
@@ -183,6 +226,8 @@ class _LoadedBody extends StatelessWidget {
     required this.onCamera,
     required this.onMic,
     required this.onOpenExpense,
+    this.onReact,
+    this.onRemoveReaction,
   });
 
   final TripChatThread thread;
@@ -198,6 +243,8 @@ class _LoadedBody extends StatelessWidget {
   final VoidCallback onCamera;
   final VoidCallback onMic;
   final ValueChanged<TripChatExpensePayload> onOpenExpense;
+  final ValueChanged<TripChatMessage>? onReact;
+  final void Function(TripChatMessage message, String emoji)? onRemoveReaction;
 
   @override
   Widget build(BuildContext context) {
@@ -216,6 +263,8 @@ class _LoadedBody extends StatelessWidget {
             thread: thread,
             bottomInset: 8,
             onOpenExpense: onOpenExpense,
+            onReact: onReact,
+            onRemoveReaction: onRemoveReaction,
           ),
         ),
         TripChatComposer(

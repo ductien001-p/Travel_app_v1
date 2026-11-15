@@ -78,12 +78,45 @@ export class AuthService {
     if (user.deletedAt) {
       throw new UnauthorizedException('User is deleted');
     }
+    await this.assertAccessSession(payload, user.passwordChangeAt);
     const authUser: AuthUser = {
       id: user.id,
       email: user.email,
       role: user.role,
     };
     return authUser;
+  }
+
+  /**
+   * Access tokens are only valid while the refresh session that issued them
+   * is still live. Logout revokes that row; password change revokes every
+   * row and also rejects tokens issued before passwordChangeAt.
+   */
+  private async assertAccessSession(
+    payload: JwtPayload,
+    passwordChangeAt: Date | null,
+  ): Promise<void> {
+    if (!payload.sid) {
+      throw new UnauthorizedException('Session is no longer valid');
+    }
+    const session = await this.prisma.refreshToken.findUnique({
+      where: { id: payload.sid },
+      select: { userId: true, revoked: true, expiresAt: true },
+    });
+    if (
+      !session ||
+      session.userId !== payload.sub ||
+      session.revoked ||
+      session.expiresAt <= new Date()
+    ) {
+      throw new UnauthorizedException('Session is no longer valid');
+    }
+    if (passwordChangeAt && payload.iat != null) {
+      const changedAtSec = Math.floor(passwordChangeAt.getTime() / 1000);
+      if (payload.iat < changedAtSec) {
+        throw new UnauthorizedException('Session is no longer valid');
+      }
+    }
   }
 
   async validateUser(email: string, pass: string): Promise<AuthUser | null> {
@@ -427,23 +460,8 @@ export class AuthService {
       throw new UnauthorizedException('User is not active');
     }
 
-    // Tạo token mới
-    const tokens = this.generateTokens(stored.user);
+    const tokens = this.signSessionTokens(stored.user);
 
-    // Hash refresh token MỚI
-    const newHashedToken = this.hashRefreshToken(tokens.refreshToken);
-
-    const decoded = this.jwtService.decode(tokens.refreshToken);
-
-    if (!decoded || typeof decoded === 'string' || !decoded.exp) {
-      throw new InternalServerErrorException(
-        'Failed to determine refresh token expiration',
-      );
-    }
-
-    const expiresAt = new Date(decoded.exp * 1000);
-
-    // Rotate refresh token atomically
     await this.prisma.$transaction(async (tx) => {
       await tx.refreshToken.delete({
         where: {
@@ -453,14 +471,18 @@ export class AuthService {
 
       await tx.refreshToken.create({
         data: {
+          id: tokens.sessionId,
           userId: stored.user.id,
-          hashed: newHashedToken,
-          expiresAt,
+          hashed: this.hashRefreshToken(tokens.refreshToken),
+          expiresAt: tokens.expiresAt,
         },
       });
     });
 
-    return tokens;
+    return {
+      accessToken: tokens.accessToken,
+      refreshToken: tokens.refreshToken,
+    };
   }
 
   async logoutOne(
@@ -495,17 +517,40 @@ export class AuthService {
   }
 
   private async issueTokens(user: AuthUser): Promise<AuthResult> {
+    const tokens = this.signSessionTokens(user);
+    await this.prisma.refreshToken.create({
+      data: {
+        id: tokens.sessionId,
+        hashed: this.hashRefreshToken(tokens.refreshToken),
+        userId: user.id,
+        expiresAt: tokens.expiresAt,
+      },
+    });
+    return {
+      id: user.id,
+      accessToken: tokens.accessToken,
+      refreshToken: tokens.refreshToken,
+    };
+  }
+
+  private signSessionTokens(user: AuthUser): AuthTokens & {
+    sessionId: string;
+    expiresAt: Date;
+  } {
+    const sessionId = crypto.randomUUID();
     const accessPayload: JwtPayload = {
       sub: user.id,
       email: user.email,
       role: user.role,
       type: 'access',
+      sid: sessionId,
     };
     const refreshPayload: JwtPayload = {
       sub: user.id,
       email: user.email,
       role: user.role,
       type: 'refresh',
+      sid: sessionId,
       jti: crypto.randomUUID(),
     };
     const accessToken = this.jwtService.sign(accessPayload, {
@@ -523,46 +568,11 @@ export class AuthService {
       );
     }
 
-    const expiresAt = new Date(decoded.exp * 1000);
-
-    const hashed = this.hashRefreshToken(refreshToken);
-
-    await this.prisma.refreshToken.create({
-      data: { hashed, userId: user.id, expiresAt },
-    });
-    const result: AuthResult = {
-      id: user.id,
-      accessToken,
-      refreshToken,
-    };
-    return result;
-  }
-  //Dung cho refresh token
-  private generateTokens(user: AuthUser) {
-    const accessPayload: JwtPayload = {
-      sub: user.id,
-      email: user.email,
-      role: user.role,
-      type: 'access',
-    };
-    const refreshPayload: JwtPayload = {
-      sub: user.id,
-      email: user.email,
-      role: user.role,
-      type: 'refresh',
-      jti: crypto.randomUUID(),
-    };
-    const accessToken = this.jwtService.sign(accessPayload, {
-      expiresIn: this.configService.get('ACCESS_TOKEN_EXPIRY')!,
-    });
-    const refreshToken = this.jwtService.sign(refreshPayload, {
-      secret: this.configService.get('JWT_SECRET_REFRESH')!,
-      expiresIn: this.configService.get('REFRESH_TOKEN_EXPIRY')!,
-    });
-
     return {
       accessToken,
       refreshToken,
+      sessionId,
+      expiresAt: new Date(decoded.exp * 1000),
     };
   }
 

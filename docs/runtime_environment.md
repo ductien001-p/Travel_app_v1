@@ -58,14 +58,16 @@ flutter run --dart-define-from-file=lib/core/config/dev.json
 
 ## 4. Deep link / share (production)
 
-Link dạng `https://<shareHost>/s/<token>`. Cần domain HTTPS thật và cấu hình đồng bộ:
+Link dạng `https://<SHARE_HOST>/s/<token>` (HTTPS, cổng 443). Localhost HTTP không đủ cho Android App Links hay iOS Universal Links. Không điền domain giả: để trống cho đến khi có host thật, SHA-256 của chứng chỉ ký Android và `TEAMID.bundleId`.
 
-- FE: `SHARE_HOST` (dart-define / `dev.json`)
-- Android: `SHARE_HOST` trong `local.properties`
-- iOS: Associated Domains / entitlements
-- BE: `PUBLIC_SHARE_BASE_URL`, `ANDROID_SHA256_CERT_FINGERPRINTS`, `IOS_APP_ID`
+Khi đã có các giá trị đó, điền cùng một host vào bốn chỗ:
 
-Chi tiết gap: `docs/khao-sat-du-an.md` §4.3.
+- [ ] `frontend/lib/core/config/dev.json`: `"SHARE_HOST": "<domain>"` (không kèm `https://`)
+- [ ] `frontend/android/local.properties`: `SHARE_HOST=<domain>` (file gitignore; Gradle mặc định `share.invalid` nếu thiếu)
+- [ ] `frontend/ios/Flutter/ShareLinks.xcconfig`: copy từ `ShareLinks.xcconfig.example`, đặt `SHARE_HOST=<domain>` (entitlement `applinks:$(SHARE_HOST)`; Associated Domains cần Apple Developer team trả phí)
+- [ ] `backend/.env`: `PUBLIC_SHARE_BASE_URL=https://<domain>`, `ANDROID_SHA256_CERT_FINGERPRINTS=<sha256>`, `IOS_APP_ID=<TEAMID.bundleId>`
+
+Backend đã phục vụ `/s/:token`, `/.well-known/assetlinks.json` và `/.well-known/apple-app-site-association`. Thử Android sau khi domain xác minh: `adb shell am start -a android.intent.action.VIEW -d "https://<SHARE_HOST>/s/<token>"`.
 
 ## 5. Test nhanh
 

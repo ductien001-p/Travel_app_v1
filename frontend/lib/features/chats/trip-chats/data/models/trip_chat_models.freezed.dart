@@ -919,7 +919,7 @@ as bool,
 /// @nodoc
 mixin _$TripChatMessage {
 
- String get id; TripChatMessageKind get kind; bool get isMine; String? get text; String get timeLabel; TripChatReadStatus? get readStatus; bool get showAvatar; TripChatSender? get sender; TripChatSystemPayload? get system; TripChatPhotoPayload? get photo; TripChatExpensePayload? get expense;
+ String get id; TripChatMessageKind get kind; bool get isMine; String? get text; String get timeLabel; TripChatReadStatus? get readStatus; bool get showAvatar; TripChatSender? get sender; TripChatSystemPayload? get system; TripChatPhotoPayload? get photo; TripChatExpensePayload? get expense; List<TripChatReaction> get reactions;
 /// Create a copy of TripChatMessage
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -933,20 +933,20 @@ $TripChatMessageCopyWith<TripChatMessage> get copyWith => _$TripChatMessageCopyW
 @override
 bool operator ==(Object other) {
   final _this = this as TripChatMessage;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TripChatMessage&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.kind, _this.kind) || other.kind == _this.kind)&&(identical(other.isMine, _this.isMine) || other.isMine == _this.isMine)&&(identical(other.text, _this.text) || other.text == _this.text)&&(identical(other.timeLabel, _this.timeLabel) || other.timeLabel == _this.timeLabel)&&(identical(other.readStatus, _this.readStatus) || other.readStatus == _this.readStatus)&&(identical(other.showAvatar, _this.showAvatar) || other.showAvatar == _this.showAvatar)&&(identical(other.sender, _this.sender) || other.sender == _this.sender)&&(identical(other.system, _this.system) || other.system == _this.system)&&(identical(other.photo, _this.photo) || other.photo == _this.photo)&&(identical(other.expense, _this.expense) || other.expense == _this.expense));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TripChatMessage&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.kind, _this.kind) || other.kind == _this.kind)&&(identical(other.isMine, _this.isMine) || other.isMine == _this.isMine)&&(identical(other.text, _this.text) || other.text == _this.text)&&(identical(other.timeLabel, _this.timeLabel) || other.timeLabel == _this.timeLabel)&&(identical(other.readStatus, _this.readStatus) || other.readStatus == _this.readStatus)&&(identical(other.showAvatar, _this.showAvatar) || other.showAvatar == _this.showAvatar)&&(identical(other.sender, _this.sender) || other.sender == _this.sender)&&(identical(other.system, _this.system) || other.system == _this.system)&&(identical(other.photo, _this.photo) || other.photo == _this.photo)&&(identical(other.expense, _this.expense) || other.expense == _this.expense)&&const DeepCollectionEquality().equals(other.reactions, _this.reactions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as TripChatMessage;
-  return Object.hash(runtimeType,_this.id,_this.kind,_this.isMine,_this.text,_this.timeLabel,_this.readStatus,_this.showAvatar,_this.sender,_this.system,_this.photo,_this.expense);
+  return Object.hash(runtimeType,_this.id,_this.kind,_this.isMine,_this.text,_this.timeLabel,_this.readStatus,_this.showAvatar,_this.sender,_this.system,_this.photo,_this.expense,const DeepCollectionEquality().hash(_this.reactions));
 }
 
 @override
 String toString() {
   final _this = this as TripChatMessage;
-  return 'TripChatMessage(id: ${_this.id}, kind: ${_this.kind}, isMine: ${_this.isMine}, text: ${_this.text}, timeLabel: ${_this.timeLabel}, readStatus: ${_this.readStatus}, showAvatar: ${_this.showAvatar}, sender: ${_this.sender}, system: ${_this.system}, photo: ${_this.photo}, expense: ${_this.expense})';
+  return 'TripChatMessage(id: ${_this.id}, kind: ${_this.kind}, isMine: ${_this.isMine}, text: ${_this.text}, timeLabel: ${_this.timeLabel}, readStatus: ${_this.readStatus}, showAvatar: ${_this.showAvatar}, sender: ${_this.sender}, system: ${_this.system}, photo: ${_this.photo}, expense: ${_this.expense}, reactions: ${_this.reactions})';
 }
 
 
@@ -957,7 +957,7 @@ abstract mixin class $TripChatMessageCopyWith<$Res>  {
   factory $TripChatMessageCopyWith(TripChatMessage value, $Res Function(TripChatMessage) _then) = _$TripChatMessageCopyWithImpl;
 @useResult
 $Res call({
- String id, TripChatMessageKind kind, bool isMine, String? text, String timeLabel, TripChatReadStatus? readStatus, bool showAvatar, TripChatSender? sender, TripChatSystemPayload? system, TripChatPhotoPayload? photo, TripChatExpensePayload? expense
+ String id, TripChatMessageKind kind, bool isMine, String? text, String timeLabel, TripChatReadStatus? readStatus, bool showAvatar, TripChatSender? sender, TripChatSystemPayload? system, TripChatPhotoPayload? photo, TripChatExpensePayload? expense, List<TripChatReaction> reactions
 });
 
 
@@ -974,7 +974,7 @@ class _$TripChatMessageCopyWithImpl<$Res>
 
 /// Create a copy of TripChatMessage
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? kind = null,Object? isMine = null,Object? text = freezed,Object? timeLabel = null,Object? readStatus = freezed,Object? showAvatar = null,Object? sender = freezed,Object? system = freezed,Object? photo = freezed,Object? expense = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? kind = null,Object? isMine = null,Object? text = freezed,Object? timeLabel = null,Object? readStatus = freezed,Object? showAvatar = null,Object? sender = freezed,Object? system = freezed,Object? photo = freezed,Object? expense = freezed,Object? reactions = null,}) {
   return _then(TripChatMessage(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,kind: null == kind ? _self.kind : kind // ignore: cast_nullable_to_non_nullable
@@ -987,7 +987,8 @@ as bool,sender: freezed == sender ? _self.sender : sender // ignore: cast_nullab
 as TripChatSender?,system: freezed == system ? _self.system : system // ignore: cast_nullable_to_non_nullable
 as TripChatSystemPayload?,photo: freezed == photo ? _self.photo : photo // ignore: cast_nullable_to_non_nullable
 as TripChatPhotoPayload?,expense: freezed == expense ? _self.expense : expense // ignore: cast_nullable_to_non_nullable
-as TripChatExpensePayload?,
+as TripChatExpensePayload?,reactions: null == reactions ? _self.reactions : reactions // ignore: cast_nullable_to_non_nullable
+as List<TripChatReaction>,
   ));
 }
 /// Create a copy of TripChatMessage
@@ -1120,10 +1121,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  TripChatMessageKind kind,  bool isMine,  String? text,  String timeLabel,  TripChatReadStatus? readStatus,  bool showAvatar,  TripChatSender? sender,  TripChatSystemPayload? system,  TripChatPhotoPayload? photo,  TripChatExpensePayload? expense)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  TripChatMessageKind kind,  bool isMine,  String? text,  String timeLabel,  TripChatReadStatus? readStatus,  bool showAvatar,  TripChatSender? sender,  TripChatSystemPayload? system,  TripChatPhotoPayload? photo,  TripChatExpensePayload? expense,  List<TripChatReaction> reactions)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _TripChatMessage() when $default != null:
-return $default(_that.id,_that.kind,_that.isMine,_that.text,_that.timeLabel,_that.readStatus,_that.showAvatar,_that.sender,_that.system,_that.photo,_that.expense);case _:
+return $default(_that.id,_that.kind,_that.isMine,_that.text,_that.timeLabel,_that.readStatus,_that.showAvatar,_that.sender,_that.system,_that.photo,_that.expense,_that.reactions);case _:
   return orElse();
 
 }
@@ -1141,10 +1142,10 @@ return $default(_that.id,_that.kind,_that.isMine,_that.text,_that.timeLabel,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  TripChatMessageKind kind,  bool isMine,  String? text,  String timeLabel,  TripChatReadStatus? readStatus,  bool showAvatar,  TripChatSender? sender,  TripChatSystemPayload? system,  TripChatPhotoPayload? photo,  TripChatExpensePayload? expense)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  TripChatMessageKind kind,  bool isMine,  String? text,  String timeLabel,  TripChatReadStatus? readStatus,  bool showAvatar,  TripChatSender? sender,  TripChatSystemPayload? system,  TripChatPhotoPayload? photo,  TripChatExpensePayload? expense,  List<TripChatReaction> reactions)  $default,) {final _that = this;
 switch (_that) {
 case _TripChatMessage():
-return $default(_that.id,_that.kind,_that.isMine,_that.text,_that.timeLabel,_that.readStatus,_that.showAvatar,_that.sender,_that.system,_that.photo,_that.expense);case _:
+return $default(_that.id,_that.kind,_that.isMine,_that.text,_that.timeLabel,_that.readStatus,_that.showAvatar,_that.sender,_that.system,_that.photo,_that.expense,_that.reactions);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1161,10 +1162,10 @@ return $default(_that.id,_that.kind,_that.isMine,_that.text,_that.timeLabel,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  TripChatMessageKind kind,  bool isMine,  String? text,  String timeLabel,  TripChatReadStatus? readStatus,  bool showAvatar,  TripChatSender? sender,  TripChatSystemPayload? system,  TripChatPhotoPayload? photo,  TripChatExpensePayload? expense)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  TripChatMessageKind kind,  bool isMine,  String? text,  String timeLabel,  TripChatReadStatus? readStatus,  bool showAvatar,  TripChatSender? sender,  TripChatSystemPayload? system,  TripChatPhotoPayload? photo,  TripChatExpensePayload? expense,  List<TripChatReaction> reactions)?  $default,) {final _that = this;
 switch (_that) {
 case _TripChatMessage() when $default != null:
-return $default(_that.id,_that.kind,_that.isMine,_that.text,_that.timeLabel,_that.readStatus,_that.showAvatar,_that.sender,_that.system,_that.photo,_that.expense);case _:
+return $default(_that.id,_that.kind,_that.isMine,_that.text,_that.timeLabel,_that.readStatus,_that.showAvatar,_that.sender,_that.system,_that.photo,_that.expense,_that.reactions);case _:
   return null;
 
 }
@@ -1176,7 +1177,7 @@ return $default(_that.id,_that.kind,_that.isMine,_that.text,_that.timeLabel,_tha
 @JsonSerializable()
 
 class _TripChatMessage implements TripChatMessage {
-  const _TripChatMessage({required this.id, required this.kind, this.isMine = false, this.text, required this.timeLabel, this.readStatus, this.showAvatar = true, this.sender, this.system, this.photo, this.expense});
+  const _TripChatMessage({required this.id, required this.kind, this.isMine = false, this.text, required this.timeLabel, this.readStatus, this.showAvatar = true, this.sender, this.system, this.photo, this.expense,  List<TripChatReaction> reactions = const <TripChatReaction>[]}): _reactions = reactions;
   factory _TripChatMessage.fromJson(Map<String, dynamic> json) => _$TripChatMessageFromJson(json);
 
 @override final  String id;
@@ -1190,6 +1191,13 @@ class _TripChatMessage implements TripChatMessage {
 @override final  TripChatSystemPayload? system;
 @override final  TripChatPhotoPayload? photo;
 @override final  TripChatExpensePayload? expense;
+ final  List<TripChatReaction> _reactions;
+@override@JsonKey() List<TripChatReaction> get reactions {
+  if (_reactions is EqualUnmodifiableListView) return _reactions;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_reactions);
+}
+
 
 /// Create a copy of TripChatMessage
 /// with the given fields replaced by the non-null parameter values.
@@ -1204,18 +1212,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _TripChatMessage&&(identical(other.id, id) || other.id == id)&&(identical(other.kind, kind) || other.kind == kind)&&(identical(other.isMine, isMine) || other.isMine == isMine)&&(identical(other.text, text) || other.text == text)&&(identical(other.timeLabel, timeLabel) || other.timeLabel == timeLabel)&&(identical(other.readStatus, readStatus) || other.readStatus == readStatus)&&(identical(other.showAvatar, showAvatar) || other.showAvatar == showAvatar)&&(identical(other.sender, sender) || other.sender == sender)&&(identical(other.system, system) || other.system == system)&&(identical(other.photo, photo) || other.photo == photo)&&(identical(other.expense, expense) || other.expense == expense));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _TripChatMessage&&(identical(other.id, id) || other.id == id)&&(identical(other.kind, kind) || other.kind == kind)&&(identical(other.isMine, isMine) || other.isMine == isMine)&&(identical(other.text, text) || other.text == text)&&(identical(other.timeLabel, timeLabel) || other.timeLabel == timeLabel)&&(identical(other.readStatus, readStatus) || other.readStatus == readStatus)&&(identical(other.showAvatar, showAvatar) || other.showAvatar == showAvatar)&&(identical(other.sender, sender) || other.sender == sender)&&(identical(other.system, system) || other.system == system)&&(identical(other.photo, photo) || other.photo == photo)&&(identical(other.expense, expense) || other.expense == expense)&&const DeepCollectionEquality().equals(other.reactions, _reactions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,kind,isMine,text,timeLabel,readStatus,showAvatar,sender,system,photo,expense);
+    return Object.hash(runtimeType,id,kind,isMine,text,timeLabel,readStatus,showAvatar,sender,system,photo,expense,const DeepCollectionEquality().hash(_reactions));
 }
 
 @override
 String toString() {
-    return 'TripChatMessage(id: $id, kind: $kind, isMine: $isMine, text: $text, timeLabel: $timeLabel, readStatus: $readStatus, showAvatar: $showAvatar, sender: $sender, system: $system, photo: $photo, expense: $expense)';
+    return 'TripChatMessage(id: $id, kind: $kind, isMine: $isMine, text: $text, timeLabel: $timeLabel, readStatus: $readStatus, showAvatar: $showAvatar, sender: $sender, system: $system, photo: $photo, expense: $expense, reactions: $reactions)';
 }
 
 
@@ -1226,7 +1234,7 @@ abstract mixin class _$TripChatMessageCopyWith<$Res> implements $TripChatMessage
   factory _$TripChatMessageCopyWith(_TripChatMessage value, $Res Function(_TripChatMessage) _then) = __$TripChatMessageCopyWithImpl;
 @override @useResult
 $Res call({
- String id, TripChatMessageKind kind, bool isMine, String? text, String timeLabel, TripChatReadStatus? readStatus, bool showAvatar, TripChatSender? sender, TripChatSystemPayload? system, TripChatPhotoPayload? photo, TripChatExpensePayload? expense
+ String id, TripChatMessageKind kind, bool isMine, String? text, String timeLabel, TripChatReadStatus? readStatus, bool showAvatar, TripChatSender? sender, TripChatSystemPayload? system, TripChatPhotoPayload? photo, TripChatExpensePayload? expense, List<TripChatReaction> reactions
 });
 
 
@@ -1243,7 +1251,7 @@ class __$TripChatMessageCopyWithImpl<$Res>
 
 /// Create a copy of TripChatMessage
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? kind = null,Object? isMine = null,Object? text = freezed,Object? timeLabel = null,Object? readStatus = freezed,Object? showAvatar = null,Object? sender = freezed,Object? system = freezed,Object? photo = freezed,Object? expense = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? kind = null,Object? isMine = null,Object? text = freezed,Object? timeLabel = null,Object? readStatus = freezed,Object? showAvatar = null,Object? sender = freezed,Object? system = freezed,Object? photo = freezed,Object? expense = freezed,Object? reactions = null,}) {
   return _then(_TripChatMessage(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,kind: null == kind ? _self.kind : kind // ignore: cast_nullable_to_non_nullable
@@ -1256,7 +1264,8 @@ as bool,sender: freezed == sender ? _self.sender : sender // ignore: cast_nullab
 as TripChatSender?,system: freezed == system ? _self.system : system // ignore: cast_nullable_to_non_nullable
 as TripChatSystemPayload?,photo: freezed == photo ? _self.photo : photo // ignore: cast_nullable_to_non_nullable
 as TripChatPhotoPayload?,expense: freezed == expense ? _self.expense : expense // ignore: cast_nullable_to_non_nullable
-as TripChatExpensePayload?,
+as TripChatExpensePayload?,reactions: null == reactions ? _self._reactions : reactions // ignore: cast_nullable_to_non_nullable
+as List<TripChatReaction>,
   ));
 }
 

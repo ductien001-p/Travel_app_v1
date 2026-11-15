@@ -594,6 +594,7 @@ export class TripMessageService {
               actionLabel: metadata?.actionLabel || 'Xem chi tiết chi tiêu',
             }
           : null,
+      reactions: aggregateReactions(message.reactions ?? []),
     };
   }
 

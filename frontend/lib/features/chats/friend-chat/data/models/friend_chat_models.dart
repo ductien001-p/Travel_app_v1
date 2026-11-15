@@ -69,6 +69,8 @@ enum FriendChatReadStatus {
   delivered,
   @JsonValue('READ')
   read,
+  @JsonValue('FAILED')
+  failed,
 }
 
 @freezed

@@ -41,6 +41,7 @@ import 'package:travel_frontend_v1/features/trips/trip-expenses/presentation/scr
 import 'package:travel_frontend_v1/features/trips/trip-expenses/presentation/screen/trip_expenses_screen.dart';
 import 'package:travel_frontend_v1/features/trips/trip-memories/presentation/screen/trip_memories_screen.dart';
 import 'package:travel_frontend_v1/features/trips/trip-timeline/presentation/screen/trip_timeline_screen.dart';
+import 'package:travel_frontend_v1/features/notifications/presentation/screen/notifications_screen.dart';
 import 'package:travel_frontend_v1/features/trips/trip-publish/presentation/manage/publish_trip_manage_screen.dart';
 
 import '../../features/auth/application/auth_controller.dart';
@@ -162,6 +163,13 @@ final routerProvider = Provider<GoRouter>((ref) {
             ),
           ),
         ],
+      ),
+
+      GoRoute(
+        path: '/notifications',
+        name: RouteNames.notifications,
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const NotificationsScreen(),
       ),
 
       GoRoute(

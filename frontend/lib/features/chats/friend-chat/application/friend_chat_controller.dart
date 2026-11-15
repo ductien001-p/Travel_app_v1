@@ -1,7 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:travel_frontend_v1/core/providers/core_provider.dart';
+import 'package:travel_frontend_v1/core/realtime/friend_socket_client.dart';
 
+import '../data/friend_chat_socket_message.dart';
 import '../data/models/friend_chat_models.dart';
 import '../provider/friend_chat_provider.dart';
 
@@ -18,6 +21,14 @@ class FriendChatController extends AsyncNotifier<FriendChatThread> {
 
   @override
   Future<FriendChatThread> build() async {
+    final subscription = ref
+        .watch(friendSocketClientProvider)
+        .watchConversation(conversationId)
+        .listen(_onSocketMessage);
+    ref.onDispose(() {
+      subscription.cancel();
+    });
+
     final thread = await ref
         .watch(friendChatRepositoryProvider)
         .getThread(conversationId);
@@ -66,38 +77,80 @@ class FriendChatController extends AsyncNotifier<FriendChatThread> {
     );
 
     try {
-      // TODO(backend): API demo — thay bằng endpoint thật khi backend xong
       final sent = await ref
           .read(friendChatRepositoryProvider)
           .sendText(conversationId: conversationId, text: text);
-      final latest = state.asData?.value ?? current;
-      state = AsyncData(
-        latest.copyWith(
-          messages: [
-            for (final message in latest.messages)
-              if (message.id == optimisticId) sent else message,
-          ],
-        ),
-      );
+      _replaceOptimistic(optimisticId, sent);
       return true;
     } catch (_) {
-      // Giữ bubble optimistic để UI demo vẫn gửi được khi API demo chưa sẵn.
       final latest = state.asData?.value ?? current;
       state = AsyncData(
         latest.copyWith(
           messages: [
             for (final message in latest.messages)
               if (message.id == optimisticId)
-                message.copyWith(readStatus: FriendChatReadStatus.delivered)
+                message.copyWith(readStatus: FriendChatReadStatus.failed)
               else
                 message,
           ],
         ),
       );
-      return true;
+      return false;
     } finally {
       _sending = false;
     }
+  }
+
+  Future<bool> sendTripInvite(FriendChatInviteCandidate candidate) async {
+    if (_sending) return false;
+    final current = state.asData?.value;
+    if (current == null) return false;
+
+    _sending = true;
+    try {
+      final sent = await ref
+          .read(friendChatRepositoryProvider)
+          .sendTripInvite(conversationId: conversationId, candidate: candidate);
+      final latest = state.asData?.value ?? current;
+      if (latest.messages.any((message) => message.id == sent.id)) {
+        return true;
+      }
+      state = AsyncData(
+        latest.copyWith(messages: [...latest.messages, sent]),
+      );
+      return true;
+    } catch (_) {
+      return false;
+    } finally {
+      _sending = false;
+    }
+  }
+
+  void _onSocketMessage(FriendMessagePushed event) {
+    final current = state.asData?.value;
+    if (current == null) return;
+    final parsed = friendChatMessageFromSocket(
+      event.message,
+      peerUserId: current.peer.userId,
+    );
+    if (parsed == null) return;
+    if (current.messages.any((message) => message.id == parsed.id)) return;
+    state = AsyncData(
+      current.copyWith(messages: [...current.messages, parsed]),
+    );
+    if (!parsed.isMine) {
+      unawaited(_markReadQuietly(conversationId));
+    }
+  }
+
+  void _replaceOptimistic(String optimisticId, FriendChatMessage sent) {
+    final latest = state.asData?.value;
+    if (latest == null) return;
+    final withoutDup = [
+      for (final message in latest.messages)
+        if (message.id != optimisticId && message.id != sent.id) message,
+    ];
+    state = AsyncData(latest.copyWith(messages: [...withoutDup, sent]));
   }
 
   Future<void> _markReadQuietly(String id) async {

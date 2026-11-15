@@ -9,6 +9,9 @@ import 'package:travel_frontend_v1/core/theme/app_spacing.dart';
 import 'package:travel_frontend_v1/core/theme/app_typography.dart';
 import 'package:travel_frontend_v1/core/widget/app_error_view.dart';
 import 'package:travel_frontend_v1/core/widget/app_scaffold.dart';
+import 'package:travel_frontend_v1/features/achivement/data/models/achivement_models.dart';
+import 'package:travel_frontend_v1/features/achivement/presentation/widgets/completion_reward_sheet.dart';
+import 'package:travel_frontend_v1/features/achivement/presentation/widgets/trip_missions_section.dart';
 
 import '../../../application/update_trip_controller.dart';
 import '../../../trip-memories/presentation/screen/trip_memories_screen.dart';
@@ -234,6 +237,29 @@ class _TripDetailContent extends ConsumerWidget {
             ),
           ),
         ],
+        if (trip.isMember) ...[
+          const SizedBox(height: AppSpacing.section),
+          TripMissionsSection(
+            tripId: trip.id,
+            onRulesTap: () => showTripDetailMessage(
+              context,
+              'Điểm nhiệm vụ cộng khi nhận thưởng hoàn thành (tối đa 80 điểm trước hệ số).',
+            ),
+            onMissionCta: (mission) {
+              if (mission.cta == TripMissionCta.memories) {
+                context.pushNamed(
+                  RouteNames.tripMemories,
+                  pathParameters: {'tripId': trip.id},
+                );
+                return;
+              }
+              context.pushNamed(
+                RouteNames.tripItinerary,
+                pathParameters: {'tripId': trip.id},
+              );
+            },
+          ),
+        ],
         if (reward != null) ...[
           const SizedBox(height: AppSpacing.section),
           TripDetailRewardCard(
@@ -338,12 +364,26 @@ class _TripDetailContent extends ConsumerWidget {
 
   Future<void> _claimReward(BuildContext context, WidgetRef ref) async {
     try {
-      final points = await ref
+      final claim = await ref
           .read(tripDetailActionControllerProvider(trip.id).notifier)
           .claimReward();
-      if (context.mounted) {
-        showTripDetailMessage(context, 'Đã nhận +$points điểm thưởng');
-      }
+      if (!context.mounted) return;
+      await showCompletionRewardSheet(
+        context,
+        result: AchivementCompletionResult(
+          tripId: claim.tripId ?? trip.id,
+          tripName: trip.name,
+          pointsAwarded: claim.pointsAwarded,
+          basePoints: claim.basePoints,
+          missionPoints: claim.missionPoints,
+          multiplierUsed: claim.multiplierUsed,
+          missionsCompleted: claim.missionsCompleted,
+          totalCheckins: claim.totalCheckins,
+          totalPlaces: claim.totalPlaces,
+          completionPercent: claim.completionPercent,
+        ),
+        onOpenRanking: () => context.pushNamed(RouteNames.ranking),
+      );
     } catch (error) {
       if (context.mounted) {
         showTripDetailMessage(context, tripDetailErrorMessage(error));

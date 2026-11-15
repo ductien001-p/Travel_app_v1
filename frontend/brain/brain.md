@@ -1,7 +1,7 @@
 ﻿# Travel App — Project Brain
 
 > Bản đồ trạng thái & kiến trúc của Flutter app `frontend` (package `travel_frontend_v1`).
-> Cập nhật lần cuối: **2026-11-13** — Ranking phase 2 (period ledger + quests claim + Top-10); Friends Hub; Public Images.
+> Cập nhật lần cuối: **2026-11-14** — Achivement UX: tier luôn hiện + badge Nhiệm vụ trên trip card; `/ranking/me` upsert UserRanking; Ranking phase 2.
 > Code trong repo luôn là nguồn sự thật. Khi thêm/sửa feature, cập nhật lại mục **2 (Trạng thái)** và **9 (Chất lượng)**.
 
 ---
@@ -40,12 +40,12 @@
 | Feature | Trạng thái | Ghi chú |
 |---|---|---|
 | Hạ tầng core (network, auth interceptor, refresh token, theme, shared widgets, router) | ✅ Hoàn thành | Dùng chung cho mọi feature |
-| Realtime Socket.IO (`core/realtime/`, `tripSocketClientProvider`) | ✅ Hoàn thành | Chỉ timeline full screen đang subscribe; URL `SOCKET_URL` |
+| Realtime Socket.IO (`core/realtime/`, `tripSocketClientProvider`, `friendSocketClientProvider`) | ✅ Hoàn thành | Trip room + namespace `/friends`; URL `SOCKET_URL` |
 | Auth (login email/Google, register, verify email, forgot/reset password, logout, restore session) | ✅ Hoàn thành | Nối API thật |
 | Device token (FCM) | ✅ Hoàn thành | Tự đăng ký sau login/restore, hủy khi logout |
 | Media upload (presign → R2 → complete) | ✅ Hoàn thành | Avatar, ảnh bìa trip khi tạo, album kỷ niệm |
 | Profile (xem, sửa, đổi avatar, Travel DNA, khoảnh khắc) | ✅ UI mới | Danh tính từ `GET /users/me`; hạng và chuyến đi trên hồ sơ từ showcase; radar DNA chi tiết dùng `GET /travel-dna`; thư viện ảnh hồ sơ dùng `GET /trips/memories/mine` |
-| Settings | 🟡 Một phần | Chỉ có UI; các switch là state cục bộ, các mục chưa có hành động; chỉ **Đăng xuất** hoạt động |
+| Settings | 🟡 Một phần | Đăng xuất, thông báo đẩy (`notificationEnabled`), đổi mật khẩu (`POST /auth/change-password`), xóa tài khoản. Sinh trắc học, thiết bị, ngôn ngữ, tiền tệ vẫn cục bộ |
 | Trips — dashboard / danh sách / lời mời (invite) | ✅ Hoàn thành | Nối API thật, có phân trang |
 | Trips — flow tạo chuyến đi (5 bước + chọn ảnh bìa) | ✅ Hoàn thành | Nối API thật; `TripCoverController` upload cover trước khi save draft |
 | Trips — chi tiết chuyến đi & thành viên | ✅ API thật `GET /trips/{id}` | `features/trips/trip-details/` — xem mục 4.8 |
@@ -55,20 +55,21 @@
 | Trips — duyệt yêu cầu tham gia (join requests) | ✅ API thật | `features/trips/trip-invitation/` — xem mục 4.12; vào từ pill "Yêu cầu" (owner/admin) |
 | Trips — gửi yêu cầu join bằng mã mời (phía người xin vào) | ✅ API thật | `features/trips/trip-invitation/` — xem mục 4.13; `GET`+`POST /trips/join/{inviteCode}` |
 | Trips — mời bạn đồng hành từ chi tiết chuyến đi | ✅ API thật | `features/trips/trip-invitation/` — xem mục 4.19; pill "Mời bạn" (owner) |
-| Trips — chi tiêu & quỹ nhóm (xem, thêm khoản chi full screen, tất toán theo vai trò) | ✅ API thật | `features/trips/trip-expenses/` — xem mục 4.14–4.15; `GET/POST /trips/{id}/expenses` + settle |
-| Trips — tin nhắn nhóm trong 1 trip / hoàn thành / sửa-xóa | 🟡 UI + datamock thread | Chat nhóm trip đã có UI (mục 4.26); OpenAPI GET messages TEXT/IMAGE + read; gửi tin / thread rich vẫn demo |
+| Trips — chi tiêu & quỹ nhóm (xem, thêm khoản chi full screen, tất toán theo vai trò, xem hóa đơn) | ✅ API thật | `features/trips/trip-expenses/` — xem mục 4.14–4.15; `GET/POST /trips/{id}/expenses` + settle; icon hóa đơn mở `receipts[]` |
+| Trips — tin nhắn nhóm trong 1 trip | 🟢 API + socket | `GET /trips/{id}/chat/thread`, gửi TEXT/IMAGE, reaction, `trip:message` dạng UI |
 | Home / Explore — Chuyến Đi Cộng Đồng | 🟢 discover API | `features/home/` — xem mục 4.16; tab Địa Điểm gọi API places |
 | Home — chuyến đi theo điểm đến | 🟢 discover + catalog | `features/home/destination_trips/` — xem mục 4.18; thẻ điểm đến trên Explore mở màn này |
 | Social — Bảng tin cộng đồng | 🟢 API thật | `features/social/` — mục 4.27; `GET /social/feed` + like/save |
 | Social — Chi tiết bài viết & bình luận | 🟢 API thật | `features/social/social-details/` — mục 4.28; `GET /social/posts/:id` + comments |
 | Friends — Hub bạn bè & lời mời | ✅ API enrich | `features/friends/` — mục 4.30; Social friends icon → `/social/friends` |
 | Friends — Tìm kiếm bạn bè & đồng hành | ✅ API | `features/friends/` — mục 4.29; Social search → `/social/find-friends` |
-| Social / Tin nhắn (Messages Hub) | 🟡 UI + datamock | `features/chats/` — xem mục 4.24; tab Chat mở hub |
-| Chats — 1-on-1 friend chat | 🟡 UI + datamock thread | `features/chats/friend-chat/` — mục 4.25; từ hub Bạn bè |
-| Chats — trip group chat | 🟡 UI + datamock thread | `features/chats/trip-chats/` — mục 4.26; từ hub Chuyến đi |
+| Social / Tin nhắn (Messages Hub) | 🟢 API thật | `features/chats/` — `GET /chats/hub`; tab Chat mở hub |
+| Chats — 1-on-1 friend chat | 🟢 API + socket | `features/chats/friend-chat/` — thread, TEXT, `TRIP_INVITE`, namespace `/friends` |
+| Chats — trip group chat | 🟢 API + socket | `features/chats/trip-chats/` — thread, TEXT/IMAGE, reaction |
 | Place detail | ✅ API thật | `features/home/places/place-details/` — mục 4.23 |
-| Public Images — xem ảnh toàn màn hình + menu 3 chấm + bản đồ vệ tinh | 🟡 UI + datamock | `features/public-images/` — mục 4.31; Stitch Teal Horizon |
-| Ranking — Bảng xếp hạng & gamification | 🟢 Phase 2 | `features/ranking/` — mục 4.32; period + quests claim + Top-10 từ `/ranking/*` |
+| Public Images — xem ảnh toàn màn hình + menu 3 chấm + bản đồ vệ tinh | 🟢 media đã seed | `features/public-images/` — mở từ post/kỷ niệm; không gọi album giả; ẩn bìa/like/xóa/bình luận/tải HD |
+| Ranking — Bảng xếp hạng & gamification | 🟢 Phase 2 + tier | `features/ranking/` — mục 4.32; embed Travel Tier/Achievements từ `achivement` |
+| Achivement — Nhiệm vụ trip / thưởng / hạng du lịch | 🟢 API thật | `features/achivement/` — mục 4.33; missions trên trip detail, sheet claim, tier trên Ranking |
 
 Chú thích: ✅ chạy end-to-end với backend · 🟡 có UI nhưng thiếu logic · 🟠 có tầng data/logic nhưng chưa có UI · 🔴 chưa làm/placeholder.
 
@@ -106,11 +107,12 @@ Router: `lib/app/router/app_router.dart` (`routerProvider`), tên route: `lib/ap
 | `/social/find-friends` | `findFriends` | `FindFriendsScreen` (nhánh Social, còn bottom nav; từ icon tìm kiếm / hub) | ✅ `/friends/find` + nearby |
 | `/social/ranking` | `ranking` | `RankingScreen` (nhánh Social, còn bottom nav; Bảng Xếp Hạng) | 🟢 period + quests + `/ranking/leaderboard|me|quests` |
 | `/social/posts/:postId` | `postDetail` | `SocialPostDetailScreen` (`social-details/`; `?focus=comments` cuộn tới bình luận) | 🟢 API post + comments |
-| `/images/:albumId?index=&imageId=` | `publicImageViewer` | `PublicImageViewerScreen` (root navigator; fullscreen viewer + sheet tùy chọn) | 🟡 datamock album |
-| `/images/:albumId/map?imageId=` | `publicImageMap` | `PublicImageMapScreen` (root navigator; bản đồ vệ tinh vị trí ảnh) | 🟡 datamock + Google Map |
-| `/chats` (tab Chat) | `chats` | `ChatsHubScreen` | 🟡 datamock hub |
-| `/chats/friend/:conversationId` | `friendChat` | `FriendChatScreen` (root navigator) | 🟡 datamock thread |
-| `/chats/trip/:tripId` | `tripChat` | `TripChatScreen` (root navigator) | 🟡 datamock thread |
+| `/images/:albumId?index=&imageId=` | `publicImageViewer` | `PublicImageViewerScreen` (root navigator; fullscreen viewer + sheet tùy chọn) | 🟢 album seed; không fallback datamock |
+| `/images/:albumId/map?imageId=` | `publicImageMap` | `PublicImageMapScreen` (root navigator; bản đồ vệ tinh vị trí ảnh) | 🟢 tọa độ ảnh đã seed |
+| `/notifications` | `notifications` | `NotificationsScreen` (root navigator) | 🟢 `GET/POST /notifications` |
+| `/chats` (tab Chat) | `chats` | `ChatsHubScreen` | 🟢 `GET /chats/hub` |
+| `/chats/friend/:conversationId` | `friendChat` | `FriendChatScreen` (root navigator) | 🟢 thread + socket `/friends` |
+| `/chats/trip/:tripId` | `tripChat` | `TripChatScreen` (root navigator) | 🟢 thread + `trip:message` |
 | `/profile` (tab 4) | `profile` | `ProfileScreen` | ✅ |
 | `/profile/edit` | `editProfile` | `EditProfileScreen` | ✅ |
 | `/profile/memories` | `userMemories` | `UserMemoriesScreen` (trong nhánh Profile, còn bottom nav; từ dải Khoảnh Khắc Hành Trình) | ✅ |
@@ -162,7 +164,7 @@ Ghi chú điều hướng:
 - Danh tính (tên, username, bio, địa điểm, avatar, `visitedCount`) lấy từ `GET /users/me`. Hạng, DNA, số chuyến/follower, chuyến đang diễn ra, đã lưu và bài viết lấy từ datamock `getProfileShowcase` — đánh dấu `TODO(backend)`.
 - Chia sẻ, mã QR và chi tiết chuyến demo hiện snackbar "sắp có". **Khoảnh Khắc Hành Trình** (tiêu đề, ảnh xem trước, ô thêm ảnh) mở `/profile/memories` (mục 4.21). Tab **Đã lưu**: **Xem tất cả** và từng mục mở `/profile/saved-places` (mục 4.22). **Xem tất cả** trên tab chuyến đi mở tab Trips. **Chỉnh sửa hồ sơ** → `/profile/edit`. Cài đặt vẫn `Navigator.push` tới `SettingScreen` (đăng xuất nằm ở đây).
 - `EditProfileScreen` theo Stitch **Chỉnh Sửa Hồ Sơ**, không có ảnh bìa: avatar, thông tin cơ bản, email đã xác thực, số điện thoại che một phần rồi mới sửa, **địa chỉ** (`address`) và **vị trí hiện tại** (`location`) là hai ô riêng, ngày sinh `DD/MM/YYYY` (xóa ngày gửi `dateofBirth: null`), giới tính (có **Không chọn** để xóa), mức ngân sách, ngôn ngữ (chip + thêm), sở thích. Lưu qua `PATCH /users/update`. Ảnh đại diện vẫn upload rồi gắn `avatarId`. Loading, error + thử lại, unauthorized khi 401.
-- `SettingScreen`: switch **Thông báo đẩy** gọi `PATCH /users/update` với `notificationEnabled` và hoàn tác nếu lỗi. Các switch còn lại (sinh trắc học, nhắc nhở, tương tác) chỉ là `setState` cục bộ; các mục (đổi mật khẩu, thiết bị, ngôn ngữ, tiền tệ, chế độ hồ sơ, trợ giúp, điều khoản) chưa có hành động; version là text cứng.
+- `SettingScreen`: switch **Thông báo đẩy** gọi `PATCH /users/update` với `notificationEnabled` và hoàn tác nếu lỗi. **Đổi mật khẩu** gọi `POST /auth/change-password`. Các switch còn lại (sinh trắc học, nhắc nhở, tương tác) chỉ là `setState` cục bộ; thiết bị, ngôn ngữ, tiền tệ, chế độ hồ sơ, trợ giúp, điều khoản chưa có hành động; version là text cứng.
 - Controller: `ProfileController`, `ProfileShowcaseController`, `UpdateProfileController`, `UpdateAvatarController`.
 - Endpoint thật: `GET /users/me`, `PATCH /users/update`. Demo: `getProfileShowcase`.
 
@@ -463,7 +465,7 @@ Theo Stitch **Chi Tiết Điểm Đến & Đánh Giá - Place Detail**.
 - **UI:** hero ảnh bìa, tên, category, địa chỉ, điểm và số đánh giá, bốn hành động (lịch trình, đánh giá, chỉ đường, chia sẻ), giới thiệu thu gọn, dải khoảnh khắc khi có bài, phân bổ sao và danh sách đánh giá. Chip sao lọc trên các trang đã tải, không gọi API mới. Nút xem thêm lấy trang sau; trang sau lỗi giữ danh sách. Chỉ đường và chia sẻ mở share sheet kèm link Google Maps. Không hiện giờ mở cửa, vé, phương tiện hay tag vì `PlaceResponseDto` không có các field đó. Loading skeleton, error + thử lại, 401 không retry. Pull-to-refresh khi đã có dữ liệu mà lỗi thì giữ màn và báo câu ngắn.
 - **Test:** `place_detail_view_test.dart`, `place_detail_controller_test.dart`, `place_detail_screen_test.dart`. Datamock chỉ cho test.
 
-### 4.24 Social — Trip Messages Hub (`features/chats/`, route `chats`) 🟡
+### 4.24 Social — Trip Messages Hub (`features/chats/`, route `chats`) 🟢
 
 Theo Stitch **Danh Sách Đoạn Tin Nhắn - Trip Messages Hub** (project Teal Horizon `7389647509421703144`, screen `f7f8a69ffef64d8f91553c815af3179e`). Design: `docs/design/screen/chats/trip-messages-hub/screenshot.jpg`.
 - **Lối vào:** tab Chat (`/chats`) → `ChatsHubScreen`. Bottom nav shell vẫn hiện. Tab Social (`/social`) mở Bảng Tin (mục 4.27).
@@ -472,19 +474,19 @@ Theo Stitch **Danh Sách Đoạn Tin Nhắn - Trip Messages Hub** (project Teal 
 - **Lọc:** mặc định tab Chuyến đi; tìm kiếm local trên title / last message / sender / role.
 - **Test:** `chats_hub_models_test.dart`, `chats_hub_screen_test.dart`.
 
-### 4.25 Chats — Friend Chat 1-on-1 (`features/chats/friend-chat/`, route `friendChat`) 🟡
+### 4.25 Chats — Friend Chat 1-on-1 (`features/chats/friend-chat/`, route `friendChat`) 🟢
 
 Theo Stitch **Khung Chat 1-on-1 Chi Tiết - Alex Nguyễn** (project `7389647509421703144`, screen `4cedf415e7894f028ae04e14cb45ede3`). Design: `docs/design/screen/chats/friend-chat/screenshot.jpg`.
 - **Lối vào:** từ hub Bạn bè / tile DM → `/chats/friend/:conversationId` (root navigator, che bottom nav).
-- **Dữ liệu:** demo `GET /friends/conversations/{id}/thread` (rich UI; OpenAPI mới có GET messages TEXT) + `POST .../read` thật + demo `POST .../messages` gửi text — đánh dấu `TODO(backend)`. Model freezed `FriendChatThread` (peer, sharedTrip, messages TEXT/PLACE_CARD/TRIP_INVITE, shortcuts, inviteCandidates). Datamock cho test.
+- **Dữ liệu:** `GET /friends/conversations/{id}/thread`, `POST .../read`, `POST .../messages` TEXT và `TRIP_INVITE`. Socket namespace `/friends`, sự kiện `friend:message:new` (shape UI hoặc hàng lưu). Gửi lỗi đánh dấu bubble `FAILED`. Chưa có typing bạn bè và `PLACE_CARD`. Datamock chỉ cho test.
 - **UI:** glass header (back, avatar online, badge Trưởng nhóm, info); banner chuyến đi chung; stream tin nhắn (bubble, place card Faifo, trip invite Đà Lạt); typing indicator; shortcut chips + composer (+ / camera / mic / send); sheet mời vào chuyến đi. Skeleton, error + thử lại, 401 không retry.
 - **Test:** `friend_chat_models_test.dart`, `friend_chat_screen_test.dart`.
 
-### 4.26 Chats — Trip Group Chat (`features/chats/trip-chats/`, route `tripChat`) 🟡
+### 4.26 Chats — Trip Group Chat (`features/chats/trip-chats/`, route `tripChat`) 🟢
 
 Theo Stitch **Khung Chat Chuyến Đi Chi Tiết - Trip Group Chat** (project `7389647509421703144`, screen `88e9d7c0d411402e85d02415ee3fe4a4`). Design: `docs/design/screen/chats/trip-group-chat/screenshot.jpg`.
 - **Lối vào:** từ hub kênh chuyến đi / banner pulse → `/chats/trip/:tripId` (root navigator, che bottom nav).
-- **Dữ liệu:** demo `GET /trips/{tripId}/chat/thread` (rich UI; OpenAPI có `GET /trips/{id}/messages` TEXT/IMAGE cursor + `POST .../messages/read`) + demo `POST /trips/{id}/messages` gửi text — đánh dấu `TODO(backend)`. Repository **fallback datamock** khi thread API chưa có (giữ lỗi 401). Model freezed `TripChatThread` (pinnedActivity, messages SYSTEM/TEXT/PHOTO/EXPENSE, typing, utilities). Datamock cho test + runtime fallback.
+- **Dữ liệu:** `GET /trips/{tripId}/chat/thread`, `POST .../messages` TEXT hoặc IMAGE (sau upload folder `trips`), `POST .../messages/read`, reaction `POST/DELETE .../reactions`. Socket `trip:message` phát DTO UI (`kind`). Giữ reaction trên cả bubble TEXT. Datamock chỉ cho test.
 - **UI:** glass header (back, tiêu đề trip, live members, more); pinned next-activity bar (Check-in / mở itinerary); stream (system chip, bubble nhóm + role badge, photo + reactions, expense card → expenses); typing; composer (+ mở utility: vị trí live / chia tiền / album / thêm chặng). Skeleton, error + thử lại, 401 không retry.
 - **Test:** `trip_chat_models_test.dart`, `trip_chat_screen_test.dart`.
 
@@ -528,7 +530,7 @@ Theo Stitch **Bạn Bè & Lời Mời Kết Bạn - Friends Hub** (project Teal 
 - **UI Stitch:** top bar back + tiêu đề + search (không QR/tune); capsule tabs; search bar; tab Bạn bè: preview lời mời + banner đã gửi + danh sách bạn (nhắn tin / hủy kết bạn); empty friends CTA **Tìm bạn** → `findFriends`; tab Đã nhận / Đã gửi đầy đủ. Skeleton lần đầu, error + **Thử lại**, 401, pull-to-refresh.
 - **Test:** `friends_hub_models_test.dart`, `friends_hub_controller_test.dart`; BE `friends-hub.service.spec.ts`.
 
-### 4.31 Public Images — xem ảnh toàn màn hình & bản đồ vệ tinh (`features/public-images/`) 🟡
+### 4.31 Public Images — xem ảnh toàn màn hình & bản đồ vệ tinh (`features/public-images/`) 🟢
 
 Theo Stitch **Teal Horizon Travel UI System** (`7389647509421703144`):
 1. `a2fba0f39d20444b88160077dca4093a` — Fullscreen Photo Viewer  
@@ -536,9 +538,9 @@ Theo Stitch **Teal Horizon Travel UI System** (`7389647509421703144`):
 3. `6d490078fa574daba7147fe29dba9d14` — Xem Vị Trí Trên Bản Đồ (vệ tinh)  
 Refs: `lib/features/public-images/.stitch/`.
 - **Route (root navigator):** `/images/:albumId` (`publicImageViewer`, query `index` / `imageId`) và `/images/:albumId/map` (`publicImageMap`, query `imageId`). Album demo mặc định `ban-co-sunrise`.
-- **UI viewer:** nền tối `#0A0F12`, top bar (đóng / counter+timestamp / xoay / EXIF / more), pinch-zoom + double-tap, filmstrip, caption + like/comment/download/share, sheet tùy chọn (xem bản đồ, đặt ảnh bìa, copy link, xóa). Ẩn chrome → pill vị trí (đúng màn Stitch immersive).
+- **UI viewer:** nền tối `#0A0F12`, top bar (đóng / counter+timestamp / xoay / EXIF / more), pinch-zoom + double-tap, filmstrip, caption + share. Ẩn like, bình luận, tải HD, đặt bìa và xóa vì chưa có API. Sheet còn xem bản đồ và copy link (URL ảnh thật). Ẩn chrome → pill vị trí.
 - **UI map:** Google Map hybrid/terrain/normal, switcher lớp, pin camera + pulse, cụm zoom/recenter, thẻ glass (thumbnail, GPS, độ cao, thời điểm, Google Maps / Chỉ đường qua `share_plus`).
-- **Kiến trúc:** model freezed `PublicImageAlbum` / `PublicImageItem`; datasource demo `GET/POST/DELETE /public-images/albums/...` (`TODO(backend)`); repository fallback datamock khi API lỗi; `publicImageViewerControllerProvider` (family theo album + index/imageId).
+- **Kiến trúc:** model freezed `PublicImageAlbum` / `PublicImageItem`. Viewer chỉ mở album đã seed trong bộ nhớ (post `social-post-{postId}` hoặc album kỷ niệm). Không gọi `/public-images/albums/...` và không fallback datamock. Album trống thì báo lỗi. `publicImageViewerControllerProvider` (family theo album + index/imageId).
 - **Test:** `test/features/public_images/public_image_formatters_test.dart`.
 - **Lối vào Social:** chạm ảnh trên thẻ review feed (bài của người khác) hoặc gallery/fullscreen ở `SocialPostDetailScreen` → seed album `social-post-{postId}` rồi mở `/images/...`. Bài của chính mình không mở viewer công khai (feed → chi tiết bài; detail → snackbar).
 
@@ -548,11 +550,28 @@ Theo Stitch **Teal Horizon Travel UI System** (`7389647509421703144`):
 1. `16d66139fbc34464a18104e443be3ab8` — Bảng Xếp Hạng & Gamification - Travel Leaderboard  
 Refs: `lib/features/ranking/.stitch/`.
 - **Route:** `/social/ranking` (`ranking`, nhánh Social, còn bottom nav). Quay lại `pop`, không stack thì về Trips (lối vào từ Trips).
-- **UI:** top bar + `RankingPeriodFilter` (WEEK/MONTH/SEASON/ALL_TIME); podium Top 3; me card progress tới **Top 10** (`nextTierLabel`/`nextRankPoints`/`progressHint`); list từ hạng 4; section nhiệm vụ + claim khi `claimable`. Skeleton, error + thử lại, 401, pull-to-refresh.
+- **UI:** top bar + `RankingPeriodFilter` (WEEK/MONTH/SEASON/ALL_TIME); podium Top 3; me card progress tới **Top 10** (`nextTierLabel`/`nextRankPoints`/`progressHint`); **`AchivementProgressSection`** (Travel Tier + Thành tích từ `/ranking/me`); list từ hạng 4; section nhiệm vụ + claim khi `claimable`. Skeleton, error + thử lại, 401, pull-to-refresh.
 - **API thật:** `GET /ranking/leaderboard?period=` + `GET /ranking/me?period=` + `GET /ranking/quests` + `POST /ranking/quests/:id/claim`. Enrich: badge travel-style (`badgeLabel`/`badgeIcon`), seasonLabel, Top-10 progress. Compose `RankingPage` ở datasource; repository **không** fallback datamock (fixture chỉ test). `/me` hoặc quests lỗi không fail cả trang.
 - **Kiến trúc:** freezed `RankingPage` / `RankingTraveler` / `RankingMeCard` / `RankingQuest` (`claimed`/`claimable`); `rankingControllerProvider` (`setPeriod`, `claimQuest`, autoDispose, tắt auto-retry).
 - **Test:** `ranking_models_test.dart`, `ranking_controller_test.dart`.
 - **Lối vào:** tab Trips → icon cúp (`emoji_events`, có animation) bên phải nút **Nhập mã mời** → `/social/ranking`.
+
+### 4.33 Achivement — Nhiệm vụ chuyến đi / thưởng / Travel Tier (`features/achivement/`) 🟢
+
+Theo Stitch Teal Horizon (`docs/design/screen/achivement/`):
+1. `21d411605b4945a394e2ca5b09c32195` — Chi tiết trip + nhiệm vụ  
+2. `82a7e0e457024e90b570b3fc2e6fea07` — Bottom sheet nhận thưởng  
+3. `045263ced1e64a21a977de72e555b100` — Ranking + Travel Tier / Thành tích  
+
+- **Không route riêng.** Embed:
+  - `TripMissionsSection` trên `TripDetailScreen` (member only) → `GET /trips/:id/missions`; CTA mở itinerary / memories.
+  - `showCompletionRewardSheet` sau `claimReward` → breakdown `basePoints` + `missionPoints` × `multiplierUsed`.
+  - `AchivementProgressSection` trên `RankingScreen` → luôn hiện skeleton/error/empty/data (không `shrink`); fallback Tân binh nếu thiếu tier.
+  - `TripMissionsEntryChip` trên thẻ trip (ongoing / list upcoming-completed) → mở detail để thấy nhiệm vụ.
+- **API thật:** `GET /trips/{tripId}/missions`, `POST /trips/{tripId}/completion` (breakdown), `GET /ranking/me` (travelTier/achievements; backend upsert `UserRanking` nếu chưa có). Datamock chỉ fixture test.
+- **Kiến trúc:** freezed `TripMissionsPage` / `TripMissionItem` / `TravelTier` / `AchievementProgress` / `AchivementCompletionResult`; `tripMissionsControllerProvider(tripId)`, `achivementProgressControllerProvider`; widgets trong `presentation/widgets/`.
+- **Trip detail:** `TripDetailRewardClaim` mở rộng fields breakdown; claim invalidate missions.
+- **Test:** `test/features/achivement/achivement_models_test.dart`.
 
 ---
 
@@ -731,6 +750,7 @@ lib/
 | `test/features/public_images/public_image_formatters_test.dart` | parse datamock album + format counter/GPS/datetime | ✅ |
 | `test/features/ranking/ranking_models_test.dart` | parse datamock leaderboard + podium order + format điểm | ✅ |
 | `test/features/ranking/ranking_controller_test.dart` | đổi period + claimQuest refresh | ✅ |
+| `test/features/achivement/achivement_models_test.dart` | parse missions / tier / completion datamock + format điểm | ✅ |
 | `test/features/chats/friend_chat_models_test.dart` | parse datamock thread 1-on-1 | ✅ |
 | `test/features/chats/friend_chat_screen_test.dart` | chrome Stitch chat Alex Nguyễn | ✅ |
 
@@ -746,12 +766,12 @@ Lưu ý môi trường Windows: nếu `flutter test` báo `%PROGRAMFILES(X86)% e
 2. Màn **Trip detail**: làm tiếp các nút đang báo "Tính năng đang phát triển" (chuyển quyền admin, chia sẻ, menu thêm, …). Đồng bộ `NOTCOM` → `NOTCOMPLETED` ở `trip.dart`, `trip_enums.dart`, `trip_list_item.dart`, `trip_related_models.dart`. ~~Mời bạn trên detail~~ — **đã xong** (mục 4.19).
 3. ~~**UI xin vào trip bằng mã + lookup preview**~~ — **đã xong** (mục 4.13). Còn thiếu: quét QR.
 4. **Chia sẻ lịch trình — cấu hình phát hành:** chọn domain thật cho `SHARE_HOST` / `PUBLIC_SHARE_BASE_URL`; khai báo SHA-256 keystore / Play App Signing; Apple Team ID + Associated Domains. Chưa cấu hình thì link vẫn mở HTML fallback nhưng không tự mở app.
-5. ~~Làm **Home / Explore**~~ — **đã xong discover list + phân trang + join-by-tripId** (mục 4.16), **màn theo điểm đến** (mục 4.18, không editorial giả), **3 mục tab Địa Điểm**, **màn tất cả điểm đến nổi bật** (`/home/featured`) và **chi tiết địa điểm** (`/home/places/:placeId`, mục 4.23; bấm thẻ địa điểm mở màn này). Còn: chip lọc trên tab Địa Điểm, live feed, hộp thư thông báo, bookmark chuyến trên server. ~~Làm **Social feed**~~ — **đã nối API** (mục 4.27). ~~**Chi tiết bài viết & bình luận**~~ — **đã xong** (mục 4.28). ~~**Tìm kiếm bạn bè**~~ — **đã nối API** (mục 4.29: find + nearby + follow/conversation). Còn: follow tác giả trên post detail, nested reply/like comment, story viewer, challenge join UI.
-6. Hoàn thiện **Settings** (nối backend nếu có API) và cân nhắc đưa vào router.
+5. ~~Làm **Home / Explore**~~ — **đã xong discover list + phân trang + join-by-tripId** (mục 4.16), **màn theo điểm đến** (mục 4.18, không editorial giả), **3 mục tab Địa Điểm**, **màn tất cả điểm đến nổi bật** (`/home/featured`) và **chi tiết địa điểm** (`/home/places/:placeId`, mục 4.23; bấm thẻ địa điểm mở màn này). Còn: chip lọc trên tab Địa Điểm, live feed, bookmark chuyến trên server. ~~Hộp thư thông báo~~ — **đã có** `GET/POST /notifications` và màn `/notifications` từ chuông social/home. ~~Làm **Social feed**~~ — **đã nối API** (mục 4.27). ~~**Chi tiết bài viết & bình luận**~~ — **đã xong** (mục 4.28). ~~**Tìm kiếm bạn bè**~~ — **đã nối API** (mục 4.29: find + nearby + follow/conversation). Story viewer có thanh tiến trình trên ảnh feed; challenge join đã nối. Còn: follow tác giả trên post detail, nested reply/like comment, reply/view story, rule tăng tiến độ challenge.
+6. **Settings:** đăng xuất, thông báo đẩy và đổi mật khẩu đã nối API. Còn sinh trắc học, thiết bị, ngôn ngữ, tiền tệ, quyền hồ sơ, trợ giúp, điều khoản.
 7. Dọn info deprecated (`withOpacity`, Radio, `onReorder`, …).
 8. **Album kỷ niệm:** sửa caption (`PATCH /trips/memories/:id`) đã có UI trên viewer; tạo ảnh chỉ dùng batch (`POST .../batch`), không wire single create; badge cần Ollama trên server.
 9. **Timeline:** màn đích khi bấm "Xem chi tiết" sự kiện (`TODO(screen)`); cân nhắc xóa `tripTimelineControllerProvider` legacy trong `trip_feed_controllers.dart`.
-10. ~~Tin nhắn — hub danh sách~~ — **đã xong UI hub** (mục 4.24). ~~DM 1-on-1~~ — **đã xong UI** (mục 4.25). ~~Chat nhóm trip~~ — **đã xong UI** (mục 4.26, datamock thread). Còn: nối thật `GET .../messages` + POST gửi tin backend cho cả DM và trip. **Chi tiêu:** OCR / chọn payer khác / upload hóa đơn / QR / batch settle chưa làm.
+10. ~~Tin nhắn~~ — hub, DM và chat nhóm đã gọi API thread (`/thread`), gửi TEXT, ảnh nhóm, reaction, lời mời trip và socket cùng shape UI (mục 4.24–4.26). Còn typing bạn bè và `PLACE_CARD`. **Chi tiêu:** overview, payer khác, hóa đơn, OCR on-device, settle từng split và xem `receipts[]` đã có. Còn QR thanh toán và settle hàng loạt.
 
 ---
 
@@ -759,5 +779,5 @@ Lưu ý môi trường Windows: nếu `flutter test` báo `%PROGRAMFILES(X86)% e
 
 - Rule AI chính (tự áp dụng mọi phiên): `../.cursor/rules/architecture.mdc`.
 - API: `backend/contracts/openapi.json` là file OpenAPI duy nhất; sinh lại bằng `npm run openapi:generate` trong `backend`, không sửa tay.
-- Design Stitch còn trong repo: `frontend/docs/design/screen/trip/{trip-join-by-code,trip-join-request-approval,trip-memories,trip-timeline,trip-expenses,trip-add-expense}/`, `frontend/docs/design/screen/explore/{community-trips,places,destination-trips,featured-destinations}/`, `frontend/docs/design/screen/profile/{profile-travel-dna,edit-profile,user-memories,user-saved-trip}/`, `frontend/docs/design/screen/travel-dna/`, `frontend/docs/design/screen/chats/{trip-messages-hub,friend-chat,trip-group-chat}/`, `frontend/docs/design/screen/social/social-details/`, `frontend/docs/design/screen/friends/{find-friends,friends-hub}/`, `docs/screens/social_feed/stitch/`.
+- Design Stitch còn trong repo: `frontend/docs/design/screen/trip/{trip-join-by-code,trip-join-request-approval,trip-memories,trip-timeline,trip-expenses,trip-add-expense}/`, `frontend/docs/design/screen/explore/{community-trips,places,destination-trips,featured-destinations}/`, `frontend/docs/design/screen/profile/{profile-travel-dna,edit-profile,user-memories,user-saved-trip}/`, `frontend/docs/design/screen/travel-dna/`, `frontend/docs/design/screen/chats/{trip-messages-hub,friend-chat,trip-group-chat}/`, `frontend/docs/design/screen/social/social-details/`, `frontend/docs/design/screen/friends/{find-friends,friends-hub}/`, `frontend/docs/design/screen/achivement/`, `docs/screens/social_feed/stitch/`.
 - Brain này (`frontend/brain/brain.md`) là bản đồ trạng thái frontend; cập nhật khi khảo sát lại `lib/`.

@@ -8,6 +8,7 @@ import 'package:travel_frontend_v1/core/theme/app_spacing.dart';
 import 'package:travel_frontend_v1/core/theme/app_typography.dart';
 import 'package:travel_frontend_v1/core/widget/app_empty_view.dart';
 import 'package:travel_frontend_v1/core/widget/app_error_view.dart';
+import 'package:travel_frontend_v1/features/achivement/presentation/widgets/achivement_progress_section.dart';
 
 import '../../application/ranking_controller.dart';
 import '../../application/ranking_view.dart';
@@ -115,9 +116,19 @@ class RankingScreen extends ConsumerWidget {
             RankingMeCardWidget(
               me: me,
               progress: view.meProgress,
-              onHowToEarnTap: () => _comingSoon(context, 'Cách tích điểm'),
+              onHowToEarnTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text(
+                      'Mở một chuyến đi → làm Nhiệm vụ → Nhận quà khi hoàn thành để lên hạng.',
+                    ),
+                  ),
+                );
+              },
             ),
           ],
+          const SizedBox(height: AppSpacing.lg),
+          const AchivementProgressSection(),
           const SizedBox(height: AppSpacing.lg),
           _SectionTitle(
             icon: Icons.leaderboard_rounded,
@@ -130,7 +141,8 @@ class RankingScreen extends ConsumerWidget {
               padding: EdgeInsets.symmetric(vertical: AppSpacing.xl),
               child: AppEmptyView(
                 title: 'Chưa có xếp hạng',
-                description: 'Hoàn thành chuyến đi để ghi điểm vào bảng xếp hạng.',
+                description:
+                    'Hoàn thành chuyến đi để ghi điểm vào bảng xếp hạng.',
               ),
             )
           else

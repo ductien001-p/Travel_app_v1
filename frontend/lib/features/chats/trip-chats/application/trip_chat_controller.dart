@@ -134,6 +134,65 @@ class TripChatController extends AsyncNotifier<TripChatThread> {
     }
   }
 
+  Future<bool> sendImage(String mediaId) async {
+    final id = mediaId.trim();
+    if (id.isEmpty || _sending) return false;
+    final current = state.asData?.value;
+    if (current == null) return false;
+
+    setTyping(false);
+    _sending = true;
+    try {
+      final sent = await ref
+          .read(tripChatRepositoryProvider)
+          .sendImage(tripId: tripId, mediaId: id);
+      _viewerUserId = sent.sender?.userId ?? _viewerUserId;
+      final latest = state.asData?.value ?? current;
+      if (latest.messages.any((message) => message.id == sent.id)) {
+        return true;
+      }
+      state = AsyncData(
+        latest.copyWith(messages: [...latest.messages, sent]),
+      );
+      unawaited(_markReadQuietly(tripId));
+      return true;
+    } catch (_) {
+      return false;
+    } finally {
+      _sending = false;
+    }
+  }
+
+  Future<void> toggleReaction({
+    required String messageId,
+    required String emoji,
+    required bool remove,
+  }) async {
+    if (messageId.startsWith('local-')) return;
+    try {
+      final reactions = remove
+          ? await ref
+                .read(tripChatRepositoryProvider)
+                .removeReaction(
+                  tripId: tripId,
+                  messageId: messageId,
+                  emoji: emoji,
+                )
+          : await ref
+                .read(tripChatRepositoryProvider)
+                .addReaction(
+                  tripId: tripId,
+                  messageId: messageId,
+                  emoji: emoji,
+                );
+      _applyReactions(messageId, [
+        for (final reaction in reactions) reaction.toJson(),
+      ]);
+    } catch (_) {
+      // Giữ reactions hiện tại nếu request thất bại.
+    }
+  }
+
   void setTyping(bool isTyping) {
     final socket = ref.read(tripSocketClientProvider);
     _typingStopTimer?.cancel();
@@ -242,9 +301,10 @@ class TripChatController extends AsyncNotifier<TripChatThread> {
       current.copyWith(
         messages: [
           for (final message in current.messages)
-            if (message.id == messageId && message.photo != null)
+            if (message.id == messageId)
               message.copyWith(
-                photo: message.photo!.copyWith(reactions: reactions),
+                reactions: reactions,
+                photo: message.photo?.copyWith(reactions: reactions),
               )
             else
               message,

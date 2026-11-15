@@ -46,6 +46,7 @@ export type TripChatMessageDto = {
     perPersonLabel: string;
     actionLabel: string | null;
   } | null;
+  reactions: TripChatReactionDto[];
 };
 
 export type TripChatPinnedActivityDto = {

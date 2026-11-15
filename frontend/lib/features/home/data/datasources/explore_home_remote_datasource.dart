@@ -37,6 +37,7 @@ class ExploreHomeRemoteDataSource implements ExploreHomeDataSource {
         : Future<List<DestinationCatalogItem>?>.value(const []);
     final body = await discoverFuture;
     final catalog = await catalogFuture;
+    final unread = await _hasUnreadNotifications();
     final data = body['data'];
     if (data is! List) {
       throw const FormatException('Discover data is not a list.');
@@ -53,7 +54,27 @@ class ExploreHomeRemoteDataSource implements ExploreHomeDataSource {
       page: meta.page,
       hasNextPage: meta.hasNextPage,
       catalogUnavailable: catalog == null,
+      hasUnreadNotifications: unread,
     );
+  }
+
+  Future<bool> _hasUnreadNotifications() async {
+    try {
+      final body = await _apiClient.get<Map<String, dynamic>>(
+        '/notifications',
+        queryParameters: const {'limit': 1},
+      );
+      final meta = body['meta'];
+      if (meta is! Map) return false;
+      final count = meta['unreadCount'];
+      if (count is num) return count > 0;
+      return false;
+    } on ApiException catch (error) {
+      if (error.statusCode == 401) rethrow;
+      return false;
+    } catch (_) {
+      return false;
+    }
   }
 
   /// `null` means the catalog request failed. A 401 is rethrown.

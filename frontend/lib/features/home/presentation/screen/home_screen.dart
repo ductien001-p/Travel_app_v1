@@ -113,7 +113,10 @@ class _ExploreBody extends ConsumerWidget {
                   displayName: displayName,
                   locationLabel: locationLabel,
                   avatarUrl: avatarUrl,
+                  hasUnreadNotifications: header.hasUnreadNotifications,
                   onAvatarTap: () => context.goNamed(RouteNames.profile),
+                  onNotificationsTap: () =>
+                      context.pushNamed(RouteNames.notifications),
                 ),
                 const SizedBox(height: AppSpacing.md),
                 AppSegmentedControl<ExploreHomeSegment>(

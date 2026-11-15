@@ -3628,7 +3628,7 @@ as DateTime,
 /// @nodoc
 mixin _$TripDetailRewardClaim {
 
- int get pointsAwarded;
+ String? get tripId; int get pointsAwarded; int get basePoints; int get missionPoints; double get multiplierUsed; int get missionsCompleted; int get totalCheckins; int get totalPlaces; int get completionPercent;
 /// Create a copy of TripDetailRewardClaim
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3642,20 +3642,20 @@ $TripDetailRewardClaimCopyWith<TripDetailRewardClaim> get copyWith => _$TripDeta
 @override
 bool operator ==(Object other) {
   final _this = this as TripDetailRewardClaim;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TripDetailRewardClaim&&(identical(other.pointsAwarded, _this.pointsAwarded) || other.pointsAwarded == _this.pointsAwarded));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TripDetailRewardClaim&&(identical(other.tripId, _this.tripId) || other.tripId == _this.tripId)&&(identical(other.pointsAwarded, _this.pointsAwarded) || other.pointsAwarded == _this.pointsAwarded)&&(identical(other.basePoints, _this.basePoints) || other.basePoints == _this.basePoints)&&(identical(other.missionPoints, _this.missionPoints) || other.missionPoints == _this.missionPoints)&&(identical(other.multiplierUsed, _this.multiplierUsed) || other.multiplierUsed == _this.multiplierUsed)&&(identical(other.missionsCompleted, _this.missionsCompleted) || other.missionsCompleted == _this.missionsCompleted)&&(identical(other.totalCheckins, _this.totalCheckins) || other.totalCheckins == _this.totalCheckins)&&(identical(other.totalPlaces, _this.totalPlaces) || other.totalPlaces == _this.totalPlaces)&&(identical(other.completionPercent, _this.completionPercent) || other.completionPercent == _this.completionPercent));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as TripDetailRewardClaim;
-  return Object.hash(runtimeType,_this.pointsAwarded);
+  return Object.hash(runtimeType,_this.tripId,_this.pointsAwarded,_this.basePoints,_this.missionPoints,_this.multiplierUsed,_this.missionsCompleted,_this.totalCheckins,_this.totalPlaces,_this.completionPercent);
 }
 
 @override
 String toString() {
   final _this = this as TripDetailRewardClaim;
-  return 'TripDetailRewardClaim(pointsAwarded: ${_this.pointsAwarded})';
+  return 'TripDetailRewardClaim(tripId: ${_this.tripId}, pointsAwarded: ${_this.pointsAwarded}, basePoints: ${_this.basePoints}, missionPoints: ${_this.missionPoints}, multiplierUsed: ${_this.multiplierUsed}, missionsCompleted: ${_this.missionsCompleted}, totalCheckins: ${_this.totalCheckins}, totalPlaces: ${_this.totalPlaces}, completionPercent: ${_this.completionPercent})';
 }
 
 
@@ -3666,7 +3666,7 @@ abstract mixin class $TripDetailRewardClaimCopyWith<$Res>  {
   factory $TripDetailRewardClaimCopyWith(TripDetailRewardClaim value, $Res Function(TripDetailRewardClaim) _then) = _$TripDetailRewardClaimCopyWithImpl;
 @useResult
 $Res call({
- int pointsAwarded
+ String? tripId, int pointsAwarded, int basePoints, int missionPoints, double multiplierUsed, int missionsCompleted, int totalCheckins, int totalPlaces, int completionPercent
 });
 
 
@@ -3683,9 +3683,17 @@ class _$TripDetailRewardClaimCopyWithImpl<$Res>
 
 /// Create a copy of TripDetailRewardClaim
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? pointsAwarded = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? tripId = freezed,Object? pointsAwarded = null,Object? basePoints = null,Object? missionPoints = null,Object? multiplierUsed = null,Object? missionsCompleted = null,Object? totalCheckins = null,Object? totalPlaces = null,Object? completionPercent = null,}) {
   return _then(TripDetailRewardClaim(
-pointsAwarded: null == pointsAwarded ? _self.pointsAwarded : pointsAwarded // ignore: cast_nullable_to_non_nullable
+tripId: freezed == tripId ? _self.tripId : tripId // ignore: cast_nullable_to_non_nullable
+as String?,pointsAwarded: null == pointsAwarded ? _self.pointsAwarded : pointsAwarded // ignore: cast_nullable_to_non_nullable
+as int,basePoints: null == basePoints ? _self.basePoints : basePoints // ignore: cast_nullable_to_non_nullable
+as int,missionPoints: null == missionPoints ? _self.missionPoints : missionPoints // ignore: cast_nullable_to_non_nullable
+as int,multiplierUsed: null == multiplierUsed ? _self.multiplierUsed : multiplierUsed // ignore: cast_nullable_to_non_nullable
+as double,missionsCompleted: null == missionsCompleted ? _self.missionsCompleted : missionsCompleted // ignore: cast_nullable_to_non_nullable
+as int,totalCheckins: null == totalCheckins ? _self.totalCheckins : totalCheckins // ignore: cast_nullable_to_non_nullable
+as int,totalPlaces: null == totalPlaces ? _self.totalPlaces : totalPlaces // ignore: cast_nullable_to_non_nullable
+as int,completionPercent: null == completionPercent ? _self.completionPercent : completionPercent // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }
@@ -3771,10 +3779,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int pointsAwarded)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? tripId,  int pointsAwarded,  int basePoints,  int missionPoints,  double multiplierUsed,  int missionsCompleted,  int totalCheckins,  int totalPlaces,  int completionPercent)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _TripDetailRewardClaim() when $default != null:
-return $default(_that.pointsAwarded);case _:
+return $default(_that.tripId,_that.pointsAwarded,_that.basePoints,_that.missionPoints,_that.multiplierUsed,_that.missionsCompleted,_that.totalCheckins,_that.totalPlaces,_that.completionPercent);case _:
   return orElse();
 
 }
@@ -3792,10 +3800,10 @@ return $default(_that.pointsAwarded);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int pointsAwarded)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? tripId,  int pointsAwarded,  int basePoints,  int missionPoints,  double multiplierUsed,  int missionsCompleted,  int totalCheckins,  int totalPlaces,  int completionPercent)  $default,) {final _that = this;
 switch (_that) {
 case _TripDetailRewardClaim():
-return $default(_that.pointsAwarded);case _:
+return $default(_that.tripId,_that.pointsAwarded,_that.basePoints,_that.missionPoints,_that.multiplierUsed,_that.missionsCompleted,_that.totalCheckins,_that.totalPlaces,_that.completionPercent);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -3812,10 +3820,10 @@ return $default(_that.pointsAwarded);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int pointsAwarded)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? tripId,  int pointsAwarded,  int basePoints,  int missionPoints,  double multiplierUsed,  int missionsCompleted,  int totalCheckins,  int totalPlaces,  int completionPercent)?  $default,) {final _that = this;
 switch (_that) {
 case _TripDetailRewardClaim() when $default != null:
-return $default(_that.pointsAwarded);case _:
+return $default(_that.tripId,_that.pointsAwarded,_that.basePoints,_that.missionPoints,_that.multiplierUsed,_that.missionsCompleted,_that.totalCheckins,_that.totalPlaces,_that.completionPercent);case _:
   return null;
 
 }
@@ -3827,10 +3835,18 @@ return $default(_that.pointsAwarded);case _:
 @JsonSerializable()
 
 class _TripDetailRewardClaim implements TripDetailRewardClaim {
-  const _TripDetailRewardClaim({required this.pointsAwarded});
+  const _TripDetailRewardClaim({this.tripId, required this.pointsAwarded, this.basePoints = 0, this.missionPoints = 0, this.multiplierUsed = 1.0, this.missionsCompleted = 0, this.totalCheckins = 0, this.totalPlaces = 0, this.completionPercent = 0});
   factory _TripDetailRewardClaim.fromJson(Map<String, dynamic> json) => _$TripDetailRewardClaimFromJson(json);
 
+@override final  String? tripId;
 @override final  int pointsAwarded;
+@override@JsonKey() final  int basePoints;
+@override@JsonKey() final  int missionPoints;
+@override@JsonKey() final  double multiplierUsed;
+@override@JsonKey() final  int missionsCompleted;
+@override@JsonKey() final  int totalCheckins;
+@override@JsonKey() final  int totalPlaces;
+@override@JsonKey() final  int completionPercent;
 
 /// Create a copy of TripDetailRewardClaim
 /// with the given fields replaced by the non-null parameter values.
@@ -3845,18 +3861,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _TripDetailRewardClaim&&(identical(other.pointsAwarded, pointsAwarded) || other.pointsAwarded == pointsAwarded));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _TripDetailRewardClaim&&(identical(other.tripId, tripId) || other.tripId == tripId)&&(identical(other.pointsAwarded, pointsAwarded) || other.pointsAwarded == pointsAwarded)&&(identical(other.basePoints, basePoints) || other.basePoints == basePoints)&&(identical(other.missionPoints, missionPoints) || other.missionPoints == missionPoints)&&(identical(other.multiplierUsed, multiplierUsed) || other.multiplierUsed == multiplierUsed)&&(identical(other.missionsCompleted, missionsCompleted) || other.missionsCompleted == missionsCompleted)&&(identical(other.totalCheckins, totalCheckins) || other.totalCheckins == totalCheckins)&&(identical(other.totalPlaces, totalPlaces) || other.totalPlaces == totalPlaces)&&(identical(other.completionPercent, completionPercent) || other.completionPercent == completionPercent));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,pointsAwarded);
+    return Object.hash(runtimeType,tripId,pointsAwarded,basePoints,missionPoints,multiplierUsed,missionsCompleted,totalCheckins,totalPlaces,completionPercent);
 }
 
 @override
 String toString() {
-    return 'TripDetailRewardClaim(pointsAwarded: $pointsAwarded)';
+    return 'TripDetailRewardClaim(tripId: $tripId, pointsAwarded: $pointsAwarded, basePoints: $basePoints, missionPoints: $missionPoints, multiplierUsed: $multiplierUsed, missionsCompleted: $missionsCompleted, totalCheckins: $totalCheckins, totalPlaces: $totalPlaces, completionPercent: $completionPercent)';
 }
 
 
@@ -3867,7 +3883,7 @@ abstract mixin class _$TripDetailRewardClaimCopyWith<$Res> implements $TripDetai
   factory _$TripDetailRewardClaimCopyWith(_TripDetailRewardClaim value, $Res Function(_TripDetailRewardClaim) _then) = __$TripDetailRewardClaimCopyWithImpl;
 @override @useResult
 $Res call({
- int pointsAwarded
+ String? tripId, int pointsAwarded, int basePoints, int missionPoints, double multiplierUsed, int missionsCompleted, int totalCheckins, int totalPlaces, int completionPercent
 });
 
 
@@ -3884,9 +3900,17 @@ class __$TripDetailRewardClaimCopyWithImpl<$Res>
 
 /// Create a copy of TripDetailRewardClaim
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? pointsAwarded = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? tripId = freezed,Object? pointsAwarded = null,Object? basePoints = null,Object? missionPoints = null,Object? multiplierUsed = null,Object? missionsCompleted = null,Object? totalCheckins = null,Object? totalPlaces = null,Object? completionPercent = null,}) {
   return _then(_TripDetailRewardClaim(
-pointsAwarded: null == pointsAwarded ? _self.pointsAwarded : pointsAwarded // ignore: cast_nullable_to_non_nullable
+tripId: freezed == tripId ? _self.tripId : tripId // ignore: cast_nullable_to_non_nullable
+as String?,pointsAwarded: null == pointsAwarded ? _self.pointsAwarded : pointsAwarded // ignore: cast_nullable_to_non_nullable
+as int,basePoints: null == basePoints ? _self.basePoints : basePoints // ignore: cast_nullable_to_non_nullable
+as int,missionPoints: null == missionPoints ? _self.missionPoints : missionPoints // ignore: cast_nullable_to_non_nullable
+as int,multiplierUsed: null == multiplierUsed ? _self.multiplierUsed : multiplierUsed // ignore: cast_nullable_to_non_nullable
+as double,missionsCompleted: null == missionsCompleted ? _self.missionsCompleted : missionsCompleted // ignore: cast_nullable_to_non_nullable
+as int,totalCheckins: null == totalCheckins ? _self.totalCheckins : totalCheckins // ignore: cast_nullable_to_non_nullable
+as int,totalPlaces: null == totalPlaces ? _self.totalPlaces : totalPlaces // ignore: cast_nullable_to_non_nullable
+as int,completionPercent: null == completionPercent ? _self.completionPercent : completionPercent // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }

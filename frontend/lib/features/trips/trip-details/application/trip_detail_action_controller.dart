@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:travel_frontend_v1/features/achivement/application/trip_missions_controller.dart';
 
 import '../../application/trip_list_controller.dart';
+import '../data/models/trip_detail_models.dart';
 import '../provider/trip_detail_provider.dart';
 import 'trip_detail_overview_controller.dart';
 
@@ -51,13 +53,14 @@ class TripDetailActionController extends Notifier<TripDetailActionState> {
       ..invalidate(tripDashboardControllerProvider);
   }
 
-  Future<int> claimReward() async {
+  Future<TripDetailRewardClaim> claimReward() async {
     final claim = await _run(
       TripDetailAction.claimReward,
       () =>
           ref.read(tripDetailRepositoryProvider).claimCompletionReward(tripId),
     );
-    return claim.pointsAwarded;
+    ref.invalidate(tripMissionsControllerProvider(tripId));
+    return claim;
   }
 
   /// Invalidates the previous invite code; overview refresh picks up the new one.

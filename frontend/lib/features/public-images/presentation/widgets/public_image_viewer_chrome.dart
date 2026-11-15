@@ -140,9 +140,9 @@ class PublicImageViewerBottomChrome extends StatelessWidget {
     required this.index,
     required this.current,
     required this.onSelectIndex,
-    required this.onLike,
-    required this.onComment,
-    required this.onDownload,
+    this.onLike,
+    this.onComment,
+    this.onDownload,
     required this.onShare,
   });
 
@@ -150,9 +150,9 @@ class PublicImageViewerBottomChrome extends StatelessWidget {
   final int index;
   final PublicImageItem current;
   final ValueChanged<int> onSelectIndex;
-  final VoidCallback onLike;
-  final VoidCallback onComment;
-  final VoidCallback onDownload;
+  final VoidCallback? onLike;
+  final VoidCallback? onComment;
+  final VoidCallback? onDownload;
   final VoidCallback onShare;
 
   @override
@@ -229,26 +229,31 @@ class PublicImageViewerBottomChrome extends StatelessWidget {
                 const SizedBox(height: AppSpacing.xs),
                 Row(
                   children: [
-                    _ActionChip(
-                      icon: Icons.favorite_rounded,
-                      iconColor: AppColors.danger,
-                      label: '${current.likeCount}',
-                      onTap: onLike,
-                    ),
-                    const SizedBox(width: AppSpacing.xs),
-                    _ActionChip(
-                      icon: Icons.chat_bubble_outline_rounded,
-                      iconColor: AppColors.textTertiary,
-                      label: '${current.commentCount}',
-                      onTap: onComment,
-                    ),
-                    const SizedBox(width: AppSpacing.xs),
-                    _ActionChip(
-                      icon: Icons.download_rounded,
-                      iconColor: const Color(0xFF84F5EF),
-                      label: 'Tải về HD',
-                      onTap: onDownload,
-                    ),
+                    if (onLike != null)
+                      _ActionChip(
+                        icon: Icons.favorite_rounded,
+                        iconColor: AppColors.danger,
+                        label: '${current.likeCount}',
+                        onTap: onLike!,
+                      ),
+                    if (onComment != null) ...[
+                      const SizedBox(width: AppSpacing.xs),
+                      _ActionChip(
+                        icon: Icons.chat_bubble_outline_rounded,
+                        iconColor: AppColors.textTertiary,
+                        label: '${current.commentCount}',
+                        onTap: onComment!,
+                      ),
+                    ],
+                    if (onDownload != null) ...[
+                      const SizedBox(width: AppSpacing.xs),
+                      _ActionChip(
+                        icon: Icons.download_rounded,
+                        iconColor: const Color(0xFF84F5EF),
+                        label: 'Tải về HD',
+                        onTap: onDownload!,
+                      ),
+                    ],
                     const Spacer(),
                     AppPressable(
                       onTap: onShare,

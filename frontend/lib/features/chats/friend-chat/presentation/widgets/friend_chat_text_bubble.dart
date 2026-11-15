@@ -52,12 +52,23 @@ class FriendChatTextBubble extends StatelessWidget {
                       : AppColors.textTertiary,
                 ),
               ),
-              if (isMine && message.readStatus != null) ...[
+              if (isMine && message.readStatus == FriendChatReadStatus.failed)
+                Padding(
+                  padding: const EdgeInsets.only(left: 4),
+                  child: Text(
+                    'Không gửi được',
+                    style: AppTypography.caption.copyWith(
+                      fontSize: 11,
+                      color: const Color(0xFFFFD6D6),
+                    ),
+                  ),
+                )
+              else if (isMine && message.readStatus != null) ...[
                 const SizedBox(width: 4),
-                Icon(
+                const Icon(
                   Icons.done_all_rounded,
                   size: 14,
-                  color: const Color(0xFF84F5EF),
+                  color: Color(0xFF84F5EF),
                 ),
                 if (message.readStatus == FriendChatReadStatus.read) ...[
                   const SizedBox(width: 2),

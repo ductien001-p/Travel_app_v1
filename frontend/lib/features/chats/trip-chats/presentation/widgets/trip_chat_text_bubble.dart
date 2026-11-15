@@ -7,9 +7,16 @@ import 'package:travel_frontend_v1/core/theme/app_typography.dart';
 import '../../data/models/trip_chat_models.dart';
 
 class TripChatTextBubble extends StatelessWidget {
-  const TripChatTextBubble({super.key, required this.message});
+  const TripChatTextBubble({
+    super.key,
+    required this.message,
+    this.onReact,
+    this.onRemoveReaction,
+  });
 
   final TripChatMessage message;
+  final VoidCallback? onReact;
+  final ValueChanged<String>? onRemoveReaction;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +33,9 @@ class TripChatTextBubble extends StatelessWidget {
           ? CrossAxisAlignment.end
           : CrossAxisAlignment.start,
       children: [
-        Container(
+        GestureDetector(
+          onLongPress: onReact,
+          child: Container(
           padding: const EdgeInsets.fromLTRB(14, 10, 14, 10),
           decoration: BoxDecoration(
             color: isMine ? AppColors.primary : AppColors.glass90,
@@ -60,6 +69,36 @@ class TripChatTextBubble extends StatelessWidget {
             ],
           ),
         ),
+        ),
+        if (message.reactions.isNotEmpty) ...[
+          const SizedBox(height: 4),
+          Wrap(
+            spacing: 6,
+            children: [
+              for (final reaction in message.reactions)
+                GestureDetector(
+                  onTap: onRemoveReaction == null
+                      ? null
+                      : () => onRemoveReaction!(reaction.emoji),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 2,
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.surfaceSubdued.withValues(alpha: 0.85),
+                      borderRadius: BorderRadius.circular(AppRadius.pill),
+                      border: Border.all(color: AppColors.borderNeutral),
+                    ),
+                    child: Text(
+                      '${reaction.emoji} ${reaction.count}',
+                      style: AppTypography.caption.copyWith(fontSize: 11),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ],
         if (isMine) ...[
           const SizedBox(height: 4),
           Row(

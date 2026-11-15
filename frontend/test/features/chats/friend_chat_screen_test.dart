@@ -1,6 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:travel_frontend_v1/core/providers/core_provider.dart';
+import 'package:travel_frontend_v1/core/realtime/friend_socket_client.dart';
+
+import '../../core/realtime/fake_trip_socket_channel.dart';
 import 'package:travel_frontend_v1/features/chats/friend-chat/data/datamock/friend_chat_datamock.dart';
 import 'package:travel_frontend_v1/features/chats/friend-chat/data/datasources/friend_chat_datasource.dart';
 import 'package:travel_frontend_v1/features/chats/friend-chat/data/models/friend_chat_models.dart';
@@ -20,6 +26,16 @@ void main() {
         friendChatRepositoryProvider.overrideWithValue(
           FriendChatRepository(dataSource: _ThreadSource()),
         ),
+        friendSocketClientProvider.overrideWith((ref) {
+          final client = FriendSocketClient(
+            readAccessToken: () async => null,
+            refreshSession: () async => null,
+            tokenRefreshes: const Stream.empty(),
+            channelFactory: FakeTripSocketChannel.new,
+          );
+          ref.onDispose(client.dispose);
+          return client;
+        }),
       ],
     );
     addTearDown(container.dispose);
@@ -66,6 +82,20 @@ class _ThreadSource implements FriendChatDataSource {
       text: text,
       timeLabel: '15:00',
       readStatus: FriendChatReadStatus.sent,
+    );
+  }
+
+  @override
+  Future<FriendChatMessage> sendTripInvite({
+    required String conversationId,
+    required FriendChatInviteCandidate candidate,
+  }) async {
+    return FriendChatMessage(
+      id: 'invite-1',
+      kind: FriendChatMessageKind.tripInvite,
+      isMine: true,
+      text: candidate.title,
+      timeLabel: '15:00',
     );
   }
 }

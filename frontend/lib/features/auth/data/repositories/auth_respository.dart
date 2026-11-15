@@ -164,6 +164,16 @@ class AuthRepository {
     );
   }
 
+  Future<void> changePassword({
+    required String oldPassword,
+    required String newPassword,
+  }) {
+    return _remoteDataSource.changePassword(
+      oldPassword: oldPassword,
+      newPassword: newPassword,
+    );
+  }
+
   Future<void> requestPasswordReset({required String email}) {
     return _remoteDataSource.requestPasswordReset(email: email);
   }

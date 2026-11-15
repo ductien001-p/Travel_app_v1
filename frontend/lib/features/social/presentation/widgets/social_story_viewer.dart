@@ -42,8 +42,12 @@ class _SocialStoryViewer extends StatefulWidget {
   State<_SocialStoryViewer> createState() => _SocialStoryViewerState();
 }
 
-class _SocialStoryViewerState extends State<_SocialStoryViewer> {
+class _SocialStoryViewerState extends State<_SocialStoryViewer>
+    with SingleTickerProviderStateMixin {
+  static const _storyDuration = Duration(seconds: 5);
+
   late final PageController _controller;
+  late final AnimationController _progress;
   late int _index;
 
   @override
@@ -51,12 +55,39 @@ class _SocialStoryViewerState extends State<_SocialStoryViewer> {
     super.initState();
     _index = widget.initialIndex;
     _controller = PageController(initialPage: widget.initialIndex);
+    _progress = AnimationController(vsync: this, duration: _storyDuration)
+      ..addStatusListener(_onProgress)
+      ..forward();
   }
 
   @override
   void dispose() {
+    _progress.dispose();
     _controller.dispose();
     super.dispose();
+  }
+
+  void _onProgress(AnimationStatus status) {
+    if (status != AnimationStatus.completed || !mounted) return;
+    _goNext();
+  }
+
+  void _goNext() {
+    if (_index >= widget.stories.length - 1) {
+      Navigator.of(context).pop();
+      return;
+    }
+    _controller.nextPage(
+      duration: const Duration(milliseconds: 220),
+      curve: Curves.easeOut,
+    );
+  }
+
+  void _restartProgress() {
+    _progress
+      ..stop()
+      ..value = 0
+      ..forward();
   }
 
   @override
@@ -70,7 +101,10 @@ class _SocialStoryViewerState extends State<_SocialStoryViewer> {
             PageView.builder(
               controller: _controller,
               itemCount: widget.stories.length,
-              onPageChanged: (value) => setState(() => _index = value),
+              onPageChanged: (value) {
+                setState(() => _index = value);
+                _restartProgress();
+              },
               itemBuilder: (context, index) {
                 final item = widget.stories[index];
                 return InteractiveViewer(
@@ -89,7 +123,39 @@ class _SocialStoryViewerState extends State<_SocialStoryViewer> {
               },
             ),
             Positioned(
-              top: AppSpacing.sm,
+              top: AppSpacing.xs,
+              left: AppSpacing.md,
+              right: AppSpacing.md,
+              child: AnimatedBuilder(
+                animation: _progress,
+                builder: (context, _) {
+                  return Row(
+                    children: [
+                      for (var i = 0; i < widget.stories.length; i++) ...[
+                        if (i > 0) const SizedBox(width: 4),
+                        Expanded(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(99),
+                            child: LinearProgressIndicator(
+                              minHeight: 3,
+                              value: i < _index
+                                  ? 1
+                                  : i == _index
+                                  ? _progress.value
+                                  : 0,
+                              backgroundColor: Colors.white24,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
+                  );
+                },
+              ),
+            ),
+            Positioned(
+              top: AppSpacing.lg,
               left: AppSpacing.md,
               right: AppSpacing.md,
               child: Row(

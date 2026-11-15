@@ -348,17 +348,14 @@ export class TripGateway
     }
 
     try {
-      const message = await this.tripMessageService.createMessage(
+      const message = await this.tripMessageService.createMessageAsUi(
         payload.tripId,
         userId,
         payload.content,
-        payload.messageType,
+        { messageType: payload.messageType },
       );
 
-      this.server.to(this.tripRoom(payload.tripId)).emit('trip:message', {
-        tripId: payload.tripId,
-        message,
-      });
+      this.emitChatMessage(payload.tripId, message);
 
       return {
         success: true,

@@ -18,7 +18,10 @@ describe('TripGateway', () => {
       }),
     };
     const messages = {
-      createMessage: jest.fn().mockResolvedValue({ id: 'message-1' }),
+      createMessageAsUi: jest.fn().mockResolvedValue({
+        id: 'message-1',
+        kind: 'TEXT',
+      }),
     };
     const gateway = new TripGateway(
       {} as never,
@@ -47,16 +50,16 @@ describe('TripGateway', () => {
         content: '  hello  ',
       });
 
-      expect(messages.createMessage).toHaveBeenCalledWith(
+      expect(messages.createMessageAsUi).toHaveBeenCalledWith(
         'trip-1',
         'user-1',
         'hello',
-        undefined,
+        { messageType: undefined },
       );
       expect(server.to).toHaveBeenCalledWith('trip:trip-1');
       expect(roomEmit).toHaveBeenCalledWith('trip:message', {
         tripId: 'trip-1',
-        message: { id: 'message-1' },
+        message: { id: 'message-1', kind: 'TEXT' },
       });
     });
 
@@ -72,11 +75,11 @@ describe('TripGateway', () => {
         }),
       );
 
-      expect(messages.createMessage).toHaveBeenCalledWith(
+      expect(messages.createMessageAsUi).toHaveBeenCalledWith(
         'trip-1',
         'user-1',
         'media-1',
-        'IMAGE',
+        { messageType: 'IMAGE' },
       );
     });
 
@@ -96,7 +99,7 @@ describe('TripGateway', () => {
 
       await gateway.handleSendMessage(socket as never, payload);
 
-      expect(messages.createMessage).not.toHaveBeenCalled();
+      expect(messages.createMessageAsUi).not.toHaveBeenCalled();
       expect(socket.emit).toHaveBeenCalledWith('trip:error', {
         message: 'Invalid message payload',
       });
@@ -111,7 +114,7 @@ describe('TripGateway', () => {
         content: 'hi',
       });
 
-      expect(messages.createMessage).not.toHaveBeenCalled();
+      expect(messages.createMessageAsUi).not.toHaveBeenCalled();
       expect(socket.emit).toHaveBeenCalledWith('trip:error', {
         message: 'Unauthorized',
       });
@@ -119,7 +122,7 @@ describe('TripGateway', () => {
 
     it('forwards the message of an expected HTTP error', async () => {
       const { gateway, messages, socket } = setup();
-      messages.createMessage.mockRejectedValue(
+      messages.createMessageAsUi.mockRejectedValue(
         new ForbiddenException('Active trip membership required'),
       );
 
@@ -135,7 +138,7 @@ describe('TripGateway', () => {
 
     it('hides the details of unexpected errors', async () => {
       const { gateway, messages, socket } = setup();
-      messages.createMessage.mockRejectedValue(
+      messages.createMessageAsUi.mockRejectedValue(
         new Error('connection to db-host:5432 refused'),
       );
       jest

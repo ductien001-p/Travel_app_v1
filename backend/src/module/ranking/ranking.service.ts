@@ -233,12 +233,18 @@ export class RankingService {
   }
 
   async getUserRanking(userId: string, dto: RankingMeQueryDto = { period: RankingPeriodQuery.ALL_TIME }) {
-    const ranking = await this.prisma.userRanking.findUnique({
+    // Ensure a ranking row exists so /me always returns travelTier + achievements
+    // for new users (they previously got 404 and the Ranking UI hid the section).
+    const ranking = await this.prisma.userRanking.upsert({
       where: { userId },
+      create: {
+        userId,
+        totalPoints: 0,
+        tripsCompleted: 0,
+        rank: RANK.BEGINNER,
+      },
+      update: {},
     });
-    if (!ranking) {
-      throw new NotFoundException('User ranking not found');
-    }
 
     const user = await this.prisma.user.findUnique({
       where: { id: userId },

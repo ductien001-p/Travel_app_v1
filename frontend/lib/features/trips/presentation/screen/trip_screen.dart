@@ -18,6 +18,7 @@ import '../../../../core/widget/app_progress_bar.dart';
 import '../../../../core/widget/app_scaffold.dart';
 import '../../../../core/widget/app_section_header.dart';
 import '../../../../core/widget/app_skeleton.dart';
+import '../../../achivement/presentation/widgets/trip_missions_entry_chip.dart';
 import '../../application/trip_invitations_controller.dart';
 import '../../application/trip_list_controller.dart';
 import '../../data/models/trip_enums.dart';
@@ -737,6 +738,13 @@ class _OngoingTripCard extends StatelessWidget {
                 const SizedBox(height: AppSpacing.md),
                 _NextActivity(activity: trip.nextActivity!),
               ],
+              const SizedBox(height: AppSpacing.sm),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: TripMissionsEntryChip(
+                  onTap: () => _openTrip(context, trip.id),
+                ),
+              ),
               const SizedBox(height: AppSpacing.md),
               const Divider(height: 1, color: AppColors.borderNeutral),
               const SizedBox(height: AppSpacing.sm),
@@ -1030,6 +1038,10 @@ class _TripListCard extends StatelessWidget {
                     ),
                   ],
                 ),
+                if (_tripShowsMissionsChip(trip.status)) ...[
+                  const SizedBox(height: AppSpacing.xs),
+                  const TripMissionsEntryChip(compact: true),
+                ],
               ],
             ),
           ),
@@ -1039,6 +1051,14 @@ class _TripListCard extends StatelessWidget {
     ),
   );
 }
+
+bool _tripShowsMissionsChip(TripStatus status) => switch (status) {
+  TripStatus.upcoming ||
+  TripStatus.ongoing ||
+  TripStatus.completed ||
+  TripStatus.notCompleted => true,
+  _ => false,
+};
 
 class _InvitationList extends ConsumerWidget {
   const _InvitationList({required this.value});

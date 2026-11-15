@@ -77,6 +77,19 @@ class _ThreadSource implements TripChatDataSource {
   }
 
   @override
+  Future<TripChatMessage> sendImage({
+    required String tripId,
+    required String mediaId,
+  }) async {
+    return TripChatMessage(
+      id: 'photo-1',
+      kind: TripChatMessageKind.photo,
+      isMine: true,
+      timeLabel: '15:00',
+    );
+  }
+
+  @override
   Future<List<TripChatReaction>> addReaction({
     required String tripId,
     required String messageId,

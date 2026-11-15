@@ -115,6 +115,16 @@ class AuthRemoteDataSource {
     );
   }
 
+  Future<void> changePassword({
+    required String oldPassword,
+    required String newPassword,
+  }) async {
+    await _apiClient.post<Object?>(
+      '/auth/change-password',
+      data: {'oldPassword': oldPassword, 'newPassword': newPassword},
+    );
+  }
+
   Future<void> requestPasswordReset({required String email}) async {
     await _apiClient.post<Object?>(
       '/auth/send-password-reset-code',

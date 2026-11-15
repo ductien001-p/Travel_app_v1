@@ -88,4 +88,6 @@ abstract final class RouteNames {
   static const publicImageViewer = 'publicImageViewer';
 
   static const publicImageMap = 'publicImageMap';
+
+  static const notifications = 'notifications';
 }

@@ -101,7 +101,7 @@ export class FriendGateway implements OnGatewayInit {
     if (!this.server) return;
     this.server
       .to(`friend-conversation:${conversationId}`)
-      .emit('friend:message:new', message);
+      .emit('friend:message:new', { conversationId, message });
   }
 
   @SubscribeMessage('friend:message:send')
@@ -153,8 +153,12 @@ export class FriendGateway implements OnGatewayInit {
       return;
     }
     const userId = socket.data.userId;
+    if (typeof userId !== 'string' || userId.length === 0) {
+      socket.emit('friend:error', { message: 'Unauthorized' });
+      return;
+    }
 
-    const message = await this.friendService.sendMessage(
+    const message = await this.friendService.sendMessageAsUi(
       payload.conversationId,
       userId,
       payload.content ?? '',

@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:travel_frontend_v1/features/achivement/application/achivement_progress_controller.dart';
 
 import '../data/models/ranking_models.dart';
 import '../provider/ranking_provider.dart';
@@ -25,6 +26,9 @@ class RankingController extends AsyncNotifier<RankingViewState> {
     if (state.hasError && previous != null) {
       state = AsyncData(previous);
       return false;
+    }
+    if (!state.hasError) {
+      ref.invalidate(achivementProgressControllerProvider);
     }
     return !state.hasError;
   }
