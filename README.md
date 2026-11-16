@@ -11,8 +11,8 @@ Monorepo ứng dụng mạng xã hội du lịch: lập kế hoạch chuyến đ
 
 ## Trạng thái nhanh
 
-- **Đã nối E2E (FE ↔ BE):** auth, FCM device token, upload R2, trips (list/create/detail/itinerary/timeline/memories/invite/join/expenses), explore/places, social feed + post detail, friends, ranking, Travel DNA, profile.
-- **Đang UI / mock một phần:** chats (hub, DM, trip group), public image viewer, settings (ngoài logout + push).
+- **Đã nối E2E (FE ↔ BE):** auth, FCM device token, upload R2, trips (list/create/detail/itinerary/timeline/memories/invite/join/expenses), explore/places, social feed + post detail, friends, ranking, Travel DNA, profile, chats (hub + friend DM + trip group qua API/socket; datamock chỉ còn cho test).
+- **Đang UI / chưa hoàn chỉnh:** public image viewer, settings (ngoài logout + push); một số copy/UI vẫn lấy placeholder (vd. destination trips editorial, join-by-code widgets).
 - **BE có sẵn, FE chưa wire đầy đủ:** trip missions, notification inbox, một số story/challenge sâu.
 - **Chặn phát hành deep link:** thiếu domain HTTPS + `SHARE_HOST` đồng bộ FE/BE/Android/iOS.
 
@@ -91,11 +91,11 @@ Chi tiết hơn: [`docs/runtime_environment.md`](./docs/runtime_environment.md).
 
 ## Việc tồn đọng (ưu tiên)
 
-1. Nối chat thật (hub / DM / trip group) — bỏ datamock.
-2. Cấu hình `SHARE_HOST` + domain HTTPS nếu cần App Links / Universal Links.
-3. UI trip missions + hộp thư thông báo.
-4. Hoàn thiện Settings, Public Images, expenses nâng cao (OCR/hóa đơn/QR).
-5. Đồng bộ nội dung cũ trong `backend/README.md` với monorepo (port DB 5555, có FE, có Ollama).
+1. Cấu hình `SHARE_HOST` + domain HTTPS nếu cần App Links / Universal Links.
+2. UI trip missions + hộp thư thông báo.
+3. Hoàn thiện Settings, Public Images, expenses nâng cao (OCR/hóa đơn/QR).
+4. Dọn placeholder/datamock còn sót ở UI phụ (destination editorial, join-by-code widgets).
+5. Đồng bộ nội dung cũ trong `backend/README.md` với monorepo khi còn lệch.
 
 ## Tài liệu liên quan
 

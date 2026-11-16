@@ -22,6 +22,10 @@ abstract final class E2eKeys {
   static const homeSegmentCommunity = ValueKey<String>(
     'e2e.home.segment.community',
   );
+  static const homeNotifications = ValueKey<String>('e2e.home.notifications');
+  static const notificationsScreenTitle = ValueKey<String>(
+    'e2e.notifications.title',
+  );
 
   static const featuredSeeAll = ValueKey<String>('featured-see-all');
 

@@ -777,7 +777,7 @@ export class FriendService {
     const isMember =
       conversation.user1Id === userId || conversation.user2Id === userId;
     if (!isMember) {
-      throw new ForbiddenException('You are not a member of this conversation');
+      throw new NotFoundException('Conversation not found');
     }
 
     const peer =
@@ -1089,7 +1089,7 @@ export class FriendService {
       conversation.user1Id === userId || conversation.user2Id === userId;
 
     if (!isMember) {
-      throw new ForbiddenException('You are not a member of this conversation');
+      throw new NotFoundException('Conversation not found');
     }
 
     return conversation;

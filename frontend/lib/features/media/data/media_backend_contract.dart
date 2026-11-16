@@ -5,13 +5,9 @@ import 'models/upload_source.dart';
 import 'models/uploaded_media.dart';
 
 abstract final class MediaBackendContract {
-  /*
-   * HÃY THAY 2 PATH NÀY
-   * bằng đúng route trong openapi.json.
-   */
-  static const presignMultiplePath = '/media/presign/multiple';
+  static const presignMultiplePath = '/uploads/presigns';
 
-  static const completeMultiplePath = '/media/complete/multiple';
+  static const completeMultiplePath = '/uploads/complete';
 
   static Map<String, dynamic> buildPresignMultipleBody({
     required MediaUploadFolder folder,
@@ -21,7 +17,7 @@ abstract final class MediaBackendContract {
     return {
       'folder': folder.apiValue,
 
-      'uploads': sources
+      'files': sources
           .map((source) => {'contentType': source.mimeType})
           .toList(growable: false),
     };
@@ -31,21 +27,16 @@ abstract final class MediaBackendContract {
     Map<String, dynamic> body,
   ) {
     final rawData = body['data'];
+    final payload = rawData is Map ? Map<String, dynamic>.from(rawData) : body;
 
-    if (rawData is Map) {
-      return PresignMultipleResponse.fromJson(
-        Map<String, dynamic>.from(rawData),
-      );
-    }
-
-    return PresignMultipleResponse.fromJson(body);
+    return PresignMultipleResponse.fromJson(payload);
   }
 
   static Map<String, dynamic> buildCompleteBody({
     required List<CompleteUploadItem> items,
   }) {
     return {
-      'uploads': items.map((item) => item.toJson()).toList(growable: false),
+      'files': items.map((item) => item.toJson()).toList(growable: false),
     };
   }
 

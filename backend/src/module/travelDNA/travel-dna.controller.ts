@@ -8,7 +8,6 @@ import { CurrentUser } from '../../decoration/currentUser.decoration';
 
 import { ApiStandardErrors } from '../../common/contracts/api-standard-errors.decorator';
 
-import { TravelDnaEnvelopeResponseDto } from '../../common/contracts/extended-response.dto';
 import { TravelDnaRadarEnvelopeResponseDto } from './travel-dna.response.dto';
 
 @ApiTags('Travel DNA')
@@ -17,19 +16,6 @@ import { TravelDnaRadarEnvelopeResponseDto } from './travel-dna.response.dto';
 @Controller('travel-dna')
 export class TravelDnaController {
   constructor(private readonly travelDnaService: TravelDnaService) {}
-
-  @Get()
-  @ApiOkResponse({
-    type: TravelDnaEnvelopeResponseDto,
-  })
-  async getTravelDna(@CurrentUser('id') userId: string) {
-    const data = await this.travelDnaService.getUserTravelDNA(userId);
-
-    return {
-      data,
-      message: 'Travel DNA retrieved successfully',
-    };
-  }
 
   @Get('radar')
   @ApiOkResponse({

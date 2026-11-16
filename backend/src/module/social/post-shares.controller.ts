@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Controller, Delete, Param, Post } from '@nestjs/common';
 
 import {
   ApiBearerAuth,
@@ -11,10 +11,7 @@ import { PostSharesService } from './post-shares.service';
 
 import { CurrentUser } from '../../decoration/currentUser.decoration';
 
-import {
-  InteractionActionResponseDto,
-  ShareStatusEnvelopeResponseDto,
-} from '../../common/contracts/extended-response.dto';
+import { InteractionActionResponseDto } from '../../common/contracts/extended-response.dto';
 
 import { ApiStandardErrors } from '../../common/contracts/api-standard-errors.decorator';
 
@@ -65,23 +62,4 @@ export class PostSharesController {
     };
   }
 
-  // =========================================================
-  // SHARE STATUS
-  // =========================================================
-
-  @Get(':postId/share/status')
-  @ApiOkResponse({
-    type: ShareStatusEnvelopeResponseDto,
-  })
-  async getStatus(
-    @CurrentUser('id') userId: string,
-    @Param('postId') postId: string,
-  ) {
-    const data = await this.postSharesService.getStatus(userId, postId);
-
-    return {
-      data,
-      message: 'Share status retrieved successfully',
-    };
-  }
 }

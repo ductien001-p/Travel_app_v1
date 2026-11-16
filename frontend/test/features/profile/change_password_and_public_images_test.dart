@@ -53,24 +53,4 @@ class _MissingAlbum implements PublicImagesDataSource {
   Future<PublicImageAlbum> getAlbum(String albumId) async {
     throw Exception('not found');
   }
-
-  @override
-  Future<void> setAsCover({
-    required String albumId,
-    required String imageId,
-  }) async {}
-
-  @override
-  Future<void> deleteImage({
-    required String albumId,
-    required String imageId,
-  }) async {}
-
-  @override
-  Future<PublicImageItem> toggleLike({
-    required String albumId,
-    required String imageId,
-  }) async {
-    throw Exception('not found');
-  }
 }

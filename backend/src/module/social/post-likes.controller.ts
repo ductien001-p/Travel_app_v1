@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Controller, Delete, Param, Post } from '@nestjs/common';
 
 import {
   ApiBearerAuth,
@@ -11,10 +11,7 @@ import { PostLikesService } from './post-likes.service';
 
 import { CurrentUser } from '../../decoration/currentUser.decoration';
 
-import {
-  InteractionActionResponseDto,
-  InteractionStatusEnvelopeResponseDto,
-} from '../../common/contracts/extended-response.dto';
+import { InteractionActionResponseDto } from '../../common/contracts/extended-response.dto';
 
 import { ApiStandardErrors } from '../../common/contracts/api-standard-errors.decorator';
 
@@ -65,23 +62,4 @@ export class PostLikesController {
     };
   }
 
-  // =========================================================
-  // LIKE STATUS
-  // =========================================================
-
-  @Get(':postId/like/status')
-  @ApiOkResponse({
-    type: InteractionStatusEnvelopeResponseDto,
-  })
-  async getStatus(
-    @CurrentUser('id') userId: string,
-    @Param('postId') postId: string,
-  ) {
-    const data = await this.postLikesService.getStatus(userId, postId);
-
-    return {
-      data,
-      message: 'Like status retrieved successfully',
-    };
-  }
 }

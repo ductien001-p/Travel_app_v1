@@ -6460,91 +6460,6 @@
         ]
       }
     },
-    "/social/posts/{postId}/like/status": {
-      "get": {
-        "operationId": "PostLikesController_getStatus",
-        "parameters": [
-          {
-            "name": "postId",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InteractionStatusEnvelopeResponseDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "access-token": []
-          }
-        ],
-        "tags": [
-          "Post Likes"
-        ]
-      }
-    },
     "/social/posts/{postId}/save": {
       "post": {
         "operationId": "PostSavesController_save",
@@ -6713,91 +6628,6 @@
         ]
       }
     },
-    "/social/posts/{postId}/save/status": {
-      "get": {
-        "operationId": "PostSavesController_getStatus",
-        "parameters": [
-          {
-            "name": "postId",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SaveStatusEnvelopeResponseDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "access-token": []
-          }
-        ],
-        "tags": [
-          "Post Saves"
-        ]
-      }
-    },
     "/social/posts/{postId}/share": {
       "post": {
         "operationId": "PostSharesController_share",
@@ -6901,91 +6731,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/InteractionActionResponseDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "access-token": []
-          }
-        ],
-        "tags": [
-          "Post Shares"
-        ]
-      }
-    },
-    "/social/posts/{postId}/share/status": {
-      "get": {
-        "operationId": "PostSharesController_getStatus",
-        "parameters": [
-          {
-            "name": "postId",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ShareStatusEnvelopeResponseDto"
                 }
               }
             }
@@ -8044,82 +7789,6 @@
         ],
         "tags": [
           "Social Challenges"
-        ]
-      }
-    },
-    "/travel-dna": {
-      "get": {
-        "operationId": "TravelDnaController_getTravelDna",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TravelDnaEnvelopeResponseDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "access-token": []
-          }
-        ],
-        "tags": [
-          "Travel DNA"
         ]
       }
     },
@@ -15546,93 +15215,6 @@
         ]
       }
     },
-    "/users/create": {
-      "post": {
-        "operationId": "UsersController_create",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CreateUserResponseDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "access-token": []
-          }
-        ],
-        "summary": "Create a user. ADMIN role required.",
-        "tags": [
-          "Users"
-        ]
-      }
-    },
     "/users/search": {
       "get": {
         "operationId": "UsersController_searchUsers",
@@ -15684,112 +15266,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UserSearchPageResponseDto"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ApiErrorResponseDto"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "access-token": []
-          }
-        ],
-        "tags": [
-          "Users"
-        ]
-      }
-    },
-    "/users": {
-      "get": {
-        "operationId": "UsersController_findAll",
-        "parameters": [
-          {
-            "name": "page",
-            "required": false,
-            "in": "query",
-            "schema": {
-              "minimum": 1,
-              "default": 1,
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/Object"
-                }
-              ]
-            }
-          },
-          {
-            "name": "limit",
-            "required": false,
-            "in": "query",
-            "schema": {
-              "minimum": 1,
-              "maximum": 100,
-              "default": 20,
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/Object"
-                }
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PublicUsersPageResponseDto"
                 }
               }
             }
@@ -16684,6 +16160,91 @@
         ],
         "tags": [
           "Notifications"
+        ]
+      }
+    },
+    "/public-images/albums/{albumId}": {
+      "get": {
+        "operationId": "PublicImagesController_getAlbum",
+        "parameters": [
+          {
+            "name": "albumId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicImageAlbumEnvelopeResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "access-token": []
+          }
+        ],
+        "tags": [
+          "Public images"
         ]
       }
     }
@@ -20841,103 +20402,6 @@
           "message"
         ]
       },
-      "InteractionStatusResponseDto": {
-        "type": "object",
-        "properties": {
-          "liked": {
-            "type": "boolean",
-            "example": true
-          },
-          "likedAt": {
-            "type": "string",
-            "nullable": true,
-            "format": "date-time"
-          }
-        },
-        "required": [
-          "liked"
-        ]
-      },
-      "InteractionStatusEnvelopeResponseDto": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/InteractionStatusResponseDto"
-          },
-          "message": {
-            "type": "string",
-            "example": "Like status retrieved successfully"
-          }
-        },
-        "required": [
-          "data",
-          "message"
-        ]
-      },
-      "SaveStatusResponseDto": {
-        "type": "object",
-        "properties": {
-          "saved": {
-            "type": "boolean"
-          },
-          "savedAt": {
-            "type": "string",
-            "nullable": true,
-            "format": "date-time"
-          }
-        },
-        "required": [
-          "saved"
-        ]
-      },
-      "SaveStatusEnvelopeResponseDto": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/SaveStatusResponseDto"
-          },
-          "message": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "data",
-          "message"
-        ]
-      },
-      "ShareStatusResponseDto": {
-        "type": "object",
-        "properties": {
-          "shared": {
-            "type": "boolean",
-            "example": true
-          },
-          "sharedAt": {
-            "type": "string",
-            "nullable": true,
-            "format": "date-time"
-          }
-        },
-        "required": [
-          "shared"
-        ]
-      },
-      "ShareStatusEnvelopeResponseDto": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/ShareStatusResponseDto"
-          },
-          "message": {
-            "type": "string",
-            "example": "Share status retrieved successfully"
-          }
-        },
-        "required": [
-          "data",
-          "message"
-        ]
-      },
       "CreatePostDto": {
         "type": "object",
         "properties": {
@@ -21440,117 +20904,6 @@
           },
           "message": {
             "type": "string"
-          }
-        },
-        "required": [
-          "data",
-          "message"
-        ]
-      },
-      "TravelDnaBadgeResponseDto": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "enum": [
-              "SOLO_TRAVELER",
-              "FAMILY_TRAVELER",
-              "COUPLE_TRAVELLER",
-              "GROUP_TRAVELER",
-              "BACKPACKER",
-              "MOUNTAIN_LOVER",
-              "BEACH_LOVER",
-              "ADVENTURE_TRAVELER",
-              "FOODIE_TRAVELER",
-              "CULTURE_TRAVELER",
-              "ENTERTAINMENT_TRAVELLER",
-              "PHOTOGRAPHY_LOVER"
-            ],
-            "type": "string"
-          },
-          "name": {
-            "type": "string",
-            "example": "Food Explorer"
-          },
-          "icon": {
-            "type": "string",
-            "example": "🍜"
-          },
-          "description": {
-            "type": "string",
-            "example": "Loves discovering local food experiences"
-          },
-          "score": {
-            "type": "number",
-            "example": 75
-          },
-          "tripTypeCount": {
-            "type": "number",
-            "example": 3
-          },
-          "activityCount": {
-            "type": "number",
-            "example": 12
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          }
-        },
-        "required": [
-          "type",
-          "name",
-          "icon",
-          "description",
-          "score",
-          "tripTypeCount",
-          "activityCount",
-          "createdAt",
-          "updatedAt"
-        ]
-      },
-      "TravelDnaResponseDto": {
-        "type": "object",
-        "properties": {
-          "dominant": {
-            "nullable": true,
-            "type": "object",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/TravelDnaBadgeResponseDto"
-              }
-            ]
-          },
-          "topBadges": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TravelDnaBadgeResponseDto"
-            }
-          },
-          "all": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TravelDnaBadgeResponseDto"
-            }
-          }
-        },
-        "required": [
-          "topBadges",
-          "all"
-        ]
-      },
-      "TravelDnaEnvelopeResponseDto": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/TravelDnaResponseDto"
-          },
-          "message": {
-            "type": "string",
-            "example": "Travel DNA retrieved successfully"
           }
         },
         "required": [
@@ -28064,86 +27417,6 @@
           "meta"
         ]
       },
-      "CreateUserDto": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string",
-            "format": "email"
-          },
-          "password": {
-            "type": "string",
-            "minLength": 6
-          },
-          "displayname": {
-            "type": "string"
-          },
-          "username": {
-            "type": "string"
-          },
-          "phone": {
-            "type": "string",
-            "nullable": true
-          },
-          "avatarId": {
-            "type": "string",
-            "nullable": true
-          },
-          "gender": {
-            "type": "string",
-            "nullable": true
-          },
-          "dateofBirth": {
-            "type": "string",
-            "nullable": true
-          },
-          "address": {
-            "type": "string",
-            "nullable": true
-          },
-          "bio": {
-            "type": "string",
-            "nullable": true
-          },
-          "location": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "required": [
-          "email",
-          "password",
-          "displayname",
-          "username"
-        ]
-      },
-      "CreatedUserDataResponseDto": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id"
-        ]
-      },
-      "CreateUserResponseDto": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/CreatedUserDataResponseDto"
-          },
-          "message": {
-            "type": "string",
-            "example": "User created successfully"
-          }
-        },
-        "required": [
-          "data",
-          "message"
-        ]
-      },
       "UserSearchResultResponseDto": {
         "type": "object",
         "properties": {
@@ -28175,93 +27448,6 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UserSearchResultResponseDto"
-            }
-          },
-          "meta": {
-            "$ref": "#/components/schemas/PaginationMetaDto"
-          }
-        },
-        "required": [
-          "data",
-          "meta"
-        ]
-      },
-      "PublicUserResponseDto": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "username": {
-            "type": "string"
-          },
-          "displayname": {
-            "type": "string"
-          },
-          "avatarId": {
-            "type": "string",
-            "nullable": true
-          },
-          "bio": {
-            "type": "string",
-            "nullable": true
-          },
-          "location": {
-            "type": "string",
-            "nullable": true
-          },
-          "gender": {
-            "type": "string",
-            "nullable": true
-          },
-          "budgetLevel": {
-            "type": "string",
-            "nullable": true,
-            "enum": [
-              "LOW",
-              "MEDIUM",
-              "HIGH"
-            ]
-          },
-          "languages": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "interests": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "visitedCount": {
-            "type": "number",
-            "minimum": 0,
-            "example": 12
-          }
-        },
-        "required": [
-          "id",
-          "username",
-          "displayname",
-          "avatarId",
-          "bio",
-          "location",
-          "gender",
-          "budgetLevel",
-          "languages",
-          "interests",
-          "visitedCount"
-        ]
-      },
-      "PublicUsersPageResponseDto": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/PublicUserResponseDto"
             }
           },
           "meta": {
@@ -28451,6 +27637,101 @@
           "tripCount",
           "followerCount",
           "followingCount"
+        ]
+      },
+      "TravelDnaBadgeResponseDto": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": [
+              "SOLO_TRAVELER",
+              "FAMILY_TRAVELER",
+              "COUPLE_TRAVELLER",
+              "GROUP_TRAVELER",
+              "BACKPACKER",
+              "MOUNTAIN_LOVER",
+              "BEACH_LOVER",
+              "ADVENTURE_TRAVELER",
+              "FOODIE_TRAVELER",
+              "CULTURE_TRAVELER",
+              "ENTERTAINMENT_TRAVELLER",
+              "PHOTOGRAPHY_LOVER"
+            ],
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "example": "Food Explorer"
+          },
+          "icon": {
+            "type": "string",
+            "example": "🍜"
+          },
+          "description": {
+            "type": "string",
+            "example": "Loves discovering local food experiences"
+          },
+          "score": {
+            "type": "number",
+            "example": 75
+          },
+          "tripTypeCount": {
+            "type": "number",
+            "example": 3
+          },
+          "activityCount": {
+            "type": "number",
+            "example": 12
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "type",
+          "name",
+          "icon",
+          "description",
+          "score",
+          "tripTypeCount",
+          "activityCount",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "TravelDnaResponseDto": {
+        "type": "object",
+        "properties": {
+          "dominant": {
+            "nullable": true,
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TravelDnaBadgeResponseDto"
+              }
+            ]
+          },
+          "topBadges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TravelDnaBadgeResponseDto"
+            }
+          },
+          "all": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TravelDnaBadgeResponseDto"
+            }
+          }
+        },
+        "required": [
+          "topBadges",
+          "all"
         ]
       },
       "ProfileShowcaseTripResponseDto": {
@@ -28740,6 +28021,75 @@
         "required": [
           "data",
           "message"
+        ]
+      },
+      "PublicUserResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "displayname": {
+            "type": "string"
+          },
+          "avatarId": {
+            "type": "string",
+            "nullable": true
+          },
+          "bio": {
+            "type": "string",
+            "nullable": true
+          },
+          "location": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "type": "string",
+            "nullable": true
+          },
+          "budgetLevel": {
+            "type": "string",
+            "nullable": true,
+            "enum": [
+              "LOW",
+              "MEDIUM",
+              "HIGH"
+            ]
+          },
+          "languages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "interests": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "visitedCount": {
+            "type": "number",
+            "minimum": 0,
+            "example": 12
+          }
+        },
+        "required": [
+          "id",
+          "username",
+          "displayname",
+          "avatarId",
+          "bio",
+          "location",
+          "gender",
+          "budgetLevel",
+          "languages",
+          "interests",
+          "visitedCount"
         ]
       },
       "PublicUserEnvelopeResponseDto": {
@@ -29131,6 +28481,117 @@
         },
         "required": [
           "data"
+        ]
+      },
+      "PublicImageItemResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "thumbnailUrl": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri"
+          },
+          "caption": {
+            "type": "string",
+            "nullable": true
+          },
+          "cityLabel": {
+            "type": "string",
+            "nullable": true
+          },
+          "locationLabel": {
+            "type": "string",
+            "nullable": true
+          },
+          "locationShortLabel": {
+            "type": "string",
+            "nullable": true
+          },
+          "latitude": {
+            "type": "number",
+            "nullable": true
+          },
+          "longitude": {
+            "type": "number",
+            "nullable": true
+          },
+          "capturedAt": {
+            "type": "string",
+            "nullable": true,
+            "format": "date-time"
+          },
+          "likeCount": {
+            "type": "number"
+          },
+          "commentCount": {
+            "type": "number"
+          },
+          "likedByMe": {
+            "type": "boolean"
+          },
+          "canSetAsCover": {
+            "type": "boolean"
+          },
+          "canDelete": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "imageUrl",
+          "likeCount",
+          "commentCount",
+          "likedByMe",
+          "canSetAsCover",
+          "canDelete"
+        ]
+      },
+      "PublicImageAlbumResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "tripTitle": {
+            "type": "string"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublicImageItemResponseDto"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "tripTitle",
+          "images"
+        ]
+      },
+      "PublicImageAlbumEnvelopeResponseDto": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/PublicImageAlbumResponseDto"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "data",
+          "message"
         ]
       }
     }

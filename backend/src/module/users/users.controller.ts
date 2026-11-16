@@ -5,23 +5,14 @@ import {
   Get,
   Param,
   Patch,
-  Post,
   Query,
 } from '@nestjs/common';
 
-import {
-  ApiBearerAuth,
-  ApiCreatedResponse,
-  ApiOkResponse,
-  ApiOperation,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { UsersService } from './users.service';
 
-import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { PaginationDto } from './dto/pagination.dto';
 
 import { CurrentUser } from '../../decoration/currentUser.decoration';
 
@@ -29,17 +20,13 @@ import { ApiStandardErrors } from '../../common/contracts/api-standard-errors.de
 
 import {
   PublicUserEnvelopeResponseDto,
-  PublicUsersPageResponseDto,
   MeUserEnvelopeResponseDto,
-  CreateUserResponseDto,
   UserActionResponseDto,
   UserSearchPageResponseDto,
   ProfileShowcaseEnvelopeResponseDto,
 } from '../../common/contracts/extended-response.dto';
 import { SearchUsersDto } from './dto/search-user.dto';
 import { ProfileShowcaseService } from './profile-showcase.service';
-import { Roles } from '../../decoration/role.decoriation';
-import { USER_ROLE } from '../../generated/prisma/browser';
 
 @ApiTags('Users')
 @ApiBearerAuth('access-token')
@@ -51,26 +38,6 @@ export class UsersController {
     private readonly profileShowcaseService: ProfileShowcaseService,
   ) {}
 
-  // =========================================================
-  // CREATE
-  // =========================================================
-
-  @Post('create')
-  @Roles(USER_ROLE.ADMIN)
-  @ApiOperation({
-    summary: 'Create a user. ADMIN role required.',
-  })
-  @ApiCreatedResponse({
-    type: CreateUserResponseDto,
-  })
-  async create(@CurrentUser('id') actorId: string, @Body() dto: CreateUserDto) {
-    const data = await this.usersService.create(dto, actorId);
-
-    return {
-      data,
-      message: 'User created successfully',
-    };
-  }
   // =========================================================
   // SEARCH USERS
   // =========================================================
@@ -86,18 +53,6 @@ export class UsersController {
     userId: string,
   ) {
     return this.usersService.searchUsers(dto, userId);
-  }
-
-  // =========================================================
-  // GET USERS
-  // =========================================================
-
-  @Get()
-  @ApiOkResponse({
-    type: PublicUsersPageResponseDto,
-  })
-  findAll(@Query() query: PaginationDto) {
-    return this.usersService.findAll(query.page, query.limit);
   }
 
   // =========================================================

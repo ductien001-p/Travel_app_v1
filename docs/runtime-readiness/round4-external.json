@@ -1,0 +1,71 @@
+{
+  "ranAt": "2026-11-15T08:55:54.187Z",
+  "api": "http://127.0.0.1:3001",
+  "counts": {
+    "PASS": 7,
+    "FAIL": 0,
+    "BLOCKED": 3
+  },
+  "rows": [
+    {
+      "service": "R2",
+      "step": "Upload ảnh thật",
+      "status": "PASS",
+      "detail": "PUT 200, complete HTTP 201, media cmwhllyvs001xxsn7jx0v3aq3, public GET 200, 70 bytes"
+    },
+    {
+      "service": "Embedding",
+      "step": "Tìm địa điểm theo ngữ nghĩa",
+      "status": "PASS",
+      "detail": "HTTP 201, 2 kết quả, 2 place APPROVED có embedding"
+    },
+    {
+      "service": "Ollama",
+      "step": "Badge ảnh kỷ niệm",
+      "status": "PASS",
+      "detail": "memory cmwhlm14o0023xsn7lzyhoxg3 badge none sau khi model gemma3:4b trả lời"
+    },
+    {
+      "service": "Google",
+      "step": "Từ chối ID token giả",
+      "status": "PASS",
+      "detail": "HTTP 401 Invalid or expired Google ID token"
+    },
+    {
+      "service": "Google",
+      "step": "Đăng nhập bằng tài khoản Google",
+      "status": "BLOCKED",
+      "detail": "Cần một ID token thật từ tài khoản Google; vòng này không có phiên đăng nhập tương tác"
+    },
+    {
+      "service": "FCM",
+      "step": "Service account được Firebase chấp nhận",
+      "status": "PASS",
+      "detail": "Dry-run với token giả bị từ chối đúng (messaging/invalid-argument); khóa mới được Firebase chấp nhận"
+    },
+    {
+      "service": "FCM",
+      "step": "Push tới máy thật",
+      "status": "BLOCKED",
+      "detail": "30 device token đang lưu; vòng này không gửi thông báo tới máy người dùng"
+    },
+    {
+      "service": "App Links",
+      "step": "Trang HTML fallback",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "service": "App Links",
+      "step": "File liên kết domain trên API local",
+      "status": "PASS",
+      "detail": "assetlinks HTTP 200, apple HTTP 200"
+    },
+    {
+      "service": "App Links",
+      "step": "Mở app từ domain HTTPS",
+      "status": "BLOCKED",
+      "detail": "SHARE_HOST trống, fingerprint Android có, iOS app id chưa có"
+    }
+  ]
+}

@@ -100,29 +100,4 @@ export class PostSharesService {
     });
   }
 
-  // =========================================================
-  // SHARE STATUS
-  // =========================================================
-
-  async getStatus(userId: string, postId: string) {
-    await this.postService.ensureCanAccessPost(postId, userId);
-
-    const share = await this.prisma.socialPostShare.findUnique({
-      where: {
-        postId_userId: {
-          postId,
-          userId,
-        },
-      },
-
-      select: {
-        createdAt: true,
-      },
-    });
-
-    return {
-      shared: !!share,
-      sharedAt: share?.createdAt ?? null,
-    };
-  }
 }

@@ -43,8 +43,8 @@
 | Realtime Socket.IO (`core/realtime/`, `tripSocketClientProvider`, `friendSocketClientProvider`) | ✅ Hoàn thành | Trip room + namespace `/friends`; URL `SOCKET_URL` |
 | Auth (login email/Google, register, verify email, forgot/reset password, logout, restore session) | ✅ Hoàn thành | Nối API thật |
 | Device token (FCM) | ✅ Hoàn thành | Tự đăng ký sau login/restore, hủy khi logout |
-| Media upload (presign → R2 → complete) | ✅ Hoàn thành | Avatar, ảnh bìa trip khi tạo, album kỷ niệm |
-| Profile (xem, sửa, đổi avatar, Travel DNA, khoảnh khắc) | ✅ UI mới | Danh tính từ `GET /users/me`; hạng và chuyến đi trên hồ sơ từ showcase; radar DNA chi tiết dùng `GET /travel-dna`; thư viện ảnh hồ sơ dùng `GET /trips/memories/mine` |
+| Media upload (presign → R2 → complete) | ✅ Hoàn thành | `POST /uploads/presigns` + `POST /uploads/complete`; avatar, ảnh bìa trip, album kỷ niệm |
+| Profile (xem, sửa, đổi avatar, Travel DNA, khoảnh khắc) | ✅ UI mới | Danh tính từ `GET /users/me`; hạng và chuyến đi trên hồ sơ từ showcase; radar DNA chi tiết dùng `GET /travel-dna/radar`; thư viện ảnh hồ sơ dùng `GET /trips/memories/mine` |
 | Settings | 🟡 Một phần | Đăng xuất, thông báo đẩy (`notificationEnabled`), đổi mật khẩu (`POST /auth/change-password`), xóa tài khoản. Sinh trắc học, thiết bị, ngôn ngữ, tiền tệ vẫn cục bộ |
 | Trips — dashboard / danh sách / lời mời (invite) | ✅ Hoàn thành | Nối API thật, có phân trang |
 | Trips — flow tạo chuyến đi (5 bước + chọn ảnh bìa) | ✅ Hoàn thành | Nối API thật; `TripCoverController` upload cover trước khi save draft |
@@ -67,7 +67,7 @@
 | Chats — 1-on-1 friend chat | 🟢 API + socket | `features/chats/friend-chat/` — thread, TEXT, `TRIP_INVITE`, namespace `/friends` |
 | Chats — trip group chat | 🟢 API + socket | `features/chats/trip-chats/` — thread, TEXT/IMAGE, reaction |
 | Place detail | ✅ API thật | `features/home/places/place-details/` — mục 4.23 |
-| Public Images — xem ảnh toàn màn hình + menu 3 chấm + bản đồ vệ tinh | 🟢 media đã seed | `features/public-images/` — mở từ post/kỷ niệm; không gọi album giả; ẩn bìa/like/xóa/bình luận/tải HD |
+| Public Images — xem ảnh toàn màn hình + menu 3 chấm + bản đồ vệ tinh | 🟢 API album bài viết | `features/public-images/` — seed khi mở từ feed; không có seed thì `GET /public-images/albums/social-post-{id}`; ẩn bìa/like/xóa/bình luận/tải HD |
 | Ranking — Bảng xếp hạng & gamification | 🟢 Phase 2 + tier | `features/ranking/` — mục 4.32; embed Travel Tier/Achievements từ `achivement` |
 | Achivement — Nhiệm vụ trip / thưởng / hạng du lịch | 🟢 API thật | `features/achivement/` — mục 4.33; missions trên trip detail, sheet claim, tier trên Ranking |
 
@@ -107,7 +107,7 @@ Router: `lib/app/router/app_router.dart` (`routerProvider`), tên route: `lib/ap
 | `/social/find-friends` | `findFriends` | `FindFriendsScreen` (nhánh Social, còn bottom nav; từ icon tìm kiếm / hub) | ✅ `/friends/find` + nearby |
 | `/social/ranking` | `ranking` | `RankingScreen` (nhánh Social, còn bottom nav; Bảng Xếp Hạng) | 🟢 period + quests + `/ranking/leaderboard|me|quests` |
 | `/social/posts/:postId` | `postDetail` | `SocialPostDetailScreen` (`social-details/`; `?focus=comments` cuộn tới bình luận) | 🟢 API post + comments |
-| `/images/:albumId?index=&imageId=` | `publicImageViewer` | `PublicImageViewerScreen` (root navigator; fullscreen viewer + sheet tùy chọn) | 🟢 album seed; không fallback datamock |
+| `/images/:albumId?index=&imageId=` | `publicImageViewer` | `PublicImageViewerScreen` (root navigator; fullscreen viewer + sheet tùy chọn) | 🟢 seed hoặc `GET /public-images/albums/:albumId` |
 | `/images/:albumId/map?imageId=` | `publicImageMap` | `PublicImageMapScreen` (root navigator; bản đồ vệ tinh vị trí ảnh) | 🟢 tọa độ ảnh đã seed |
 | `/notifications` | `notifications` | `NotificationsScreen` (root navigator) | 🟢 `GET/POST /notifications` |
 | `/chats` (tab Chat) | `chats` | `ChatsHubScreen` | 🟢 `GET /chats/hub` |
@@ -154,7 +154,7 @@ Ghi chú điều hướng:
 
 - Upload nhiều file: presign → upload thẳng lên R2 (`R2UploadDataSource`) → complete. Contract gom trong `media_backend_contract.dart`.
 - `MediaUploadController` + `MediaUploadStatus` theo dõi tiến trình.
-- Endpoint: presign/complete multiple (path trong `MediaBackendContract`), `GET /media/:id`, `GET /media/own/:id`.
+- Endpoint: `POST /uploads/presigns`, `POST /uploads/complete` (body `files`), `GET /media/:id`, `GET /media/own/:id`.
 - Đang được dùng bởi: `UpdateAvatarController` (profile), `TripCoverController` (ảnh bìa khi tạo trip), `tripMemoriesActionControllerProvider` (album).
 
 ### 4.4 Profile — `features/profile/` ✅ (Settings 🟡, Travel DNA demo)
@@ -540,7 +540,7 @@ Refs: `lib/features/public-images/.stitch/`.
 - **Route (root navigator):** `/images/:albumId` (`publicImageViewer`, query `index` / `imageId`) và `/images/:albumId/map` (`publicImageMap`, query `imageId`). Album demo mặc định `ban-co-sunrise`.
 - **UI viewer:** nền tối `#0A0F12`, top bar (đóng / counter+timestamp / xoay / EXIF / more), pinch-zoom + double-tap, filmstrip, caption + share. Ẩn like, bình luận, tải HD, đặt bìa và xóa vì chưa có API. Sheet còn xem bản đồ và copy link (URL ảnh thật). Ẩn chrome → pill vị trí.
 - **UI map:** Google Map hybrid/terrain/normal, switcher lớp, pin camera + pulse, cụm zoom/recenter, thẻ glass (thumbnail, GPS, độ cao, thời điểm, Google Maps / Chỉ đường qua `share_plus`).
-- **Kiến trúc:** model freezed `PublicImageAlbum` / `PublicImageItem`. Viewer chỉ mở album đã seed trong bộ nhớ (post `social-post-{postId}` hoặc album kỷ niệm). Không gọi `/public-images/albums/...` và không fallback datamock. Album trống thì báo lỗi. `publicImageViewerControllerProvider` (family theo album + index/imageId).
+- **Kiến trúc:** model freezed `PublicImageAlbum` / `PublicImageItem`. Mở từ feed thì seed `social-post-{postId}` trong bộ nhớ. Không có seed (hoặc album trống) thì `GET /public-images/albums/{albumId}` — backend chỉ nhận `social-post-{postId}` của bài `PUBLIC`. Không fallback datamock. Album trống thì báo lỗi. Like/xóa/đặt bìa không gọi API album (`canSetAsCover`/`canDelete` luôn false). `publicImageViewerControllerProvider` (family theo album + index/imageId).
 - **Test:** `test/features/public_images/public_image_formatters_test.dart`.
 - **Lối vào Social:** chạm ảnh trên thẻ review feed (bài của người khác) hoặc gallery/fullscreen ở `SocialPostDetailScreen` → seed album `social-post-{postId}` rồi mở `/images/...`. Bài của chính mình không mở viewer công khai (feed → chi tiết bài; detail → snackbar).
 

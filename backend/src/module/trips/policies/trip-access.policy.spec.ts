@@ -60,6 +60,21 @@ describe('TripAccessPolicy', () => {
     ).rejects.toThrow(new NotFoundException('Trip not found'));
   });
 
+  it('hides a trip when assertAllowed is called without a membership', () => {
+    expect(() =>
+      TripAccessPolicy.assertAllowed(null, 'MANAGE_EXPENSES'),
+    ).toThrow(new NotFoundException('Trip not found'));
+  });
+
+  it('keeps 403 when a known membership is no longer active', () => {
+    expect(() =>
+      TripAccessPolicy.assertAllowed(
+        { role: 'OWNER', status: 'LEFT' },
+        'MANAGE_EXPENSES',
+      ),
+    ).toThrow(new ForbiddenException('Active trip membership required'));
+  });
+
   it('returns 403 from authorizeOwner when a member is not the owner', async () => {
     const access = reader(activeMember, true);
     await expect(

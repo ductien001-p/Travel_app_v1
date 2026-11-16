@@ -98,29 +98,4 @@ export class PostLikesService {
     });
   }
 
-  // =========================================================
-  // CHECK LIKE STATUS
-  // =========================================================
-
-  async getStatus(userId: string, postId: string) {
-    await this.postService.ensureCanAccessPost(postId, userId);
-
-    const like = await this.prisma.socialPostLike.findUnique({
-      where: {
-        postId_userId: {
-          postId,
-          userId,
-        },
-      },
-
-      select: {
-        createdAt: true,
-      },
-    });
-
-    return {
-      liked: !!like,
-      likedAt: like?.createdAt ?? null,
-    };
-  }
 }

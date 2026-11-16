@@ -95,19 +95,21 @@ Docker Compose chỉ chạy hạ tầng, chưa đóng gói/chạy backend:
 
 Tạo file `.env` trong **backend/**. Thay các giá trị mẫu bằng cấu hình của bạn; không đưa thông tin bí mật vào Git.
 
+Danh sách đầy đủ tên biến (không chứa secret): [`backend/.env.example`](./.env.example). Tóm tắt nhóm chính:
+
 ```dotenv
+NODE_ENV=development
+CORS_ORIGINS=
 PORT=3001
 DATABASE_URL="postgresql://<POSTGRES_USER>:<POSTGRES_PASSWORD>@localhost:5555/travel_db?schema=public"
 
 JWT_SECRET="replace-with-a-random-secret"
 JWT_SECRET_REFRESH="replace-with-a-random-secret"
 ACCESS_TOKEN_EXPIRY=15m
-REFRESH_TOKEN_EXPIRY=7d
-SALT_ROUNDS=10
+REFRESH_TOKEN_EXPIRY=30d
+SALT_ROUNDS=12
 
-GOOGLE_CLIENT_ID="your-google-client-id"
-GOOGLE_CLIENT_SECRET="your-google-client-secret"
-GOOGLE_CALLBACK_URL="http://localhost:3001/auth/google/callback"
+GOOGLE_WEB_CLIENT_ID="your-google-web-client-id"
 
 MAIL_USER="your-email@gmail.com"
 MAIL_PASSWORD="your-gmail-app-password"
@@ -124,9 +126,9 @@ R2_PUBLIC_URL="https://your-public-media-domain"
 R2_PRESIGN_EXPIRES=3600
 ```
 
-- Lấy `POSTGRES_USER` và `POSTGRES_PASSWORD` từ `../docker-compose.yml`; URL-encode ký tự đặc biệt nếu có trong thông tin kết nối.
-- Google OAuth, R2 và Firebase được khởi tạo cùng ứng dụng. Cần cấu hình hợp lệ cho các tích hợp này khi chạy bản mã nguồn hiện tại; không có công tắc tắt riêng từng tích hợp.
-- Gmail được cấu hình trực tiếp trong `src/mail/mail.service.ts`; các biến `MAIL_*` phục vụ gửi mã xác minh.
+- Lấy `POSTGRES_USER` và `POSTGRES_PASSWORD` từ root `.env` / Compose; URL-encode ký tự đặc biệt nếu có trong thông tin kết nối.
+- Google Sign-In dùng `GOOGLE_WEB_CLIENT_ID` (audience của ID token). R2 và Firebase được khởi tạo cùng ứng dụng; không có công tắc tắt riêng từng tích hợp.
+- `MAIL_*` phục vụ gửi mã xác minh (`src/mail/mail.service.ts`).
 - Redis đọc `REDIS_HOST` và `REDIS_PORT` (mặc định `localhost` / `6379`) trong `src/redis/redis.module.ts`.
 - **Lưu ý refresh token:** `issueTokens()` hiện ký cả hai token bằng secret mặc định `JWT_SECRET`, nhưng `refresh()` xác minh bằng `JWT_SECRET_REFRESH`. Hai giá trị phải giống nhau để luồng hiện tại hoạt động; nếu muốn tách khóa cần sửa phần ký refresh token. Thời hạn bản ghi refresh token trong database hiện cố định 7 ngày.
 
@@ -178,7 +180,7 @@ Embedding được tạo khi tạo/cập nhật các trường liên quan của 
 Không có tiền tố `/api` trong bootstrap hiện tại. Những nhóm route chính:
 
 - `/auth`: đăng ký, đăng nhập, Google OAuth, refresh, logout, email và mật khẩu.
-- `/users`, `/device-token`: người dùng và thiết bị nhận thông báo.
+- `/users/me`, `/device-token`: hồ sơ người dùng và thiết bị nhận thông báo.
 - `/trips`: chuyến đi, thành viên, kỷ niệm, tin nhắn và nhiệm vụ (`/trips/:tripId/missions`).
 - `/trips/:tripId/itineraries`: lịch trình và hoạt động.
 - `/trips/:tripId/expenses`: chi phí chuyến đi.
@@ -189,7 +191,7 @@ Không có tiền tố `/api` trong bootstrap hiện tại. Những nhóm route 
 - `/chats/hub`: danh sách hội thoại.
 - `/social/posts`, `/social/stories`, `/social/challenges`: bài đăng, story và thử thách.
 - `/notifications`: hộp thư (danh sách, đánh dấu đã đọc, đọc hết).
-- `/travel-dna`, `/ranking`: hồ sơ du lịch và bảng xếp hạng.
+- `/travel-dna/radar`, `/ranking`: hồ sơ du lịch và bảng xếp hạng.
 - `/uploads/presigns`, `/uploads/complete`: lấy URL tải ảnh và xác nhận tải xong.
 
 Contract đầy đủ cho Flutter nằm tại `contracts/openapi.json`; hướng dẫn tích hợp nằm trong `docs/flutter-integration.md`. Swagger UI chạy tại `/api/docs`. `JwtAuthGuard` và `RolesGuard` được đăng ký toàn cục; endpoint có `@Public()` được miễn kiểm tra JWT. Gửi access token bằng header:

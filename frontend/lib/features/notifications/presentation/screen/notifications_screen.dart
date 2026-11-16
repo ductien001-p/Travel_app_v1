@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travel_frontend_v1/app/router/router_names.dart';
+import 'package:travel_frontend_v1/core/testing/e2e_keys.dart';
 import 'package:travel_frontend_v1/core/theme/app_colors.dart';
 import 'package:travel_frontend_v1/core/theme/app_gradients.dart';
 import 'package:travel_frontend_v1/core/theme/app_spacing.dart';
@@ -46,6 +47,7 @@ class NotificationsScreen extends ConsumerWidget {
                     Expanded(
                       child: Text(
                         'Thông báo',
+                        key: E2eKeys.notificationsScreenTitle,
                         style: AppTypography.cardTitle.copyWith(
                           fontWeight: FontWeight.w700,
                         ),

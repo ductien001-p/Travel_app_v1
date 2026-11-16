@@ -33,7 +33,7 @@ export class UploadsController {
   ) {
     if (!this.s3.isUploadConfigured()) {
       throw new BadRequestException(
-        'S3 presign is not configured (set AWS_S3_BUCKET and credentials)',
+        'R2/S3 presign is not configured (set R2_BUCKET_NAME, R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, and R2_SECRET_ACCESS_KEY)',
       );
     }
     return this.s3.createImagePresignedPutMultiple({

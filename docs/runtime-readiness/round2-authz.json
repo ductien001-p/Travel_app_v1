@@ -1,0 +1,533 @@
+{
+  "ranAt": "2026-11-15T07:53:48.267Z",
+  "api": "http://127.0.0.1:3001",
+  "ids": {
+    "ownerId": "cmwggnkwm0009fon7y2fweytv",
+    "memberId": "cmwggo4hg000cfon7hpf78vqy",
+    "outsiderId": "cmwggoo1k000hfon7isfm3no1"
+  },
+  "summary": {
+    "PASS": 74,
+    "FAIL": 0
+  },
+  "rows": [
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/itineraries",
+      "actor": "không token",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/itineraries",
+      "actor": "token hết hạn",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/itineraries",
+      "actor": "chủ chuyến",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/itineraries",
+      "actor": "người ngoài",
+      "status": "PASS",
+      "detail": "404 Trip not found"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/itineraries",
+      "actor": "thành viên",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/expenses",
+      "actor": "không token",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/expenses",
+      "actor": "token hết hạn",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/expenses",
+      "actor": "chủ chuyến",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/expenses",
+      "actor": "người ngoài",
+      "status": "PASS",
+      "detail": "404 Trip not found"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/expenses",
+      "actor": "thành viên",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/missions",
+      "actor": "không token",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/missions",
+      "actor": "token hết hạn",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/missions",
+      "actor": "chủ chuyến",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/missions",
+      "actor": "người ngoài",
+      "status": "PASS",
+      "detail": "404 Trip not found"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/missions",
+      "actor": "thành viên",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/chat/thread",
+      "actor": "không token",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/chat/thread",
+      "actor": "token hết hạn",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/chat/thread",
+      "actor": "chủ chuyến",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/chat/thread",
+      "actor": "người ngoài",
+      "status": "PASS",
+      "detail": "404 Trip not found"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/chat/thread",
+      "actor": "thành viên",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/messages",
+      "actor": "không token",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/messages",
+      "actor": "token hết hạn",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/messages",
+      "actor": "chủ chuyến",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/messages",
+      "actor": "người ngoài",
+      "status": "PASS",
+      "detail": "404 Trip not found"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id/messages",
+      "actor": "thành viên",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/timeline/:tripId",
+      "actor": "không token",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/timeline/:tripId",
+      "actor": "token hết hạn",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/timeline/:tripId",
+      "actor": "chủ chuyến",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/timeline/:tripId",
+      "actor": "người ngoài",
+      "status": "PASS",
+      "detail": "404 Trip not found"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/timeline/:tripId",
+      "actor": "thành viên",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "POST /trips/:id/messages",
+      "actor": "không token",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "POST /trips/:id/messages",
+      "actor": "token hết hạn",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "POST /trips/:id/messages",
+      "actor": "chủ chuyến",
+      "status": "PASS",
+      "detail": "HTTP 201"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "POST /trips/:id/messages",
+      "actor": "người ngoài",
+      "status": "PASS",
+      "detail": "404 Trip not found"
+    },
+    {
+      "area": "Chi tiêu",
+      "endpoint": "POST /trips/:id/expenses",
+      "actor": "không token",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Chi tiêu",
+      "endpoint": "POST /trips/:id/expenses",
+      "actor": "token hết hạn",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Chi tiêu",
+      "endpoint": "POST /trips/:id/expenses",
+      "actor": "chủ chuyến",
+      "status": "PASS",
+      "detail": "HTTP 201"
+    },
+    {
+      "area": "Chi tiêu",
+      "endpoint": "POST /trips/:id/expenses",
+      "actor": "người ngoài",
+      "status": "PASS",
+      "detail": "403 Active trip membership required"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "POST /trip-invitations/invite",
+      "actor": "không token",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "POST /trip-invitations/invite",
+      "actor": "token hết hạn",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "POST /trip-invitations/invite",
+      "actor": "chủ chuyến",
+      "status": "PASS",
+      "detail": "HTTP 409"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "POST /trip-invitations/invite",
+      "actor": "người ngoài",
+      "status": "PASS",
+      "detail": "403 Active trip membership required"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id chuyến công khai",
+      "actor": "người ngoài",
+      "status": "PASS",
+      "detail": "HTTP 200; inviteCode/chi tiêu/kỷ niệm/timeline/thưởng đã ẩn"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id",
+      "actor": "không token",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id",
+      "actor": "token hết hạn",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id",
+      "actor": "chủ chuyến",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Trip",
+      "endpoint": "GET /trips/:id",
+      "actor": "thành viên",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Chat",
+      "endpoint": "GET /friends/conversations/:id/thread",
+      "actor": "không token",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Chat",
+      "endpoint": "GET /friends/conversations/:id/thread",
+      "actor": "token hết hạn",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Chat",
+      "endpoint": "GET /friends/conversations/:id/thread",
+      "actor": "chủ hội thoại",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Chat",
+      "endpoint": "GET /friends/conversations/:id/thread",
+      "actor": "người ngoài",
+      "status": "PASS",
+      "detail": "403 You are not a member of this conversation"
+    },
+    {
+      "area": "Chat",
+      "endpoint": "POST /friends/conversations/:id/messages",
+      "actor": "không token",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Chat",
+      "endpoint": "POST /friends/conversations/:id/messages",
+      "actor": "token hết hạn",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Chat",
+      "endpoint": "POST /friends/conversations/:id/messages",
+      "actor": "chủ hội thoại",
+      "status": "PASS",
+      "detail": "HTTP 201"
+    },
+    {
+      "area": "Chat",
+      "endpoint": "POST /friends/conversations/:id/messages",
+      "actor": "người ngoài",
+      "status": "PASS",
+      "detail": "403 You are not a member of this conversation"
+    },
+    {
+      "area": "Chat",
+      "endpoint": "GET /chats/hub",
+      "actor": "không token",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Chat",
+      "endpoint": "GET /chats/hub",
+      "actor": "token hết hạn",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Chat",
+      "endpoint": "GET /chats/hub",
+      "actor": "chủ chuyến",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Chat",
+      "endpoint": "GET /chats/hub",
+      "actor": "người ngoài",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Chat",
+      "endpoint": "GET /chats/hub không lộ hội thoại A-B",
+      "actor": "người ngoài",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Chat",
+      "endpoint": "GET /chats/hub của chủ hội thoại",
+      "actor": "chủ hội thoại",
+      "status": "PASS",
+      "detail": "HTTP 200 và thấy hội thoại của mình"
+    },
+    {
+      "area": "Thông báo",
+      "endpoint": "GET /notifications",
+      "actor": "không token",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Thông báo",
+      "endpoint": "GET /notifications",
+      "actor": "token hết hạn",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Thông báo",
+      "endpoint": "GET /notifications",
+      "actor": "chủ chuyến",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Thông báo",
+      "endpoint": "GET /notifications",
+      "actor": "người ngoài",
+      "status": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "area": "Thông báo",
+      "endpoint": "POST /notifications/:id/read",
+      "actor": "không token",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Thông báo",
+      "endpoint": "POST /notifications/:id/read",
+      "actor": "token hết hạn",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Thông báo",
+      "endpoint": "POST /notifications/:id/read",
+      "actor": "chủ thông báo",
+      "status": "PASS",
+      "detail": "HTTP 201"
+    },
+    {
+      "area": "Thông báo",
+      "endpoint": "POST /notifications/:id/read",
+      "actor": "người ngoài",
+      "status": "PASS",
+      "detail": "404 Notification not found"
+    },
+    {
+      "area": "Thông báo",
+      "endpoint": "POST /notifications/read-all",
+      "actor": "không token",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Thông báo",
+      "endpoint": "POST /notifications/read-all",
+      "actor": "token hết hạn",
+      "status": "PASS",
+      "detail": "401 UNAUTHORIZED"
+    },
+    {
+      "area": "Thông báo",
+      "endpoint": "POST /notifications/read-all",
+      "actor": "chủ chuyến",
+      "status": "PASS",
+      "detail": "HTTP 201"
+    },
+    {
+      "area": "Thông báo",
+      "endpoint": "POST /notifications/read-all",
+      "actor": "người ngoài",
+      "status": "PASS",
+      "detail": "HTTP 201"
+    },
+    {
+      "area": "Hồ sơ",
+      "endpoint": "GET /users/me không lộ mật khẩu",
+      "actor": "chủ chuyến",
+      "status": "PASS",
+      "detail": "HTTP 200, id khớp: true"
+    }
+  ]
+}

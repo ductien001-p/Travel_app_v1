@@ -144,7 +144,10 @@ export class TripAccessPolicy {
     member: TripAccessSubject | null | undefined,
     action: TripAction,
   ): asserts member is TripAccessSubject {
-    if (!member || member.status !== 'ACTIVE') {
+    if (!member) {
+      throw new NotFoundException('Trip not found');
+    }
+    if (member.status !== 'ACTIVE') {
       throw new ForbiddenException('Active trip membership required');
     }
     if (!ROLES[action].includes(member.role)) {

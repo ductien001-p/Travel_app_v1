@@ -36,6 +36,9 @@ flutter test integration_test/flows/trip_flow_test.dart \
 
 flutter test integration_test/flows/profile_flow_test.dart \
   --dart-define-from-file=integration_test/e2e.json -d <deviceId>
+
+flutter test integration_test/flows/inbox_flow_test.dart \
+  --dart-define-from-file=integration_test/e2e.json -d <deviceId>
 ```
 
 ### Driver (optional)
@@ -58,6 +61,7 @@ Without `E2E_EMAIL` / `E2E_PASSWORD`, suites throw a clear skip-style error inst
 | `flows/place_flow_test.dart` | Places → featured card → place detail |
 | `flows/trip_flow_test.dart` | Trips list + create-trip step 1 (list FAB + center FAB) |
 | `flows/profile_flow_test.dart` | Profile → edit → saved tab → saved places screen |
+| `flows/inbox_flow_test.dart` | Explore bell → notification inbox |
 
 ## Design notes
 

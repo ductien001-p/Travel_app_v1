@@ -301,7 +301,6 @@ describe('TripItinerariesActivitiesService management permission', () => {
     ['MEMBER', 'ACTIVE'],
     ['OWNER', 'LEFT'],
     ['ADMIN', 'KICKED'],
-    [null, null],
   ] as const;
 
   function serviceFor(role: string | null, status: string | null) {
@@ -331,10 +330,16 @@ describe('TripItinerariesActivitiesService management permission', () => {
   it.each(denied)('denies role %s with status %s', (role, status) => {
     expect(() =>
       TripAccessPolicy.assertAllowed(
-        role === null ? null : { role, status: status! },
+        { role, status },
         'MANAGE_ITINERARY',
       ),
     ).toThrow(ForbiddenException);
+  });
+
+  it('hides the trip when there is no membership row', () => {
+    expect(() =>
+      TripAccessPolicy.assertAllowed(null, 'MANAGE_ITINERARY'),
+    ).toThrow(NotFoundException);
   });
 
   it.each(['createActivity', 'updateActivity', 'deleteActivity'] as const)(

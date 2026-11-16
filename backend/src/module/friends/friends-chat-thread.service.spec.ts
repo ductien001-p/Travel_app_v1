@@ -1,4 +1,4 @@
-import { BadRequestException, ForbiddenException } from '@nestjs/common';
+import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { FriendService } from './friends.service';
 
 function createService(overrides?: {
@@ -205,8 +205,8 @@ describe('FriendService.getThread', () => {
       },
     });
 
-    await expect(service.getThread('conv-1', 'user-3')).rejects.toBeInstanceOf(
-      ForbiddenException,
+    await expect(service.getThread('conv-1', 'user-3')).rejects.toThrow(
+      new NotFoundException('Conversation not found'),
     );
   });
 });

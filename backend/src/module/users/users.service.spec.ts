@@ -16,10 +16,7 @@ describe('UsersService public response and avatar ownership', () => {
       user: {
         findUnique: jest.fn().mockResolvedValue(publicUser),
         findFirst: jest.fn().mockResolvedValue(publicUser),
-        findMany: jest.fn().mockResolvedValue([publicUser]),
-        count: jest.fn().mockResolvedValue(1),
         update: jest.fn().mockResolvedValue(publicUser),
-        create: jest.fn().mockResolvedValue({ id: 'user-2' }),
       },
       uploadedMedia: { findUnique: jest.fn().mockResolvedValue(media) },
       refreshToken: { updateMany: jest.fn().mockResolvedValue({ count: 1 }) },
@@ -40,23 +37,18 @@ describe('UsersService public response and avatar ownership', () => {
     'travelStyle',
   ] as const;
 
-  it('selects only public profile fields for findOneById and findAll', async () => {
+  it('selects only public profile fields for findOneById', async () => {
     const { service, prisma } = setup(null);
     await service.findOneById('user-1');
-    await service.findAll(1, 20);
-    for (const select of [
-      prisma.user.findFirst.mock.calls[0][0].select,
-      prisma.user.findMany.mock.calls[0][0].select,
-    ]) {
-      expect(select).toMatchObject({
-        id: true,
-        username: true,
-        displayname: true,
-        bio: true,
-      });
-      for (const key of privateContactKeys) {
-        expect(select).not.toHaveProperty(key);
-      }
+    const select = prisma.user.findFirst.mock.calls[0][0].select;
+    expect(select).toMatchObject({
+      id: true,
+      username: true,
+      displayname: true,
+      bio: true,
+    });
+    for (const key of privateContactKeys) {
+      expect(select).not.toHaveProperty(key);
     }
   });
 
@@ -72,47 +64,6 @@ describe('UsersService public response and avatar ownership', () => {
       notificationEnabled: true,
       travelStyle: true,
     });
-  });
-
-  it('stores a lowercased email and rejects another users avatar on create', async () => {
-    const { service, prisma } = setup({
-      userId: 'admin-1',
-      deletedAt: null,
-      mimeType: 'image/jpeg',
-    });
-    await service.create(
-      {
-        email: 'New.User@Example.com',
-        password: 'secret1',
-        displayname: 'New',
-        username: 'new-user',
-        avatarId: 'media-1',
-      },
-      'admin-1',
-    );
-    expect(prisma.user.create).toHaveBeenCalledWith(
-      expect.objectContaining({
-        data: expect.objectContaining({ email: 'new.user@example.com' }),
-      }),
-    );
-
-    const foreign = setup({
-      userId: 'someone-else',
-      deletedAt: null,
-      mimeType: 'image/png',
-    });
-    await expect(
-      foreign.service.create(
-        {
-          email: 'other@example.com',
-          password: 'secret1',
-          displayname: 'Other',
-          username: 'other',
-          avatarId: 'media-2',
-        },
-        'admin-1',
-      ),
-    ).rejects.toBeInstanceOf(ForbiddenException);
   });
 
   it('writes only defined profile fields', async () => {

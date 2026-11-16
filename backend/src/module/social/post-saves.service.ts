@@ -62,19 +62,4 @@ export class PostSavesService {
     });
   }
 
-  async getStatus(userId: string, postId: string) {
-    await this.postService.ensureCanAccessPost(postId, userId);
-
-    const save = await this.prisma.socialPostSave.findUnique({
-      where: {
-        postId_userId: { postId, userId },
-      },
-      select: { createdAt: true },
-    });
-
-    return {
-      saved: !!save,
-      savedAt: save?.createdAt ?? null,
-    };
-  }
 }

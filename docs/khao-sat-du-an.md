@@ -136,8 +136,8 @@ Endpoint có trong OpenAPI → nối thật; chưa có → datamock + `// TODO(b
 | Social feed + post detail | 🟢 | API thật |
 | Friends hub + find friends | ✅ | API thật |
 | Ranking (period + quests + Top-10) | 🟢 | Phase 2 `/ranking/*` |
-| Chats hub / friend chat / trip chat | 🟡 | UI + datamock / thread demo |
-| Public Images | 🟡 | UI + datamock |
+| Chats hub / friend chat / trip chat | 🟢 | API + socket; datamock chỉ cho test |
+| Public Images | 🟡 | UI + datamock / album seed |
 | Settings | 🟡 | Chủ logout + switch push thật |
 
 Chú thích: ✅ E2E với BE · 🟢 API đang dùng · 🟡 UI thiếu logic/mock.
@@ -159,13 +159,13 @@ Lệnh: `flutter run --dart-define-from-file=lib/core/config/dev.json`
 
 ### 4.1 Đã nối tốt
 
-Auth, device token, upload R2, trips (hầu hết luồng chính), itinerary/check-in/share preview HTML, timeline + socket, memories, expenses, join/invite, explore/places, social feed/detail, friends, ranking, travel DNA, profile.
+Auth, device token, upload R2, trips (hầu hết luồng chính), itinerary/check-in/share preview HTML, timeline + socket, memories, expenses, join/invite, explore/places, social feed/detail, friends, ranking, travel DNA, profile, chats (hub / friend DM / trip group).
 
 ### 4.2 Gap còn lại
 
 | Khu vực | Backend | Frontend |
 |---|---|---|
-| Chat DM + trip group | Có messages / hub / thread (một phần) | UI + datamock; gửi tin rich chưa E2E |
+| Chat DM + trip group | Hub / thread / socket đã có | FE đã gọi API thật; một số loại tin rich (typing, PLACE_CARD, …) chưa đủ E2E |
 | Public image viewer | Media/trip memories có sẵn | Viewer album public còn mock |
 | Trip missions | `GET /trips/:id/missions` + seed | Chưa có màn/feature riêng |
 | Notifications inbox | Service + push | Icon “sắp có”; chưa hộp thư |
@@ -251,4 +251,4 @@ Cập nhật 2026-11-14 sau khi đối chiếu lại mã nguồn:
 
 ## 8. Kết luận
 
-Dự án là monorepo **FE Flutter + BE NestJS** khá trưởng thành ở lõi **auth + trips + places + social + ranking**. Phần còn lại tập trung vào **chat E2E**, **thông báo inbox**, **missions/gamification UI**, **deep link production**, và một số màn vẫn mock. Nguồn theo dõi hàng ngày: `frontend/brain/brain.md` (FE) và `backend/contracts/openapi.json` (hợp đồng API).
+Dự án là monorepo **FE Flutter + BE NestJS** khá trưởng thành ở lõi **auth + trips + places + social + ranking + chats**. Phần còn lại tập trung vào **thông báo inbox**, **missions/gamification UI**, **deep link production**, và một số màn/UI phụ vẫn placeholder. Nguồn theo dõi hàng ngày: `frontend/brain/brain.md` (FE) và `backend/contracts/openapi.json` (hợp đồng API).

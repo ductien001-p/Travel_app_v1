@@ -26,6 +26,7 @@ import { RankingModule } from './module/ranking/ranking.module';
 import { RolesGuard } from './module/authorization/guard/roles.guard';
 import { PlacesModule } from './module/places/places.module';
 import { PostsModule } from './module/social/post.module';
+import { PublicImagesModule } from './module/public-images/public-images.module';
 import { ChatsModule } from './module/chats/chats.module';
 import { ApiExceptionFilter } from './common/filters/api-exception.filter';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
@@ -59,6 +60,7 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
     RankingModule,
     PlacesModule,
     PostsModule,
+    PublicImagesModule,
     ThrottlerModule.forRoot({
       throttlers: [{ name: 'default', ttl: 60_000, limit: 100 }],
     }),

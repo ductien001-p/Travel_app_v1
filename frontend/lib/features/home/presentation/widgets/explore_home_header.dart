@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_frontend_v1/core/testing/e2e_keys.dart';
 import 'package:travel_frontend_v1/core/theme/app_colors.dart';
 import 'package:travel_frontend_v1/core/theme/app_spacing.dart';
 import 'package:travel_frontend_v1/core/theme/app_typography.dart';
@@ -99,6 +100,7 @@ class ExploreGreetingHeader extends StatelessWidget {
             clipBehavior: Clip.none,
             children: [
               AppIconButton(
+                key: E2eKeys.homeNotifications,
                 icon: Icons.notifications_outlined,
                 onPressed: onNotificationsTap,
                 semanticLabel: 'Thông báo',
